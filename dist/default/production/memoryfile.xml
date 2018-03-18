@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/production\BombFinderV2.X.production.hex">
+    <memory name="program">
+      <units>bytes</units>
+      <length>8192</length>
+      <used>5978</used>
+      <free>2214</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>768</length>
+      <used>445</used>
+      <free>323</free>
+    </memory>
+  </executable>
+</project>
