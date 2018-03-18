@@ -113,6 +113,10 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
     // Turn right slowly for scanning
     turnRight(mL,mR, 40);
     
+    // Initialise Timer0 vales to 0
+    TMR0L = 0;
+    TMR0H = 0;
+    T0CONbits.TMR0ON=1; // turn on timer0
     // This loop is turning Right, while scanning
     for (i=1; i<=milliseconds; i++) {
         
@@ -139,32 +143,44 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
         LCD_String(buf);
         
-        if (SensorResult[1]>DirectionFoundThreshold) {
-            RightFlag=1;
+        if (RightFlag==0){
+            if (SensorResult[1]>DirectionFoundThreshold) {
+                RightFlag= (TMR0H<<8)+TMR0L;
+            }
         }
         
-        if (SensorResult[0]>DirectionFoundThreshold) {
-            LeftFlag=1;
+        if (LeftFlag==0){
+            if (SensorResult[0]>DirectionFoundThreshold) {
+                LeftFlag=(TMR0H<<8)+TMR0L;
+            }
         }
         
         // Increment counter if any of the IR sensors has seen the beacon
-        if ((LeftFlag==1)||(RightFlag==1)) {
-            TimeAboveThreshold++;
-        }
+//        if ((LeftFlag>0)||(RightFlag>0)) {
+//            TimeAboveThreshold++;
+//        }
         
-        if (LeftFlag==1) {        
+        if (LeftFlag>0) {  
             // Both Sensors have seen the beacon, travel back to
             // half the length of the FlagCounter and go!
-            if (RightFlag==1) {
-                for (n=1; n<=(TimeAboveThreshold>>1); n++) {
-                    stop(mL,mR);
+            if (RightFlag>0) {
+                TimeAboveThreshold = LeftFlag - RightFlag;
+                TMR0L = 0; //Reset the timer
+                TMR0H = 0;
+                stop(mL,mR);
+//                for (n=1; n<=(TimeAboveThreshold>>1); n++) {
+                while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>1)) {
+//                    stop(mL,mR);
                     turnLeft(mL,mR, 100);
-                    __delay_ms(1);
-                    stop(mL,mR);
+//                    __delay_ms(1);
+//                    stop(mL,mR);
                 }
+                T0CONbits.TMR0ON=0; // Stop the timer
+                stop(mL,mR);
                 return 2; // Direction of bomb is directly ahead
             } else {
                 // Signal was only found once, just go in that direction roughly
+                T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
                 return 2; // Direction of bomb is roughly ahead
             }     
