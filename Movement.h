@@ -22,6 +22,6 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
 // The range is given in twice the number of tenth seconds the robot turns for
 // Finally the robot positions facing the direction of highest IR strength
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
-        int *MoveTime, char *RFID_Read, char *mode);
+        int *MoveTime, char *RFID_Read);
 #endif	/* MOVEMENT_H */
 

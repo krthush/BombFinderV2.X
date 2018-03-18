@@ -183,15 +183,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "27 dc_motor.h
 [v _fullSpeedAhead `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
 "24 Movement.h
-[v _ScanWithRange `(uc ~T0 @X0 0 ef5`*S405`*S405`i`*i`*uc ]
+[v _ScanWithRange `(uc ~T0 @X0 0 ef6`*S405`*S405`i`*i`*uc`*uc ]
 "18
 [v _ScanIR `(uc ~T0 @X0 0 ef5`*S405`*S405`*uc`*i`*uc ]
 "16 RFID_Reader.h
 [v _VerifySignal `(uc ~T0 @X0 0 ef1`*uc ]
 "28 dc_motor.h
 [v _fullSpeedBack `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
-"13 Movement.h
-[v _delay_s `(v ~T0 @X0 0 ef1`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3699,7 +3697,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.h: 18: char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
 [; ;Movement.h: 19: int *MoveTime, char *MoveType);
 [; ;Movement.h: 24: char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
-[; ;Movement.h: 25: int *MoveTime, char *RFID_Read);
+[; ;Movement.h: 25: int *MoveTime, char *RFID_Read, char *mode);
 [; ;IR_Reading.h: 15: void initIR(void);
 [; ;IR_Reading.h: 16: unsigned int grabRightIR(void);
 [; ;IR_Reading.h: 17: unsigned int grabLeftIR(void);
@@ -3788,14 +3786,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;main.c: 14: volatile unsigned char RFID_Read=0;
 "15
-[v _mode `Vc ~T0 @X0 1 e ]
+[v _mode `Vuc ~T0 @X0 1 e ]
 [i _mode
--> -> 0 `i `c
+-> -> 0 `i `uc
 ]
-[; ;main.c: 15: volatile signed char mode=0;
-[v F3885 `(v ~T0 @X0 1 tf ]
+[; ;main.c: 15: volatile char mode=0;
+[v F3886 `(v ~T0 @X0 1 tf ]
 "18
-[v _InterruptHandlerLow `ILF3885 ~T0 @X0 1 e ]
+[v _InterruptHandlerLow `ILF3886 ~T0 @X0 1 e ]
 "19
 {
 [; ;main.c: 18: void interrupt low_priority InterruptHandlerLow ()
@@ -3843,9 +3841,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "30
 [e :UE 407 ]
 }
-[v F3887 `(v ~T0 @X0 1 tf ]
+[v F3888 `(v ~T0 @X0 1 tf ]
 "34
-[v _InterruptHandlerHigh `IF3887 ~T0 @X0 1 e ]
+[v _InterruptHandlerHigh `IF3888 ~T0 @X0 1 e ]
 {
 [; ;main.c: 34: void interrupt InterruptHandlerHigh () {
 [e :U _InterruptHandlerHigh ]
@@ -3860,7 +3858,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 38: mode=1;
 "38
-[e = _mode -> -> 1 `i `c ]
+[e = _mode -> -> 1 `i `uc ]
 "39
 }
 [; ;main.c: 39: } else if (mode==0) {
@@ -3876,7 +3874,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 43: mode=-1;
 "43
-[e = _mode -> -U -> 1 `i `c ]
+[e = _mode -> -U -> 1 `i `uc ]
 "44
 }
 [e :U 416 ]
@@ -3923,8 +3921,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 58: char MoveType[100];
 [; ;main.c: 59: char Move=0;
 [e = _Move -> -> 0 `i `uc ]
-[v F3897 `ui ~T0 @X0 -> 2 `i s ]
-[i F3897
+[v F3898 `ui ~T0 @X0 -> 2 `i s ]
+[i F3898
 :U ..
 "60
 -> -> 0 `i `ui
@@ -3933,7 +3931,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _SensorResult `ui ~T0 @X0 -> 2 `i a ]
 [; ;main.c: 60: unsigned int SensorResult[2]={0,0};
-[e = _SensorResult F3897 ]
+[e = _SensorResult F3898 ]
 "61
 [v _buf `uc ~T0 @X0 -> 40 `i a ]
 "63
@@ -4135,7 +4133,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _delay_tenth_s (1 -> -> 1 `i `uc ]
 [; ;main.c: 160: mode=-1;
 "160
-[e = _mode -> -U -> 1 `i `c ]
+[e = _mode -> -U -> 1 `i `uc ]
 [; ;main.c: 162: break;
 "162
 [e $U 424  ]
@@ -4148,222 +4146,221 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 171: LCD_String("Searching");
 "171
 [e ( _LCD_String (1 -> :s 3C `*uc ]
-[; ;main.c: 173: if (DirectionFound==-1) {
+[; ;main.c: 173: if (DirectionFound==-2) {
 "173
-[e $ ! == -> _DirectionFound `i -U -> 1 `i 431  ]
+[e $ ! == -> _DirectionFound `i -U -> 2 `i 431  ]
 {
-[; ;main.c: 178: fullSpeedAhead(&mL, &mR, 100);
-"178
-[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-[; ;main.c: 179: delay_tenth_s(6);
-"179
-[e ( _delay_tenth_s (1 -> -> 6 `i `uc ]
-[; ;main.c: 180: stop(&mL,&mR);
-"180
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 181: DirectionFound=0;
-"181
-[e = _DirectionFound -> -> 0 `i `c ]
-[; ;main.c: 182: MoveType[Move]=0;
-"182
-[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 0 `i `uc ]
-"183
+"176
 }
-[; ;main.c: 183: } else if (DirectionFound==0) {
+[; ;main.c: 176: } else if (DirectionFound==-1) {
 [e $U 432  ]
 [e :U 431 ]
-[e $ ! == -> _DirectionFound `i -> 0 `i 433  ]
+[e $ ! == -> _DirectionFound `i -U -> 1 `i 433  ]
 {
-[; ;main.c: 185: DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
-[; ;main.c: 186: &MoveTime[Move], &RFID_Read);
+[; ;main.c: 181: fullSpeedAhead(&mL, &mR, 100);
+"181
+[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
+[; ;main.c: 182: delay_tenth_s(6);
+"182
+[e ( _delay_tenth_s (1 -> -> 6 `i `uc ]
+[; ;main.c: 183: stop(&mL,&mR);
+"183
+[e ( _stop (2 , &U _mL &U _mR ]
+[; ;main.c: 184: DirectionFound=0;
+"184
+[e = _DirectionFound -> -> 0 `i `c ]
+[; ;main.c: 185: MoveType[Move]=0;
+"185
+[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 0 `i `uc ]
 "186
-[e = _DirectionFound -> ( _ScanWithRange (4 , , , , &U _mL &U _mR -> _ScanAngle `i &U *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux -> &U _RFID_Read `*uc `c ]
-[; ;main.c: 187: MoveType[Move]=1;
-"187
-[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 1 `i `uc ]
-"188
 }
-[; ;main.c: 188: } else if (DirectionFound==1) {
+[; ;main.c: 186: } else if (DirectionFound==0) {
 [e $U 434  ]
 [e :U 433 ]
-[e $ ! == -> _DirectionFound `i -> 1 `i 435  ]
+[e $ ! == -> _DirectionFound `i -> 0 `i 435  ]
 {
-[; ;main.c: 190: DirectionFound=ScanIR(&mL, &mR, &Move, &MoveTime, &MoveType);
+[; ;main.c: 188: DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
+[; ;main.c: 189: &MoveTime[Move], &RFID_Read, &mode);
+"189
+[e = _DirectionFound -> ( _ScanWithRange (4 , , , , , &U _mL &U _mR -> _ScanAngle `i &U *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux -> &U _RFID_Read `*uc -> &U _mode `*uc `c ]
+[; ;main.c: 190: MoveType[Move]=1;
 "190
-[e = _DirectionFound -> ( _ScanIR (4 , , , , &U _mL &U _mR &U _Move &U _MoveTime &U _MoveType `c ]
+[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 1 `i `uc ]
 "191
 }
-[; ;main.c: 191: } else if (DirectionFound==2) {
+[; ;main.c: 191: } else if (DirectionFound==1) {
 [e $U 436  ]
 [e :U 435 ]
-[e $ ! == -> _DirectionFound `i -> 2 `i 437  ]
+[e $ ! == -> _DirectionFound `i -> 1 `i 437  ]
 {
-[; ;main.c: 193: mode=2;
+[; ;main.c: 193: DirectionFound=ScanIR(&mL, &mR, &Move, &MoveTime, &MoveType);
 "193
-[e = _mode -> -> 2 `i `c ]
-[; ;main.c: 194: MoveType[Move]=1;
+[e = _DirectionFound -> ( _ScanIR (4 , , , , &U _mL &U _mR &U _Move &U _MoveTime &U _MoveType `c ]
 "194
-[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 1 `i `uc ]
-"195
 }
+[; ;main.c: 194: } else if (DirectionFound==2) {
+[e $U 438  ]
 [e :U 437 ]
+[e $ ! == -> _DirectionFound `i -> 2 `i 439  ]
+{
+[; ;main.c: 196: mode=2;
+"196
+[e = _mode -> -> 2 `i `uc ]
+[; ;main.c: 197: MoveType[Move]=1;
 "197
+[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 1 `i `uc ]
+"198
+}
+[e :U 439 ]
+"200
+[e :U 438 ]
 [e :U 436 ]
 [e :U 434 ]
 [e :U 432 ]
-[; ;main.c: 195: }
-[; ;main.c: 197: Move++;
+[; ;main.c: 198: }
+[; ;main.c: 200: Move++;
 [e ++ _Move -> -> 1 `i `uc ]
-[; ;main.c: 199: break;
-"199
+[; ;main.c: 202: break;
+"202
 [e $U 424  ]
-[; ;main.c: 201: case 2 :
-"201
-[e :U 438 ]
-[; ;main.c: 206: if (RFID_Read) {
-"206
-[e $ ! != -> _RFID_Read `i -> -> -> 0 `i `Vuc `i 439  ]
-{
-[; ;main.c: 207: stop(&mL, &mR);
-"207
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 208: if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){
-"208
-[e $ ! & == -> *U + &U _ReceivedString * -> -> -> 0 `i `ui `ux -> -> # *U &U _ReceivedString `ui `ux `i -> 2 `i == -> *U + &U _ReceivedString * -> -> -> 15 `i `ui `ux -> -> # *U &U _ReceivedString `ui `ux `i -> 3 `i 440  ]
-{
-[; ;main.c: 209: if (VerifySignal(ReceivedString)){
+[; ;main.c: 204: case 2 :
+"204
+[e :U 440 ]
+[; ;main.c: 209: if (RFID_Read) {
 "209
-[e $ ! != -> ( _VerifySignal (1 -> &U _ReceivedString `*uc `i -> -> -> 0 `i `uc `i 441  ]
+[e $ ! != -> _RFID_Read `i -> -> -> 0 `i `Vuc `i 441  ]
 {
-[; ;main.c: 211: for (i=0; i<10; i++){
+[; ;main.c: 210: stop(&mL, &mR);
+"210
+[e ( _stop (2 , &U _mL &U _mR ]
+[; ;main.c: 211: if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){
 "211
+[e $ ! & == -> *U + &U _ReceivedString * -> -> -> 0 `i `ui `ux -> -> # *U &U _ReceivedString `ui `ux `i -> 2 `i == -> *U + &U _ReceivedString * -> -> -> 15 `i `ui `ux -> -> # *U &U _ReceivedString `ui `ux `i -> 3 `i 442  ]
 {
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 442  ]
-[e $U 443  ]
-[e :U 442 ]
-{
-[; ;main.c: 212: Message[i] = ReceivedString[i+1];
+[; ;main.c: 212: if (VerifySignal(ReceivedString)){
 "212
-[e = *U + &U _Message * -> _i `ux -> -> # *U &U _Message `ui `ux *U + &U _ReceivedString * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _ReceivedString `ui `ux ]
-"213
-}
-"211
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 442  ]
-[e :U 443 ]
-"213
-}
-[; ;main.c: 213: }
-[; ;main.c: 216: for (i=0; i<16; i++) {
-"216
+[e $ ! != -> ( _VerifySignal (1 -> &U _ReceivedString `*uc `i -> -> -> 0 `i `uc `i 443  ]
+{
+[; ;main.c: 214: for (i=0; i<10; i++){
+"214
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 16 `i 445  ]
-[e $U 446  ]
-[e :U 445 ]
+[e $ < -> _i `i -> 10 `i 444  ]
+[e $U 445  ]
+[e :U 444 ]
 {
-[; ;main.c: 217: ReceivedString[i]=0;
-"217
-[e = *U + &U _ReceivedString * -> _i `ux -> -> # *U &U _ReceivedString `ui `ux -> -> 0 `i `uc ]
-"218
-}
+[; ;main.c: 215: Message[i] = ReceivedString[i+1];
+"215
+[e = *U + &U _Message * -> _i `ux -> -> # *U &U _Message `ui `ux *U + &U _ReceivedString * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _ReceivedString `ui `ux ]
 "216
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 16 `i 445  ]
-[e :U 446 ]
-"218
 }
-[; ;main.c: 218: }
-[; ;main.c: 219: mode=3;
+"214
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 10 `i 444  ]
+[e :U 445 ]
+"216
+}
+[; ;main.c: 216: }
+[; ;main.c: 219: for (i=0; i<16; i++) {
 "219
-[e = _mode -> -> 3 `i `c ]
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 16 `i 447  ]
+[e $U 448  ]
+[e :U 447 ]
+{
+[; ;main.c: 220: ReceivedString[i]=0;
+"220
+[e = *U + &U _ReceivedString * -> _i `ux -> -> # *U &U _ReceivedString `ui `ux -> -> 0 `i `uc ]
 "221
 }
-[; ;main.c: 221: } else {
-[e $U 448  ]
+"219
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 16 `i 447  ]
+[e :U 448 ]
+"221
+}
+[; ;main.c: 221: }
+[; ;main.c: 222: mode=3;
+"222
+[e = _mode -> -> 3 `i `uc ]
+"224
+}
+[; ;main.c: 224: } else {
+[e $U 450  ]
+[e :U 443 ]
+{
+[; ;main.c: 225: fullSpeedBack(&mL,&mR, 100);
+"225
+[e ( _fullSpeedBack (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
+[; ;main.c: 226: delay_tenth_s(5);
+"226
+[e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
+[; ;main.c: 227: stop(&mL,&mR);
+"227
+[e ( _stop (2 , &U _mL &U _mR ]
+[; ;main.c: 228: fullSpeedAhead(&mL,&mR, 100);
+"228
+[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
+"229
+}
+[e :U 450 ]
+"230
+}
+[e :U 442 ]
+"231
+}
+[; ;main.c: 229: }
+[; ;main.c: 230: }
+[; ;main.c: 231: } else {
+[e $U 451  ]
 [e :U 441 ]
 {
-[; ;main.c: 222: fullSpeedBack(&mL,&mR, 100);
-"222
-[e ( _fullSpeedBack (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-[; ;main.c: 223: delay_tenth_s(5);
-"223
-[e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
-[; ;main.c: 224: stop(&mL,&mR);
-"224
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 225: fullSpeedAhead(&mL,&mR, 100);
-"225
-[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-"226
-}
-[e :U 448 ]
-"227
-}
-[e :U 440 ]
-"228
-}
-[; ;main.c: 226: }
-[; ;main.c: 227: }
-[; ;main.c: 228: } else {
-[e $U 449  ]
-[e :U 439 ]
-{
-[; ;main.c: 229: DirectionFound=1;
-"229
-[e = _DirectionFound -> -> 1 `i `c ]
-[; ;main.c: 230: mode=1;
-"230
-[e = _mode -> -> 1 `i `c ]
-[; ;main.c: 232: fullSpeedAhead(&mL,&mR, 100);
+[; ;main.c: 232: DirectionFound=1;
 "232
-[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-[; ;main.c: 233: delay_tenth_s(5);
+[e = _DirectionFound -> -> 1 `i `c ]
+[; ;main.c: 233: mode=1;
 "233
-[e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
-[; ;main.c: 234: MoveType[Move] = 0;
-"234
-[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 0 `i `uc ]
-[; ;main.c: 235: MoveTime[Move] = 5;
+[e = _mode -> -> 1 `i `uc ]
+[; ;main.c: 235: fullSpeedAhead(&mL,&mR, 100);
 "235
-[e = *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux -> 5 `i ]
-[; ;main.c: 236: Move++;
+[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
+[; ;main.c: 236: delay_tenth_s(5);
 "236
-[e ++ _Move -> -> 1 `i `uc ]
+[e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
+[; ;main.c: 237: MoveType[Move] = 0;
 "237
-}
-[e :U 449 ]
-[; ;main.c: 237: }
-[; ;main.c: 239: break;
+[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 238: MoveTime[Move] = 5;
+"238
+[e = *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux -> 5 `i ]
+[; ;main.c: 239: Move++;
 "239
+[e ++ _Move -> -> 1 `i `uc ]
+"240
+}
+[e :U 451 ]
+[; ;main.c: 240: }
+[; ;main.c: 242: break;
+"242
 [e $U 424  ]
-[; ;main.c: 241: case 3 :
-"241
-[e :U 450 ]
-[; ;main.c: 244: SetLine(1);
+[; ;main.c: 244: case 3 :
 "244
-[e ( _SetLine (1 -> -> 1 `i `uc ]
-[; ;main.c: 245: LCD_String(Message);
-"245
-[e ( _LCD_String (1 &U _Message ]
-[; ;main.c: 246: SetLine(2);
-"246
-[e ( _SetLine (1 -> -> 2 `i `uc ]
-[; ;main.c: 247: LCD_String("Going Home");
+[e :U 452 ]
+[; ;main.c: 247: SetLine(1);
 "247
-[e ( _LCD_String (1 -> :s 4C `*uc ]
-[; ;main.c: 248: stop(&mL,&mR);
+[e ( _SetLine (1 -> -> 1 `i `uc ]
+[; ;main.c: 248: LCD_String(Message);
 "248
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 265: fullSpeedBack(&mL,&mR, 100);
-"265
-[e ( _fullSpeedBack (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-[; ;main.c: 266: delay_s(3);
-"266
-[e ( _delay_s (1 -> -> 3 `i `uc ]
-[; ;main.c: 267: stop(&mL, &mR);
-"267
+[e ( _LCD_String (1 &U _Message ]
+[; ;main.c: 249: SetLine(2);
+"249
+[e ( _SetLine (1 -> -> 2 `i `uc ]
+[; ;main.c: 250: LCD_String("Going Home");
+"250
+[e ( _LCD_String (1 -> :s 4C `*uc ]
+[; ;main.c: 251: stop(&mL,&mR);
+"251
 [e ( _stop (2 , &U _mL &U _mR ]
 [; ;main.c: 269: break;
 "269
@@ -4374,11 +4371,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 424  ]
 "104
 [e :U 425 ]
-[e [\ _mode , $ -> -U -> 1 `i `c 426
- , $ -> -> 0 `i `c 429
- , $ -> -> 1 `i `c 430
- , $ -> -> 2 `i `c 438
- , $ -> -> 3 `i `c 450
+[e [\ _mode , $ -> -U -> 1 `i `uc 426
+ , $ -> -> 0 `i `uc 429
+ , $ -> -> 1 `i `uc 430
+ , $ -> -> 2 `i `uc 440
+ , $ -> -> 3 `i `uc 452
  424 ]
 "270
 [e :U 424 ]

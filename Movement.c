@@ -89,7 +89,7 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
 // NEW ROUTINE: This route scans given range in very small time increments
 // INPROG
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, 
-        int *MoveTimeEntry, char *RFID_Read, char *mode) {
+        int *MoveTimeEntry, char *RFID_Read) {
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
@@ -102,7 +102,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
     // USERVARIABLE TOLERANCES
     const unsigned int DirectionFoundThreshold=3000; // Minimum signal strength 
     //required for sensor to be considered directly aimed at beacon.
-    const unsigned char power=42;
+    const unsigned char power=40;
     
     // Flip right before starting scan from left side
 //    for (i=1; i<=(milliseconds>>1); i++) {
@@ -190,9 +190,6 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
         // Break out of loop if RFID read or button pressed (Global variables!)
         if (*RFID_Read==1) { //If we've got something on the RFID
             return 2; //2 sends it into mode 2
-        }
-        if (*mode==-1) { //Happens if the button is pressed
-            return 0; //Doesn't matter but we have to return something
         }
     }
     

@@ -1,197 +1,116 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"3826 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4331.h
-[s S181 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S181 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
-"3835
-[s S182 :4 `uc 1 :1 `uc 1 ]
-[n S182 . . TBIF ]
-"3839
-[s S183 :5 `uc 1 :1 `uc 1 ]
-[n S183 . . RC1IF ]
-"3843
-[s S184 :4 `uc 1 :1 `uc 1 ]
-[n S184 . . TX1IF ]
-"3825
-[u S180 `S181 1 `S182 1 `S183 1 `S184 1 ]
-[n S180 . . . . . ]
-"3848
-[v _PIR1bits `VS180 ~T0 @X0 0 e@3998 ]
-"5110
-[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
-"7549
-[s S397 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S397 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-"7559
-[s S398 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S398 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE GIE ]
-"7569
-[s S399 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S399 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE GIEL GIEH ]
-"7579
-[s S400 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S400 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-"7589
-[s S401 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S401 . . GIEL GIEH ]
-"7548
-[u S396 `S397 1 `S398 1 `S399 1 `S400 1 `S401 1 ]
-[n S396 . . . . . . ]
-"7595
-[v _INTCONbits `VS396 ~T0 @X0 0 e@4082 ]
-"15 Movement.h
-[v _delay_tenth_s `(v ~T0 @X0 0 ef1`uc ]
-[p mainexit ]
-"6738 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4331.h
-[s S363 :1 `uc 1 ]
-[n S363 . NOT_BOR ]
-"6741
-[s S364 :1 `uc 1 :1 `uc 1 ]
-[n S364 . . NOT_POR ]
-"6745
-[s S365 :2 `uc 1 :1 `uc 1 ]
-[n S365 . . NOT_PD ]
-"6749
-[s S366 :3 `uc 1 :1 `uc 1 ]
-[n S366 . . NOT_TO ]
-"6753
-[s S367 :4 `uc 1 :1 `uc 1 ]
-[n S367 . . NOT_RI ]
-"6757
-[s S368 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S368 . nBOR nPOR nPD nTO nRI . IPEN ]
-"6766
-[s S369 :7 `uc 1 :1 `uc 1 ]
-[n S369 . . NOT_IPEN ]
-"6770
-[s S370 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S370 . BOR POR PD TO RI . nIPEN ]
-"6737
-[u S362 `S363 1 `S364 1 `S365 1 `S366 1 `S367 1 `S368 1 `S369 1 `S370 1 ]
-[n S362 . . . . . . . . . ]
-"6780
-[v _RCONbits `VS362 ~T0 @X0 0 e@4048 ]
-"3908
-[s S186 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S186 . TMR1IP TMR2IP CCP1IP SSPIP TXIP RCIP ADIP ]
-"3917
-[s S187 :4 `uc 1 :1 `uc 1 ]
-[n S187 . . TBIP ]
-"3921
-[s S188 :5 `uc 1 :1 `uc 1 ]
-[n S188 . . RC1IP ]
-"3925
-[s S189 :4 `uc 1 :1 `uc 1 ]
-[n S189 . . TX1IP ]
-"3907
-[u S185 `S186 1 `S187 1 `S188 1 `S189 1 ]
-[n S185 . . . . . ]
-"3930
-[v _IPR1bits `VS185 ~T0 @X0 0 e@3999 ]
-"3744
-[s S176 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S176 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE ]
-"3753
-[s S177 :4 `uc 1 :1 `uc 1 ]
-[n S177 . . TBIE ]
-"3757
-[s S178 :5 `uc 1 :1 `uc 1 ]
-[n S178 . . RC1IE ]
-"3761
-[s S179 :4 `uc 1 :1 `uc 1 ]
-[n S179 . . TX1IE ]
-"3743
-[u S175 `S176 1 `S177 1 `S178 1 `S179 1 ]
-[n S175 . . . . . ]
-"3766
-[v _PIE1bits `VS175 ~T0 @X0 0 e@3997 ]
-"2941
-[s S148 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S148 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"2951
-[s S149 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S149 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"2940
-[u S147 `S148 1 `S149 1 ]
-[n S147 . . . ]
-"2962
-[v _TRISCbits `VS147 ~T0 @X0 0 e@3988 ]
-"8 dc_motor.h
-[s S405 `uc 1 `uc 1 `*uc 1 `*uc 1 `uc 1 `i 1 ]
-[n S405 DC_motor power direction dutyLowByte dutyHighByte dir_pin PWMperiod ]
-"864 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4331.h
-[v _PDC0L `Vuc ~T0 @X0 0 e@3961 ]
-"858
-[v _PDC0H `Vuc ~T0 @X0 0 e@3960 ]
-"852
-[v _PDC1L `Vuc ~T0 @X0 0 e@3959 ]
-"846
-[v _PDC1H `Vuc ~T0 @X0 0 e@3958 ]
-"6964
-[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
-"6970
-[s S377 :2 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
-[n S377 . SCS IOFS OSTS IRCF IDLEN ]
-"6977
-[s S378 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S378 . SCS0 SCS1 . IRCF0 IRCF1 IRCF2 ]
-"6985
-[s S379 :2 `uc 1 :1 `uc 1 ]
-[n S379 . . FLTS ]
-"6969
-[u S376 `S377 1 `S378 1 `S379 1 ]
-[n S376 . . . . ]
-"6990
-[v _OSCCONbits `VS376 ~T0 @X0 0 e@4051 ]
-"22 dc_motor.h
-[v _stop `(v ~T0 @X0 0 ef2`*S405`*S405 ]
-"17 IR_Reading.h
-[v _grabLeftIR `(ui ~T0 @X0 0 ef ]
-"16
-[v _grabRightIR `(ui ~T0 @X0 0 ef ]
-"341 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4331.h
+"1846 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4331.h
+[s S86 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S86 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
+"1856
+[s S87 :1 `uc 1 ]
+[n S87 . LA0 ]
+"1859
+[s S88 :1 `uc 1 :1 `uc 1 ]
+[n S88 . . LA1 ]
+"1863
+[s S89 :2 `uc 1 :1 `uc 1 ]
+[n S89 . . LA2 ]
+"1867
+[s S90 :3 `uc 1 :1 `uc 1 ]
+[n S90 . . LA3 ]
+"1871
+[s S91 :4 `uc 1 :1 `uc 1 ]
+[n S91 . . LA4 ]
+"1875
+[s S92 :5 `uc 1 :1 `uc 1 ]
+[n S92 . . LA5 ]
+"1879
+[s S93 :6 `uc 1 :1 `uc 1 ]
+[n S93 . . LA6 ]
+"1883
+[s S94 :7 `uc 1 :1 `uc 1 ]
+[n S94 . . LA7 ]
+"1845
+[u S85 `S86 1 `S87 1 `S88 1 `S89 1 `S90 1 `S91 1 `S92 1 `S93 1 `S94 1 ]
+[n S85 . . . . . . . . . . ]
+"1888
+[v _LATAbits `VS85 ~T0 @X0 0 e@3977 ]
+"2499
+[s S136 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S136 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+"2509
+[s S137 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S137 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"2498
+[u S135 `S136 1 `S137 1 ]
+[n S135 . . . ]
+"2520
+[v _TRISAbits `VS135 ~T0 @X0 0 e@3986 ]
+"5422
+[s S284 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S284 . ANS0 ANS1 ANS2 ANS3 ANS4 ANS5 ANS6 ANS7 ]
+"5421
+[u S283 `S284 1 ]
+[n S283 . . ]
+"5433
+[v _ANSEL0bits `VS283 ~T0 @X0 0 e@4024 ]
+"228
+[v _CAP1CON `Vuc ~T0 @X0 0 e@3939 ]
+"170
+[v _CAP2CON `Vuc ~T0 @X0 0 e@3938 ]
+"3383
+[s S160 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S160 . TRISE0 TRISE1 TRISE2 ]
+"3388
+[s S161 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S161 . RE0 RE1 RE2 ]
+"3382
+[u S159 `S160 1 `S161 1 ]
+[n S159 . . . ]
+"3394
+[v _TRISEbits `VS159 ~T0 @X0 0 e@3990 ]
+"5297
+[v _T5CON `Vuc ~T0 @X0 0 e@4023 ]
+"341
 [v _CAP1BUFH `Vuc ~T0 @X0 0 e@3945 ]
 "330
 [v _CAP1BUFL `Vuc ~T0 @X0 0 e@3944 ]
-"319
-[v _CAP2BUFH `Vuc ~T0 @X0 0 e@3943 ]
-"308
-[v _CAP2BUFL `Vuc ~T0 @X0 0 e@3942 ]
-"26 LCD.h
-[v _SendLCD `(v ~T0 @X0 0 ef2`uc`uc ]
 [v F3644 `(v ~T0 @X0 1 tf1`ul ]
 "152 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18.h
 [v __delay `JF3644 ~T0 @X0 0 e ]
 [p i __delay ]
-"27 LCD.h
-[v _SetLine `(v ~T0 @X0 0 ef1`uc ]
-"28
-[v _LCD_String `(v ~T0 @X0 0 ef1`*uc ]
-"194 C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h
-[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-"18 dc_motor.h
-[v _initMotorPWM `(v ~T0 @X0 0 ef ]
-"11 Movement.h
-[v _initTimer `(v ~T0 @X0 0 ef ]
-"12 RFID_Reader.h
-[v _initRFID `(v ~T0 @X0 0 ef ]
-"23 LCD.h
-[v _initLCD `(v ~T0 @X0 0 ef ]
-"15 IR_Reading.h
-[v _initIR `(v ~T0 @X0 0 ef ]
-"18
-[v _enableSensor `(v ~T0 @X0 0 ef2`uc`uc ]
-"27 dc_motor.h
-[v _fullSpeedAhead `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
-"24 Movement.h
-[v _ScanWithRange `(uc ~T0 @X0 0 ef5`*S405`*S405`i`*i`*uc ]
-"18
-[v _ScanIR `(uc ~T0 @X0 0 ef5`*S405`*S405`*uc`*i`*uc ]
-"16 RFID_Reader.h
-[v _VerifySignal `(uc ~T0 @X0 0 ef1`*uc ]
-"28 dc_motor.h
-[v _fullSpeedBack `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
-"13 Movement.h
-[v _delay_s `(v ~T0 @X0 0 ef1`uc ]
+"319 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4331.h
+[v _CAP2BUFH `Vuc ~T0 @X0 0 e@3943 ]
+"308
+[v _CAP2BUFL `Vuc ~T0 @X0 0 e@3942 ]
+"2374
+[s S126 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S126 . LATE0 LATE1 LATE2 ]
+"2379
+[s S127 :1 `uc 1 ]
+[n S127 . LE0 ]
+"2382
+[s S128 :1 `uc 1 :1 `uc 1 ]
+[n S128 . . LE1 ]
+"2386
+[s S129 :2 `uc 1 :1 `uc 1 ]
+[n S129 . . LE2 ]
+"2390
+[s S130 :3 `uc 1 :1 `uc 1 ]
+[n S130 . . LE3 ]
+"2394
+[s S131 :4 `uc 1 :1 `uc 1 ]
+[n S131 . . LE4 ]
+"2398
+[s S132 :5 `uc 1 :1 `uc 1 ]
+[n S132 . . LE5 ]
+"2402
+[s S133 :6 `uc 1 :1 `uc 1 ]
+[n S133 . . LE6 ]
+"2406
+[s S134 :7 `uc 1 :1 `uc 1 ]
+[n S134 . . LE7 ]
+"2373
+[u S125 `S126 1 `S127 1 `S128 1 `S129 1 `S130 1 `S131 1 `S132 1 `S133 1 `S134 1 ]
+[n S125 . . . . . . . . . . ]
+"2411
+[v _LATEbits `VS125 ~T0 @X0 0 e@3981 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3671,730 +3590,180 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 152: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 154: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 156: extern __nonreentrant void _delay3(unsigned char);
-[; ;dc_motor.h: 8: struct DC_motor {
-[; ;dc_motor.h: 9: char power;
-[; ;dc_motor.h: 10: char direction;
-[; ;dc_motor.h: 11: unsigned char *dutyLowByte;
-[; ;dc_motor.h: 12: unsigned char *dutyHighByte;
-[; ;dc_motor.h: 13: char dir_pin;
-[; ;dc_motor.h: 14: int PWMperiod;
-[; ;dc_motor.h: 15: };
-[; ;dc_motor.h: 18: void initMotorPWM();
-[; ;dc_motor.h: 19: void setMotorPWM(struct DC_motor *m);
-[; ;dc_motor.h: 20: void setMotorFullSpeed(struct DC_motor *m);
-[; ;dc_motor.h: 21: void stopMotor(struct DC_motor *m);
-[; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 27: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;RFID_Reader.h: 12: void initRFID(void);
-[; ;RFID_Reader.h: 13: void sendCharToSerial(char charToSend);
-[; ;RFID_Reader.h: 14: char getCharSerial(void);
-[; ;RFID_Reader.h: 15: void Serial_String(char *string);
-[; ;RFID_Reader.h: 16: unsigned char VerifySignal(unsigned char *Signal);
-[; ;Movement.h: 11: void initTimer(void);
-[; ;Movement.h: 13: void delay_s(char seconds);
-[; ;Movement.h: 15: void delay_tenth_s(char tenth_seconds);
-[; ;Movement.h: 18: char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
-[; ;Movement.h: 19: int *MoveTime, char *MoveType);
-[; ;Movement.h: 24: char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
-[; ;Movement.h: 25: int *MoveTime, char *RFID_Read);
 [; ;IR_Reading.h: 15: void initIR(void);
 [; ;IR_Reading.h: 16: unsigned int grabRightIR(void);
 [; ;IR_Reading.h: 17: unsigned int grabLeftIR(void);
 [; ;IR_Reading.h: 18: void enableSensor(char sensor, char status);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
-[; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
-[; ;string.h: 16: extern void * memset(void *, int, size_t);
-[; ;string.h: 34: extern char * strcat(char *, const char *);
-[; ;string.h: 35: extern char * strcpy(char *, const char *);
-[; ;string.h: 36: extern char * strncat(char *, const char *, size_t);
-[; ;string.h: 37: extern char * strncpy(char *, const char *, size_t);
-[; ;string.h: 38: extern char * strdup(const char *);
-[; ;string.h: 39: extern char * strtok(char *, const char *);
-[; ;string.h: 42: extern int memcmp(const void *, const void *, size_t);
-[; ;string.h: 43: extern int strcmp(const char *, const char *);
-[; ;string.h: 44: extern int stricmp(const char *, const char *);
-[; ;string.h: 45: extern int strncmp(const char *, const char *, size_t);
-[; ;string.h: 46: extern int strnicmp(const char *, const char *, size_t);
-[; ;string.h: 47: extern void * memchr(const void *, int, size_t);
-[; ;string.h: 48: extern size_t strcspn(const char *, const char *);
-[; ;string.h: 49: extern char * strpbrk(const char *, const char *);
-[; ;string.h: 50: extern size_t strspn(const char *, const char *);
-[; ;string.h: 51: extern char * strstr(const char *, const char *);
-[; ;string.h: 52: extern char * stristr(const char *, const char *);
-[; ;string.h: 53: extern char * strerror(int);
-[; ;string.h: 54: extern size_t strlen(const char *);
-[; ;string.h: 55: extern char * strchr(const char *, int);
-[; ;string.h: 56: extern char * strichr(const char *, int);
-[; ;string.h: 57: extern char * strrchr(const char *, int);
-[; ;string.h: 58: extern char * strrichr(const char *, int);
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 25: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
-"13 LCD.h
-[p x OSC=IRCIO ]
-[p x WDTEN=OFF ]
-[; ;LCD.h: 23: void initLCD(void);
-[; ;LCD.h: 24: void E_TOG(void);
-[; ;LCD.h: 25: void LCDout(unsigned char number);
-[; ;LCD.h: 26: void SendLCD(unsigned char Byte, char type);
-[; ;LCD.h: 27: void SetLine (char line);
-[; ;LCD.h: 28: void LCD_String(char *string);
-"8 main.c
-[p x MCLRE=OFF ]
-[p x LVP=OFF ]
-"12
-[v _ReceivedString `Vuc ~T0 @X0 -> 16 `i e ]
-[; ;main.c: 12: volatile unsigned char ReceivedString[16];
-"13
-[v _i `Vuc ~T0 @X0 1 e ]
-[i _i
--> -> 0 `i `uc
-]
-[; ;main.c: 13: volatile unsigned char i=0;
-"14
-[v _RFID_Read `Vuc ~T0 @X0 1 e ]
-[i _RFID_Read
--> -> 0 `i `uc
-]
-[; ;main.c: 14: volatile unsigned char RFID_Read=0;
-"15
-[v _mode `Vc ~T0 @X0 1 e ]
-[i _mode
--> -> 0 `i `c
-]
-[; ;main.c: 15: volatile signed char mode=0;
-[v F3885 `(v ~T0 @X0 1 tf ]
-"18
-[v _InterruptHandlerLow `ILF3885 ~T0 @X0 1 e ]
-"19
+"30 IR_Reading.c
+[v _initIR `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 18: void interrupt low_priority InterruptHandlerLow ()
-[; ;main.c: 19: {
-[e :U _InterruptHandlerLow ]
+[; ;IR_Reading.c: 30: void initIR(void){
+[e :U _initIR ]
 [f ]
-[; ;main.c: 20: if (PIR1bits.RCIF) {
-"20
-[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 408  ]
-{
-[; ;main.c: 21: ReceivedString[i]=RCREG;
-"21
-[e = *U + &U _ReceivedString * -> _i `ux -> -> # *U &U _ReceivedString `ui `ux _RCREG ]
-[; ;main.c: 22: RFID_Read=1;
-"22
-[e = _RFID_Read -> -> 1 `i `uc ]
-[; ;main.c: 23: if (i==15){
-"23
-[e $ ! == -> _i `i -> 15 `i 409  ]
-{
-[; ;main.c: 24: i=0;
-"24
-[e = _i -> -> 0 `i `uc ]
-"25
-}
-[; ;main.c: 25: }else{
-[e $U 410  ]
-[e :U 409 ]
-{
-[; ;main.c: 26: i++;
-"26
-[e ++ _i -> -> 1 `i `uc ]
-"27
-}
-[e :U 410 ]
-[; ;main.c: 27: }
-[; ;main.c: 28: PIR1bits.RCIF=0;
-"28
-[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
-"29
-}
-[e :U 408 ]
-[; ;main.c: 29: }
-[; ;main.c: 30: }
-"30
-[e :UE 407 ]
-}
-[v F3887 `(v ~T0 @X0 1 tf ]
-"34
-[v _InterruptHandlerHigh `IF3887 ~T0 @X0 1 e ]
-{
-[; ;main.c: 34: void interrupt InterruptHandlerHigh () {
-[e :U _InterruptHandlerHigh ]
-[f ]
-[; ;main.c: 35: if (INTCONbits.INT0IF) {
-"35
-[e $ ! != -> . . _INTCONbits 0 1 `i -> -> -> 0 `i `Vuc `i 412  ]
-{
-[; ;main.c: 36: if (mode==-1) {
+[; ;IR_Reading.c: 36: LATAbits.LA2=0;
 "36
-[e $ ! == -> _mode `i -U -> 1 `i 413  ]
-{
-[; ;main.c: 38: mode=1;
-"38
-[e = _mode -> -> 1 `i `c ]
+[e = . . _LATAbits 3 1 -> -> 0 `i `uc ]
+[; ;IR_Reading.c: 37: LATAbits.LA3=0;
+"37
+[e = . . _LATAbits 4 1 -> -> 0 `i `uc ]
+[; ;IR_Reading.c: 39: TRISAbits.RA2=1;
 "39
+[e = . . _TRISAbits 1 2 -> -> 1 `i `uc ]
+[; ;IR_Reading.c: 40: TRISAbits.RA3=1;
+"40
+[e = . . _TRISAbits 1 3 -> -> 1 `i `uc ]
+[; ;IR_Reading.c: 42: ANSEL0bits.ANS2=0;
+"42
+[e = . . _ANSEL0bits 0 2 -> -> 0 `i `uc ]
+[; ;IR_Reading.c: 43: ANSEL0bits.ANS3=0;
+"43
+[e = . . _ANSEL0bits 0 3 -> -> 0 `i `uc ]
+[; ;IR_Reading.c: 46: ANSEL0bits.ANS6=0;
+"46
+[e = . . _ANSEL0bits 0 6 -> -> 0 `i `uc ]
+[; ;IR_Reading.c: 47: ANSEL0bits.ANS7=0;
+"47
+[e = . . _ANSEL0bits 0 7 -> -> 0 `i `uc ]
+[; ;IR_Reading.c: 52: CAP1CON=0b00000110;
+"52
+[e = _CAP1CON -> -> 6 `i `uc ]
+[; ;IR_Reading.c: 53: CAP2CON=0b00000110;
+"53
+[e = _CAP2CON -> -> 6 `i `uc ]
+[; ;IR_Reading.c: 56: TRISEbits.RE0=0;
+"56
+[e = . . _TRISEbits 1 0 -> -> 0 `i `uc ]
+[; ;IR_Reading.c: 59: TRISEbits.RE1=0;
+"59
+[e = . . _TRISEbits 1 1 -> -> 0 `i `uc ]
+[; ;IR_Reading.c: 69: T5CON=0b01011001;
+"69
+[e = _T5CON -> -> 89 `i `uc ]
+[; ;IR_Reading.c: 70: }
+"70
+[e :UE 405 ]
 }
-[; ;main.c: 39: } else if (mode==0) {
-[e $U 414  ]
-[e :U 413 ]
-[e $ ! == -> _mode `i -> 0 `i 415  ]
+"74
+[v _grabRightIR `(ui ~T0 @X0 1 ef ]
 {
-"41
+[; ;IR_Reading.c: 74: unsigned int grabRightIR(void){
+[e :U _grabRightIR ]
+[f ]
+"76
+[v _IR_signal `ui ~T0 @X0 1 a ]
+[; ;IR_Reading.c: 76: unsigned int IR_signal=0;
+[e = _IR_signal -> -> 0 `i `ui ]
+"77
+[v _i `uc ~T0 @X0 1 a ]
+[; ;IR_Reading.c: 77: unsigned char i=0;
+[e = _i -> -> 0 `i `uc ]
+[; ;IR_Reading.c: 79: for (i=0; i<4; i++) {
+"79
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 407  ]
+[e $U 408  ]
+[e :U 407 ]
+{
+[; ;IR_Reading.c: 81: IR_signal+=((CAP1BUFH << 7) | (CAP1BUFL>>1));
+"81
+[e =+ _IR_signal -> | << -> _CAP1BUFH `i -> 7 `i >> -> _CAP1BUFL `i -> 1 `i `ui ]
+[; ;IR_Reading.c: 82: _delay((unsigned long)((50)*(8000000/4000.0)));
+"82
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"83
 }
-[; ;main.c: 41: } else {
+"79
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 407  ]
+[e :U 408 ]
+"83
+}
+[; ;IR_Reading.c: 83: }
+[; ;IR_Reading.c: 85: return IR_signal>>2;
+"85
+[e ) >> _IR_signal -> 2 `i ]
+[e $UE 406  ]
+[; ;IR_Reading.c: 86: }
+"86
+[e :UE 406 ]
+}
+"90
+[v _grabLeftIR `(ui ~T0 @X0 1 ef ]
+{
+[; ;IR_Reading.c: 90: unsigned int grabLeftIR(void){
+[e :U _grabLeftIR ]
+[f ]
+"92
+[v _IR_signal `ui ~T0 @X0 1 a ]
+[; ;IR_Reading.c: 92: unsigned int IR_signal=0;
+[e = _IR_signal -> -> 0 `i `ui ]
+"93
+[v _i `uc ~T0 @X0 1 a ]
+[; ;IR_Reading.c: 93: unsigned char i=0;
+[e = _i -> -> 0 `i `uc ]
+[; ;IR_Reading.c: 95: for (i=0; i<4; i++) {
+"95
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 411  ]
+[e $U 412  ]
+[e :U 411 ]
+{
+[; ;IR_Reading.c: 97: IR_signal+=((CAP2BUFH << 7) | (CAP2BUFL>>1));
+"97
+[e =+ _IR_signal -> | << -> _CAP2BUFH `i -> 7 `i >> -> _CAP2BUFL `i -> 1 `i `ui ]
+[; ;IR_Reading.c: 98: _delay((unsigned long)((50)*(8000000/4000.0)));
+"98
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"99
+}
+"95
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 411  ]
+[e :U 412 ]
+"99
+}
+[; ;IR_Reading.c: 99: }
+[; ;IR_Reading.c: 101: return IR_signal>>2;
+"101
+[e ) >> _IR_signal -> 2 `i ]
+[e $UE 410  ]
+[; ;IR_Reading.c: 102: }
+"102
+[e :UE 410 ]
+}
+"106
+[v _enableSensor `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[; ;IR_Reading.c: 106: void enableSensor(char sensor, char status){
+[e :U _enableSensor ]
+[v _sensor `uc ~T0 @X0 1 r1 ]
+[v _status `uc ~T0 @X0 1 r2 ]
+[f ]
+[; ;IR_Reading.c: 108: if (sensor==0){
+"108
+[e $ ! == -> _sensor `i -> 0 `i 415  ]
+{
+[; ;IR_Reading.c: 109: LATEbits.LATE0 = status;
+"109
+[e = . . _LATEbits 0 0 _status ]
+"110
+}
+[; ;IR_Reading.c: 110: } else if (sensor==1){
 [e $U 416  ]
 [e :U 415 ]
+[e $ ! == -> _sensor `i -> 1 `i 417  ]
 {
-[; ;main.c: 43: mode=-1;
-"43
-[e = _mode -> -U -> 1 `i `c ]
-"44
-}
-[e :U 416 ]
-[e :U 414 ]
-[; ;main.c: 44: }
-[; ;main.c: 46: delay_tenth_s(2);
-"46
-[e ( _delay_tenth_s (1 -> -> 2 `i `uc ]
-[; ;main.c: 47: INTCONbits.INT0IF=0;
-"47
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"48
-}
-[e :U 412 ]
-[; ;main.c: 48: }
-[; ;main.c: 49: }
-"49
-[e :UE 411 ]
-}
-"51
-[v _main `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 51: void main(void){
-[e :U _main ]
-[f ]
-"54
-[v _Message `uc ~T0 @X0 -> 10 `i a ]
-[v _i `uc ~T0 @X0 1 a ]
-[; ;main.c: 54: unsigned char Message[10];
-[; ;main.c: 55: unsigned char i=0;
-"55
-[e = _i -> -> 0 `i `uc ]
-"56
-[v _DirectionFound `c ~T0 @X0 1 a ]
-[; ;main.c: 56: signed char DirectionFound=0;
-[e = _DirectionFound -> -> 0 `i `c ]
-"57
-[v _MoveTime `i ~T0 @X0 -> 100 `i a ]
-"58
-[v _MoveType `uc ~T0 @X0 -> 100 `i a ]
-"59
-[v _Move `uc ~T0 @X0 1 a ]
-[; ;main.c: 57: int MoveTime[100];
-[; ;main.c: 58: char MoveType[100];
-[; ;main.c: 59: char Move=0;
-[e = _Move -> -> 0 `i `uc ]
-[v F3897 `ui ~T0 @X0 -> 2 `i s ]
-[i F3897
-:U ..
-"60
--> -> 0 `i `ui
--> -> 0 `i `ui
-..
-]
-[v _SensorResult `ui ~T0 @X0 -> 2 `i a ]
-[; ;main.c: 60: unsigned int SensorResult[2]={0,0};
-[e = _SensorResult F3897 ]
-"61
-[v _buf `uc ~T0 @X0 -> 40 `i a ]
-"63
-[v _ScanAngle `uc ~T0 @X0 1 a ]
-[; ;main.c: 61: char buf[40];
-[; ;main.c: 63: unsigned char ScanAngle=60;
-[e = _ScanAngle -> -> 60 `i `uc ]
-[; ;main.c: 66: INTCONbits.GIEH=1;
-"66
-[e = . . _INTCONbits 2 7 -> -> 1 `i `uc ]
-[; ;main.c: 67: INTCONbits.GIEL=1;
-"67
-[e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
-[; ;main.c: 68: INTCONbits.PEIE=1;
-"68
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 69: RCONbits.IPEN=1;
-"69
-[e = . . _RCONbits 5 6 -> -> 1 `i `uc ]
-[; ;main.c: 72: IPR1bits.RCIP=0;
-"72
-[e = . . _IPR1bits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 73: PIE1bits.RCIE=1;
-"73
-[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 76: TRISCbits.RC3=1;
-"76
-[e = . . _TRISCbits 1 3 -> -> 1 `i `uc ]
-[; ;main.c: 77: INTCONbits.INT0IE=1;
-"77
-[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
-[; ;main.c: 80: PIR1bits.RC1IF=0;
-"80
-[e = . . _PIR1bits 2 1 -> -> 0 `i `uc ]
-[; ;main.c: 81: INTCONbits.INT0IF=0;
-"81
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"84
-[v _mL `S405 ~T0 @X0 1 a ]
-[v _mR `S405 ~T0 @X0 1 a ]
-[; ;main.c: 84: struct DC_motor mL, mR;
-[; ;main.c: 85: mL.power=0;
-"85
-[e = . _mL 0 -> -> 0 `i `uc ]
-[; ;main.c: 86: mL.direction=1;
-"86
-[e = . _mL 1 -> -> 1 `i `uc ]
-[; ;main.c: 87: mL.dutyLowByte=(unsigned char *)(&PDC0L);
-"87
-[e = . _mL 2 -> &U _PDC0L `*uc ]
-[; ;main.c: 88: mL.dutyHighByte=(unsigned char *)(&PDC0H);
-"88
-[e = . _mL 3 -> &U _PDC0H `*uc ]
-[; ;main.c: 89: mL.dir_pin=0;
-"89
-[e = . _mL 4 -> -> 0 `i `uc ]
-[; ;main.c: 90: mL.PWMperiod=199;
-"90
-[e = . _mL 5 -> 199 `i ]
-[; ;main.c: 92: mR.power=0;
-"92
-[e = . _mR 0 -> -> 0 `i `uc ]
-[; ;main.c: 93: mR.direction=1;
-"93
-[e = . _mR 1 -> -> 1 `i `uc ]
-[; ;main.c: 94: mR.dutyLowByte=(unsigned char *)(&PDC1L);
-"94
-[e = . _mR 2 -> &U _PDC1L `*uc ]
-[; ;main.c: 95: mR.dutyHighByte=(unsigned char *)(&PDC1H);
-"95
-[e = . _mR 3 -> &U _PDC1H `*uc ]
-[; ;main.c: 96: mR.dir_pin=2;
-"96
-[e = . _mR 4 -> -> 2 `i `uc ]
-[; ;main.c: 97: mR.PWMperiod=199;
-"97
-[e = . _mR 5 -> 199 `i ]
-[; ;main.c: 99: OSCCON = 0x72;
-"99
-[e = _OSCCON -> -> 114 `i `uc ]
-[; ;main.c: 100: while(!OSCCONbits.IOFS);
-"100
-[e $U 418  ]
-[e :U 419 ]
-[e :U 418 ]
-[e $ ! != -> . . _OSCCONbits 0 1 `i -> -> -> 0 `i `Vuc `i 419  ]
-[e :U 420 ]
-[; ;main.c: 102: while(1){
-"102
-[e :U 422 ]
-{
-[; ;main.c: 104: switch (mode) {
-"104
-[e $U 425  ]
-{
-[; ;main.c: 105: case -1:
-"105
-[e :U 426 ]
-[; ;main.c: 112: stop(&mL, &mR);
+[; ;IR_Reading.c: 111: LATEbits.LATE1 = status;
+"111
+[e = . . _LATEbits 0 1 _status ]
 "112
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 113: RFID_Read=0;
+}
+[e :U 417 ]
 "113
-[e = _RFID_Read -> -> 0 `i `uc ]
-[; ;main.c: 116: SensorResult[0]=grabLeftIR();
-"116
-[e = *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabLeftIR ..  ]
-[; ;main.c: 117: SensorResult[1]=grabRightIR();
-"117
-[e = *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabRightIR ..  ]
-[; ;main.c: 121: CAP1BUFH=0;
-"121
-[e = _CAP1BUFH -> -> 0 `i `uc ]
-[; ;main.c: 122: CAP1BUFL=0;
-"122
-[e = _CAP1BUFL -> -> 0 `i `uc ]
-[; ;main.c: 123: CAP2BUFH=0;
-"123
-[e = _CAP2BUFH -> -> 0 `i `uc ]
-[; ;main.c: 124: CAP2BUFL=0;
-"124
-[e = _CAP2BUFL -> -> 0 `i `uc ]
-[; ;main.c: 127: SendLCD(0b00000001,0);
-"127
-[e ( _SendLCD (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 128: _delay((unsigned long)((50)*(8000000/4000000.0)));
-"128
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 129: SendLCD(0b00000010,0);
-"129
-[e ( _SendLCD (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 130: _delay((unsigned long)((2)*(8000000/4000.0)));
-"130
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;main.c: 131: SetLine(1);
-"131
-[e ( _SetLine (1 -> -> 1 `i `uc ]
-[; ;main.c: 132: LCD_String("      Inert Mode");
-"132
-[e ( _LCD_String (1 -> :s 1C `*uc ]
-[; ;main.c: 133: SetLine(2);
-"133
-[e ( _SetLine (1 -> -> 2 `i `uc ]
-[; ;main.c: 134: if (RFID_Read) {
-"134
-[e $ ! != -> _RFID_Read `i -> -> -> 0 `i `Vuc `i 427  ]
-{
-[; ;main.c: 135: LCD_String(Message);
-"135
-[e ( _LCD_String (1 &U _Message ]
-"136
+[e :U 416 ]
+[; ;IR_Reading.c: 112: }
+[; ;IR_Reading.c: 113: }
+[e :UE 414 ]
 }
-[; ;main.c: 136: } else {
-[e $U 428  ]
-[e :U 427 ]
-{
-[; ;main.c: 137: sprintf(buf,"      %04d, %04d",SensorResult[0],SensorResult[1]);
-"137
-[e ( _sprintf (1 , , (. , &U _buf :s 2C *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ]
-[; ;main.c: 138: LCD_String(buf);
-"138
-[e ( _LCD_String (1 &U _buf ]
-"139
-}
-[e :U 428 ]
-[; ;main.c: 139: }
-[; ;main.c: 142: break;
-"142
-[e $U 424  ]
-[; ;main.c: 144: case 0 :
-"144
-[e :U 429 ]
-[; ;main.c: 147: initMotorPWM();
-"147
-[e ( _initMotorPWM ..  ]
-[; ;main.c: 148: initTimer();
-"148
-[e ( _initTimer ..  ]
-[; ;main.c: 149: initRFID();
-"149
-[e ( _initRFID ..  ]
-[; ;main.c: 150: initLCD();
-"150
-[e ( _initLCD ..  ]
-[; ;main.c: 151: initIR();
-"151
-[e ( _initIR ..  ]
-[; ;main.c: 153: enableSensor(0, 1);
-"153
-[e ( _enableSensor (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 154: enableSensor(1, 1);
-"154
-[e ( _enableSensor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 157: fullSpeedAhead(&mL, &mR, 100);
-"157
-[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-[; ;main.c: 158: delay_tenth_s(1);
-"158
-[e ( _delay_tenth_s (1 -> -> 1 `i `uc ]
-[; ;main.c: 160: mode=-1;
-"160
-[e = _mode -> -U -> 1 `i `c ]
-[; ;main.c: 162: break;
-"162
-[e $U 424  ]
-[; ;main.c: 164: case 1 :
-"164
-[e :U 430 ]
-[; ;main.c: 170: SetLine(1);
-"170
-[e ( _SetLine (1 -> -> 1 `i `uc ]
-[; ;main.c: 171: LCD_String("Searching");
-"171
-[e ( _LCD_String (1 -> :s 3C `*uc ]
-[; ;main.c: 173: if (DirectionFound==-1) {
-"173
-[e $ ! == -> _DirectionFound `i -U -> 1 `i 431  ]
-{
-[; ;main.c: 178: fullSpeedAhead(&mL, &mR, 100);
-"178
-[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-[; ;main.c: 179: delay_tenth_s(6);
-"179
-[e ( _delay_tenth_s (1 -> -> 6 `i `uc ]
-[; ;main.c: 180: stop(&mL,&mR);
-"180
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 181: DirectionFound=0;
-"181
-[e = _DirectionFound -> -> 0 `i `c ]
-[; ;main.c: 182: MoveType[Move]=0;
-"182
-[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 0 `i `uc ]
-"183
-}
-[; ;main.c: 183: } else if (DirectionFound==0) {
-[e $U 432  ]
-[e :U 431 ]
-[e $ ! == -> _DirectionFound `i -> 0 `i 433  ]
-{
-[; ;main.c: 185: DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
-[; ;main.c: 186: &MoveTime[Move], &RFID_Read);
-"186
-[e = _DirectionFound -> ( _ScanWithRange (4 , , , , &U _mL &U _mR -> _ScanAngle `i &U *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux -> &U _RFID_Read `*uc `c ]
-[; ;main.c: 187: MoveType[Move]=1;
-"187
-[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 1 `i `uc ]
-"188
-}
-[; ;main.c: 188: } else if (DirectionFound==1) {
-[e $U 434  ]
-[e :U 433 ]
-[e $ ! == -> _DirectionFound `i -> 1 `i 435  ]
-{
-[; ;main.c: 190: DirectionFound=ScanIR(&mL, &mR, &Move, &MoveTime, &MoveType);
-"190
-[e = _DirectionFound -> ( _ScanIR (4 , , , , &U _mL &U _mR &U _Move &U _MoveTime &U _MoveType `c ]
-"191
-}
-[; ;main.c: 191: } else if (DirectionFound==2) {
-[e $U 436  ]
-[e :U 435 ]
-[e $ ! == -> _DirectionFound `i -> 2 `i 437  ]
-{
-[; ;main.c: 193: mode=2;
-"193
-[e = _mode -> -> 2 `i `c ]
-[; ;main.c: 194: MoveType[Move]=1;
-"194
-[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 1 `i `uc ]
-"195
-}
-[e :U 437 ]
-"197
-[e :U 436 ]
-[e :U 434 ]
-[e :U 432 ]
-[; ;main.c: 195: }
-[; ;main.c: 197: Move++;
-[e ++ _Move -> -> 1 `i `uc ]
-[; ;main.c: 199: break;
-"199
-[e $U 424  ]
-[; ;main.c: 201: case 2 :
-"201
-[e :U 438 ]
-[; ;main.c: 206: if (RFID_Read) {
-"206
-[e $ ! != -> _RFID_Read `i -> -> -> 0 `i `Vuc `i 439  ]
-{
-[; ;main.c: 207: stop(&mL, &mR);
-"207
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 208: if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){
-"208
-[e $ ! & == -> *U + &U _ReceivedString * -> -> -> 0 `i `ui `ux -> -> # *U &U _ReceivedString `ui `ux `i -> 2 `i == -> *U + &U _ReceivedString * -> -> -> 15 `i `ui `ux -> -> # *U &U _ReceivedString `ui `ux `i -> 3 `i 440  ]
-{
-[; ;main.c: 209: if (VerifySignal(ReceivedString)){
-"209
-[e $ ! != -> ( _VerifySignal (1 -> &U _ReceivedString `*uc `i -> -> -> 0 `i `uc `i 441  ]
-{
-[; ;main.c: 211: for (i=0; i<10; i++){
-"211
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 442  ]
-[e $U 443  ]
-[e :U 442 ]
-{
-[; ;main.c: 212: Message[i] = ReceivedString[i+1];
-"212
-[e = *U + &U _Message * -> _i `ux -> -> # *U &U _Message `ui `ux *U + &U _ReceivedString * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _ReceivedString `ui `ux ]
-"213
-}
-"211
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 442  ]
-[e :U 443 ]
-"213
-}
-[; ;main.c: 213: }
-[; ;main.c: 216: for (i=0; i<16; i++) {
-"216
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 16 `i 445  ]
-[e $U 446  ]
-[e :U 445 ]
-{
-[; ;main.c: 217: ReceivedString[i]=0;
-"217
-[e = *U + &U _ReceivedString * -> _i `ux -> -> # *U &U _ReceivedString `ui `ux -> -> 0 `i `uc ]
-"218
-}
-"216
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 16 `i 445  ]
-[e :U 446 ]
-"218
-}
-[; ;main.c: 218: }
-[; ;main.c: 219: mode=3;
-"219
-[e = _mode -> -> 3 `i `c ]
-"221
-}
-[; ;main.c: 221: } else {
-[e $U 448  ]
-[e :U 441 ]
-{
-[; ;main.c: 222: fullSpeedBack(&mL,&mR, 100);
-"222
-[e ( _fullSpeedBack (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-[; ;main.c: 223: delay_tenth_s(5);
-"223
-[e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
-[; ;main.c: 224: stop(&mL,&mR);
-"224
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 225: fullSpeedAhead(&mL,&mR, 100);
-"225
-[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-"226
-}
-[e :U 448 ]
-"227
-}
-[e :U 440 ]
-"228
-}
-[; ;main.c: 226: }
-[; ;main.c: 227: }
-[; ;main.c: 228: } else {
-[e $U 449  ]
-[e :U 439 ]
-{
-[; ;main.c: 229: DirectionFound=1;
-"229
-[e = _DirectionFound -> -> 1 `i `c ]
-[; ;main.c: 230: mode=1;
-"230
-[e = _mode -> -> 1 `i `c ]
-[; ;main.c: 232: fullSpeedAhead(&mL,&mR, 100);
-"232
-[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-[; ;main.c: 233: delay_tenth_s(5);
-"233
-[e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
-[; ;main.c: 234: MoveType[Move] = 0;
-"234
-[e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 0 `i `uc ]
-[; ;main.c: 235: MoveTime[Move] = 5;
-"235
-[e = *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux -> 5 `i ]
-[; ;main.c: 236: Move++;
-"236
-[e ++ _Move -> -> 1 `i `uc ]
-"237
-}
-[e :U 449 ]
-[; ;main.c: 237: }
-[; ;main.c: 239: break;
-"239
-[e $U 424  ]
-[; ;main.c: 241: case 3 :
-"241
-[e :U 450 ]
-[; ;main.c: 244: SetLine(1);
-"244
-[e ( _SetLine (1 -> -> 1 `i `uc ]
-[; ;main.c: 245: LCD_String(Message);
-"245
-[e ( _LCD_String (1 &U _Message ]
-[; ;main.c: 246: SetLine(2);
-"246
-[e ( _SetLine (1 -> -> 2 `i `uc ]
-[; ;main.c: 247: LCD_String("Going Home");
-"247
-[e ( _LCD_String (1 -> :s 4C `*uc ]
-[; ;main.c: 248: stop(&mL,&mR);
-"248
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 265: fullSpeedBack(&mL,&mR, 100);
-"265
-[e ( _fullSpeedBack (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-[; ;main.c: 266: delay_s(3);
-"266
-[e ( _delay_s (1 -> -> 3 `i `uc ]
-[; ;main.c: 267: stop(&mL, &mR);
-"267
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 269: break;
-"269
-[e $U 424  ]
-"270
-}
-[; ;main.c: 270: }
-[e $U 424  ]
-"104
-[e :U 425 ]
-[e [\ _mode , $ -> -U -> 1 `i `c 426
- , $ -> -> 0 `i `c 429
- , $ -> -> 1 `i `c 430
- , $ -> -> 2 `i `c 438
- , $ -> -> 3 `i `c 450
- 424 ]
-"270
-[e :U 424 ]
-"271
-}
-[e :U 421 ]
-"102
-[e $U 422  ]
-[e :U 423 ]
-[; ;main.c: 271: }
-[; ;main.c: 272: }
-"272
-[e :UE 417 ]
-}
-[p f _sprintf 8421508 ]
-[a 3C 83 101 97 114 99 104 105 110 103 0 ]
-[a 4C 71 111 105 110 103 32 72 111 109 101 0 ]
-[a 1C 32 32 32 32 32 32 73 110 101 114 116 32 77 111 100 101 0 ]
-[a 2C 32 32 32 32 32 32 37 48 52 100 44 32 37 48 52 100 0 ]

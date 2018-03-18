@@ -183,7 +183,7 @@ void main(void){
                 } else if (DirectionFound==0) {
                     // Scans a wide range if it's unsure about direction
                     DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
-                            &MoveTime[Move], &RFID_Read, &mode);
+                            &MoveTime[Move], &RFID_Read);
                     MoveType[Move]=1;
                 } else if (DirectionFound==1) {
                      // Keeps direction and just scans, robot thinks it's close
@@ -261,8 +261,8 @@ void main(void){
 //                        }
 //                    }
 //                }
-//                mode=-1;
-//                
+                mode=-1;
+
                 break;
        }      
    }
