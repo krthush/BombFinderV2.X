@@ -5,7 +5,7 @@
 #include "IR_Reading.h"
 #include "LCD.h"
 
-#pragma config OSC = IRCIO  // internal oscillator
+#pragma config MCLRE=OFF, LVP=OFF, OSC = IRCIO, WDTEN = OFF //internal oscillator, WDT off
 
 #define PWMcycle 1 //need to calculate this
 
@@ -54,7 +54,6 @@ void main(void){
     unsigned char Message[10]; // Code on RFID Card
     unsigned char i=0; // Counter variable
     signed char DirectionFound=0; // Flag for if the robot has decided it knows where the bomb is
-    unsigned char TurnDirection=0; // Flag for which way robot turned last, 0-left, 1-right
     char MoveTime[100]; // Array to store time spent on each type of movement
     char MoveType[100]; // Array to store movement types - 0 is forwards, 1 is left/right
     char Move=0; // Move counter
@@ -177,11 +176,11 @@ void main(void){
                     MoveType[Move]=0;
                 } else if (DirectionFound==0) {
                     // Scans a wide range if it's unsure about direction
-                    DirectionFound=ScanWithRange(&mL, &mR, ScanAngle, TurnDirection, &MoveTime[Move]); // USERVARIABLE
+                    DirectionFound=ScanWithRange(&mL, &mR, ScanAngle, &MoveTime[Move]); // USERVARIABLE
                     MoveType[Move]=1;
                 } else if (DirectionFound==1) {
                      // Keeps direction and just scans, robot thinks it's close
-                    DirectionFound=ScanIR(&mL, &mR, TurnDirection, &Move, &MoveTime, &MoveType); // USERVARIABLE
+                    DirectionFound=ScanIR(&mL, &mR, &Move, &MoveTime, &MoveType); // USERVARIABLE
                 } else if (DirectionFound==2) {
                      // Robot thinks its on track, switch to move mode
                      mode=2;
@@ -236,7 +235,7 @@ void main(void){
                 //Return to original position using MoveType and MoveTime
                 
                 SetLine(1); //Set Line 1
-                LCD_String("PUT MESSAGE");
+                LCD_String(Message);
                 SetLine(2);
                 LCD_String("Going Home");
                 stop(&mL,&mR);
@@ -255,8 +254,8 @@ void main(void){
 //                        }
 //                    }
 //                }
-                mode=-1;
-                
+//                mode=-1;
+//                
                 break;
        }      
    }

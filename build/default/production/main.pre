@@ -4666,12 +4666,12 @@ void delay_s(char seconds);
 void delay_tenth_s(char tenth_seconds);
 
 
-char ScanIR(struct DC_motor *mL, struct DC_motor *mR, char TurnDirection, unsigned char *Move, char *MoveTime, char *MoveType);
+char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char *MoveTime, char *MoveType);
 
 
 
 
-char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char TurnDirection, char *MoveTime);
+char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char *MoveTime);
 
 # 15 "IR_Reading.h"
 void initIR(void);
@@ -4837,7 +4837,6 @@ void main(void){
 unsigned char Message[10];
 unsigned char i=0;
 signed char DirectionFound=0;
-unsigned char TurnDirection=0;
 char MoveTime[100];
 char MoveType[100];
 char Move=0;
@@ -4888,7 +4887,7 @@ while(1){
 switch (mode) {
 case -1:
 
-# 113
+# 112
 stop(&mL, &mR);
 RFID_Read=0;
 
@@ -4937,7 +4936,7 @@ break;
 
 case 1 :
 
-# 165
+# 164
 SetLine(1);
 LCD_String("Searching");
 
@@ -4953,11 +4952,11 @@ DirectionFound=0;
 MoveType[Move]=0;
 } else if (DirectionFound==0) {
 
-DirectionFound=ScanWithRange(&mL, &mR, ScanAngle, TurnDirection, &MoveTime[Move]);
+DirectionFound=ScanWithRange(&mL, &mR, ScanAngle, &MoveTime[Move]);
 MoveType[Move]=1;
 } else if (DirectionFound==1) {
 
-DirectionFound=ScanIR(&mL, &mR, TurnDirection, &Move, &MoveTime, &MoveType);
+DirectionFound=ScanIR(&mL, &mR, &Move, &MoveTime, &MoveType);
 } else if (DirectionFound==2) {
 
 mode=2;
@@ -5012,14 +5011,12 @@ case 3 :
 
 
 SetLine(1);
-LCD_String("PUT MESSAGE");
+LCD_String(Message);
 SetLine(2);
 LCD_String("Going Home");
 stop(&mL,&mR);
 
-# 258
-mode=-1;
-
+# 259
 break;
 }
 }

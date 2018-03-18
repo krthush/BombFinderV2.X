@@ -31,7 +31,7 @@ void delay_tenth_s(char tenth_seconds) {
 // Function can be toggled to be:
 // - continuous, the drone moves while scanning until there is a change
 // - stop n scan, the drone stops every time it scans
-char ScanIR(struct DC_motor *mL, struct DC_motor *mR, char TurnDirection, unsigned char *Move, char *MoveTime, char *MoveType){
+char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char *MoveTime, char *MoveType){
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
@@ -74,7 +74,7 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR, char TurnDirection, unsign
 
 // NEW ROUTINE: This route scans given range in very small time increments
 // INPROG
-char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char TurnDirection, char *MoveTimeEntry) {
+char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char *MoveTimeEntry) {
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
@@ -99,8 +99,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
     delay_tenth_s(5);
     stop(mL,mR);
     
-    // This loop is turning left, while scanning
-    TurnDirection=0;
+    // This loop is turning Right, while scanning
     for (i=1; i<=milliseconds; i++) {
         
         // Scan Data
@@ -125,7 +124,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
         LCD_String(buf);
         
-         // Turn left
+         // Turn Right
         turnRight(mL,mR, 100);
         __delay_ms(1);
         stop(mL,mR);
