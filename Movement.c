@@ -85,7 +85,7 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char 
 
 // NEW ROUTINE: This route scans given range in very small time increments
 // INPROG
-char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char *MoveTimeEntry) {
+char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, int *MoveTimeEntry) {
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
@@ -169,11 +169,12 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
                 TMR0H = 0;
                 stop(mL,mR);
 //                for (n=1; n<=(TimeAboveThreshold>>1); n++) {
-                while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>1)) {
+                while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
                     turnLeft(mL,mR, 100);
                 }
                 T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
+                *MoveTimeEntry = RightFlag + (TimeAboveThreshold>>1);
                 return 2; // Direction of bomb is directly ahead
             } else {
                 // Signal was only found once, just go in that direction roughly
@@ -182,6 +183,13 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
                 return 2; // Direction of bomb is roughly ahead
             }     
         } 
+        // Break out of loop if RFID read or button pressed (Global variables!)
+        if (RFID_Read==1) { //If we've got something on the RFID
+            return 2; //2 sends it into mode 2
+        }
+        if (mode==-1) { //Happens if the button is pressed
+            return 0; //Doesn't matter but we have to return something
+        }
     }
     
     // No clear signal found, rotate and move a bit and hope to find it!
