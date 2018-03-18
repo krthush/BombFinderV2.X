@@ -4412,14 +4412,13 @@ void delay_s(char seconds);
 void delay_tenth_s(char tenth_seconds);
 
 
-char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
-int *MoveTime, char *MoveType);
+char ScanIR(struct DC_motor *mL, struct DC_motor *mR);
 
 
 
 
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
-int *MoveTime, char *RFID_Read);
+int *MoveTime, char *Move, char *MoveType, char *RFID_Read);
 
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
 typedef unsigned size_t;
@@ -4562,8 +4561,7 @@ _delay((unsigned long)((50)*(8000000/4000.0)));
 }
 
 # 45
-char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
-int *MoveTime, char *MoveType){
+char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
 
 
 unsigned int SensorResult[2]={0,0};
@@ -4609,7 +4607,7 @@ return 0;
 
 
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
-int *MoveTimeEntry, char *RFID_Read) {
+int *MoveTime, char *Move, char *MoveType, char *RFID_Read) {
 
 
 unsigned int SensorResult[2]={0,0};
@@ -4624,7 +4622,10 @@ const unsigned int DirectionFoundThreshold=3000;
 
 const unsigned char power=40;
 
-# 114
+# 113
+*Move++;
+*(MoveType[*Move]) = 2;
+*(MoveTime[*Move]) = -3;
 turnLeft(mL,mR, 100);
 delay_tenth_s(3);
 stop(mL,mR);
@@ -4670,7 +4671,7 @@ if (SensorResult[0]>DirectionFoundThreshold) {
 LeftFlag=(TMR0H<<8)+TMR0L;
 }
 
-# 164
+# 166
 if (LeftFlag>0) {
 
 
@@ -4685,7 +4686,10 @@ turnLeft(mL,mR, power);
 T0CONbits.TMR0ON=0;
 stop(mL,mR);
 
-*MoveTimeEntry = RightFlag + (TimeAboveThreshold>>1);
+*Move++;
+*(MoveType[Move]) = 1;
+*(MoveTime[Move]) = RightFlag + (TimeAboveThreshold>>1);
+
 return 2;
 } else {
 
@@ -4701,6 +4705,9 @@ return 2;
 }
 
 
+*Move++;
+*(MoveType[*Move]) = 2;
+*(MoveTime[*Move]) = -2;
 turnRight(mL,mR, 100);
 delay_tenth_s(2);
 stop(mL,mR);
