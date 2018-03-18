@@ -67,9 +67,9 @@ unsigned char VerifySignal(unsigned char *Signal){
         checksum = checksum ^ hexByte;
     }
 
-//    if ((checksum[0]==Signal[11]) & (checksum[1]==Signal[12])){
+    if ((checksum==((Signal[11]<<8)+Signal[12]))){
         return 1;
-//    } else{
-//        return 0;
-//    }
+    } else{
+        return 0;
+    }
 }
