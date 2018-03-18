@@ -238,7 +238,7 @@ void main(void){
                 
                 break;
                
-            case 3 : //Return Mode
+            case 3 : //Return Mode                  
                 //Return to original position using MoveType and MoveTime
                 
                 SetLine(1); //Set Line 1

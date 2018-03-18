@@ -95,7 +95,7 @@ unsigned int grabLeftIR(void){
     for (i=0; i<4; i++) {
         // combine low and high register into one int using bit shift and OR
         IR_signal+=((CAP2BUFH << 7) | (CAP2BUFL>>1));
-        __delay_ms(50);
+            __delay_ms(50);
     }
     // return the average signal to be used
     return IR_signal>>2;

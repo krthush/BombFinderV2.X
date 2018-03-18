@@ -748,11 +748,11 @@
 "98
 [v ScanWithRange@buf buf `[40]uc  1 a 40 28 ]
 "95
-[v ScanWithRange@SensorResult SensorResult `[2]ui  1 a 4 76 ]
+[v ScanWithRange@SensorResult SensorResult `[2]ui  1 a 4 78 ]
 "97
 [v ScanWithRange@RightFlag RightFlag `ui  1 a 2 82 ]
 "96
-[v ScanWithRange@LeftFlag LeftFlag `ui  1 a 2 80 ]
+[v ScanWithRange@LeftFlag LeftFlag `ui  1 a 2 75 ]
 "103
 [v ScanWithRange@DirectionFoundThreshold DirectionFoundThreshold `Cui  1 a 2 72 ]
 "99
@@ -760,7 +760,7 @@
 "100
 [v ScanWithRange@n n `ui  1 a 2 68 ]
 "101
-[v ScanWithRange@TimeAboveThreshold TimeAboveThreshold `uc  1 a 1 75 ]
+[v ScanWithRange@TimeAboveThreshold TimeAboveThreshold `uc  1 a 1 77 ]
 "105
 [v ScanWithRange@power power `Cuc  1 a 1 74 ]
 [s S71 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyLowByte 2 2 `*.39uc 1 dutyHighByte 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
@@ -772,7 +772,7 @@
 [v ScanWithRange@MoveTimeEntry MoveTimeEntry `*.39i  1 p 2 19 ]
 [v ScanWithRange@RFID_Read RFID_Read `*.39uc  1 p 2 21 ]
 [v ScanWithRange@F3894 F3894 `[2]ui  1 s 4 F3894 ]
-"202
+"198
 } 0
 "98 H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
 [v _turnRight turnRight `(v  1 e 0 0 ]
