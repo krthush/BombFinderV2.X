@@ -4875,7 +4875,7 @@ unsigned char TimeAboveThreshold=0;
 
 const unsigned int DirectionFoundThreshold=3000;
 
-const unsigned char power=40;
+const unsigned char power=45;
 
 # 114
 turnLeft(mL,mR, 100);
@@ -4936,12 +4936,8 @@ TimeAboveThreshold = LeftFlag - RightFlag;
 TMR0L = 0;
 TMR0H = 0;
 stop(mL,mR);
-
 while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
-
 turnLeft(mL,mR, power);
-
-
 }
 T0CONbits.TMR0ON=0;
 stop(mL,mR);

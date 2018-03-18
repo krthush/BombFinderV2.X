@@ -659,18 +659,18 @@
 "51
 [v _main main `(v  1 e 0 0 ]
 {
-"58
-[v main@MoveType MoveType `[100]uc  1 a 100 100 ]
 "57
-[v main@MoveTime MoveTime `[100]uc  1 a 100 0 ]
+[v main@MoveTime MoveTime `[100]i  1 a 200 0 ]
+"58
+[v main@MoveType MoveType `[100]uc  1 a 100 0 ]
 "61
 [v main@buf buf `[40]uc  1 a 40 200 ]
 "54
 [v main@Message Message `[10]uc  1 a 10 240 ]
 [s S71 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyLowByte 2 2 `*.39uc 1 dutyHighByte 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
 "84
-[v main@mR mR `S71  1 a 9 9 ]
-[v main@mL mL `S71  1 a 9 0 ]
+[v main@mR mR `S71  1 a 9 109 ]
+[v main@mL mL `S71  1 a 9 100 ]
 "60
 [v main@SensorResult SensorResult `[2]ui  1 a 4 85 ]
 "54
@@ -771,7 +771,7 @@
 "92
 [v ScanWithRange@MoveTimeEntry MoveTimeEntry `*.39uc  1 p 2 19 ]
 [v ScanWithRange@F3892 F3892 `[2]ui  1 s 4 F3892 ]
-"200
+"196
 } 0
 "98 H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
 [v _turnRight turnRight `(v  1 e 0 0 ]

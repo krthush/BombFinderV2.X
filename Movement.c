@@ -102,7 +102,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
     // USERVARIABLE TOLERANCES
     const unsigned int DirectionFoundThreshold=3000; // Minimum signal strength 
     //required for sensor to be considered directly aimed at beacon.
-    const unsigned char power=40;
+    const unsigned char power=42;
     
     // Flip right before starting scan from left side
 //    for (i=1; i<=(milliseconds>>1); i++) {
@@ -136,7 +136,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
         CAP2BUFH=0;
         CAP2BUFL=0;
         
-// COMMENTED FOR EFFICIENCY
+        // MIGHT BE LOSS EFFICIENCY
         // Output signal strength to LCD
         SendLCD(0b00000001,0); //Clear Display
         __delay_us(50); //Delay to let display clearing finish

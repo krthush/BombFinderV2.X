@@ -3910,12 +3910,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 56: signed char DirectionFound=0;
 [e = _DirectionFound -> -> 0 `i `c ]
 "57
-[v _MoveTime `uc ~T0 @X0 -> 100 `i a ]
+[v _MoveTime `i ~T0 @X0 -> 100 `i a ]
 "58
 [v _MoveType `uc ~T0 @X0 -> 100 `i a ]
 "59
 [v _Move `uc ~T0 @X0 1 a ]
-[; ;main.c: 57: char MoveTime[100];
+[; ;main.c: 57: int MoveTime[100];
 [; ;main.c: 58: char MoveType[100];
 [; ;main.c: 59: char Move=0;
 [e = _Move -> -> 0 `i `uc ]
@@ -4172,7 +4172,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 185: DirectionFound=ScanWithRange(&mL, &mR, ScanAngle, &MoveTime[Move]);
 "185
-[e = _DirectionFound -> ( _ScanWithRange (4 , , , &U _mL &U _mR -> _ScanAngle `i &U *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux `c ]
+[e = _DirectionFound -> ( _ScanWithRange (4 , , , &U _mL &U _mR -> _ScanAngle `i -> &U *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux `*uc `c ]
 [; ;main.c: 186: MoveType[Move]=1;
 "186
 [e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 1 `i `uc ]
@@ -4185,7 +4185,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 189: DirectionFound=ScanIR(&mL, &mR, &Move, &MoveTime, &MoveType);
 "189
-[e = _DirectionFound -> ( _ScanIR (4 , , , , &U _mL &U _mR &U _Move &U _MoveTime &U _MoveType `c ]
+[e = _DirectionFound -> ( _ScanIR (4 , , , , &U _mL &U _mR &U _Move -> &U _MoveTime `*uc &U _MoveType `c ]
 "190
 }
 [; ;main.c: 190: } else if (DirectionFound==2) {
@@ -4322,7 +4322,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux -> -> 0 `i `uc ]
 [; ;main.c: 234: MoveTime[Move] = 5;
 "234
-[e = *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux -> -> 5 `i `uc ]
+[e = *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux -> 5 `i ]
 [; ;main.c: 235: Move++;
 "235
 [e ++ _Move -> -> 1 `i `uc ]

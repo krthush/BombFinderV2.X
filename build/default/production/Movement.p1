@@ -3897,8 +3897,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _DirectionFoundThreshold -> -> 3000 `i `ui ]
 "105
 [v _power `Cuc ~T0 @X0 1 a ]
-[; ;Movement.c: 105: const unsigned char power=40;
-[e = _power -> -> 40 `i `uc ]
+[; ;Movement.c: 105: const unsigned char power=45;
+[e = _power -> -> 45 `i `uc ]
 [; ;Movement.c: 114: turnLeft(mL,mR, 100);
 "114
 [e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
@@ -4030,80 +4030,80 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 175: stop(mL,mR);
 "175
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 177: while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
-"177
+[; ;Movement.c: 176: while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
+"176
 [e $U 432  ]
 [e :U 433 ]
 {
-[; ;Movement.c: 179: turnLeft(mL,mR, power);
-"179
+[; ;Movement.c: 177: turnLeft(mL,mR, power);
+"177
 [e ( _turnLeft (3 , , _mL _mR _power ]
-"182
+"178
 }
 [e :U 432 ]
-"177
+"176
 [e $ < + << -> _TMR0H `i -> 8 `i -> _TMR0L `i >> -> _TimeAboveThreshold `i -> 1 `i 433  ]
 [e :U 434 ]
-[; ;Movement.c: 182: }
-[; ;Movement.c: 183: T0CONbits.TMR0ON=0;
-"183
+[; ;Movement.c: 178: }
+[; ;Movement.c: 179: T0CONbits.TMR0ON=0;
+"179
 [e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;Movement.c: 184: stop(mL,mR);
-"184
+[; ;Movement.c: 180: stop(mL,mR);
+"180
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 185: return 2;
-"185
+[; ;Movement.c: 181: return 2;
+"181
 [e ) -> -> 2 `i `uc ]
 [e $UE 421  ]
-"186
+"182
 }
-[; ;Movement.c: 186: } else {
+[; ;Movement.c: 182: } else {
 [e $U 435  ]
 [e :U 431 ]
 {
-[; ;Movement.c: 188: T0CONbits.TMR0ON=0;
-"188
+[; ;Movement.c: 184: T0CONbits.TMR0ON=0;
+"184
 [e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;Movement.c: 189: stop(mL,mR);
-"189
+[; ;Movement.c: 185: stop(mL,mR);
+"185
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 190: return 2;
-"190
+[; ;Movement.c: 186: return 2;
+"186
 [e ) -> -> 2 `i `uc ]
 [e $UE 421  ]
-"191
+"187
 }
 [e :U 435 ]
-"192
+"188
 }
 [e :U 430 ]
-"193
+"189
 }
 "126
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 425 ]
 [e $ <= _i -> _milliseconds `ui 422  ]
 [e :U 423 ]
-"193
+"189
 }
-[; ;Movement.c: 191: }
-[; ;Movement.c: 192: }
-[; ;Movement.c: 193: }
-[; ;Movement.c: 196: turnRight(mL,mR, 100);
-"196
+[; ;Movement.c: 187: }
+[; ;Movement.c: 188: }
+[; ;Movement.c: 189: }
+[; ;Movement.c: 192: turnRight(mL,mR, 100);
+"192
 [e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 197: delay_tenth_s(2);
-"197
+[; ;Movement.c: 193: delay_tenth_s(2);
+"193
 [e ( _delay_tenth_s (1 -> -> 2 `i `uc ]
-[; ;Movement.c: 198: stop(mL,mR);
-"198
+[; ;Movement.c: 194: stop(mL,mR);
+"194
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 199: return -1;
-"199
+[; ;Movement.c: 195: return -1;
+"195
 [e ) -> -U -> 1 `i `uc ]
 [e $UE 421  ]
-[; ;Movement.c: 200: }
-"200
+[; ;Movement.c: 196: }
+"196
 [e :UE 421 ]
 }
 [p f _sprintf 8421508 ]
