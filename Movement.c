@@ -42,8 +42,7 @@ void delay_tenth_s(char tenth_seconds) {
 // Function can be toggled to be:
 // - continuous, the drone moves while scanning until there is a change
 // - stop n scan, the drone stops every time it scans
-char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, 
-        int *MoveTime, char *MoveType){
+char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};

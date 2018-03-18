@@ -55,7 +55,9 @@ void main(void){
     unsigned char i=0; // Counter variable
     signed char DirectionFound=0; // Flag for if the robot has decided it knows where the bomb is
     int MoveTime[100]; // Array to store time spent on each type of movement
-    char MoveType[100]; // Array to store movement types - 0 is forwards, 1 is left/right
+    char MoveType[100]; // Array to store movement types - 0 is forwards based 
+    //on tenth-second delays, 1 is left/right based on timer, 2 is left/right 
+    //based on tenth second delays
     char Move=0; // Move counter
     unsigned int SensorResult[2]={0,0};
     char buf[40]; // Buffer for characters for LCD
@@ -165,7 +167,7 @@ void main(void){
                
                 // TODO: do calibration routine here
                 // Pseudo code:
-                // if(!calibrated){calibrate}
+                // if(!calibrated){calibrate()}
                
                 SetLine(1); //Set Line 1
                 LCD_String("Searching");
@@ -175,26 +177,27 @@ void main(void){
                     // PLEASE NOTE: this movement in combination with the
                     // rotation in ScanWithRange causes the robot to spiral 
                     // outwards such that it will ALWAYS get close enough to signal
+                    Move++;
+                    MoveType[Move]=0;
+                    MoveTime[Move]=6;
                     fullSpeedAhead(&mL, &mR, 100);
                     delay_tenth_s(6);
                     stop(&mL,&mR);
                     DirectionFound=0;
-                    MoveType[Move]=0;
                 } else if (DirectionFound==0) {
                     // Scans a wide range if it's unsure about direction
+                    Move++;
                     DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
                             &MoveTime[Move], &RFID_Read);
                     MoveType[Move]=1;
                 } else if (DirectionFound==1) {
                      // Keeps direction and just scans, robot thinks it's close
-                    DirectionFound=ScanIR(&mL, &mR, &Move, &MoveTime, &MoveType);
+                    DirectionFound=ScanIR(&mL, &mR);
                 } else if (DirectionFound==2) {
                      // Robot thinks its on track, switch to move mode
                      mode=2;
                      MoveType[Move]=1;
                 }
-                
-                Move++;
                
                 break;
                
@@ -232,8 +235,7 @@ void main(void){
                     fullSpeedAhead(&mL,&mR, 100);
                     delay_tenth_s(5);
                     MoveType[Move] = 0;
-                    MoveTime[Move] = 5;
-                    Move++;
+                    MoveTime[Move] += 5;
                 }
                 
                 break;
@@ -247,20 +249,20 @@ void main(void){
                 LCD_String("Going Home");
                 stop(&mL,&mR);
                 
-//                for (Move=Move; Move>0; Move--) { //Go backwards along the moves
-//                    if (MoveType[Move]==0) { //If move was forwards
-//                        fullSpeedBack(&mL,&mR);
-//                        delay_tenth_s(MoveTime[Move]);
-//                    } else if (MoveType[Move]==1) { //If move was left/right
-//                        if (MoveTime[Move]>0) { //If left turn
-//                            turnRight(&mL,&mR);
-//                            delay_tenth_s(MoveTime[Move]);
-//                        } else {
-//                            turnLeft(&mL,&mR);
-//                            delay_tenth_s(MoveTime[Move]);
-//                        }
-//                    }
-//                }
+                for (Move=Move; Move>=0; Move--) { //Go backwards along the moves
+                    if (MoveType[Move]==0) { //If move was forwards
+                        fullSpeedBack(&mL,&mR);
+                        delay_tenth_s(MoveTime[Move]);
+                    } else if (MoveType[Move]==1) { //If move was left/right
+                        if (MoveTime[Move]>0) { //If left turn
+                            turnRight(&mL,&mR);
+                            delay_tenth_s(MoveTime[Move]);
+                        } else {
+                            turnLeft(&mL,&mR);
+                            delay_tenth_s(MoveTime[Move]);
+                        }
+                    }
+                }
                 mode=-1;
 
                 break;
