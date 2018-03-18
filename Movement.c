@@ -42,13 +42,15 @@ void delay_tenth_s(char tenth_seconds) {
 // Function can be toggled to be:
 // - continuous, the drone moves while scanning until there is a change
 // - stop n scan, the drone stops every time it scans
-char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char *MoveTime, char *MoveType){
+char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, 
+        char *MoveTime, char *MoveType){
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
     char buf[40]; // Buffer for characters for LCD
     // USERVARIABLE TOLERANCES
-    // minimum signal strength required for both sensors to be considered directly aimed at beacon while moving
+    // minimum signal strength required for both sensors to be considered 
+    // directly aimed at beacon while moving
     const unsigned int DirectionMoveThreshold=2500; 
     
     // Scan Data
@@ -75,7 +77,8 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char 
     
     // If there is significant signal from both sensors keep going
     // Average of signals - tolerance vs. threshold
-    if ((SensorResult[0]>DirectionMoveThreshold)&&(SensorResult[1]>DirectionMoveThreshold)) {
+    if ((SensorResult[0]>DirectionMoveThreshold)&&(SensorResult[1]>
+            DirectionMoveThreshold)) {
         return 2; // Direction of bomb is roughly directly ahead
     } else {
         stop(mL,mR);
@@ -85,7 +88,8 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char 
 
 // NEW ROUTINE: This route scans given range in very small time increments
 // INPROG
-char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char *MoveTimeEntry) {
+char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, 
+        char *MoveTimeEntry) {
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
@@ -96,8 +100,9 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
     unsigned int n=0;
     unsigned char TimeAboveThreshold=0;
     // USERVARIABLE TOLERANCES
-    // minimum signal strength required for sensor to be considered directly aimed at beacon
-    const unsigned int DirectionFoundThreshold=3000;
+    const unsigned int DirectionFoundThreshold=3000; // Minimum signal strength 
+    //required for sensor to be considered directly aimed at beacon.
+    const unsigned char power=40;
     
     // Flip right before starting scan from left side
 //    for (i=1; i<=(milliseconds>>1); i++) {
@@ -107,11 +112,11 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
 //    }
     // THIS CAN BE MADE BETTER
     turnLeft(mL,mR, 100);
-    delay_tenth_s(5);
+    delay_tenth_s(3);
     stop(mL,mR);
     
     // Turn right slowly for scanning
-    turnRight(mL,mR, 40);
+    turnRight(mL,mR, power);
     
     // Initialise Timer0 vales to 0
     TMR0L = 0;
@@ -169,9 +174,9 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
                 TMR0H = 0;
                 stop(mL,mR);
 //                for (n=1; n<=(TimeAboveThreshold>>1); n++) {
-                while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>1)) {
+                while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
 //                    stop(mL,mR);
-                    turnLeft(mL,mR, 100);
+                    turnLeft(mL,mR, power);
 //                    __delay_ms(1);
 //                    stop(mL,mR);
                 }

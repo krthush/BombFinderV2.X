@@ -4815,11 +4815,13 @@ _delay((unsigned long)((50)*(8000000/4000.0)));
 }
 
 # 45
-char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char *MoveTime, char *MoveType){
+char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
+char *MoveTime, char *MoveType){
 
 
 unsigned int SensorResult[2]={0,0};
 char buf[40];
+
 
 
 const unsigned int DirectionMoveThreshold=2500;
@@ -4848,7 +4850,8 @@ LCD_String(buf);
 
 
 
-if ((SensorResult[0]>DirectionMoveThreshold)&&(SensorResult[1]>DirectionMoveThreshold)) {
+if ((SensorResult[0]>DirectionMoveThreshold)&&(SensorResult[1]>
+DirectionMoveThreshold)) {
 return 2;
 } else {
 stop(mL,mR);
@@ -4858,7 +4861,8 @@ return 0;
 
 
 
-char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char *MoveTimeEntry) {
+char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
+char *MoveTimeEntry) {
 
 
 unsigned int SensorResult[2]={0,0};
@@ -4869,17 +4873,22 @@ unsigned int i=0;
 unsigned int n=0;
 unsigned char TimeAboveThreshold=0;
 
-
 const unsigned int DirectionFoundThreshold=3000;
 
-# 109
+const unsigned char power=40;
+
+# 114
 turnLeft(mL,mR, 100);
-delay_tenth_s(5);
+delay_tenth_s(3);
 stop(mL,mR);
 
 
-turnRight(mL,mR, 40);
+turnRight(mL,mR, power);
 
+
+TMR0L = 0;
+TMR0H = 0;
+T0CONbits.TMR0ON=1;
 
 for (i=1; i<=milliseconds; i++) {
 
@@ -4906,32 +4915,40 @@ SetLine(2);
 sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
 LCD_String(buf);
 
+if (RightFlag==0){
 if (SensorResult[1]>DirectionFoundThreshold) {
-RightFlag=1;
+RightFlag= (TMR0H<<8)+TMR0L;
+}
 }
 
+if (LeftFlag==0){
 if (SensorResult[0]>DirectionFoundThreshold) {
-LeftFlag=1;
+LeftFlag=(TMR0H<<8)+TMR0L;
+}
 }
 
-
-if ((LeftFlag==1)||(RightFlag==1)) {
-TimeAboveThreshold++;
-}
-
-if (LeftFlag==1) {
+# 168
+if (LeftFlag>0) {
 
 
-if (RightFlag==1) {
-for (n=1; n<=(TimeAboveThreshold>>1); n++) {
+if (RightFlag>0) {
+TimeAboveThreshold = LeftFlag - RightFlag;
+TMR0L = 0;
+TMR0H = 0;
 stop(mL,mR);
-turnLeft(mL,mR, 100);
-_delay((unsigned long)((1)*(8000000/4000.0)));
-stop(mL,mR);
+
+while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
+
+turnLeft(mL,mR, power);
+
+
 }
+T0CONbits.TMR0ON=0;
+stop(mL,mR);
 return 2;
 } else {
 
+T0CONbits.TMR0ON=0;
 stop(mL,mR);
 return 2;
 }
