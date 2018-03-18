@@ -83,7 +83,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
     char buf[40]; // Buffer for characters for LCD
     unsigned int i=0;
     unsigned int n=0;
-    unsigned char FlagCounter=0;
+    unsigned char TimeAboveThreshold=0;
     // USERVARIABLE TOLERANCES
     // minimum signal strength required for sensor to be considered directly aimed at beacon
     const unsigned int DirectionFoundThreshold=4000;
@@ -95,7 +95,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
 //        stop(mL,mR);
 //    }
     // THIS CAN BE MADE BETTER
-    turnRight(mL,mR, 100);
+    turnLeft(mL,mR, 100);
     delay_tenth_s(5);
     stop(mL,mR);
     
@@ -126,7 +126,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         LCD_String(buf);
         
          // Turn left
-        turnLeft(mL,mR, 100);
+        turnRight(mL,mR, 100);
         __delay_ms(1);
         stop(mL,mR);
         
@@ -140,14 +140,14 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         
         // Increment counter if any of the IR sensors has seen the beacon
         if ((LeftFlag==1)||(RightFlag==1)) {
-            FlagCounter++;
+            TimeAboveThreshold++;
         }
         
         // Both Sensors have seen the beacon, travel back to
         // half the length of the FlagCounter and go!
         if ((LeftFlag==1)&&(RightFlag==1)) {
-            for (n=1; n<=(FlagCounter>>1); n++) {
-                turnRight(mL,mR, 100);
+            for (n=1; n<=(TimeAboveThreshold>>1); n++) {
+                turnLeft(mL,mR, 100);
                 __delay_ms(1);
                 stop(mL,mR);
             }
@@ -155,19 +155,14 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         }
         
         // Signal was only found once, just go in that direction roughly
-        if ((LeftFlag==0)&&(RightFlag==1)) {
-            for (n=1; n<=(FlagCounter); n++) {
-                turnRight(mL,mR, 100);
-                __delay_ms(1);
-                stop(mL,mR);
-            }
-            return 2; // Direction of bomb is directly ahead
+        if ((LeftFlag==1)&&(RightFlag==0)) {
+            return 2; // Direction of bomb is roughly ahead
         }
         
     }
     
     // No clear signal found, rotate and move a bit and hope to find it!
-    turnLeft(mL,mR, 100);
+    turnRight(mL,mR, 100);
     delay_tenth_s(5);
     stop(mL,mR);
     return -1; // No clear signal found

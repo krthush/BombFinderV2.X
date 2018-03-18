@@ -28,9 +28,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "22 dc_motor.h
 [v _stop `(v ~T0 @X0 0 ef2`*S405`*S405 ]
-"26
-[v _turnLeft `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
 "24
+[v _turnLeft `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
+"26
 [v _turnRight `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -3524,8 +3524,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.h: 20: void setMotorFullSpeed(struct DC_motor *m);
 [; ;dc_motor.h: 21: void stopMotor(struct DC_motor *m);
 [; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 24: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 26: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 27: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;IR_Reading.h: 15: void initIR(void);
@@ -3817,9 +3817,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 85: unsigned int n=0;
 [e = _n -> -> 0 `i `ui ]
 "86
-[v _FlagCounter `uc ~T0 @X0 1 a ]
-[; ;Movement.c: 86: unsigned char FlagCounter=0;
-[e = _FlagCounter -> -> 0 `i `uc ]
+[v _TimeAboveThreshold `uc ~T0 @X0 1 a ]
+[; ;Movement.c: 86: unsigned char TimeAboveThreshold=0;
+[e = _TimeAboveThreshold -> -> 0 `i `uc ]
 "89
 [v _DirectionFoundThreshold `Cui ~T0 @X0 1 a ]
 [; ;Movement.c: 89: const unsigned int DirectionFoundThreshold=4000;
@@ -3923,9 +3923,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "142
 [e $ ! || == -> _LeftFlag `i -> 1 `i == -> _RightFlag `i -> 1 `i 427  ]
 {
-[; ;Movement.c: 143: FlagCounter++;
+[; ;Movement.c: 143: TimeAboveThreshold++;
 "143
-[e ++ _FlagCounter -> -> 1 `i `uc ]
+[e ++ _TimeAboveThreshold -> -> 1 `i `uc ]
 "144
 }
 [e :U 427 ]
@@ -3934,7 +3934,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "148
 [e $ ! && == -> _LeftFlag `i -> 1 `i == -> _RightFlag `i -> 1 `i 428  ]
 {
-[; ;Movement.c: 149: for (n=1; n<=(FlagCounter>>1); n++) {
+[; ;Movement.c: 149: for (n=1; n<=(TimeAboveThreshold>>1); n++) {
 "149
 {
 [e = _n -> -> 1 `i `ui ]
@@ -3955,7 +3955,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "149
 [e ++ _n -> -> 1 `i `ui ]
 [e :U 432 ]
-[e $ <= _n -> >> -> _FlagCounter `i -> 1 `i `ui 429  ]
+[e $ <= _n -> >> -> _TimeAboveThreshold `i -> 1 `i `ui 429  ]
 [e :U 430 ]
 "153
 }
@@ -3972,65 +3972,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 "158
 [e $ ! && == -> _LeftFlag `i -> 1 `i == -> _RightFlag `i -> 0 `i 433  ]
 {
-[; ;Movement.c: 159: for (n=1; n<=(FlagCounter); n++) {
+[; ;Movement.c: 159: return 2;
 "159
-{
-[e = _n -> -> 1 `i `ui ]
-[e $U 437  ]
-[e :U 434 ]
-{
-[; ;Movement.c: 160: turnLeft(mL,mR, 100);
-"160
-[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 161: _delay((unsigned long)((1)*(8000000/4000.0)));
-"161
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;Movement.c: 162: stop(mL,mR);
-"162
-[e ( _stop (2 , _mL _mR ]
-"163
-}
-"159
-[e ++ _n -> -> 1 `i `ui ]
-[e :U 437 ]
-[e $ <= _n -> _FlagCounter `ui 434  ]
-[e :U 435 ]
-"163
-}
-[; ;Movement.c: 163: }
-[; ;Movement.c: 164: return 2;
-"164
 [e ) -> -> 2 `i `uc ]
 [e $UE 420  ]
-"165
+"160
 }
 [e :U 433 ]
-"167
+"162
 }
 "104
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 424 ]
 [e $ <= _i -> _milliseconds `ui 421  ]
 [e :U 422 ]
-"167
+"162
 }
-[; ;Movement.c: 165: }
-[; ;Movement.c: 167: }
-[; ;Movement.c: 170: turnRight(mL,mR, 100);
-"170
+[; ;Movement.c: 160: }
+[; ;Movement.c: 162: }
+[; ;Movement.c: 165: turnRight(mL,mR, 100);
+"165
 [e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 171: delay_tenth_s(5);
-"171
+[; ;Movement.c: 166: delay_tenth_s(5);
+"166
 [e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
-[; ;Movement.c: 172: stop(mL,mR);
-"172
+[; ;Movement.c: 167: stop(mL,mR);
+"167
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 173: return -1;
-"173
+[; ;Movement.c: 168: return -1;
+"168
 [e ) -> -U -> 1 `i `uc ]
 [e $UE 420  ]
-[; ;Movement.c: 174: }
-"174
+[; ;Movement.c: 169: }
+"169
 [e :UE 420 ]
 }
 [p f _sprintf 8421508 ]

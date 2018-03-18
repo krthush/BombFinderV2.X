@@ -4647,9 +4647,9 @@ void setMotorFullSpeed(struct DC_motor *m);
 void stopMotor(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
 
-void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
+void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
@@ -4850,7 +4850,7 @@ unsigned char RightFlag=0;
 char buf[40];
 unsigned int i=0;
 unsigned int n=0;
-unsigned char FlagCounter=0;
+unsigned char TimeAboveThreshold=0;
 
 
 const unsigned int DirectionFoundThreshold=4000;
@@ -4901,13 +4901,13 @@ LeftFlag=1;
 
 
 if ((LeftFlag==1)||(RightFlag==1)) {
-FlagCounter++;
+TimeAboveThreshold++;
 }
 
 
 
 if ((LeftFlag==1)&&(RightFlag==1)) {
-for (n=1; n<=(FlagCounter>>1); n++) {
+for (n=1; n<=(TimeAboveThreshold>>1); n++) {
 turnLeft(mL,mR, 100);
 _delay((unsigned long)((1)*(8000000/4000.0)));
 stop(mL,mR);
@@ -4917,11 +4917,6 @@ return 2;
 
 
 if ((LeftFlag==1)&&(RightFlag==0)) {
-for (n=1; n<=(FlagCounter); n++) {
-turnLeft(mL,mR, 100);
-_delay((unsigned long)((1)*(8000000/4000.0)));
-stop(mL,mR);
-}
 return 2;
 }
 
