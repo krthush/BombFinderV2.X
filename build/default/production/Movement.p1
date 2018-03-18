@@ -4054,9 +4054,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 175: turnRight(mL,mR, 100);
 "175
 [e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 176: delay_tenth_s(5);
+[; ;Movement.c: 176: delay_tenth_s(2);
 "176
-[e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
+[e ( _delay_tenth_s (1 -> -> 2 `i `uc ]
 [; ;Movement.c: 177: stop(mL,mR);
 "177
 [e ( _stop (2 , _mL _mR ]
