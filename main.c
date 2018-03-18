@@ -131,8 +131,13 @@ void main(void){
                 SetLine(1); //Set Line 1
                 LCD_String("      Inert Mode");
                 SetLine(2); //Set Line 2, for signal strength readings
-                sprintf(buf,"      %04d, %04d",SensorResult[0],SensorResult[1]);
-                LCD_String(buf);
+                if (RFID_Read) {
+                    LCD_String(Message);
+                } else {
+                    sprintf(buf,"      %04d, %04d",SensorResult[0],SensorResult[1]);
+                    LCD_String(buf);
+                }
+                
                
                 break;
                
@@ -140,6 +145,7 @@ void main(void){
                
                 //Initialise EVERYTHING
                 initMotorPWM();  //setup PWM registers
+                initTimers();
                 initRFID();
                 initLCD();
                 initIR();
