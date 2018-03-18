@@ -170,10 +170,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
                 stop(mL,mR);
 //                for (n=1; n<=(TimeAboveThreshold>>1); n++) {
                 while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>1)) {
-//                    stop(mL,mR);
                     turnLeft(mL,mR, 100);
-//                    __delay_ms(1);
-//                    stop(mL,mR);
                 }
                 T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
