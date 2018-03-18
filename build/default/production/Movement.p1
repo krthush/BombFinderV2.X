@@ -3570,8 +3570,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.h: 11: void initTimer(void);
 [; ;Movement.h: 13: void delay_s(char seconds);
 [; ;Movement.h: 15: void delay_tenth_s(char tenth_seconds);
-[; ;Movement.h: 18: char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char *MoveTime, char *MoveType);
-[; ;Movement.h: 23: char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char *MoveTime);
+[; ;Movement.h: 18: char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
+[; ;Movement.h: 19: int *MoveTime, char *MoveType);
+[; ;Movement.h: 24: char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
+[; ;Movement.h: 25: int *MoveTime, char *RFID_Read, char *mode);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
@@ -3736,22 +3738,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 413 ]
 }
 "45
-[v _ScanIR `(uc ~T0 @X0 1 ef5`*S405`*S405`*uc`*uc`*uc ]
+[v _ScanIR `(uc ~T0 @X0 1 ef5`*S405`*S405`*uc`*i`*uc ]
 "46
 {
 [; ;Movement.c: 45: char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
-[; ;Movement.c: 46: char *MoveTime, char *MoveType){
+[; ;Movement.c: 46: int *MoveTime, char *MoveType){
 [e :U _ScanIR ]
 "45
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
 [v _Move `*uc ~T0 @X0 1 r3 ]
 "46
-[v _MoveTime `*uc ~T0 @X0 1 r4 ]
+[v _MoveTime `*i ~T0 @X0 1 r4 ]
 [v _MoveType `*uc ~T0 @X0 1 r5 ]
 [f ]
-[v F3882 `ui ~T0 @X0 -> 2 `i s ]
-[i F3882
+[v F3884 `ui ~T0 @X0 -> 2 `i s ]
+[i F3884
 :U ..
 "49
 -> -> 0 `i `ui
@@ -3760,7 +3762,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _SensorResult `ui ~T0 @X0 -> 2 `i a ]
 [; ;Movement.c: 49: unsigned int SensorResult[2]={0,0};
-[e = _SensorResult F3882 ]
+[e = _SensorResult F3884 ]
 "50
 [v _buf `uc ~T0 @X0 -> 40 `i a ]
 "54
@@ -3844,21 +3846,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 418 ]
 }
 "91
-[v _ScanWithRange `(uc ~T0 @X0 1 ef4`*S405`*S405`i`*uc ]
+[v _ScanWithRange `(uc ~T0 @X0 1 ef6`*S405`*S405`i`*i`*uc`*uc ]
 "92
 {
 [; ;Movement.c: 91: char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
-[; ;Movement.c: 92: char *MoveTimeEntry) {
+[; ;Movement.c: 92: int *MoveTimeEntry, char *RFID_Read, char *mode) {
 [e :U _ScanWithRange ]
 "91
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
 [v _milliseconds `i ~T0 @X0 1 r3 ]
 "92
-[v _MoveTimeEntry `*uc ~T0 @X0 1 r4 ]
+[v _MoveTimeEntry `*i ~T0 @X0 1 r4 ]
+[v _RFID_Read `*uc ~T0 @X0 1 r5 ]
+[v _mode `*uc ~T0 @X0 1 r6 ]
 [f ]
-[v F3892 `ui ~T0 @X0 -> 2 `i s ]
-[i F3892
+[v F3896 `ui ~T0 @X0 -> 2 `i s ]
+[i F3896
 :U ..
 "95
 -> -> 0 `i `ui
@@ -3867,7 +3871,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _SensorResult `ui ~T0 @X0 -> 2 `i a ]
 [; ;Movement.c: 95: unsigned int SensorResult[2]={0,0};
-[e = _SensorResult F3892 ]
+[e = _SensorResult F3896 ]
 "96
 [v _LeftFlag `ui ~T0 @X0 1 a ]
 [; ;Movement.c: 96: unsigned int LeftFlag=0;
@@ -3897,8 +3901,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _DirectionFoundThreshold -> -> 3000 `i `ui ]
 "105
 [v _power `Cuc ~T0 @X0 1 a ]
-[; ;Movement.c: 105: const unsigned char power=45;
-[e = _power -> -> 45 `i `uc ]
+[; ;Movement.c: 105: const unsigned char power=42;
+[e = _power -> -> 42 `i `uc ]
 [; ;Movement.c: 114: turnLeft(mL,mR, 100);
 "114
 [e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
@@ -4051,59 +4055,86 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 180: stop(mL,mR);
 "180
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 181: return 2;
+[; ;Movement.c: 181: *MoveTimeEntry = RightFlag + (TimeAboveThreshold>>1);
 "181
+[e = *U _MoveTimeEntry -> + _RightFlag -> >> -> _TimeAboveThreshold `i -> 1 `i `ui `i ]
+[; ;Movement.c: 182: return 2;
+"182
 [e ) -> -> 2 `i `uc ]
 [e $UE 421  ]
-"182
+"183
 }
-[; ;Movement.c: 182: } else {
+[; ;Movement.c: 183: } else {
 [e $U 435  ]
 [e :U 431 ]
 {
-[; ;Movement.c: 184: T0CONbits.TMR0ON=0;
-"184
-[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;Movement.c: 185: stop(mL,mR);
+[; ;Movement.c: 185: T0CONbits.TMR0ON=0;
 "185
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 186: return 2;
+[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
+[; ;Movement.c: 186: stop(mL,mR);
 "186
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 187: return 2;
+"187
 [e ) -> -> 2 `i `uc ]
 [e $UE 421  ]
-"187
-}
-[e :U 435 ]
 "188
 }
-[e :U 430 ]
+[e :U 435 ]
 "189
+}
+[e :U 430 ]
+[; ;Movement.c: 188: }
+[; ;Movement.c: 189: }
+[; ;Movement.c: 191: if (*RFID_Read==1) {
+"191
+[e $ ! == -> *U _RFID_Read `i -> 1 `i 436  ]
+{
+[; ;Movement.c: 192: return 2;
+"192
+[e ) -> -> 2 `i `uc ]
+[e $UE 421  ]
+"193
+}
+[e :U 436 ]
+[; ;Movement.c: 193: }
+[; ;Movement.c: 194: if (*mode==-1) {
+"194
+[e $ ! == -> *U _mode `i -U -> 1 `i 437  ]
+{
+[; ;Movement.c: 195: return 0;
+"195
+[e ) -> -> 0 `i `uc ]
+[e $UE 421  ]
+"196
+}
+[e :U 437 ]
+"197
 }
 "126
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 425 ]
 [e $ <= _i -> _milliseconds `ui 422  ]
 [e :U 423 ]
-"189
+"197
 }
-[; ;Movement.c: 187: }
-[; ;Movement.c: 188: }
-[; ;Movement.c: 189: }
-[; ;Movement.c: 192: turnRight(mL,mR, 100);
-"192
+[; ;Movement.c: 196: }
+[; ;Movement.c: 197: }
+[; ;Movement.c: 200: turnRight(mL,mR, 100);
+"200
 [e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 193: delay_tenth_s(2);
-"193
+[; ;Movement.c: 201: delay_tenth_s(2);
+"201
 [e ( _delay_tenth_s (1 -> -> 2 `i `uc ]
-[; ;Movement.c: 194: stop(mL,mR);
-"194
+[; ;Movement.c: 202: stop(mL,mR);
+"202
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 195: return -1;
-"195
+[; ;Movement.c: 203: return -1;
+"203
 [e ) -> -U -> 1 `i `uc ]
 [e $UE 421  ]
-[; ;Movement.c: 196: }
-"196
+[; ;Movement.c: 204: }
+"204
 [e :UE 421 ]
 }
 [p f _sprintf 8421508 ]

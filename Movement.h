@@ -15,11 +15,13 @@ void delay_s(char seconds);
 void delay_tenth_s(char tenth_seconds);
 // Scans left, ahead and right for IR signal, turns to signal of greater strength
 // This is all done while keeping previous motion action
-char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, int *MoveTime, char *MoveType);
+char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
+        int *MoveTime, char *MoveType);
 // Scans IR strength for 3 points (left, centre, right),
 // within two times the given range.
 // The range is given in twice the number of tenth seconds the robot turns for
 // Finally the robot positions facing the direction of highest IR strength
-char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, int *MoveTime);
+char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
+        int *MoveTime, char *RFID_Read, char *mode);
 #endif	/* MOVEMENT_H */
 

@@ -182,11 +182,12 @@ void main(void){
                     MoveType[Move]=0;
                 } else if (DirectionFound==0) {
                     // Scans a wide range if it's unsure about direction
-                    DirectionFound=ScanWithRange(&mL, &mR, ScanAngle, &MoveTime[Move]); // USERVARIABLE
+                    DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
+                            &MoveTime[Move], &RFID_Read, &mode);
                     MoveType[Move]=1;
                 } else if (DirectionFound==1) {
                      // Keeps direction and just scans, robot thinks it's close
-                    DirectionFound=ScanIR(&mL, &mR, &Move, &MoveTime, &MoveType); // USERVARIABLE
+                    DirectionFound=ScanIR(&mL, &mR, &Move, &MoveTime, &MoveType);
                 } else if (DirectionFound==2) {
                      // Robot thinks its on track, switch to move mode
                      mode=2;

@@ -43,7 +43,7 @@ void delay_tenth_s(char tenth_seconds) {
 // - continuous, the drone moves while scanning until there is a change
 // - stop n scan, the drone stops every time it scans
 char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, 
-        char *MoveTime, char *MoveType){
+        int *MoveTime, char *MoveType){
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
@@ -89,7 +89,7 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
 // NEW ROUTINE: This route scans given range in very small time increments
 // INPROG
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, 
-        int *MoveTimeEntry) {
+        int *MoveTimeEntry, char *RFID_Read, char *mode) {
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
@@ -188,10 +188,10 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
             }     
         } 
         // Break out of loop if RFID read or button pressed (Global variables!)
-        if (RFID_Read==1) { //If we've got something on the RFID
+        if (*RFID_Read==1) { //If we've got something on the RFID
             return 2; //2 sends it into mode 2
         }
-        if (mode==-1) { //Happens if the button is pressed
+        if (*mode==-1) { //Happens if the button is pressed
             return 0; //Doesn't matter but we have to return something
         }
     }
