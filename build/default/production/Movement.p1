@@ -29,9 +29,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "22 dc_motor.h
 [v _stop `(v ~T0 @X0 0 ef2`*S405`*S405 ]
 "26
-[v _turnRight `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
-"24
 [v _turnLeft `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
+"24
+[v _turnRight `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3524,8 +3524,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.h: 20: void setMotorFullSpeed(struct DC_motor *m);
 [; ;dc_motor.h: 21: void stopMotor(struct DC_motor *m);
 [; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 24: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 26: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 27: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;IR_Reading.h: 15: void initIR(void);
@@ -3824,9 +3824,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _DirectionFoundThreshold `Cui ~T0 @X0 1 a ]
 [; ;Movement.c: 89: const unsigned int DirectionFoundThreshold=4000;
 [e = _DirectionFoundThreshold -> -> 4000 `i `ui ]
-[; ;Movement.c: 98: turnRight(mL,mR, 100);
+[; ;Movement.c: 98: turnLeft(mL,mR, 100);
 "98
-[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
+[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
 [; ;Movement.c: 99: delay_tenth_s(5);
 "99
 [e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
@@ -3888,9 +3888,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 126: LCD_String(buf);
 "126
 [e ( _LCD_String (1 &U _buf ]
-[; ;Movement.c: 129: turnLeft(mL,mR, 100);
+[; ;Movement.c: 129: turnRight(mL,mR, 100);
 "129
-[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
+[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
 [; ;Movement.c: 130: _delay((unsigned long)((1)*(8000000/4000.0)));
 "130
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
@@ -3941,9 +3941,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 432  ]
 [e :U 429 ]
 {
-[; ;Movement.c: 150: turnRight(mL,mR, 100);
+[; ;Movement.c: 150: turnLeft(mL,mR, 100);
 "150
-[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
+[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
 [; ;Movement.c: 151: _delay((unsigned long)((1)*(8000000/4000.0)));
 "151
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
@@ -3967,58 +3967,58 @@ Version 3.2 HI-TECH Software Intermediate Code
 "155
 }
 [e :U 428 ]
-"157
+[; ;Movement.c: 155: }
+[; ;Movement.c: 158: if ((LeftFlag==1)&&(RightFlag==0)) {
+"158
+[e $ ! && == -> _LeftFlag `i -> 1 `i == -> _RightFlag `i -> 0 `i 433  ]
+{
+[; ;Movement.c: 159: for (n=1; n<=(FlagCounter); n++) {
+"159
+{
+[e = _n -> -> 1 `i `ui ]
+[e $U 437  ]
+[e :U 434 ]
+{
+[; ;Movement.c: 160: turnLeft(mL,mR, 100);
+"160
+[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
+[; ;Movement.c: 161: _delay((unsigned long)((1)*(8000000/4000.0)));
+"161
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Movement.c: 162: stop(mL,mR);
+"162
+[e ( _stop (2 , _mL _mR ]
+"163
+}
+"159
+[e ++ _n -> -> 1 `i `ui ]
+[e :U 437 ]
+[e $ <= _n -> _FlagCounter `ui 434  ]
+[e :U 435 ]
+"163
+}
+[; ;Movement.c: 163: }
+[; ;Movement.c: 164: return 2;
+"164
+[e ) -> -> 2 `i `uc ]
+[e $UE 420  ]
+"165
+}
+[e :U 433 ]
+"167
 }
 "104
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 424 ]
 [e $ <= _i -> _milliseconds `ui 421  ]
 [e :U 422 ]
-"157
-}
-[; ;Movement.c: 155: }
-[; ;Movement.c: 157: }
-[; ;Movement.c: 160: if ((LeftFlag==1)||(RightFlag==1)) {
-"160
-[e $ ! || == -> _LeftFlag `i -> 1 `i == -> _RightFlag `i -> 1 `i 433  ]
-{
-[; ;Movement.c: 161: for (n=1; n<=(FlagCounter); n++) {
-"161
-{
-[e = _n -> -> 1 `i `ui ]
-[e $U 437  ]
-[e :U 434 ]
-{
-[; ;Movement.c: 162: turnRight(mL,mR, 100);
-"162
-[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 163: _delay((unsigned long)((1)*(8000000/4000.0)));
-"163
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;Movement.c: 164: stop(mL,mR);
-"164
-[e ( _stop (2 , _mL _mR ]
-"165
-}
-"161
-[e ++ _n -> -> 1 `i `ui ]
-[e :U 437 ]
-[e $ <= _n -> _FlagCounter `ui 434  ]
-[e :U 435 ]
-"165
-}
-[; ;Movement.c: 165: }
-[; ;Movement.c: 166: return 2;
-"166
-[e ) -> -> 2 `i `uc ]
-[e $UE 420  ]
 "167
 }
-[e :U 433 ]
+[; ;Movement.c: 165: }
 [; ;Movement.c: 167: }
-[; ;Movement.c: 170: turnLeft(mL,mR, 100);
+[; ;Movement.c: 170: turnRight(mL,mR, 100);
 "170
-[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
+[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
 [; ;Movement.c: 171: delay_tenth_s(5);
 "171
 [e ( _delay_tenth_s (1 -> -> 5 `i `uc ]

@@ -42,9 +42,9 @@
 "67
 [v _stop stop `(v  1 e 0 0 ]
 "87
-[v _turnLeft turnLeft `(v  1 e 0 0 ]
-"98
 [v _turnRight turnRight `(v  1 e 0 0 ]
+"98
+[v _turnLeft turnLeft `(v  1 e 0 0 ]
 "108
 [v _fullSpeedAhead fullSpeedAhead `(v  1 e 0 0 ]
 "125
@@ -747,23 +747,23 @@
 [v ScanWithRange@F3893 F3893 `[2]ui  1 s 4 F3893 ]
 "174
 } 0
-"98 H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+"87 H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
 [v _turnRight turnRight `(v  1 e 0 0 ]
 {
 [s S71 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyLowByte 2 2 `*.39uc 1 dutyHighByte 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
 [v turnRight@mL mL `*.39S71  1 p 2 7 ]
 [v turnRight@mR mR `*.39S71  1 p 2 9 ]
 [v turnRight@power power `uc  1 p 1 11 ]
-"105
+"94
 } 0
-"87
+"98
 [v _turnLeft turnLeft `(v  1 e 0 0 ]
 {
 [s S71 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyLowByte 2 2 `*.39uc 1 dutyHighByte 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
 [v turnLeft@mL mL `*.39S71  1 p 2 7 ]
 [v turnLeft@mR mR `*.39S71  1 p 2 9 ]
 [v turnLeft@power power `uc  1 p 1 11 ]
-"94
+"105
 } 0
 "108
 [v _fullSpeedAhead fullSpeedAhead `(v  1 e 0 0 ]

@@ -4647,9 +4647,9 @@ void setMotorFullSpeed(struct DC_motor *m);
 void stopMotor(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
 
-void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
+void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 

@@ -88,8 +88,8 @@ void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
     stop(mL, mR);
 	//remember to change the power gradually
-    mL->direction=0;
-    mR->direction=1;
+    mL->direction=1;
+    mR->direction=0;
     fullSpeedAhead(mL, mR, power);
 }
 
@@ -99,8 +99,8 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
     stop(mL, mR);
 	//remember to change the power gradually
-    mL->direction=1;
-    mR->direction=0;
+    mL->direction=0;
+    mR->direction=1;
     fullSpeedAhead(mL, mR, power);
 }
 

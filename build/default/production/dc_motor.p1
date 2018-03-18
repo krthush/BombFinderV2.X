@@ -3533,8 +3533,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.h: 20: void setMotorFullSpeed(struct DC_motor *m);
 [; ;dc_motor.h: 21: void stopMotor(struct DC_motor *m);
 [; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 24: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 26: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 27: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 "4 dc_motor.c
@@ -3787,12 +3787,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 420 ]
 }
 "87
-[v _turnLeft `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
+[v _turnRight `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
 "88
 {
-[; ;dc_motor.c: 87: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+[; ;dc_motor.c: 87: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 [; ;dc_motor.c: 88: {
-[e :U _turnLeft ]
+[e :U _turnRight ]
 "87
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
@@ -3816,12 +3816,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 426 ]
 }
 "98
-[v _turnRight `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
+[v _turnLeft `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
 "99
 {
-[; ;dc_motor.c: 98: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+[; ;dc_motor.c: 98: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 [; ;dc_motor.c: 99: {
-[e :U _turnRight ]
+[e :U _turnLeft ]
 "98
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
