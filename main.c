@@ -54,7 +54,9 @@ void main(void){
     unsigned char Message[10]; // Code on RFID Card
     unsigned char i=0; // Counter variable
     signed char DirectionFound=0; // Flag for if the robot has decided it knows where the bomb is
-    int MoveTime[100]; // Array to store time spent on each type of movement
+    int MoveTime[100]; // Array to store time spent on each type of movement.
+    // For left/right, left is defined as positive. For forwards/backwards,
+    // forwards is positive.
     char MoveType[100]; // Array to store movement types - 0 is forwards based 
     //on tenth-second delays, 1 is left/right based on timer, 2 is left/right 
     //based on tenth second delays
@@ -192,9 +194,8 @@ void main(void){
                     DirectionFound=0;
                 } else if (DirectionFound==0) {
                     // Scans a wide range if it's unsure about direction
-                    Move++;
                     DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
-                            &MoveTime[Move], &RFID_Read);
+                            &MoveTime, &Move, &MoveType, &RFID_Read);
                     MoveType[Move]=1;
                 } else if (DirectionFound==1) {
                      // Keeps direction and just scans, robot thinks it's close
@@ -241,7 +242,7 @@ void main(void){
                     fullSpeedAhead(&mL,&mR, 100);
                     delay_tenth_s(5);
                     MoveType[Move] = 0;
-                    MoveTime[Move] += 5;
+                    MoveTime[Move] = 5;
                 }
                 
                 break;
@@ -257,14 +258,14 @@ void main(void){
                 
                 for (Move=Move; Move>=0; Move--) { //Go backwards along the moves
                     if (MoveType[Move]==0) { //If move was forwards
-                        fullSpeedBack(&mL,&mR);
+                        fullSpeedBack(&mL,&mR,100);
                         delay_tenth_s(MoveTime[Move]);
                     } else if (MoveType[Move]==1) { //If move was left/right
                         if (MoveTime[Move]>0) { //If left turn
-                            turnRight(&mL,&mR);
+                            turnRight(&mL,&mR,100);
                             delay_tenth_s(MoveTime[Move]);
                         } else {
-                            turnLeft(&mL,&mR);
+                            turnLeft(&mL,&mR,100);
                             delay_tenth_s(MoveTime[Move]);
                         }
                     }

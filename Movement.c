@@ -95,8 +95,8 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
 // If no accurate signal is found it spins in an adjusted manoeuvre such that
 // the robot spins out a expanding spiral path
 //  - making sure the signal is always found.
-char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops, 
-        int *MoveTimeEntry, char *RFID_Read) {
+char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
+        int *MoveTime, char *Move, char *MoveType, char *RFID_Read) {
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
@@ -111,6 +111,17 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     // required for sensor to be considered directly aimed at beacon.
     const unsigned char power=40; // Adjusts the speed of the turning, currently
     // seems to lose clarity past 43ish.
+    
+    // Flip right before starting scan from left side
+//    for (i=1; i<=(milliseconds>>1); i++) {
+//        turnRight(mL,mR);
+//        __delay_ms(1);
+//        stop(mL,mR);
+//    }
+    // THIS CAN BE MADE BETTER
+    *Move++;
+    *(MoveType[*Move]) = 2;
+    *(MoveTime[*Move]) = -3;
     
     turnLeft(mL,mR, 100);
     delay_tenth_s(3);
@@ -176,7 +187,10 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
                 //Let's return the net time spent turning left 
-                *MoveTimeEntry = RightFlag + (TimeAboveThreshold>>1);
+                *Move++;  
+                *(MoveType[Move]) = 1;
+                *(MoveTime[Move]) = RightFlag + (TimeAboveThreshold>>1);
+                
                 return 2; // Direction of bomb is directly ahead
             } else {
                 // Signal was only found once, just go in that direction roughly
@@ -192,6 +206,9 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     }
     
     // No clear signal found, rotate and move a bit and hope to find it!
+    *Move++;
+    *(MoveType[*Move]) = 2;
+    *(MoveTime[*Move]) = -2;
     turnRight(mL,mR, 100);
     delay_tenth_s(2);
     stop(mL,mR);

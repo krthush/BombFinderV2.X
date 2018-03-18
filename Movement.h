@@ -15,13 +15,13 @@ void delay_s(char seconds);
 void delay_tenth_s(char tenth_seconds);
 // Scans left, ahead and right for IR signal, turns to signal of greater strength
 // This is all done while keeping previous motion action
-char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move,
-        int *MoveTime, char *MoveType);
+char ScanIR(struct DC_motor *mL, struct DC_motor *mR);
 // Scans a range for a number of loops, make sure the total time for this scan
 // is under 8 seconds or timer1 within ScanWithRange will fail.
 // Once accurate direction is found, function will return DirectionFound=2, 
 // which switches the program to move mode.
-char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
-        int *MoveTime, char *RFID_Read);
+char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
+        int *MoveTime, char *Move, char *MoveType, char *RFID_Read);
+
 #endif	/* MOVEMENT_H */
 
