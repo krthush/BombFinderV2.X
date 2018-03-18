@@ -1,4 +1,35 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"7055 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4331.h
+[s S381 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S381 . T0PS PSA T0SE T0CS T016BIT TMR0ON ]
+"7063
+[s S382 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S382 . T0PS0 T0PS1 T0PS2 T0PS3 ]
+"7054
+[u S380 `S381 1 `S382 1 ]
+[n S380 . . . ]
+"7070
+[v _T0CONbits `VS380 ~T0 @X0 0 e@4053 ]
+"7549
+[s S397 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S397 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"7559
+[s S398 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S398 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE GIE ]
+"7569
+[s S399 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S399 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE GIEL GIEH ]
+"7579
+[s S400 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S400 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"7589
+[s S401 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S401 . . GIEL GIEH ]
+"7548
+[u S396 `S397 1 `S398 1 `S399 1 `S400 1 `S401 1 ]
+[n S396 . . . . . . ]
+"7595
+[v _INTCONbits `VS396 ~T0 @X0 0 e@4082 ]
 [v F3644 `(v ~T0 @X0 1 tf1`ul ]
 "152 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18.h
 [v __delay `JF3644 ~T0 @X0 0 e ]
@@ -3532,10 +3563,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;IR_Reading.h: 16: unsigned int grabRightIR(void);
 [; ;IR_Reading.h: 17: unsigned int grabLeftIR(void);
 [; ;IR_Reading.h: 18: void enableSensor(char sensor, char status);
-[; ;Movement.h: 11: void delay_s(char seconds);
-[; ;Movement.h: 13: void delay_tenth_s(char tenth_seconds);
-[; ;Movement.h: 16: char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char *MoveTime, char *MoveType);
-[; ;Movement.h: 21: char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char *MoveTime);
+[; ;Movement.h: 11: void initTimer(void);
+[; ;Movement.h: 13: void delay_s(char seconds);
+[; ;Movement.h: 15: void delay_tenth_s(char tenth_seconds);
+[; ;Movement.h: 18: char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char *MoveTime, char *MoveType);
+[; ;Movement.h: 23: char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char *MoveTime);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
@@ -3601,80 +3633,108 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LCD.h: 26: void SendLCD(unsigned char Byte, char type);
 [; ;LCD.h: 27: void SetLine (char line);
 [; ;LCD.h: 28: void LCD_String(char *string);
-"12 Movement.c
-[v _delay_s `(v ~T0 @X0 1 ef1`uc ]
+"8 Movement.c
+[v _initTimer `(v ~T0 @X0 1 ef ]
 {
-[; ;Movement.c: 12: void delay_s(char seconds) {
-[e :U _delay_s ]
-[v _seconds `uc ~T0 @X0 1 r1 ]
+[; ;Movement.c: 8: void initTimer(void){
+[e :U _initTimer ]
 [f ]
+[; ;Movement.c: 10: T0CONbits.TMR0ON=0;
+"10
+[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
+[; ;Movement.c: 11: T0CONbits.T016BIT=0;
+"11
+[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
+[; ;Movement.c: 12: T0CONbits.T0CS=0;
+"12
+[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
+[; ;Movement.c: 13: T0CONbits.PSA=0;
 "13
-[v _i `ui ~T0 @X0 1 a ]
-[; ;Movement.c: 13: unsigned int i=0;
-[e = _i -> -> 0 `i `ui ]
-[; ;Movement.c: 14: for (i=1; i<=seconds*20; i++) {
+[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
+[; ;Movement.c: 14: T0CONbits.T0PS=0b111;
 "14
-{
-[e = _i -> -> 1 `i `ui ]
-[e $U 411  ]
-[e :U 408 ]
-{
-[; ;Movement.c: 16: _delay((unsigned long)((50)*(8000000/4000.0)));
-"16
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e = . . _T0CONbits 0 0 -> -> 7 `i `uc ]
+[; ;Movement.c: 17: INTCONbits.TMR0IE=0;
 "17
-}
-"14
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 411 ]
-[e $ <= _i -> * -> _seconds `i -> 20 `i `ui 408  ]
-[e :U 409 ]
-"17
-}
-[; ;Movement.c: 17: }
+[e = . . _INTCONbits 0 5 -> -> 0 `i `uc ]
 [; ;Movement.c: 18: }
 "18
 [e :UE 407 ]
 }
-"21
+"23
+[v _delay_s `(v ~T0 @X0 1 ef1`uc ]
+{
+[; ;Movement.c: 23: void delay_s(char seconds) {
+[e :U _delay_s ]
+[v _seconds `uc ~T0 @X0 1 r1 ]
+[f ]
+"24
+[v _i `ui ~T0 @X0 1 a ]
+[; ;Movement.c: 24: unsigned int i=0;
+[e = _i -> -> 0 `i `ui ]
+[; ;Movement.c: 25: for (i=1; i<=seconds*20; i++) {
+"25
+{
+[e = _i -> -> 1 `i `ui ]
+[e $U 412  ]
+[e :U 409 ]
+{
+[; ;Movement.c: 27: _delay((unsigned long)((50)*(8000000/4000.0)));
+"27
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"28
+}
+"25
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 412 ]
+[e $ <= _i -> * -> _seconds `i -> 20 `i `ui 409  ]
+[e :U 410 ]
+"28
+}
+[; ;Movement.c: 28: }
+[; ;Movement.c: 29: }
+"29
+[e :UE 408 ]
+}
+"32
 [v _delay_tenth_s `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;Movement.c: 21: void delay_tenth_s(char tenth_seconds) {
+[; ;Movement.c: 32: void delay_tenth_s(char tenth_seconds) {
 [e :U _delay_tenth_s ]
 [v _tenth_seconds `uc ~T0 @X0 1 r1 ]
 [f ]
-"22
+"33
 [v _i `ui ~T0 @X0 1 a ]
-[; ;Movement.c: 22: unsigned int i=0;
+[; ;Movement.c: 33: unsigned int i=0;
 [e = _i -> -> 0 `i `ui ]
-[; ;Movement.c: 23: for (i=1; i<=tenth_seconds*2; i++) {
-"23
+[; ;Movement.c: 34: for (i=1; i<=tenth_seconds*2; i++) {
+"34
 {
 [e = _i -> -> 1 `i `ui ]
-[e $U 416  ]
-[e :U 413 ]
-{
-[; ;Movement.c: 25: _delay((unsigned long)((50)*(8000000/4000.0)));
-"25
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"26
-}
-"23
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 416 ]
-[e $ <= _i -> * -> _tenth_seconds `i -> 2 `i `ui 413  ]
+[e $U 417  ]
 [e :U 414 ]
-"26
-}
-[; ;Movement.c: 26: }
-[; ;Movement.c: 27: }
-"27
-[e :UE 412 ]
+{
+[; ;Movement.c: 36: _delay((unsigned long)((50)*(8000000/4000.0)));
+"36
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"37
 }
 "34
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 417 ]
+[e $ <= _i -> * -> _tenth_seconds `i -> 2 `i `ui 414  ]
+[e :U 415 ]
+"37
+}
+[; ;Movement.c: 37: }
+[; ;Movement.c: 38: }
+"38
+[e :UE 413 ]
+}
+"45
 [v _ScanIR `(uc ~T0 @X0 1 ef5`*S405`*S405`*uc`*uc`*uc ]
 {
-[; ;Movement.c: 34: char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char *MoveTime, char *MoveType){
+[; ;Movement.c: 45: char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char *MoveTime, char *MoveType){
 [e :U _ScanIR ]
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
@@ -3682,325 +3742,328 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _MoveTime `*uc ~T0 @X0 1 r4 ]
 [v _MoveType `*uc ~T0 @X0 1 r5 ]
 [f ]
-[v F3879 `ui ~T0 @X0 -> 2 `i s ]
-[i F3879
+[v F3882 `ui ~T0 @X0 -> 2 `i s ]
+[i F3882
 :U ..
-"37
+"48
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 ..
 ]
 [v _SensorResult `ui ~T0 @X0 -> 2 `i a ]
-[; ;Movement.c: 37: unsigned int SensorResult[2]={0,0};
-[e = _SensorResult F3879 ]
-"38
-[v _buf `uc ~T0 @X0 -> 40 `i a ]
-"41
-[v _DirectionMoveThreshold `Cui ~T0 @X0 1 a ]
-[; ;Movement.c: 38: char buf[40];
-[; ;Movement.c: 41: const unsigned int DirectionMoveThreshold=2500;
-[e = _DirectionMoveThreshold -> -> 2500 `i `ui ]
-[; ;Movement.c: 44: SensorResult[0]=grabLeftIR();
-"44
-[e = *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabLeftIR ..  ]
-[; ;Movement.c: 45: SensorResult[1]=grabRightIR();
-"45
-[e = *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabRightIR ..  ]
-[; ;Movement.c: 49: CAP1BUFH=0;
+[; ;Movement.c: 48: unsigned int SensorResult[2]={0,0};
+[e = _SensorResult F3882 ]
 "49
-[e = _CAP1BUFH -> -> 0 `i `uc ]
-[; ;Movement.c: 50: CAP1BUFL=0;
-"50
-[e = _CAP1BUFL -> -> 0 `i `uc ]
-[; ;Movement.c: 51: CAP2BUFH=0;
-"51
-[e = _CAP2BUFH -> -> 0 `i `uc ]
-[; ;Movement.c: 52: CAP2BUFL=0;
+[v _buf `uc ~T0 @X0 -> 40 `i a ]
 "52
-[e = _CAP2BUFL -> -> 0 `i `uc ]
-[; ;Movement.c: 55: SendLCD(0b00000001,0);
+[v _DirectionMoveThreshold `Cui ~T0 @X0 1 a ]
+[; ;Movement.c: 49: char buf[40];
+[; ;Movement.c: 52: const unsigned int DirectionMoveThreshold=2500;
+[e = _DirectionMoveThreshold -> -> 2500 `i `ui ]
+[; ;Movement.c: 55: SensorResult[0]=grabLeftIR();
 "55
-[e ( _SendLCD (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;Movement.c: 56: _delay((unsigned long)((50)*(8000000/4000000.0)));
+[e = *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabLeftIR ..  ]
+[; ;Movement.c: 56: SensorResult[1]=grabRightIR();
 "56
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;Movement.c: 57: SendLCD(0b00000010,0);
-"57
-[e ( _SendLCD (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-[; ;Movement.c: 58: _delay((unsigned long)((2)*(8000000/4000.0)));
-"58
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;Movement.c: 59: SetLine(1);
-"59
-[e ( _SetLine (1 -> -> 1 `i `uc ]
-[; ;Movement.c: 60: LCD_String("     ScanIR");
+[e = *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabRightIR ..  ]
+[; ;Movement.c: 60: CAP1BUFH=0;
 "60
-[e ( _LCD_String (1 -> :s 1C `*uc ]
-[; ;Movement.c: 61: SetLine(2);
+[e = _CAP1BUFH -> -> 0 `i `uc ]
+[; ;Movement.c: 61: CAP1BUFL=0;
 "61
-[e ( _SetLine (1 -> -> 2 `i `uc ]
-[; ;Movement.c: 62: sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
+[e = _CAP1BUFL -> -> 0 `i `uc ]
+[; ;Movement.c: 62: CAP2BUFH=0;
 "62
-[e ( _sprintf (1 , , (. , &U _buf :s 2C *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ]
-[; ;Movement.c: 63: LCD_String(buf);
+[e = _CAP2BUFH -> -> 0 `i `uc ]
+[; ;Movement.c: 63: CAP2BUFL=0;
 "63
-[e ( _LCD_String (1 &U _buf ]
-[; ;Movement.c: 67: if ((SensorResult[0]>DirectionMoveThreshold)&&(SensorResult[1]>DirectionMoveThreshold)) {
+[e = _CAP2BUFL -> -> 0 `i `uc ]
+[; ;Movement.c: 66: SendLCD(0b00000001,0);
+"66
+[e ( _SendLCD (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;Movement.c: 67: _delay((unsigned long)((50)*(8000000/4000000.0)));
 "67
-[e $ ! && > *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionMoveThreshold > *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionMoveThreshold 418  ]
-{
-[; ;Movement.c: 68: return 2;
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;Movement.c: 68: SendLCD(0b00000010,0);
 "68
-[e ) -> -> 2 `i `uc ]
-[e $UE 417  ]
+[e ( _SendLCD (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;Movement.c: 69: _delay((unsigned long)((2)*(8000000/4000.0)));
 "69
-}
-[; ;Movement.c: 69: } else {
-[e $U 419  ]
-[e :U 418 ]
-{
-[; ;Movement.c: 70: stop(mL,mR);
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Movement.c: 70: SetLine(1);
 "70
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 71: return 0;
+[e ( _SetLine (1 -> -> 1 `i `uc ]
+[; ;Movement.c: 71: LCD_String("     ScanIR");
 "71
-[e ) -> -> 0 `i `uc ]
-[e $UE 417  ]
+[e ( _LCD_String (1 -> :s 1C `*uc ]
+[; ;Movement.c: 72: SetLine(2);
 "72
-}
-[e :U 419 ]
-[; ;Movement.c: 72: }
-[; ;Movement.c: 73: }
+[e ( _SetLine (1 -> -> 2 `i `uc ]
+[; ;Movement.c: 73: sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
 "73
-[e :UE 417 ]
+[e ( _sprintf (1 , , (. , &U _buf :s 2C *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ]
+[; ;Movement.c: 74: LCD_String(buf);
+"74
+[e ( _LCD_String (1 &U _buf ]
+[; ;Movement.c: 78: if ((SensorResult[0]>DirectionMoveThreshold)&&(SensorResult[1]>DirectionMoveThreshold)) {
+"78
+[e $ ! && > *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionMoveThreshold > *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionMoveThreshold 419  ]
+{
+[; ;Movement.c: 79: return 2;
+"79
+[e ) -> -> 2 `i `uc ]
+[e $UE 418  ]
+"80
 }
-"77
+[; ;Movement.c: 80: } else {
+[e $U 420  ]
+[e :U 419 ]
+{
+[; ;Movement.c: 81: stop(mL,mR);
+"81
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 82: return 0;
+"82
+[e ) -> -> 0 `i `uc ]
+[e $UE 418  ]
+"83
+}
+[e :U 420 ]
+[; ;Movement.c: 83: }
+[; ;Movement.c: 84: }
+"84
+[e :UE 418 ]
+}
+"88
 [v _ScanWithRange `(uc ~T0 @X0 1 ef4`*S405`*S405`i`*uc ]
 {
-[; ;Movement.c: 77: char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char *MoveTimeEntry) {
+[; ;Movement.c: 88: char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, char *MoveTimeEntry) {
 [e :U _ScanWithRange ]
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
 [v _milliseconds `i ~T0 @X0 1 r3 ]
 [v _MoveTimeEntry `*uc ~T0 @X0 1 r4 ]
 [f ]
-[v F3889 `ui ~T0 @X0 -> 2 `i s ]
-[i F3889
+[v F3892 `ui ~T0 @X0 -> 2 `i s ]
+[i F3892
 :U ..
-"80
+"91
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 ..
 ]
 [v _SensorResult `ui ~T0 @X0 -> 2 `i a ]
-[; ;Movement.c: 80: unsigned int SensorResult[2]={0,0};
-[e = _SensorResult F3889 ]
-"81
+[; ;Movement.c: 91: unsigned int SensorResult[2]={0,0};
+[e = _SensorResult F3892 ]
+"92
 [v _LeftFlag `uc ~T0 @X0 1 a ]
-[; ;Movement.c: 81: unsigned char LeftFlag=0;
+[; ;Movement.c: 92: unsigned char LeftFlag=0;
 [e = _LeftFlag -> -> 0 `i `uc ]
-"82
+"93
 [v _RightFlag `uc ~T0 @X0 1 a ]
-[; ;Movement.c: 82: unsigned char RightFlag=0;
+[; ;Movement.c: 93: unsigned char RightFlag=0;
 [e = _RightFlag -> -> 0 `i `uc ]
-"83
+"94
 [v _buf `uc ~T0 @X0 -> 40 `i a ]
-"84
+"95
 [v _i `ui ~T0 @X0 1 a ]
-[; ;Movement.c: 83: char buf[40];
-[; ;Movement.c: 84: unsigned int i=0;
+[; ;Movement.c: 94: char buf[40];
+[; ;Movement.c: 95: unsigned int i=0;
 [e = _i -> -> 0 `i `ui ]
-"85
+"96
 [v _n `ui ~T0 @X0 1 a ]
-[; ;Movement.c: 85: unsigned int n=0;
+[; ;Movement.c: 96: unsigned int n=0;
 [e = _n -> -> 0 `i `ui ]
-"86
+"97
 [v _TimeAboveThreshold `uc ~T0 @X0 1 a ]
-[; ;Movement.c: 86: unsigned char TimeAboveThreshold=0;
+[; ;Movement.c: 97: unsigned char TimeAboveThreshold=0;
 [e = _TimeAboveThreshold -> -> 0 `i `uc ]
-"89
-[v _DirectionFoundThreshold `Cui ~T0 @X0 1 a ]
-[; ;Movement.c: 89: const unsigned int DirectionFoundThreshold=4000;
-[e = _DirectionFoundThreshold -> -> 4000 `i `ui ]
-[; ;Movement.c: 98: turnLeft(mL,mR, 100);
-"98
-[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 99: delay_tenth_s(5);
-"99
-[e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
-[; ;Movement.c: 100: stop(mL,mR);
 "100
+[v _DirectionFoundThreshold `Cui ~T0 @X0 1 a ]
+[; ;Movement.c: 100: const unsigned int DirectionFoundThreshold=4000;
+[e = _DirectionFoundThreshold -> -> 4000 `i `ui ]
+[; ;Movement.c: 109: turnLeft(mL,mR, 100);
+"109
+[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
+[; ;Movement.c: 110: delay_tenth_s(5);
+"110
+[e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
+[; ;Movement.c: 111: stop(mL,mR);
+"111
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 103: for (i=1; i<=milliseconds; i++) {
-"103
+[; ;Movement.c: 114: for (i=1; i<=milliseconds; i++) {
+"114
 {
 [e = _i -> -> 1 `i `ui ]
-[e $U 424  ]
-[e :U 421 ]
+[e $U 425  ]
+[e :U 422 ]
 {
-[; ;Movement.c: 106: SensorResult[0]=grabLeftIR();
-"106
-[e = *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabLeftIR ..  ]
-[; ;Movement.c: 107: SensorResult[1]=grabRightIR();
-"107
-[e = *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabRightIR ..  ]
-[; ;Movement.c: 111: CAP1BUFH=0;
-"111
-[e = _CAP1BUFH -> -> 0 `i `uc ]
-[; ;Movement.c: 112: CAP1BUFL=0;
-"112
-[e = _CAP1BUFL -> -> 0 `i `uc ]
-[; ;Movement.c: 113: CAP2BUFH=0;
-"113
-[e = _CAP2BUFH -> -> 0 `i `uc ]
-[; ;Movement.c: 114: CAP2BUFL=0;
-"114
-[e = _CAP2BUFL -> -> 0 `i `uc ]
-[; ;Movement.c: 117: SendLCD(0b00000001,0);
+[; ;Movement.c: 117: SensorResult[0]=grabLeftIR();
 "117
-[e ( _SendLCD (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;Movement.c: 118: _delay((unsigned long)((50)*(8000000/4000000.0)));
+[e = *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabLeftIR ..  ]
+[; ;Movement.c: 118: SensorResult[1]=grabRightIR();
 "118
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;Movement.c: 119: SendLCD(0b00000010,0);
-"119
-[e ( _SendLCD (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-[; ;Movement.c: 120: _delay((unsigned long)((2)*(8000000/4000.0)));
-"120
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;Movement.c: 121: SetLine(1);
-"121
-[e ( _SetLine (1 -> -> 1 `i `uc ]
-[; ;Movement.c: 122: LCD_String("     ScanIR");
+[e = *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabRightIR ..  ]
+[; ;Movement.c: 122: CAP1BUFH=0;
 "122
-[e ( _LCD_String (1 -> :s 3C `*uc ]
-[; ;Movement.c: 123: SetLine(2);
+[e = _CAP1BUFH -> -> 0 `i `uc ]
+[; ;Movement.c: 123: CAP1BUFL=0;
 "123
-[e ( _SetLine (1 -> -> 2 `i `uc ]
-[; ;Movement.c: 124: sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
+[e = _CAP1BUFL -> -> 0 `i `uc ]
+[; ;Movement.c: 124: CAP2BUFH=0;
 "124
-[e ( _sprintf (1 , , (. , &U _buf :s 4C *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ]
-[; ;Movement.c: 125: LCD_String(buf);
+[e = _CAP2BUFH -> -> 0 `i `uc ]
+[; ;Movement.c: 125: CAP2BUFL=0;
 "125
-[e ( _LCD_String (1 &U _buf ]
-[; ;Movement.c: 128: turnRight(mL,mR, 100);
+[e = _CAP2BUFL -> -> 0 `i `uc ]
+[; ;Movement.c: 128: SendLCD(0b00000001,0);
 "128
-[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 129: _delay((unsigned long)((1)*(8000000/4000.0)));
+[e ( _SendLCD (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;Movement.c: 129: _delay((unsigned long)((50)*(8000000/4000000.0)));
 "129
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;Movement.c: 130: stop(mL,mR);
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;Movement.c: 130: SendLCD(0b00000010,0);
 "130
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 132: if (SensorResult[1]>DirectionFoundThreshold) {
+[e ( _SendLCD (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;Movement.c: 131: _delay((unsigned long)((2)*(8000000/4000.0)));
+"131
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Movement.c: 132: SetLine(1);
 "132
-[e $ ! > *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionFoundThreshold 425  ]
-{
-[; ;Movement.c: 133: RightFlag=1;
+[e ( _SetLine (1 -> -> 1 `i `uc ]
+[; ;Movement.c: 133: LCD_String("     ScanIR");
 "133
-[e = _RightFlag -> -> 1 `i `uc ]
+[e ( _LCD_String (1 -> :s 3C `*uc ]
+[; ;Movement.c: 134: SetLine(2);
 "134
-}
-[e :U 425 ]
-[; ;Movement.c: 134: }
-[; ;Movement.c: 136: if (SensorResult[0]>DirectionFoundThreshold) {
+[e ( _SetLine (1 -> -> 2 `i `uc ]
+[; ;Movement.c: 135: sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
+"135
+[e ( _sprintf (1 , , (. , &U _buf :s 4C *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ]
+[; ;Movement.c: 136: LCD_String(buf);
 "136
-[e $ ! > *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionFoundThreshold 426  ]
+[e ( _LCD_String (1 &U _buf ]
+[; ;Movement.c: 139: turnRight(mL,mR, 70);
+"139
+[e ( _turnRight (3 , , _mL _mR -> -> 70 `i `uc ]
+[; ;Movement.c: 140: _delay((unsigned long)((1)*(8000000/4000.0)));
+"140
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Movement.c: 142: if (SensorResult[1]>DirectionFoundThreshold) {
+"142
+[e $ ! > *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionFoundThreshold 426  ]
 {
-[; ;Movement.c: 137: LeftFlag=1;
-"137
-[e = _LeftFlag -> -> 1 `i `uc ]
-"138
+[; ;Movement.c: 143: RightFlag=1;
+"143
+[e = _RightFlag -> -> 1 `i `uc ]
+"144
 }
 [e :U 426 ]
-[; ;Movement.c: 138: }
-[; ;Movement.c: 141: if ((LeftFlag==1)||(RightFlag==1)) {
-"141
-[e $ ! || == -> _LeftFlag `i -> 1 `i == -> _RightFlag `i -> 1 `i 427  ]
+[; ;Movement.c: 144: }
+[; ;Movement.c: 146: if (SensorResult[0]>DirectionFoundThreshold) {
+"146
+[e $ ! > *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionFoundThreshold 427  ]
 {
-[; ;Movement.c: 142: TimeAboveThreshold++;
-"142
-[e ++ _TimeAboveThreshold -> -> 1 `i `uc ]
-"143
+[; ;Movement.c: 147: LeftFlag=1;
+"147
+[e = _LeftFlag -> -> 1 `i `uc ]
+"148
 }
 [e :U 427 ]
-[; ;Movement.c: 143: }
-[; ;Movement.c: 147: if ((LeftFlag==1)&&(RightFlag==1)) {
-"147
-[e $ ! && == -> _LeftFlag `i -> 1 `i == -> _RightFlag `i -> 1 `i 428  ]
-{
-[; ;Movement.c: 148: for (n=1; n<=(TimeAboveThreshold>>1); n++) {
-"148
-{
-[e = _n -> -> 1 `i `ui ]
-[e $U 432  ]
-[e :U 429 ]
-{
-[; ;Movement.c: 149: turnLeft(mL,mR, 100);
-"149
-[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 150: _delay((unsigned long)((1)*(8000000/4000.0)));
-"150
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;Movement.c: 151: stop(mL,mR);
+[; ;Movement.c: 148: }
+[; ;Movement.c: 151: if ((LeftFlag==1)||(RightFlag==1)) {
 "151
-[e ( _stop (2 , _mL _mR ]
+[e $ ! || == -> _LeftFlag `i -> 1 `i == -> _RightFlag `i -> 1 `i 428  ]
+{
+[; ;Movement.c: 152: TimeAboveThreshold++;
 "152
-}
-"148
-[e ++ _n -> -> 1 `i `ui ]
-[e :U 432 ]
-[e $ <= _n -> >> -> _TimeAboveThreshold `i -> 1 `i `ui 429  ]
-[e :U 430 ]
-"152
-}
-[; ;Movement.c: 152: }
-[; ;Movement.c: 153: return 2;
+[e ++ _TimeAboveThreshold -> -> 1 `i `uc ]
 "153
-[e ) -> -> 2 `i `uc ]
-[e $UE 420  ]
-"154
 }
 [e :U 428 ]
-[; ;Movement.c: 154: }
-[; ;Movement.c: 157: if ((LeftFlag==1)&&(RightFlag==0)) {
+[; ;Movement.c: 153: }
+[; ;Movement.c: 157: if ((LeftFlag==1)&&(RightFlag==1)) {
 "157
-[e $ ! && == -> _LeftFlag `i -> 1 `i == -> _RightFlag `i -> 0 `i 433  ]
+[e $ ! && == -> _LeftFlag `i -> 1 `i == -> _RightFlag `i -> 1 `i 429  ]
 {
-[; ;Movement.c: 158: return 2;
+[; ;Movement.c: 158: for (n=1; n<=(TimeAboveThreshold>>1); n++) {
 "158
-[e ) -> -> 2 `i `uc ]
-[e $UE 420  ]
+{
+[e = _n -> -> 1 `i `ui ]
+[e $U 433  ]
+[e :U 430 ]
+{
+[; ;Movement.c: 159: stop(mL,mR);
 "159
-}
-[e :U 433 ]
-"161
-}
-"103
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 424 ]
-[e $ <= _i -> _milliseconds `ui 421  ]
-[e :U 422 ]
-"161
-}
-[; ;Movement.c: 159: }
-[; ;Movement.c: 161: }
-[; ;Movement.c: 164: turnRight(mL,mR, 100);
-"164
-[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 165: delay_tenth_s(5);
-"165
-[e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
-[; ;Movement.c: 166: stop(mL,mR);
-"166
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 167: return -1;
-"167
-[e ) -> -U -> 1 `i `uc ]
-[e $UE 420  ]
-[; ;Movement.c: 168: }
+[; ;Movement.c: 160: turnLeft(mL,mR, 100);
+"160
+[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
+[; ;Movement.c: 161: _delay((unsigned long)((1)*(8000000/4000.0)));
+"161
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Movement.c: 162: stop(mL,mR);
+"162
+[e ( _stop (2 , _mL _mR ]
+"163
+}
+"158
+[e ++ _n -> -> 1 `i `ui ]
+[e :U 433 ]
+[e $ <= _n -> >> -> _TimeAboveThreshold `i -> 1 `i `ui 430  ]
+[e :U 431 ]
+"163
+}
+[; ;Movement.c: 163: }
+[; ;Movement.c: 164: return 2;
+"164
+[e ) -> -> 2 `i `uc ]
+[e $UE 421  ]
+"165
+}
+[e :U 429 ]
+[; ;Movement.c: 165: }
+[; ;Movement.c: 168: if ((LeftFlag==1)&&(RightFlag==0)) {
 "168
-[e :UE 420 ]
+[e $ ! && == -> _LeftFlag `i -> 1 `i == -> _RightFlag `i -> 0 `i 434  ]
+{
+[; ;Movement.c: 169: stop(mL,mR);
+"169
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 170: return 2;
+"170
+[e ) -> -> 2 `i `uc ]
+[e $UE 421  ]
+"171
+}
+[e :U 434 ]
+"173
+}
+"114
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 425 ]
+[e $ <= _i -> _milliseconds `ui 422  ]
+[e :U 423 ]
+"173
+}
+[; ;Movement.c: 171: }
+[; ;Movement.c: 173: }
+[; ;Movement.c: 176: turnRight(mL,mR, 100);
+"176
+[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
+[; ;Movement.c: 177: delay_tenth_s(5);
+"177
+[e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
+[; ;Movement.c: 178: stop(mL,mR);
+"178
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 179: return -1;
+"179
+[e ) -> -U -> 1 `i `uc ]
+[e $UE 421  ]
+[; ;Movement.c: 180: }
+"180
+[e :UE 421 ]
 }
 [p f _sprintf 8421508 ]
 [a 2C 32 32 32 32 32 37 48 52 100 44 32 37 48 52 100 0 ]

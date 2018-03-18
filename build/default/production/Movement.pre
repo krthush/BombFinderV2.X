@@ -4660,6 +4660,8 @@ unsigned int grabLeftIR(void);
 void enableSensor(char sensor, char status);
 
 # 11 "Movement.h"
+void initTimer(void);
+
 void delay_s(char seconds);
 
 void delay_tenth_s(char tenth_seconds);
@@ -4779,7 +4781,22 @@ void SendLCD(unsigned char Byte, char type);
 void SetLine (char line);
 void LCD_String(char *string);
 
-# 12 "Movement.c"
+# 8 "Movement.c"
+void initTimer(void){
+
+T0CONbits.TMR0ON=0;
+T0CONbits.T016BIT=0;
+T0CONbits.T0CS=0;
+T0CONbits.PSA=0;
+T0CONbits.T0PS=0b111;
+
+
+INTCONbits.TMR0IE=0;
+}
+
+
+
+
 void delay_s(char seconds) {
 unsigned int i=0;
 for (i=1; i<=seconds*20; i++) {
@@ -4797,7 +4814,7 @@ _delay((unsigned long)((50)*(8000000/4000.0)));
 }
 }
 
-# 34
+# 45
 char ScanIR(struct DC_motor *mL, struct DC_motor *mR, unsigned char *Move, char *MoveTime, char *MoveType){
 
 
@@ -4855,7 +4872,7 @@ unsigned char TimeAboveThreshold=0;
 
 const unsigned int DirectionFoundThreshold=4000;
 
-# 98
+# 109
 turnLeft(mL,mR, 100);
 delay_tenth_s(5);
 stop(mL,mR);
@@ -4886,9 +4903,8 @@ sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
 LCD_String(buf);
 
 
-turnRight(mL,mR, 100);
+turnRight(mL,mR, 70);
 _delay((unsigned long)((1)*(8000000/4000.0)));
-stop(mL,mR);
 
 if (SensorResult[1]>DirectionFoundThreshold) {
 RightFlag=1;
@@ -4907,6 +4923,7 @@ TimeAboveThreshold++;
 
 if ((LeftFlag==1)&&(RightFlag==1)) {
 for (n=1; n<=(TimeAboveThreshold>>1); n++) {
+stop(mL,mR);
 turnLeft(mL,mR, 100);
 _delay((unsigned long)((1)*(8000000/4000.0)));
 stop(mL,mR);
@@ -4916,6 +4933,7 @@ return 2;
 
 
 if ((LeftFlag==1)&&(RightFlag==0)) {
+stop(mL,mR);
 return 2;
 }
 

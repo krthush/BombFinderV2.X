@@ -7,7 +7,7 @@
 
 void initTimer(void){
     //timer setup
-    T0CONbits.TMR0ON=0; //turn off timer0
+    T0CONbits.TMR0ON=0; // turn off timer0
     T0CONbits.T016BIT=0; // 16-bit mode
     T0CONbits.T0CS=0; // use internal clock (Fosc/4)
     T0CONbits.PSA=0; // disable prescaler
@@ -136,9 +136,8 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         LCD_String(buf);
         
          // Turn Right
-        turnRight(mL,mR, 100);
+        turnRight(mL,mR, 60);
         __delay_ms(1);
-        stop(mL,mR);
         
         if (SensorResult[1]>DirectionFoundThreshold) {
             RightFlag=1;
@@ -157,6 +156,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         // half the length of the FlagCounter and go!
         if ((LeftFlag==1)&&(RightFlag==1)) {
             for (n=1; n<=(TimeAboveThreshold>>1); n++) {
+                stop(mL,mR);
                 turnLeft(mL,mR, 100);
                 __delay_ms(1);
                 stop(mL,mR);
@@ -166,6 +166,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         
         // Signal was only found once, just go in that direction roughly
         if ((LeftFlag==1)&&(RightFlag==0)) {
+            stop(mL,mR);
             return 2; // Direction of bomb is roughly ahead
         }
         

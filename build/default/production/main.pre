@@ -4661,6 +4661,8 @@ void Serial_String(char *string);
 unsigned char VerifySignal(unsigned char *Signal);
 
 # 11 "Movement.h"
+void initTimer(void);
+
 void delay_s(char seconds);
 
 void delay_tenth_s(char tenth_seconds);
@@ -4788,7 +4790,7 @@ void LCD_String(char *string);
 
 
 # 8 "main.c"
-#pragma config OSC = IRCIO
+#pragma config MCLRE=OFF, LVP=OFF, OSC = IRCIO, WDTEN = OFF
 
 
 
@@ -4910,8 +4912,13 @@ _delay((unsigned long)((2)*(8000000/4000.0)));
 SetLine(1);
 LCD_String("      Inert Mode");
 SetLine(2);
+if (RFID_Read) {
+LCD_String(Message);
+} else {
 sprintf(buf,"      %04d, %04d",SensorResult[0],SensorResult[1]);
 LCD_String(buf);
+}
+
 
 break;
 
@@ -4919,6 +4926,7 @@ case 0 :
 
 
 initMotorPWM();
+initTimer();
 initRFID();
 initLCD();
 initIR();
@@ -4936,7 +4944,7 @@ break;
 
 case 1 :
 
-# 164
+# 170
 SetLine(1);
 LCD_String("Searching");
 
@@ -5016,7 +5024,7 @@ SetLine(2);
 LCD_String("Going Home");
 stop(&mL,&mR);
 
-# 259
+# 265
 break;
 }
 }

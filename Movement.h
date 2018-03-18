@@ -8,7 +8,7 @@
 #ifndef MOVEMENT_H
 #define	MOVEMENT_H
 //Function to initialise timer0 registers for ScanWithRange
-void initTimer(void)
+void initTimer(void);
 // Function that delays for given no. of seconds
 void delay_s(char seconds);
 // Function similar to delay in seconds, but for a 1/10th of a second

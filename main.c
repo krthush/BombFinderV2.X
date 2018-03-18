@@ -145,7 +145,7 @@ void main(void){
                
                 //Initialise EVERYTHING
                 initMotorPWM();  //setup PWM registers
-                initTimers();
+                initTimer();
                 initRFID();
                 initLCD();
                 initIR();
