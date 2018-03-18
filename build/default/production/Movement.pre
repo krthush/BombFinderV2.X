@@ -4940,7 +4940,7 @@ return 2;
 
 
 turnRight(mL,mR, 100);
-delay_tenth_s(5);
+delay_tenth_s(2);
 stop(mL,mR);
 return -1;
 }

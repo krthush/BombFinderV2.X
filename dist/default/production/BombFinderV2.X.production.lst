@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.35 build -356382666 
-                                                                                               Sun Mar 18 17:38:58 2018
+                                                                                               Sun Mar 18 18:13:16 2018
 
 Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
      1                           	processor	18F4331
@@ -3010,8 +3010,8 @@ Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080
   3004  000DF4  6F6B               	movwf	turnRight@power& (0+255),b
   3005  000DF6  EC5C  F00B         	call	_turnRight	;wreg free
   3006                           
-  3007                           ;Movement.c: 176: delay_tenth_s(5);
-  3008  000DFA  0E05               	movlw	5
+  3007                           ;Movement.c: 176: delay_tenth_s(2);
+  3008  000DFA  0E02               	movlw	2
   3009  000DFC  EC9A  F00B         	call	_delay_tenth_s
   3010                           
   3011                           ;Movement.c: 177: stop(mL,mR);
@@ -7040,7 +7040,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.35 build -356382666 
-Symbol Table                                                                                   Sun Mar 18 17:38:58 2018
+Symbol Table                                                                                   Sun Mar 18 18:13:16 2018
 
                         ?_grabRightIR 0024                                     _i 003A  
                   fullSpeedBack@power 006B                                    l35 0EF4  

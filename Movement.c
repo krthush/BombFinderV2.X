@@ -186,7 +186,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
     
     // No clear signal found, rotate and move a bit and hope to find it!
     turnRight(mL,mR, 100);
-    delay_tenth_s(5);
+    delay_tenth_s(2);
     stop(mL,mR);
     return -1; // No clear signal found
 }
