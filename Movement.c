@@ -147,16 +147,12 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
         sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
         LCD_String(buf);
         
-        if (RightFlag==0){
-            if (SensorResult[1]>DirectionFoundThreshold) {
-                RightFlag= (TMR0H<<8)+TMR0L;
-            }
+        if (SensorResult[1]>DirectionFoundThreshold) {
+            RightFlag= (TMR0H<<8)+TMR0L;
         }
         
-        if (LeftFlag==0){
-            if (SensorResult[0]>DirectionFoundThreshold) {
-                LeftFlag=(TMR0H<<8)+TMR0L;
-            }
+        if (SensorResult[0]>DirectionFoundThreshold) {
+            LeftFlag=(TMR0H<<8)+TMR0L;
         }
         
         // Increment counter if any of the IR sensors has seen the beacon

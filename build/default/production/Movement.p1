@@ -3641,12 +3641,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 149: LCD_String(buf);
 "149
 [e ( _LCD_String (1 &U _buf ]
-[; ;Movement.c: 151: if (RightFlag==0){
+[; ;Movement.c: 151: if (SensorResult[1]>DirectionFoundThreshold) {
 "151
+<<<<<<< HEAD
 [e $ ! == _RightFlag -> -> 0 `i `ui 330  ]
+=======
+[e $ ! > *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionFoundThreshold 426  ]
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
 {
-[; ;Movement.c: 152: if (SensorResult[1]>DirectionFoundThreshold) {
+[; ;Movement.c: 152: RightFlag= (TMR0H<<8)+TMR0L;
 "152
+<<<<<<< HEAD
 [e $ ! > *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionFoundThreshold 331  ]
 {
 [; ;Movement.c: 153: RightFlag= (TMR0H<<8)+TMR0L;
@@ -3667,10 +3672,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 158: if (SensorResult[0]>DirectionFoundThreshold) {
 "158
 [e $ ! > *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionFoundThreshold 333  ]
+=======
+[e = _RightFlag -> + << -> _TMR0H `i -> 8 `i -> _TMR0L `i `ui ]
+"153
+}
+[e :U 426 ]
+[; ;Movement.c: 153: }
+[; ;Movement.c: 155: if (SensorResult[0]>DirectionFoundThreshold) {
+"155
+[e $ ! > *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionFoundThreshold 427  ]
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
 {
-[; ;Movement.c: 159: LeftFlag=(TMR0H<<8)+TMR0L;
-"159
+[; ;Movement.c: 156: LeftFlag=(TMR0H<<8)+TMR0L;
+"156
 [e = _LeftFlag -> + << -> _TMR0H `i -> 8 `i -> _TMR0L `i `ui ]
+<<<<<<< HEAD
 "160
 }
 [e :U 333 ]
@@ -3686,29 +3702,50 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 171: if (RightFlag>0) {
 "171
 [e $ ! > _RightFlag -> -> 0 `i `ui 335  ]
+=======
+"157
+}
+[e :U 427 ]
+[; ;Movement.c: 157: }
+[; ;Movement.c: 164: if (LeftFlag>0) {
+"164
+[e $ ! > _LeftFlag -> -> 0 `i `ui 428  ]
 {
-[; ;Movement.c: 172: TimeAboveThreshold = LeftFlag - RightFlag;
-"172
+[; ;Movement.c: 167: if (RightFlag>0) {
+"167
+[e $ ! > _RightFlag -> -> 0 `i `ui 429  ]
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
+{
+[; ;Movement.c: 168: TimeAboveThreshold = LeftFlag - RightFlag;
+"168
 [e = _TimeAboveThreshold -> - _LeftFlag _RightFlag `uc ]
-[; ;Movement.c: 173: TMR0L = 0;
-"173
+[; ;Movement.c: 169: TMR0L = 0;
+"169
 [e = _TMR0L -> -> 0 `i `uc ]
-[; ;Movement.c: 174: TMR0H = 0;
-"174
+[; ;Movement.c: 170: TMR0H = 0;
+"170
 [e = _TMR0H -> -> 0 `i `uc ]
-[; ;Movement.c: 175: stop(mL,mR);
-"175
+[; ;Movement.c: 171: stop(mL,mR);
+"171
 [e ( _stop (2 , _mL _mR ]
+<<<<<<< HEAD
 [; ;Movement.c: 176: while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
 "176
 [e $U 336  ]
 [e :U 337 ]
+=======
+[; ;Movement.c: 172: while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
+"172
+[e $U 430  ]
+[e :U 431 ]
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
 {
-[; ;Movement.c: 177: turnLeft(mL,mR, power);
-"177
+[; ;Movement.c: 173: turnLeft(mL,mR, power);
+"173
 [e ( _turnLeft (3 , , _mL _mR _power ]
-"178
+"174
 }
+<<<<<<< HEAD
 [e :U 336 ]
 "176
 [e $ < + << -> _TMR0H `i -> 8 `i -> _TMR0L `i >> -> _TimeAboveThreshold `i -> 1 `i 337  ]
@@ -3716,32 +3753,51 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 178: }
 [; ;Movement.c: 179: T0CONbits.TMR0ON=0;
 "179
+=======
+[e :U 430 ]
+"172
+[e $ < + << -> _TMR0H `i -> 8 `i -> _TMR0L `i >> -> _TimeAboveThreshold `i -> 1 `i 431  ]
+[e :U 432 ]
+[; ;Movement.c: 174: }
+[; ;Movement.c: 175: T0CONbits.TMR0ON=0;
+"175
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
 [e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;Movement.c: 180: stop(mL,mR);
-"180
+[; ;Movement.c: 176: stop(mL,mR);
+"176
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 182: *MoveTimeEntry = RightFlag + (TimeAboveThreshold>>1);
-"182
+[; ;Movement.c: 178: *MoveTimeEntry = RightFlag + (TimeAboveThreshold>>1);
+"178
 [e = *U _MoveTimeEntry -> + _RightFlag -> >> -> _TimeAboveThreshold `i -> 1 `i `ui `i ]
-[; ;Movement.c: 183: return 2;
-"183
+[; ;Movement.c: 179: return 2;
+"179
 [e ) -> -> 2 `i `uc ]
+<<<<<<< HEAD
 [e $UE 325  ]
 "184
 }
 [; ;Movement.c: 184: } else {
 [e $U 339  ]
 [e :U 335 ]
+=======
+[e $UE 421  ]
+"180
+}
+[; ;Movement.c: 180: } else {
+[e $U 433  ]
+[e :U 429 ]
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
 {
-[; ;Movement.c: 186: T0CONbits.TMR0ON=0;
-"186
+[; ;Movement.c: 182: T0CONbits.TMR0ON=0;
+"182
 [e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;Movement.c: 187: stop(mL,mR);
-"187
+[; ;Movement.c: 183: stop(mL,mR);
+"183
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 188: return 2;
-"188
+[; ;Movement.c: 184: return 2;
+"184
 [e ) -> -> 2 `i `uc ]
+<<<<<<< HEAD
 [e $UE 325  ]
 "189
 }
@@ -3754,10 +3810,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 192: if (*RFID_Read==1) {
 "192
 [e $ ! == -> *U _RFID_Read `i -> 1 `i 340  ]
+=======
+[e $UE 421  ]
+"185
+}
+[e :U 433 ]
+"186
+}
+[e :U 428 ]
+[; ;Movement.c: 185: }
+[; ;Movement.c: 186: }
+[; ;Movement.c: 188: if (*RFID_Read==1) {
+"188
+[e $ ! == -> *U _RFID_Read `i -> 1 `i 434  ]
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
 {
-[; ;Movement.c: 193: return 2;
-"193
+[; ;Movement.c: 189: return 2;
+"189
 [e ) -> -> 2 `i `uc ]
+<<<<<<< HEAD
 [e $UE 325  ]
 "194
 }
@@ -3770,25 +3841,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ <= _i -> _milliseconds `ui 326  ]
 [e :U 327 ]
 "195
+=======
+[e $UE 421  ]
+"190
 }
-[; ;Movement.c: 194: }
-[; ;Movement.c: 195: }
-[; ;Movement.c: 198: turnRight(mL,mR, 100);
-"198
+[e :U 434 ]
+"191
+}
+"126
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 425 ]
+[e $ <= _i -> _milliseconds `ui 422  ]
+[e :U 423 ]
+"191
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
+}
+[; ;Movement.c: 190: }
+[; ;Movement.c: 191: }
+[; ;Movement.c: 194: turnRight(mL,mR, 100);
+"194
 [e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 199: delay_tenth_s(2);
-"199
+[; ;Movement.c: 195: delay_tenth_s(2);
+"195
 [e ( _delay_tenth_s (1 -> -> 2 `i `uc ]
-[; ;Movement.c: 200: stop(mL,mR);
-"200
+[; ;Movement.c: 196: stop(mL,mR);
+"196
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 201: return -1;
-"201
+[; ;Movement.c: 197: return -1;
+"197
 [e ) -> -U -> 1 `i `uc ]
+<<<<<<< HEAD
 [e $UE 325  ]
 [; ;Movement.c: 202: }
 "202
 [e :UE 325 ]
+=======
+[e $UE 421  ]
+[; ;Movement.c: 198: }
+"198
+[e :UE 421 ]
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
 }
 [p f _sprintf 8421508 ]
 [a 2C 32 32 32 32 32 37 48 52 100 44 32 37 48 52 100 0 ]

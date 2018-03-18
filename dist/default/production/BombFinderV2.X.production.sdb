@@ -649,11 +649,19 @@
 "98
 [v ScanWithRange@buf buf `[40]uc  1 a 40 43 ]
 "95
+<<<<<<< HEAD
 [v ScanWithRange@SensorResult SensorResult `[2]ui  1 a 4 91 ]
+=======
+[v ScanWithRange@SensorResult SensorResult `[2]ui  1 a 4 78 ]
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
 "97
 [v ScanWithRange@RightFlag RightFlag `ui  1 a 2 97 ]
 "96
+<<<<<<< HEAD
 [v ScanWithRange@LeftFlag LeftFlag `ui  1 a 2 95 ]
+=======
+[v ScanWithRange@LeftFlag LeftFlag `ui  1 a 2 75 ]
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
 "103
 [v ScanWithRange@DirectionFoundThreshold DirectionFoundThreshold `Cui  1 a 2 87 ]
 "99
@@ -661,7 +669,11 @@
 "100
 [v ScanWithRange@n n `ui  1 a 2 83 ]
 "101
+<<<<<<< HEAD
 [v ScanWithRange@TimeAboveThreshold TimeAboveThreshold `uc  1 a 1 90 ]
+=======
+[v ScanWithRange@TimeAboveThreshold TimeAboveThreshold `uc  1 a 1 77 ]
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
 "105
 [v ScanWithRange@power power `Cuc  1 a 1 89 ]
 [s S71 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyLowByte 2 2 `*.39uc 1 dutyHighByte 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
@@ -670,10 +682,17 @@
 [v ScanWithRange@mR mR `*.39S71  1 p 2 30 ]
 [v ScanWithRange@milliseconds milliseconds `i  1 p 2 32 ]
 "92
+<<<<<<< HEAD
 [v ScanWithRange@MoveTimeEntry MoveTimeEntry `*.39i  1 p 2 34 ]
 [v ScanWithRange@RFID_Read RFID_Read `*.39uc  1 p 2 36 ]
 [v ScanWithRange@F3555 F3555 `[2]ui  1 s 4 F3555 ]
 "202
+=======
+[v ScanWithRange@MoveTimeEntry MoveTimeEntry `*.39i  1 p 2 19 ]
+[v ScanWithRange@RFID_Read RFID_Read `*.39uc  1 p 2 21 ]
+[v ScanWithRange@F3894 F3894 `[2]ui  1 s 4 F3894 ]
+"198
+>>>>>>> 31f55633f6aeb83b3a98e66242e5fd1fd320f202
 } 0
 "98 C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
 [v _turnRight turnRight `(v  1 e 1 0 ]

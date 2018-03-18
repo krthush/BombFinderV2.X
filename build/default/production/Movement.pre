@@ -4662,19 +4662,15 @@ SetLine(2);
 sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
 LCD_String(buf);
 
-if (RightFlag==0){
 if (SensorResult[1]>DirectionFoundThreshold) {
 RightFlag= (TMR0H<<8)+TMR0L;
 }
-}
 
-if (LeftFlag==0){
 if (SensorResult[0]>DirectionFoundThreshold) {
 LeftFlag=(TMR0H<<8)+TMR0L;
 }
-}
 
-# 168
+# 164
 if (LeftFlag>0) {
 
 
