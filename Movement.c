@@ -39,18 +39,17 @@ void delay_tenth_s(char tenth_seconds) {
 
 // Simple search routine that compares the signal strength of the left IR and
 // right IR readers to figure out the direction of the IR beacon.
-// Function can be toggled to be:
-// - continuous, the drone moves while scanning until there is a change
-// - stop n scan, the drone stops every time it scans
+// The drone moves while scanning until there is a change in which case
+// it switches to ScanWithRange through the main loop.
 char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
     char buf[40]; // Buffer for characters for LCD
     // USERVARIABLE TOLERANCES
-    // minimum signal strength required for both sensors to be considered 
-    // directly aimed at beacon while moving
-    const unsigned int DirectionMoveThreshold=2500; 
+    const unsigned int DirectionMoveThreshold=2500; // Minimum signal strength 
+    // required for both sensors to be considered directly aimed at beacon
+    // while moving.
     
     // Scan Data
     SensorResult[0]=grabLeftIR();
@@ -85,9 +84,18 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
     }
 }
 
-// NEW ROUTINE: This route scans given range in very small time increments
-// INPROG
-char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, 
+// Scans a range turning RIGHT for a number of loops, make sure the total time
+// for this scan is UNDER 8 seconds or timer1 within ScanWithRange will fail.
+// Begins by flicking to the left so that it is more likely to pick up the
+// beacon if it has just passed it.
+// It compares the IR readings from both sensors: if both pick up signal it
+// finds midpoint, otherwise it uses just one of the signals as a guess.
+// Once accurate direction is found, function will return DirectionFound=2, 
+// which switches the program to move mode.
+// If no accurate signal is found it spins in an adjusted manoeuvre such that
+// the robot spins out a expanding spiral path
+//  - making sure the signal is always found.
+char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops, 
         int *MoveTimeEntry, char *RFID_Read) {
     
     // Initialise variable that is used to judge the strength of signals
@@ -100,16 +108,10 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
     unsigned char TimeAboveThreshold=0;
     // USERVARIABLE TOLERANCES
     const unsigned int DirectionFoundThreshold=3000; // Minimum signal strength 
-    //required for sensor to be considered directly aimed at beacon.
-    const unsigned char power=40;
+    // required for sensor to be considered directly aimed at beacon.
+    const unsigned char power=40; // Adjusts the speed of the turning, currently
+    // seems to lose clarity past 43ish.
     
-    // Flip right before starting scan from left side
-//    for (i=1; i<=(milliseconds>>1); i++) {
-//        turnRight(mL,mR);
-//        __delay_ms(1);
-//        stop(mL,mR);
-//    }
-    // THIS CAN BE MADE BETTER
     turnLeft(mL,mR, 100);
     delay_tenth_s(3);
     stop(mL,mR);
@@ -122,7 +124,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
     TMR0H = 0;
     T0CONbits.TMR0ON=1; // turn on timer0
     // This loop is turning Right, while scanning
-    for (i=1; i<=milliseconds; i++) {
+    for (i=1; i<=loops; i++) {
         
         // Scan Data
         SensorResult[0]=grabLeftIR();

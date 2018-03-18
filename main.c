@@ -62,7 +62,13 @@ void main(void){
     unsigned int SensorResult[2]={0,0};
     char buf[40]; // Buffer for characters for LCD
     // USERVARIABLE TOLERANCES
-    unsigned char ScanAngle=60; //MAX VALUE: 255, P.S. This needs to be set slightly over 360 for spiral to work
+    unsigned char ScanAngle=60; //MAX VALUE: 255, P.S. This currently actually
+    // determines the number of loops the bot scans while spinning, make sure
+    // the total time for this scan is UNDER 8 seconds or Timer0 within
+    // ScanWithRange will fail.
+    // Also this should be calibrated for the spiral effect -> if the robot
+    // never finds a signal it spirals out from its location making sure it 
+    // gets close enough to find it.
     
     // Enable general interrupt stuff
     INTCONbits.GIEH=1; // Global Interrupt Enable bit
