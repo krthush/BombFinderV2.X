@@ -178,6 +178,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
                 }
                 T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
+                //Let's return the net time spent turning left 
                 *MoveTimeEntry = RightFlag + (TimeAboveThreshold>>1);
                 return 2; // Direction of bomb is directly ahead
             } else {
