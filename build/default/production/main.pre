@@ -4597,7 +4597,7 @@ char buf[40];
 
 unsigned char ScanAngle=60;
 
-
+# 76
 INTCONbits.GIEH=1;
 INTCONbits.GIEL=1;
 INTCONbits.PEIE=1;
@@ -4639,7 +4639,7 @@ while(1){
 switch (mode) {
 case -1:
 
-# 116
+# 122
 stop(&mL, &mR);
 RFID_Read=0;
 
@@ -4694,7 +4694,7 @@ break;
 
 case 1 :
 
-# 174
+# 180
 SetLine(1);
 LCD_String("Searching");
 

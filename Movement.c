@@ -95,7 +95,7 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
 // If no accurate signal is found it spins in an adjusted manoeuvre such that
 // the robot spins out a expanding spiral path
 //  - making sure the signal is always found.
-char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
+char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
         int *MoveTime, char *Move, char *MoveType, char *RFID_Read) {
     
     // Initialise variable that is used to judge the strength of signals
@@ -120,8 +120,8 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
 //    }
     // THIS CAN BE MADE BETTER
     *Move++;
-    *(MoveType[*Move]) = 2;
-    *(MoveTime[*Move]) = -3;
+    (MoveType[*Move]) = 2;
+    (MoveTime[*Move]) = -3;
     
     turnLeft(mL,mR, 100);
     delay_tenth_s(3);
@@ -188,8 +188,8 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
                 stop(mL,mR);
                 //Let's return the net time spent turning left 
                 *Move++;  
-                *(MoveType[Move]) = 1;
-                *(MoveTime[Move]) = RightFlag + (TimeAboveThreshold>>1);
+                (MoveType[*Move]) = 1;
+                (MoveTime[*Move]) = RightFlag + (TimeAboveThreshold>>1);
                 
                 return 2; // Direction of bomb is directly ahead
             } else {
@@ -207,8 +207,8 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
     
     // No clear signal found, rotate and move a bit and hope to find it!
     *Move++;
-    *(MoveType[*Move]) = 2;
-    *(MoveTime[*Move]) = -2;
+    (MoveType[*Move]) = 2;
+    (MoveTime[*Move]) = -2;
     turnRight(mL,mR, 100);
     delay_tenth_s(2);
     stop(mL,mR);
