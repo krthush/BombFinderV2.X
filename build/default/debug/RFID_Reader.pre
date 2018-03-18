@@ -4691,9 +4691,9 @@ hexByte = (Signal[i]<<8) + Signal[i+1];
 checksum = checksum ^ hexByte;
 }
 
-
+if ((checksum==((Signal[11]<<8)+Signal[12]))){
 return 1;
-
-
-
+} else{
+return 0;
+}
 }

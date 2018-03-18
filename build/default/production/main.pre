@@ -5027,10 +5027,8 @@ SetLine(2);
 LCD_String("Going Home");
 stop(&mL,&mR);
 
-# 265
-fullSpeedBack(&mL,&mR, 100);
-delay_s(3);
-stop(&mL, &mR);
+# 264
+mode=-1;
 
 break;
 }

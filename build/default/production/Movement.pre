@@ -4943,6 +4943,7 @@ turnLeft(mL,mR, power);
 }
 T0CONbits.TMR0ON=0;
 stop(mL,mR);
+
 *MoveTimeEntry = RightFlag + (TimeAboveThreshold>>1);
 return 2;
 } else {

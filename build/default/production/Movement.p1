@@ -4054,74 +4054,74 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 180: stop(mL,mR);
 "180
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 181: *MoveTimeEntry = RightFlag + (TimeAboveThreshold>>1);
-"181
-[e = *U _MoveTimeEntry -> + _RightFlag -> >> -> _TimeAboveThreshold `i -> 1 `i `ui `i ]
-[; ;Movement.c: 182: return 2;
+[; ;Movement.c: 182: *MoveTimeEntry = RightFlag + (TimeAboveThreshold>>1);
 "182
+[e = *U _MoveTimeEntry -> + _RightFlag -> >> -> _TimeAboveThreshold `i -> 1 `i `ui `i ]
+[; ;Movement.c: 183: return 2;
+"183
 [e ) -> -> 2 `i `uc ]
 [e $UE 421  ]
-"183
+"184
 }
-[; ;Movement.c: 183: } else {
+[; ;Movement.c: 184: } else {
 [e $U 435  ]
 [e :U 431 ]
 {
-[; ;Movement.c: 185: T0CONbits.TMR0ON=0;
-"185
-[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;Movement.c: 186: stop(mL,mR);
+[; ;Movement.c: 186: T0CONbits.TMR0ON=0;
 "186
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 187: return 2;
+[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
+[; ;Movement.c: 187: stop(mL,mR);
 "187
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 188: return 2;
+"188
 [e ) -> -> 2 `i `uc ]
 [e $UE 421  ]
-"188
-}
-[e :U 435 ]
 "189
 }
+[e :U 435 ]
+"190
+}
 [e :U 430 ]
-[; ;Movement.c: 188: }
 [; ;Movement.c: 189: }
-[; ;Movement.c: 191: if (*RFID_Read==1) {
-"191
+[; ;Movement.c: 190: }
+[; ;Movement.c: 192: if (*RFID_Read==1) {
+"192
 [e $ ! == -> *U _RFID_Read `i -> 1 `i 436  ]
 {
-[; ;Movement.c: 192: return 2;
-"192
+[; ;Movement.c: 193: return 2;
+"193
 [e ) -> -> 2 `i `uc ]
 [e $UE 421  ]
-"193
+"194
 }
 [e :U 436 ]
-"194
+"195
 }
 "126
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 425 ]
 [e $ <= _i -> _milliseconds `ui 422  ]
 [e :U 423 ]
-"194
+"195
 }
-[; ;Movement.c: 193: }
 [; ;Movement.c: 194: }
-[; ;Movement.c: 197: turnRight(mL,mR, 100);
-"197
-[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 198: delay_tenth_s(2);
+[; ;Movement.c: 195: }
+[; ;Movement.c: 198: turnRight(mL,mR, 100);
 "198
-[e ( _delay_tenth_s (1 -> -> 2 `i `uc ]
-[; ;Movement.c: 199: stop(mL,mR);
+[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
+[; ;Movement.c: 199: delay_tenth_s(2);
 "199
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 200: return -1;
+[e ( _delay_tenth_s (1 -> -> 2 `i `uc ]
+[; ;Movement.c: 200: stop(mL,mR);
 "200
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 201: return -1;
+"201
 [e ) -> -U -> 1 `i `uc ]
 [e $UE 421  ]
-[; ;Movement.c: 201: }
-"201
+[; ;Movement.c: 202: }
+"202
 [e :UE 421 ]
 }
 [p f _sprintf 8421508 ]

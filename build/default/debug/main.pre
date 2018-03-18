@@ -4675,7 +4675,7 @@ int *MoveTime, char *MoveType);
 
 
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
-int *MoveTime, char *RFID_Read, char *mode);
+int *MoveTime, char *RFID_Read);
 
 # 15 "IR_Reading.h"
 void initIR(void);
@@ -4799,7 +4799,7 @@ void LCD_String(char *string);
 volatile unsigned char ReceivedString[16];
 volatile unsigned char i=0;
 volatile unsigned char RFID_Read=0;
-volatile char mode=0;
+volatile signed char mode=0;
 
 
 void interrupt low_priority InterruptHandlerLow ()
@@ -4950,10 +4950,7 @@ case 1 :
 SetLine(1);
 LCD_String("Searching");
 
-if (DirectionFound==-2) {
-
-
-} else if (DirectionFound==-1) {
+if (DirectionFound==-1) {
 
 
 
@@ -4966,7 +4963,7 @@ MoveType[Move]=0;
 } else if (DirectionFound==0) {
 
 DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
-&MoveTime[Move], &RFID_Read, &mode);
+&MoveTime[Move], &RFID_Read);
 MoveType[Move]=1;
 } else if (DirectionFound==1) {
 
@@ -5030,7 +5027,9 @@ SetLine(2);
 LCD_String("Going Home");
 stop(&mL,&mR);
 
-# 269
+# 264
+mode=-1;
+
 break;
 }
 }

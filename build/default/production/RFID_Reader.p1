@@ -3748,10 +3748,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 "68
 }
 [; ;RFID_Reader.c: 68: }
+[; ;RFID_Reader.c: 70: if ((checksum==((Signal[11]<<8)+Signal[12]))){
+"70
+[e $ ! == -> _checksum `i + << -> *U + _Signal * -> -> 11 `i `x -> -> # *U _Signal `i `x `i -> 8 `i -> *U + _Signal * -> -> 12 `i `x -> -> # *U _Signal `i `x `i 422  ]
+{
 [; ;RFID_Reader.c: 71: return 1;
 "71
 [e ) -> -> 1 `i `uc ]
 [e $UE 418  ]
+"72
+}
+[; ;RFID_Reader.c: 72: } else{
+[e $U 423  ]
+[e :U 422 ]
+{
+[; ;RFID_Reader.c: 73: return 0;
+"73
+[e ) -> -> 0 `i `uc ]
+[e $UE 418  ]
+"74
+}
+[e :U 423 ]
+[; ;RFID_Reader.c: 74: }
 [; ;RFID_Reader.c: 75: }
 "75
 [e :UE 418 ]

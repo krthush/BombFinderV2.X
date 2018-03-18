@@ -77,8 +77,6 @@
 [v _main main `(v  1 e 0 0 ]
 "8 H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
 [v _initTimer initTimer `(v  1 e 0 0 ]
-"23
-[v _delay_s delay_s `(v  1 e 0 0 ]
 "32
 [v _delay_tenth_s delay_tenth_s `(v  1 e 0 0 ]
 [v i2_delay_tenth_s delay_tenth_s `(v  1 e 0 0 ]
@@ -685,7 +683,7 @@
 [v main@ScanAngle ScanAngle `uc  1 a 1 86 ]
 "59
 [v main@F3897 F3897 `[2]ui  1 s 4 F3897 ]
-"272
+"269
 } 0
 "8 H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
 [v _initTimer initTimer `(v  1 e 0 0 ]
@@ -731,26 +729,15 @@
 [v enableSensor@sensor sensor `uc  1 a 1 36 ]
 "113
 } 0
-"23 H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
-[v _delay_s delay_s `(v  1 e 0 0 ]
-{
-[v delay_s@seconds seconds `uc  1 a 1 wreg ]
-"24
-[v delay_s@i i `ui  1 a 2 37 ]
-"23
-[v delay_s@seconds seconds `uc  1 a 1 wreg ]
-[v delay_s@seconds seconds `uc  1 a 1 36 ]
-"29
-} 0
 "55 H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
 [v _VerifySignal VerifySignal `(uc  1 e 1 0 ]
 {
 "57
-[v VerifySignal@hexByte hexByte `ui  1 a 2 44 ]
+[v VerifySignal@hexByte hexByte `ui  1 a 2 43 ]
 "58
 [v VerifySignal@i i `uc  1 a 1 46 ]
 "56
-[v VerifySignal@checksum checksum `uc  1 a 1 43 ]
+[v VerifySignal@checksum checksum `uc  1 a 1 45 ]
 "55
 [v VerifySignal@Signal Signal `*.39uc  1 p 2 35 ]
 "75
@@ -785,7 +772,7 @@
 [v ScanWithRange@MoveTimeEntry MoveTimeEntry `*.39i  1 p 2 19 ]
 [v ScanWithRange@RFID_Read RFID_Read `*.39uc  1 p 2 21 ]
 [v ScanWithRange@F3894 F3894 `[2]ui  1 s 4 F3894 ]
-"201
+"202
 } 0
 "98 H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
 [v _turnRight turnRight `(v  1 e 0 0 ]
