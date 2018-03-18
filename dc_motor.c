@@ -84,35 +84,35 @@ void stop(struct DC_motor *mL, struct DC_motor *mR)
 
 //function to make the robot turn left
 // PLEASE NOTE: stop(motors) needs to called be correct use of this, WHY?!
-void turnLeft(struct DC_motor *mL, struct DC_motor *mR)
+void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
     stop(mL, mR);
 	//remember to change the power gradually
     mL->direction=0;
     mR->direction=1;
-    fullSpeedAhead(mL, mR);
+    fullSpeedAhead(mL, mR, power);
 }
 
 //function to make the robot turn right
 // PLEASE NOTE: stop(motors) needs to called be correct use of this, WHY?!
-void turnRight(struct DC_motor *mL, struct DC_motor *mR)
+void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
     stop(mL, mR);
 	//remember to change the power gradually
     mL->direction=1;
     mR->direction=0;
-    fullSpeedAhead(mL, mR);
+    fullSpeedAhead(mL, mR, power);
 }
 
 //function to make the robot go straight
-void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
+void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
 	//remember to change the power gradually
-    while(mL->power<100 || mR->power<100){
-        if(mL->power<100){
+    while(mL->power<power || mR->power<power){
+        if(mL->power<power){
             mL->power++;            
         }
-        if(mR->power<100){
+        if(mR->power<power){
             mR->power++;            
         }
         setMotorPWM(mL);
@@ -122,10 +122,10 @@ void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
 }
 
 //function to make the robot go backward
-void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR)
+void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
     //remember to change the power gradually
     mL->direction=0;
     mR->direction=0;
-    fullSpeedAhead(mL, mR);
+    fullSpeedAhead(mL, mR, power);
 }
