@@ -54,7 +54,7 @@ void main(void){
     unsigned char Message[10]; // Code on RFID Card
     unsigned char i=0; // Counter variable
     signed char DirectionFound=0; // Flag for if the robot has decided it knows where the bomb is
-    char MoveTime[100]; // Array to store time spent on each type of movement
+    int MoveTime[100]; // Array to store time spent on each type of movement
     char MoveType[100]; // Array to store movement types - 0 is forwards, 1 is left/right
     char Move=0; // Move counter
     unsigned int SensorResult[2]={0,0};
