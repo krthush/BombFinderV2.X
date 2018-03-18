@@ -155,7 +155,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         }
         
         // Signal was only found once, just go in that direction roughly
-        if ((LeftFlag==1)&&(RightFlag==0)) {
+        if ((LeftFlag==0)&&(RightFlag==1)) {
             for (n=1; n<=(FlagCounter); n++) {
                 turnRight(mL,mR, 100);
                 __delay_ms(1);
