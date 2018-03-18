@@ -149,7 +149,7 @@ void main(void){
                 enableSensor(1, 1); // DEBUG ONLY - enable sensors to test signals
                 
                 // Small movement to signify initialise code has been successful
-                fullSpeedAhead(&mL, &mR);
+                fullSpeedAhead(&mL, &mR, 100);
                 delay_tenth_s(1);
                 
                 mode=-1;  //TODO: Make mode change on button press
@@ -170,16 +170,12 @@ void main(void){
                     // PLEASE NOTE: this movement in combination with the
                     // rotation in ScanWithRange causes the robot to spiral 
                     // outwards such that it will ALWAYS get close enough to signal
-                    fullSpeedAhead(&mL, &mR);
+                    fullSpeedAhead(&mL, &mR, 100);
                     delay_tenth_s(6);
                     stop(&mL,&mR);
                     DirectionFound=0;
                     MoveType[Move]=0;
                 } else if (DirectionFound==0) {
-                    // Bot likely just missed the bomb so go back a bit and rescan
-                    fullSpeedBack(&mL, &mR);
-                    delay_tenth_s(6);
-                    stop(&mL,&mR);
                     // Scans a wide range if it's unsure about direction
                     DirectionFound=ScanWithRange(&mL, &mR, ScanAngle, TurnDirection, &MoveTime[Move]); // USERVARIABLE
                     MoveType[Move]=1;
@@ -217,17 +213,17 @@ void main(void){
                             mode=3; //Return to home!
 
                         } else { //If the signal doesn't check out
-                            fullSpeedBack(&mL,&mR); //Go back a bit then stop
+                            fullSpeedBack(&mL,&mR, 100); //Go back a bit then stop
                             delay_tenth_s(5);
                             stop(&mL,&mR);
-                            fullSpeedAhead(&mL,&mR); //Try again
+                            fullSpeedAhead(&mL,&mR, 100); //Try again
                         }  
                     }
                 } else {
                     DirectionFound=1;
                     mode=1;
                     // Bot needs to head for the bomb
-                    fullSpeedAhead(&mL,&mR);
+                    fullSpeedAhead(&mL,&mR, 100);
                     delay_tenth_s(5);
                     MoveType[Move] = 0;
                     MoveTime[Move] = 5;

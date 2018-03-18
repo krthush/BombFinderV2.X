@@ -4647,11 +4647,11 @@ void setMotorFullSpeed(struct DC_motor *m);
 void stopMotor(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
 
-void turnLeft(struct DC_motor *mL, struct DC_motor *mR);
+void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
-void turnRight(struct DC_motor *mL, struct DC_motor *mR);
-void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR);
-void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR);
+void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
 # 15 "IR_Reading.h"
 void initIR(void);
@@ -4856,7 +4856,7 @@ unsigned char FlagCounter=0;
 const unsigned int DirectionFoundThreshold=4000;
 
 # 98
-turnRight(mL,mR);
+turnRight(mL,mR, 100);
 delay_tenth_s(5);
 stop(mL,mR);
 
@@ -4887,7 +4887,7 @@ sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
 LCD_String(buf);
 
 
-turnLeft(mL,mR);
+turnLeft(mL,mR, 100);
 _delay((unsigned long)((1)*(8000000/4000.0)));
 stop(mL,mR);
 
@@ -4908,7 +4908,7 @@ FlagCounter++;
 
 if ((LeftFlag==1)&&(RightFlag==1)) {
 for (n=1; n<=(FlagCounter>>1); n++) {
-turnRight(mL,mR);
+turnRight(mL,mR, 100);
 _delay((unsigned long)((1)*(8000000/4000.0)));
 stop(mL,mR);
 }
@@ -4920,7 +4920,7 @@ return 2;
 
 if ((LeftFlag==1)||(RightFlag==1)) {
 for (n=1; n<=(FlagCounter); n++) {
-turnRight(mL,mR);
+turnRight(mL,mR, 100);
 _delay((unsigned long)((1)*(8000000/4000.0)));
 stop(mL,mR);
 }
@@ -4928,7 +4928,7 @@ return 2;
 }
 
 
-turnLeft(mL,mR);
+turnLeft(mL,mR, 100);
 delay_tenth_s(5);
 stop(mL,mR);
 return -1;

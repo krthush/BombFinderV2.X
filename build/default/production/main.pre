@@ -4647,11 +4647,11 @@ void setMotorFullSpeed(struct DC_motor *m);
 void stopMotor(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
 
-void turnLeft(struct DC_motor *mL, struct DC_motor *mR);
+void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
-void turnRight(struct DC_motor *mL, struct DC_motor *mR);
-void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR);
-void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR);
+void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
 # 12 "RFID_Reader.h"
 void initRFID(void);
@@ -4928,7 +4928,7 @@ enableSensor(0, 1);
 enableSensor(1, 1);
 
 
-fullSpeedAhead(&mL, &mR);
+fullSpeedAhead(&mL, &mR, 100);
 delay_tenth_s(1);
 
 mode=-1;
@@ -4946,16 +4946,12 @@ if (DirectionFound==-1) {
 
 
 
-fullSpeedAhead(&mL, &mR);
+fullSpeedAhead(&mL, &mR, 100);
 delay_tenth_s(6);
 stop(&mL,&mR);
 DirectionFound=0;
 MoveType[Move]=0;
 } else if (DirectionFound==0) {
-
-fullSpeedBack(&mL, &mR);
-delay_tenth_s(6);
-stop(&mL,&mR);
 
 DirectionFound=ScanWithRange(&mL, &mR, ScanAngle, TurnDirection, &MoveTime[Move]);
 MoveType[Move]=1;
@@ -4993,17 +4989,17 @@ ReceivedString[i]=0;
 mode=3;
 
 } else {
-fullSpeedBack(&mL,&mR);
+fullSpeedBack(&mL,&mR, 100);
 delay_tenth_s(5);
 stop(&mL,&mR);
-fullSpeedAhead(&mL,&mR);
+fullSpeedAhead(&mL,&mR, 100);
 }
 }
 } else {
 DirectionFound=1;
 mode=1;
 
-fullSpeedAhead(&mL,&mR);
+fullSpeedAhead(&mL,&mR, 100);
 delay_tenth_s(5);
 MoveType[Move] = 0;
 MoveTime[Move] = 5;
@@ -5021,7 +5017,7 @@ SetLine(2);
 LCD_String("Going Home");
 stop(&mL,&mR);
 
-# 262
+# 258
 mode=-1;
 
 break;

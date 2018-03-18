@@ -95,7 +95,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
 //        stop(mL,mR);
 //    }
     // THIS CAN BE MADE BETTER
-    turnRight(mL,mR);
+    turnRight(mL,mR, 100);
     delay_tenth_s(5);
     stop(mL,mR);
     
@@ -126,7 +126,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         LCD_String(buf);
         
          // Turn left
-        turnLeft(mL,mR);
+        turnLeft(mL,mR, 100);
         __delay_ms(1);
         stop(mL,mR);
         
@@ -147,7 +147,17 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         // half the length of the FlagCounter and go!
         if ((LeftFlag==1)&&(RightFlag==1)) {
             for (n=1; n<=(FlagCounter>>1); n++) {
-                turnRight(mL,mR);
+                turnRight(mL,mR, 100);
+                __delay_ms(1);
+                stop(mL,mR);
+            }
+            return 2; // Direction of bomb is directly ahead
+        }
+        
+        // Signal was only found once, just go in that direction roughly
+        if ((LeftFlag==1)&&(RightFlag==0)) {
+            for (n=1; n<=(FlagCounter); n++) {
+                turnRight(mL,mR, 100);
                 __delay_ms(1);
                 stop(mL,mR);
             }
@@ -156,18 +166,8 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         
     }
     
-    // Signal was only found once, just go in that direction roughly
-    if ((LeftFlag==1)||(RightFlag==1)) {
-        for (n=1; n<=(FlagCounter); n++) {
-            turnRight(mL,mR);
-            __delay_ms(1);
-            stop(mL,mR);
-        }
-        return 2; // Direction of bomb is directly ahead
-    }
-    
     // No clear signal found, rotate and move a bit and hope to find it!
-    turnLeft(mL,mR);
+    turnLeft(mL,mR, 100);
     delay_tenth_s(5);
     stop(mL,mR);
     return -1; // No clear signal found

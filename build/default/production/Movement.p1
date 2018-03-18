@@ -29,9 +29,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "22 dc_motor.h
 [v _stop `(v ~T0 @X0 0 ef2`*S405`*S405 ]
 "26
-[v _turnRight `(v ~T0 @X0 0 ef2`*S405`*S405 ]
+[v _turnRight `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
 "24
-[v _turnLeft `(v ~T0 @X0 0 ef2`*S405`*S405 ]
+[v _turnLeft `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3524,10 +3524,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.h: 20: void setMotorFullSpeed(struct DC_motor *m);
 [; ;dc_motor.h: 21: void stopMotor(struct DC_motor *m);
 [; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 27: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR);
+[; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 27: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;IR_Reading.h: 15: void initIR(void);
 [; ;IR_Reading.h: 16: unsigned int grabRightIR(void);
 [; ;IR_Reading.h: 17: unsigned int grabLeftIR(void);
@@ -3683,8 +3683,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _MoveTime `*uc ~T0 @X0 1 r5 ]
 [v _MoveType `*uc ~T0 @X0 1 r6 ]
 [f ]
-[v F3878 `ui ~T0 @X0 -> 2 `i s ]
-[i F3878
+[v F3882 `ui ~T0 @X0 -> 2 `i s ]
+[i F3882
 :U ..
 "37
 -> -> 0 `i `ui
@@ -3693,7 +3693,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _SensorResult `ui ~T0 @X0 -> 2 `i a ]
 [; ;Movement.c: 37: unsigned int SensorResult[2]={0,0};
-[e = _SensorResult F3878 ]
+[e = _SensorResult F3882 ]
 "38
 [v _buf `uc ~T0 @X0 -> 40 `i a ]
 "41
@@ -3786,8 +3786,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TurnDirection `uc ~T0 @X0 1 r4 ]
 [v _MoveTimeEntry `*uc ~T0 @X0 1 r5 ]
 [f ]
-[v F3889 `ui ~T0 @X0 -> 2 `i s ]
-[i F3889
+[v F3893 `ui ~T0 @X0 -> 2 `i s ]
+[i F3893
 :U ..
 "80
 -> -> 0 `i `ui
@@ -3796,7 +3796,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _SensorResult `ui ~T0 @X0 -> 2 `i a ]
 [; ;Movement.c: 80: unsigned int SensorResult[2]={0,0};
-[e = _SensorResult F3889 ]
+[e = _SensorResult F3893 ]
 "81
 [v _LeftFlag `uc ~T0 @X0 1 a ]
 [; ;Movement.c: 81: unsigned char LeftFlag=0;
@@ -3824,9 +3824,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _DirectionFoundThreshold `Cui ~T0 @X0 1 a ]
 [; ;Movement.c: 89: const unsigned int DirectionFoundThreshold=4000;
 [e = _DirectionFoundThreshold -> -> 4000 `i `ui ]
-[; ;Movement.c: 98: turnRight(mL,mR);
+[; ;Movement.c: 98: turnRight(mL,mR, 100);
 "98
-[e ( _turnRight (2 , _mL _mR ]
+[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
 [; ;Movement.c: 99: delay_tenth_s(5);
 "99
 [e ( _delay_tenth_s (1 -> -> 5 `i `uc ]
@@ -3888,9 +3888,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 126: LCD_String(buf);
 "126
 [e ( _LCD_String (1 &U _buf ]
-[; ;Movement.c: 129: turnLeft(mL,mR);
+[; ;Movement.c: 129: turnLeft(mL,mR, 100);
 "129
-[e ( _turnLeft (2 , _mL _mR ]
+[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
 [; ;Movement.c: 130: _delay((unsigned long)((1)*(8000000/4000.0)));
 "130
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
@@ -3941,9 +3941,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 432  ]
 [e :U 429 ]
 {
-[; ;Movement.c: 150: turnRight(mL,mR);
+[; ;Movement.c: 150: turnRight(mL,mR, 100);
 "150
-[e ( _turnRight (2 , _mL _mR ]
+[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
 [; ;Movement.c: 151: _delay((unsigned long)((1)*(8000000/4000.0)));
 "151
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
@@ -3989,9 +3989,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 437  ]
 [e :U 434 ]
 {
-[; ;Movement.c: 162: turnRight(mL,mR);
+[; ;Movement.c: 162: turnRight(mL,mR, 100);
 "162
-[e ( _turnRight (2 , _mL _mR ]
+[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
 [; ;Movement.c: 163: _delay((unsigned long)((1)*(8000000/4000.0)));
 "163
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
@@ -4016,9 +4016,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 433 ]
 [; ;Movement.c: 167: }
-[; ;Movement.c: 170: turnLeft(mL,mR);
+[; ;Movement.c: 170: turnLeft(mL,mR, 100);
 "170
-[e ( _turnLeft (2 , _mL _mR ]
+[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
 [; ;Movement.c: 171: delay_tenth_s(5);
 "171
 [e ( _delay_tenth_s (1 -> -> 5 `i `uc ]

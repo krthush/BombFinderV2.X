@@ -40,7 +40,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v __delay `JF3644 ~T0 @X0 0 e ]
 [p i __delay ]
 "27 dc_motor.h
-[v _fullSpeedAhead `(v ~T0 @X0 0 ef2`*S405`*S405 ]
+[v _fullSpeedAhead `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3533,10 +3533,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.h: 20: void setMotorFullSpeed(struct DC_motor *m);
 [; ;dc_motor.h: 21: void stopMotor(struct DC_motor *m);
 [; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 27: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR);
+[; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 27: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 "4 dc_motor.c
 [v _initMotorPWM `(v ~T0 @X0 1 ef ]
 {
@@ -3787,15 +3787,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 420 ]
 }
 "87
-[v _turnLeft `(v ~T0 @X0 1 ef2`*S405`*S405 ]
+[v _turnLeft `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
 "88
 {
-[; ;dc_motor.c: 87: void turnLeft(struct DC_motor *mL, struct DC_motor *mR)
+[; ;dc_motor.c: 87: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 [; ;dc_motor.c: 88: {
 [e :U _turnLeft ]
 "87
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
+[v _power `uc ~T0 @X0 1 r3 ]
 "88
 [f ]
 [; ;dc_motor.c: 89: stop(mL, mR);
@@ -3807,23 +3808,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 92: mR->direction=1;
 "92
 [e = . *U _mR 1 -> -> 1 `i `uc ]
-[; ;dc_motor.c: 93: fullSpeedAhead(mL, mR);
+[; ;dc_motor.c: 93: fullSpeedAhead(mL, mR, power);
 "93
-[e ( _fullSpeedAhead (2 , _mL _mR ]
+[e ( _fullSpeedAhead (3 , , _mL _mR _power ]
 [; ;dc_motor.c: 94: }
 "94
 [e :UE 426 ]
 }
 "98
-[v _turnRight `(v ~T0 @X0 1 ef2`*S405`*S405 ]
+[v _turnRight `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
 "99
 {
-[; ;dc_motor.c: 98: void turnRight(struct DC_motor *mL, struct DC_motor *mR)
+[; ;dc_motor.c: 98: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 [; ;dc_motor.c: 99: {
 [e :U _turnRight ]
 "98
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
+[v _power `uc ~T0 @X0 1 r3 ]
 "99
 [f ]
 [; ;dc_motor.c: 100: stop(mL, mR);
@@ -3835,33 +3837,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 103: mR->direction=0;
 "103
 [e = . *U _mR 1 -> -> 0 `i `uc ]
-[; ;dc_motor.c: 104: fullSpeedAhead(mL, mR);
+[; ;dc_motor.c: 104: fullSpeedAhead(mL, mR, power);
 "104
-[e ( _fullSpeedAhead (2 , _mL _mR ]
+[e ( _fullSpeedAhead (3 , , _mL _mR _power ]
 [; ;dc_motor.c: 105: }
 "105
 [e :UE 427 ]
 }
 "108
-[v _fullSpeedAhead `(v ~T0 @X0 1 ef2`*S405`*S405 ]
+[v _fullSpeedAhead `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
 "109
 {
-[; ;dc_motor.c: 108: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR)
+[; ;dc_motor.c: 108: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 [; ;dc_motor.c: 109: {
 [e :U _fullSpeedAhead ]
 "108
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
+[v _power `uc ~T0 @X0 1 r3 ]
 "109
 [f ]
-[; ;dc_motor.c: 111: while(mL->power<100 || mR->power<100){
+[; ;dc_motor.c: 111: while(mL->power<power || mR->power<power){
 "111
 [e $U 429  ]
 [e :U 430 ]
 {
-[; ;dc_motor.c: 112: if(mL->power<100){
+[; ;dc_motor.c: 112: if(mL->power<power){
 "112
-[e $ ! < -> . *U _mL 0 `i -> 100 `i 432  ]
+[e $ ! < -> . *U _mL 0 `i -> _power `i 432  ]
 {
 [; ;dc_motor.c: 113: mL->power++;
 "113
@@ -3870,9 +3873,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 432 ]
 [; ;dc_motor.c: 114: }
-[; ;dc_motor.c: 115: if(mR->power<100){
+[; ;dc_motor.c: 115: if(mR->power<power){
 "115
-[e $ ! < -> . *U _mR 0 `i -> 100 `i 433  ]
+[e $ ! < -> . *U _mR 0 `i -> _power `i 433  ]
 {
 [; ;dc_motor.c: 116: mR->power++;
 "116
@@ -3894,7 +3897,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 429 ]
 "111
-[e $ || < -> . *U _mL 0 `i -> 100 `i < -> . *U _mR 0 `i -> 100 `i 430  ]
+[e $ || < -> . *U _mL 0 `i -> _power `i < -> . *U _mR 0 `i -> _power `i 430  ]
 [e :U 431 ]
 [; ;dc_motor.c: 121: }
 [; ;dc_motor.c: 122: }
@@ -3902,15 +3905,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 428 ]
 }
 "125
-[v _fullSpeedBack `(v ~T0 @X0 1 ef2`*S405`*S405 ]
+[v _fullSpeedBack `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
 "126
 {
-[; ;dc_motor.c: 125: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR)
+[; ;dc_motor.c: 125: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 [; ;dc_motor.c: 126: {
 [e :U _fullSpeedBack ]
 "125
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
+[v _power `uc ~T0 @X0 1 r3 ]
 "126
 [f ]
 [; ;dc_motor.c: 128: mL->direction=0;
@@ -3919,9 +3923,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 129: mR->direction=0;
 "129
 [e = . *U _mR 1 -> -> 0 `i `uc ]
-[; ;dc_motor.c: 130: fullSpeedAhead(mL, mR);
+[; ;dc_motor.c: 130: fullSpeedAhead(mL, mR, power);
 "130
-[e ( _fullSpeedAhead (2 , _mL _mR ]
+[e ( _fullSpeedAhead (3 , , _mL _mR _power ]
 [; ;dc_motor.c: 131: }
 "131
 [e :UE 434 ]
