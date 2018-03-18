@@ -86,7 +86,7 @@ void stop(struct DC_motor *mL, struct DC_motor *mR)
 // PLEASE NOTE: stop(motors) needs to called be correct use of this, WHY?!
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
-    stop(mL, mR);
+//    stop(mL, mR);
 	//remember to change the power gradually
     mL->direction=1;
     mR->direction=0;
@@ -97,7 +97,7 @@ void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 // PLEASE NOTE: stop(motors) needs to called be correct use of this, WHY?!
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
-    stop(mL, mR);
+//    stop(mL, mR);
 	//remember to change the power gradually
     mL->direction=0;
     mR->direction=1;

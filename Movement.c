@@ -89,8 +89,8 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
-    unsigned char LeftFlag=0;
-    unsigned char RightFlag=0;
+    unsigned int LeftFlag=0;
+    unsigned int RightFlag=0;
     char buf[40]; // Buffer for characters for LCD
     unsigned int i=0;
     unsigned int n=0;
