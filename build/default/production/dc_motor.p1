@@ -3799,9 +3799,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _power `uc ~T0 @X0 1 r3 ]
 "88
 [f ]
-[; ;dc_motor.c: 89: stop(mL, mR);
-"89
-[e ( _stop (2 , _mL _mR ]
 [; ;dc_motor.c: 91: mL->direction=1;
 "91
 [e = . *U _mL 1 -> -> 1 `i `uc ]
@@ -3828,9 +3825,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _power `uc ~T0 @X0 1 r3 ]
 "99
 [f ]
-[; ;dc_motor.c: 100: stop(mL, mR);
-"100
-[e ( _stop (2 , _mL _mR ]
 [; ;dc_motor.c: 102: mL->direction=0;
 "102
 [e = . *U _mL 1 -> -> 0 `i `uc ]

@@ -4862,20 +4862,23 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
 
 
 unsigned int SensorResult[2]={0,0};
-unsigned char LeftFlag=0;
-unsigned char RightFlag=0;
+unsigned int LeftFlag=0;
+unsigned int RightFlag=0;
 char buf[40];
 unsigned int i=0;
 unsigned int n=0;
 unsigned char TimeAboveThreshold=0;
 
 
-const unsigned int DirectionFoundThreshold=4000;
+const unsigned int DirectionFoundThreshold=3000;
 
 # 109
 turnLeft(mL,mR, 100);
 delay_tenth_s(5);
 stop(mL,mR);
+
+
+turnRight(mL,mR, 40);
 
 
 for (i=1; i<=milliseconds; i++) {
@@ -4892,6 +4895,7 @@ CAP2BUFH=0;
 CAP2BUFL=0;
 
 
+
 SendLCD(0b00000001,0);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
 SendLCD(0b00000010,0);
@@ -4901,10 +4905,6 @@ LCD_String("     ScanIR");
 SetLine(2);
 sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
 LCD_String(buf);
-
-
-turnRight(mL,mR, 70);
-_delay((unsigned long)((1)*(8000000/4000.0)));
 
 if (SensorResult[1]>DirectionFoundThreshold) {
 RightFlag=1;
@@ -4919,9 +4919,10 @@ if ((LeftFlag==1)||(RightFlag==1)) {
 TimeAboveThreshold++;
 }
 
+if (LeftFlag==1) {
 
 
-if ((LeftFlag==1)&&(RightFlag==1)) {
+if (RightFlag==1) {
 for (n=1; n<=(TimeAboveThreshold>>1); n++) {
 stop(mL,mR);
 turnLeft(mL,mR, 100);
@@ -4929,14 +4930,12 @@ _delay((unsigned long)((1)*(8000000/4000.0)));
 stop(mL,mR);
 }
 return 2;
-}
+} else {
 
-
-if ((LeftFlag==1)&&(RightFlag==0)) {
 stop(mL,mR);
 return 2;
 }
-
+}
 }
 
 

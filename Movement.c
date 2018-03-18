@@ -97,7 +97,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
     unsigned char TimeAboveThreshold=0;
     // USERVARIABLE TOLERANCES
     // minimum signal strength required for sensor to be considered directly aimed at beacon
-    const unsigned int DirectionFoundThreshold=4000;
+    const unsigned int DirectionFoundThreshold=3000;
     
     // Flip right before starting scan from left side
 //    for (i=1; i<=(milliseconds>>1); i++) {
@@ -109,6 +109,9 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
     turnLeft(mL,mR, 100);
     delay_tenth_s(5);
     stop(mL,mR);
+    
+    // Turn right slowly for scanning
+    turnRight(mL,mR, 40);
     
     // This loop is turning Right, while scanning
     for (i=1; i<=milliseconds; i++) {
@@ -122,8 +125,9 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         CAP1BUFH=0;
         CAP1BUFL=0;
         CAP2BUFH=0;
-        CAP2BUFL=0;       
-
+        CAP2BUFL=0;
+        
+// COMMENTED FOR EFFICIENCY
         // Output signal strength to LCD
         SendLCD(0b00000001,0); //Clear Display
         __delay_us(50); //Delay to let display clearing finish
@@ -134,10 +138,6 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
         SetLine(2); //Set Line 2, for signal strength readings
         sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
         LCD_String(buf);
-        
-         // Turn Right
-        turnRight(mL,mR, 60);
-        __delay_ms(1);
         
         if (SensorResult[1]>DirectionFoundThreshold) {
             RightFlag=1;
@@ -152,24 +152,23 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds, c
             TimeAboveThreshold++;
         }
         
-        // Both Sensors have seen the beacon, travel back to
-        // half the length of the FlagCounter and go!
-        if ((LeftFlag==1)&&(RightFlag==1)) {
-            for (n=1; n<=(TimeAboveThreshold>>1); n++) {
+        if (LeftFlag==1) {        
+            // Both Sensors have seen the beacon, travel back to
+            // half the length of the FlagCounter and go!
+            if (RightFlag==1) {
+                for (n=1; n<=(TimeAboveThreshold>>1); n++) {
+                    stop(mL,mR);
+                    turnLeft(mL,mR, 100);
+                    __delay_ms(1);
+                    stop(mL,mR);
+                }
+                return 2; // Direction of bomb is directly ahead
+            } else {
+                // Signal was only found once, just go in that direction roughly
                 stop(mL,mR);
-                turnLeft(mL,mR, 100);
-                __delay_ms(1);
-                stop(mL,mR);
-            }
-            return 2; // Direction of bomb is directly ahead
-        }
-        
-        // Signal was only found once, just go in that direction roughly
-        if ((LeftFlag==1)&&(RightFlag==0)) {
-            stop(mL,mR);
-            return 2; // Direction of bomb is roughly ahead
-        }
-        
+                return 2; // Direction of bomb is roughly ahead
+            }     
+        } 
     }
     
     // No clear signal found, rotate and move a bit and hope to find it!
