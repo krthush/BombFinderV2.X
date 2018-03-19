@@ -4883,10 +4883,9 @@ const unsigned char MiniLeftFlick=1;
 
 
 
-*Move++;
 (MoveType[*Move]) = 2;
 (MoveTime[*Move]) = -3;
-
+*Move = *Move+1;
 turnLeft(mL,mR, 100);
 delay_tenth_s(LeftFlick);
 stop(mL,mR);
@@ -4932,7 +4931,7 @@ if (SensorResult[0]>DirectionFoundThreshold) {
 LeftFlag=(TMR0H<<8)+TMR0L;
 }
 
-# 175
+# 174
 if (LeftFlag>0) {
 
 
@@ -4947,16 +4946,16 @@ turnLeft(mL,mR, MotorPower);
 T0CONbits.TMR0ON=0;
 stop(mL,mR);
 
-*Move++;
 (MoveType[*Move]) = 1;
 (MoveTime[*Move]) = RightFlag + (TimeAboveThreshold>>1);
+*Move = *Move+1;
 
 return 2;
 } else {
 
-*Move++;
 (MoveType[*Move]) = 2;
 (MoveTime[*Move]) = 1;
+*Move = *Move+1;
 stop(mL,mR);
 turnLeft(mL,mR,100);
 delay_tenth_s(MiniLeftFlick);
@@ -4972,9 +4971,9 @@ return 2;
 }
 
 
-*Move++;
 (MoveType[*Move]) = 2;
 (MoveTime[*Move]) = -2;
+*Move = *Move+1;
 turnRight(mL,mR, 100);
 delay_tenth_s(2);
 stop(mL,mR);

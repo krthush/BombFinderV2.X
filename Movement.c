@@ -118,9 +118,9 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     
     // Flip left before starting scan from right side, this increases chance of
     // bot quickly finding the beacon if it just missed it
-    *Move = *Move+1;
     (MoveType[*Move]) = 2;
     (MoveTime[*Move]) = -3;
+    *Move = *Move+1;
     turnLeft(mL,mR, 100);
     delay_tenth_s(LeftFlick);
     stop(mL,mR);
@@ -185,16 +185,16 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
                 //Let's return the net time spent turning left 
-                *Move = *Move+1;
                 (MoveType[*Move]) = 1;
                 (MoveTime[*Move]) = RightFlag + (TimeAboveThreshold>>1);
+                *Move = *Move+1;
                 
                 return 2; // Direction of bomb is directly ahead
             } else {
                 // Signal was only found once, just go in that direction roughly
-                *Move = *Move+1;
                 (MoveType[*Move]) = 2;
                 (MoveTime[*Move]) = 1;
+                *Move = *Move+1;
                 stop(mL,mR);
                 turnLeft(mL,mR,100);
                 delay_tenth_s(MiniLeftFlick);
@@ -210,9 +210,9 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     }
     
     // No clear signal found, rotate and move a bit and hope to find it!
-    *Move = *Move+1;
     (MoveType[*Move]) = 2;
     (MoveTime[*Move]) = -2;
+    *Move = *Move+1;
     turnRight(mL,mR, 100);
     delay_tenth_s(2);
     stop(mL,mR);

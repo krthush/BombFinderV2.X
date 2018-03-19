@@ -185,9 +185,9 @@ void main(void){
                     // PLEASE NOTE: this movement in combination with the
                     // rotation in ScanWithRange causes the robot to spiral 
                     // outwards such that it will ALWAYS get close enough to signal
-                    Move++;
                     MoveType[Move]=0;
                     MoveTime[Move]=6;
+                    Move++;
                     fullSpeedAhead(&mL, &mR, 100);
                     delay_tenth_s(6);
                     stop(&mL,&mR);
@@ -196,7 +196,6 @@ void main(void){
                     // Scans a wide range if it's unsure about direction
                     DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
                             &MoveTime, &Move, &MoveType, &RFID_Read);
-                    MoveType[Move]=1;
                 } else if (DirectionFound==1) {
                      // Keeps direction and just scans, robot thinks it's close
                     DirectionFound=ScanIR(&mL, &mR);
@@ -241,9 +240,9 @@ void main(void){
                     // Bot needs to head for the bomb
                     fullSpeedAhead(&mL,&mR, 100);
                     delay_tenth_s(5);
-                    Move++;
                     MoveType[Move] = 0;
                     MoveTime[Move] = 5;
+                    Move++;
                 }
                 
                 break;
@@ -256,7 +255,7 @@ void main(void){
                 SetLine(2);
                 LCD_String("Going Home");
                 
-                for (Move=Move; Move>=0; Move--) { //Go backwards along the moves
+                for (Move; Move>=0; Move--) { //Go backwards along the moves
                     stop(&mL,&mR);
                     if (MoveType[Move]==0) { //If move was forwards
                         fullSpeedBack(&mL,&mR,100);
@@ -270,11 +269,13 @@ void main(void){
                             turnRight(&mL,&mR,40);
                             while (((TMR0H<<8)+TMR0L)<MoveTime[Move]); //Delay 
                             //until it's turned as far as it did originally
+                            T0CONbits.TMR0ON=0; // Stop the timer
                         } else {
                             T0CONbits.TMR0ON=1; // Start the timer
                             turnLeft(&mL,&mR,40);
-                            while (((TMR0H<<8)+TMR0L)<MoveTime[Move]); //Delay 
+                            while (((TMR0H<<8)+TMR0L)<-MoveTime[Move]); //Delay 
                             //until it's turned as far as it did originally
+                            T0CONbits.TMR0ON=0; // Stop the timer
                         }
                     } else if (MoveType[Move]==2) { //If 0.1s left/right
                         if (MoveTime[Move]>0) { //If left turn

@@ -4958,9 +4958,9 @@ if (DirectionFound==-1) {
 
 
 
-Move++;
 MoveType[Move]=0;
 MoveTime[Move]=6;
+Move++;
 fullSpeedAhead(&mL, &mR, 100);
 delay_tenth_s(6);
 stop(&mL,&mR);
@@ -4969,7 +4969,6 @@ DirectionFound=0;
 
 DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
 &MoveTime, &Move, &MoveType, &RFID_Read);
-MoveType[Move]=1;
 } else if (DirectionFound==1) {
 
 DirectionFound=ScanIR(&mL, &mR);
@@ -5016,6 +5015,7 @@ fullSpeedAhead(&mL,&mR, 100);
 delay_tenth_s(5);
 MoveType[Move] = 0;
 MoveTime[Move] = 5;
+Move++;
 }
 
 break;
@@ -5028,7 +5028,7 @@ LCD_String(Message);
 SetLine(2);
 LCD_String("Going Home");
 
-for (Move=Move; Move>=0; Move--) {
+for (Move; Move>=0; Move--) {
 stop(&mL,&mR);
 if (MoveType[Move]==0) {
 fullSpeedBack(&mL,&mR,100);
@@ -5042,11 +5042,13 @@ T0CONbits.TMR0ON=1;
 turnRight(&mL,&mR,40);
 while (((TMR0H<<8)+TMR0L)<MoveTime[Move]);
 
+T0CONbits.TMR0ON=0;
 } else {
 T0CONbits.TMR0ON=1;
 turnLeft(&mL,&mR,40);
-while (((TMR0H<<8)+TMR0L)<MoveTime[Move]);
+while (((TMR0H<<8)+TMR0L)<-MoveTime[Move]);
 
+T0CONbits.TMR0ON=0;
 }
 } else if (MoveType[Move]==2) {
 if (MoveTime[Move]>0) {
