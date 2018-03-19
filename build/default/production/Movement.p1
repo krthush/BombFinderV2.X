@@ -3426,8 +3426,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "50
 [v _DirectionMoveThreshold `Cui ~T0 @X0 1 a ]
 [; ;Movement.c: 48: char buf[40];
-[; ;Movement.c: 50: const unsigned int DirectionMoveThreshold=2500;
-[e = _DirectionMoveThreshold -> -> 2500 `i `ui ]
+[; ;Movement.c: 50: const unsigned int DirectionMoveThreshold=2000;
+[e = _DirectionMoveThreshold -> -> 2000 `i `ui ]
 [; ;Movement.c: 55: SensorResult[0]=grabLeftIR();
 "55
 [e = *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabLeftIR ..  ]
@@ -3556,8 +3556,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TimeAboveThreshold -> -> 0 `i `uc ]
 "110
 [v _DirectionFoundThreshold `Cui ~T0 @X0 1 a ]
-[; ;Movement.c: 110: const unsigned int DirectionFoundThreshold=3000;
-[e = _DirectionFoundThreshold -> -> 3000 `i `ui ]
+[; ;Movement.c: 110: const unsigned int DirectionFoundThreshold=1000;
+[e = _DirectionFoundThreshold -> -> 1000 `i `ui ]
 "112
 [v _power `Cuc ~T0 @X0 1 a ]
 [; ;Movement.c: 112: const unsigned char power=40;
@@ -3726,70 +3726,88 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 337  ]
 [e :U 333 ]
 {
-[; ;Movement.c: 197: T0CONbits.TMR0ON=0;
+[; ;Movement.c: 197: *Move++;
 "197
-[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;Movement.c: 198: stop(mL,mR);
+[e *U ++ _Move * -> -> 1 `i `x -> -> # *U _Move `i `x ]
+[; ;Movement.c: 198: (MoveType[*Move]) = 2;
 "198
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 199: return 2;
+[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 2 `i `uc ]
+[; ;Movement.c: 199: (MoveTime[*Move]) = 1;
 "199
+[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> 1 `i ]
+[; ;Movement.c: 200: stop(mL,mR);
+"200
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 201: turnLeft(mL,mR,100);
+"201
+[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
+[; ;Movement.c: 202: delay_tenth_s(1);
+"202
+[e ( _delay_tenth_s (1 -> -> 1 `i `uc ]
+[; ;Movement.c: 203: T0CONbits.TMR0ON=0;
+"203
+[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
+[; ;Movement.c: 204: stop(mL,mR);
+"204
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 205: return 2;
+"205
 [e ) -> -> 2 `i `uc ]
 [e $UE 325  ]
-"200
+"206
 }
 [e :U 337 ]
-"201
+"207
 }
 [e :U 332 ]
-[; ;Movement.c: 200: }
-[; ;Movement.c: 201: }
-[; ;Movement.c: 203: if (*RFID_Read==1) {
-"203
+[; ;Movement.c: 206: }
+[; ;Movement.c: 207: }
+[; ;Movement.c: 209: if (*RFID_Read==1) {
+"209
 [e $ ! == -> *U _RFID_Read `i -> 1 `i 338  ]
 {
-[; ;Movement.c: 204: return 2;
-"204
+[; ;Movement.c: 210: return 2;
+"210
 [e ) -> -> 2 `i `uc ]
 [e $UE 325  ]
-"205
+"211
 }
 [e :U 338 ]
-"206
+"212
 }
 "138
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 329 ]
 [e $ <= _i -> _loops `ui 326  ]
 [e :U 327 ]
-"206
-}
-[; ;Movement.c: 205: }
-[; ;Movement.c: 206: }
-[; ;Movement.c: 209: *Move++;
-"209
-[e *U ++ _Move * -> -> 1 `i `x -> -> # *U _Move `i `x ]
-[; ;Movement.c: 210: (MoveType[*Move]) = 2;
-"210
-[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 2 `i `uc ]
-[; ;Movement.c: 211: (MoveTime[*Move]) = -2;
-"211
-[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -U -> 2 `i ]
-[; ;Movement.c: 212: turnRight(mL,mR, 100);
 "212
-[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 213: delay_tenth_s(2);
-"213
-[e ( _delay_tenth_s (1 -> -> 2 `i `uc ]
-[; ;Movement.c: 214: stop(mL,mR);
-"214
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 215: return -1;
+}
+[; ;Movement.c: 211: }
+[; ;Movement.c: 212: }
+[; ;Movement.c: 215: *Move++;
 "215
+[e *U ++ _Move * -> -> 1 `i `x -> -> # *U _Move `i `x ]
+[; ;Movement.c: 216: (MoveType[*Move]) = 2;
+"216
+[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 2 `i `uc ]
+[; ;Movement.c: 217: (MoveTime[*Move]) = -2;
+"217
+[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -U -> 2 `i ]
+[; ;Movement.c: 218: turnRight(mL,mR, 100);
+"218
+[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
+[; ;Movement.c: 219: delay_tenth_s(2);
+"219
+[e ( _delay_tenth_s (1 -> -> 2 `i `uc ]
+[; ;Movement.c: 220: stop(mL,mR);
+"220
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 221: return -1;
+"221
 [e ) -> -U -> 1 `i `uc ]
 [e $UE 325  ]
-[; ;Movement.c: 216: }
-"216
+[; ;Movement.c: 222: }
+"222
 [e :UE 325 ]
 }
 [p f _sprintf 8421508 ]
