@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\tr514\AppData\Local\Temp\s9n4.obj
+$C:\Users\tr514\AppData\Local\Temp\s3gs.obj
 idloc IDLOC 0 200000 200000 8 1
 reset_vec CODE 0 0 0 4 1
 end_init CODE 0 D6 D6 4 1
@@ -673,36 +673,36 @@ AC8 text0 CODE >258:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
 ACE text0 CODE >290:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
 AD0 text0 CODE >114:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
 AF0 text0 CODE >112:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
-1C32 cinit CODE >2580:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C32 cinit CODE >2582:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C32 cinit CODE >2585:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C32 cinit CODE >2625:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C36 cinit CODE >2626:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C38 cinit CODE >2627:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C38 cinit CODE >2628:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C3A cinit CODE >2629:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C3C cinit CODE >2630:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C3E cinit CODE >2633:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C42 cinit CODE >2634:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C44 cinit CODE >2635:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C44 cinit CODE >2636:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C46 cinit CODE >2637:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C48 cinit CODE >2638:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C4A cinit CODE >2641:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C4E cinit CODE >2642:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C50 cinit CODE >2643:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C50 cinit CODE >2644:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C52 cinit CODE >2645:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C54 cinit CODE >2646:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C56 cinit CODE >2649:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C58 cinit CODE >2650:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C5A cinit CODE >2656:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C5A cinit CODE >2658:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C5C cinit CODE >2659:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C5E cinit CODE >2661:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C60 cinit CODE >2662:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C62 cinit CODE >2663:C:\Users\tr514\AppData\Local\Temp\s9n4.
-1C64 cinit CODE >2664:C:\Users\tr514\AppData\Local\Temp\s9n4.
+1C32 cinit CODE >2580:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C32 cinit CODE >2582:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C32 cinit CODE >2585:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C32 cinit CODE >2625:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C36 cinit CODE >2626:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C38 cinit CODE >2627:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C38 cinit CODE >2628:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C3A cinit CODE >2629:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C3C cinit CODE >2630:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C3E cinit CODE >2633:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C42 cinit CODE >2634:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C44 cinit CODE >2635:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C44 cinit CODE >2636:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C46 cinit CODE >2637:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C48 cinit CODE >2638:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C4A cinit CODE >2641:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C4E cinit CODE >2642:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C50 cinit CODE >2643:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C50 cinit CODE >2644:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C52 cinit CODE >2645:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C54 cinit CODE >2646:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C56 cinit CODE >2649:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C58 cinit CODE >2650:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C5A cinit CODE >2656:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C5A cinit CODE >2658:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C5C cinit CODE >2659:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C5E cinit CODE >2661:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C60 cinit CODE >2662:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C62 cinit CODE >2663:C:\Users\tr514\AppData\Local\Temp\s3gs.
+1C64 cinit CODE >2664:C:\Users\tr514\AppData\Local\Temp\s3gs.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -730,7 +730,7 @@ VerifySignal@hexByte 2C 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFind
 _PWMCON0 F6F 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _PWMCON1 F6E 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\BombFinderV2.X.production.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\tr514\AppData\Local\Temp\s9n4.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\tr514\AppData\Local\Temp\s3gs.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\BombFinderV2.X.production.obj
 __end_of_LCDout 15FC 0 CODE 0 text28 dist/default/production\BombFinderV2.X.production.obj
 setMotorPWM@m 32 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
@@ -741,7 +741,7 @@ VerifySignal@Signal 24 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinde
 __Lsmallconst 300 0 SMALLCONST 0 smallconst dist/default/production\BombFinderV2.X.production.obj
 enableSensor@sensor 25 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 _LATB F8A 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\tr514\AppData\Local\Temp\s9n4.obj
+___sp 0 0 STACK 2 stack C:\Users\tr514\AppData\Local\Temp\s3gs.obj
 _main 350 0 CODE 0 text0 dist/default/production\BombFinderV2.X.production.obj
 _mode 3B 0 COMRAM 1 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
 _stop 16B8 0 CODE 0 text15 dist/default/production\BombFinderV2.X.production.obj
@@ -750,7 +750,7 @@ turnLeft@power 6B 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.p
 enableSensor@status 24 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __size_of_grabLeftIR 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 main@ScanAngle 1C8 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
-start D6 0 CODE 0 init C:\Users\tr514\AppData\Local\Temp\s9n4.obj
+start D6 0 CODE 0 init C:\Users\tr514\AppData\Local\Temp\s3gs.obj
 _SendLCD 1CCA 0 CODE 0 text27 dist/default/production\BombFinderV2.X.production.obj
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _SetLine 1C9A 0 CODE 0 text25 dist/default/production\BombFinderV2.X.production.obj
@@ -768,11 +768,11 @@ __end_of_ScanIR 1536 0 CODE 0 text14 dist/default/production\BombFinderV2.X.prod
 ScanWithRange@LeftFlag B1 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 _T0CONbits FD5 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 ScanWithRange@buf 80 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-__accesstop 60 0 ABS 0 - C:\Users\tr514\AppData\Local\Temp\s9n4.obj
-intlevel0 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\s9n4.obj
-intlevel1 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\s9n4.obj
-intlevel2 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\s9n4.obj
-intlevel3 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\s9n4.obj
+__accesstop 60 0 ABS 0 - C:\Users\tr514\AppData\Local\Temp\s3gs.obj
+intlevel0 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\s3gs.obj
+intlevel1 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\s3gs.obj
+intlevel2 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\s3gs.obj
+intlevel3 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\s3gs.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
 _initRFID 1D86 0 CODE 0 text2 dist/default/production\BombFinderV2.X.production.obj
 _OSCCONbits FD3 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
@@ -789,8 +789,8 @@ ScanWithRange@MoveTime 73 0 BANK0 1 cstackBANK0 dist/default/production\BombFind
 ScanWithRange@MoveType 77 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 _grabRightIR 18DA 0 CODE 0 text23 dist/default/production\BombFinderV2.X.production.obj
 ___awdiv@dividend 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
-___inthi_sp 0 0 STACK 2 stack C:\Users\tr514\AppData\Local\Temp\s9n4.obj
-___intlo_sp 0 0 STACK 2 stack C:\Users\tr514\AppData\Local\Temp\s9n4.obj
+___inthi_sp 0 0 STACK 2 stack C:\Users\tr514\AppData\Local\Temp\s3gs.obj
+___intlo_sp 0 0 STACK 2 stack C:\Users\tr514\AppData\Local\Temp\s3gs.obj
 ScanWithRange@DirectionFoundThreshold AE 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 _LCD_String 19BE 0 CODE 0 text26 dist/default/production\BombFinderV2.X.production.obj
 __size_of_initLCD 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
@@ -884,7 +884,7 @@ ___lwdiv@counter 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2
 _InterruptHandlerHigh 8 0 CODE 0 intcode dist/default/production\BombFinderV2.X.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\BombFinderV2.X.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production\BombFinderV2.X.production.obj
-__smallconst 300 0 SMALLCONST 0 smallconst C:\Users\tr514\AppData\Local\Temp\s9n4.obj
+__smallconst 300 0 SMALLCONST 0 smallconst C:\Users\tr514\AppData\Local\Temp\s3gs.obj
 __end_of_sprintf 1302 0 CODE 0 text18 dist/default/production\BombFinderV2.X.production.obj
 __Hcomram 0 0 ABS 0 comram dist/default/production\BombFinderV2.X.production.obj
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production\BombFinderV2.X.production.obj
@@ -1056,8 +1056,8 @@ ___lwdiv@divisor 26 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\BombFinderV2.X.production.obj
 setMotorPWM@PWMduty 60 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __size_of_initIR 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-stackhi 2FF 0 ABS 0 - C:\Users\tr514\AppData\Local\Temp\s9n4.obj
-stacklo 264 0 ABS 0 - C:\Users\tr514\AppData\Local\Temp\s9n4.obj
+stackhi 2FF 0 ABS 0 - C:\Users\tr514\AppData\Local\Temp\s3gs.obj
+stacklo 264 0 ABS 0 - C:\Users\tr514\AppData\Local\Temp\s3gs.obj
 stop@mL 62 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 stop@mR 64 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __Lintcode 8 0 CODE 0 intcode dist/default/production\BombFinderV2.X.production.obj
@@ -1140,7 +1140,7 @@ __Ltext28 0 0 ABS 0 text28 dist/default/production\BombFinderV2.X.production.obj
 __Ltext29 0 0 ABS 0 text29 dist/default/production\BombFinderV2.X.production.obj
 __Ltext32 0 0 ABS 0 text32 dist/default/production\BombFinderV2.X.production.obj
 __end_of_InterruptHandlerLow D6 0 CODE 0 intcodelo dist/default/production\BombFinderV2.X.production.obj
-__ramtop 300 0 RAM 0 ramtop C:\Users\tr514\AppData\Local\Temp\s9n4.obj
+__ramtop 300 0 RAM 0 ramtop C:\Users\tr514\AppData\Local\Temp\s3gs.obj
 _sprintf FFC 0 CODE 0 text18 dist/default/production\BombFinderV2.X.production.obj
 __Lpowerup D6 0 CODE 0 powerup dist/default/production\BombFinderV2.X.production.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\BombFinderV2.X.production.obj

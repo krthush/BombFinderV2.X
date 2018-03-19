@@ -58,8 +58,8 @@ void main(void){
     // For left/right, left is defined as positive. For forwards/backwards,
     // forwards is positive.
     char MoveType[50] = { 0 }; // Array to store movement types - 0 is forwards based 
-    //on tenth-second delays, 1 is left/right based on timer, 2 is left/right 
-    //based on tenth second delays
+    // on tenth-second delays, 1 is left/right based on timer, 2 is left/right 
+    // based on tenth second delays.
     char Move=0; // Move counter
     unsigned int SensorResult[2]={0,0};
     char buf[40]; // Buffer for characters for LCD

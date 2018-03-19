@@ -119,7 +119,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     // Flip left before starting scan from right side, this increases chance of
     // bot quickly finding the beacon if it just missed it
     (MoveType[*Move]) = 2;
-    (MoveTime[*Move]) = -3;
+    (MoveTime[*Move]) = LeftFlick;
     *Move = *Move+1;
     turnLeft(mL,mR, 100);
     delay_tenth_s(LeftFlick);
@@ -158,6 +158,8 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
         sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
         LCD_String(buf);
         
+        // TODO: Timer1 does not seem to be recorded correctly here, it activates
+        // at the start
         if (SensorResult[1]>DirectionFoundThreshold) {
             RightFlag= (TMR0H<<8)+TMR0L;
         }
@@ -191,15 +193,24 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 
                 return 2; // Direction of bomb is directly ahead
             } else {
-                // Signal was only found once, just go in that direction roughly
-                (MoveType[*Move]) = 2;
-                (MoveTime[*Move]) = 1;
-                *Move = *Move+1;
+                T0CONbits.TMR0ON=0; // Stop the timer
+                
+                // Signal was only found once
+                // Record movement of turn up to now
+                (MoveType[*Move]) = 1;
+                (MoveTime[*Move]) = ((TMR0H<<8)+TMR0L);
+                *Move = *Move+1;  
                 stop(mL,mR);
+                
+                // Small flick to adjust rough movement slightly + recording of it
                 turnLeft(mL,mR,100);
                 delay_tenth_s(MiniLeftFlick);
-                T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
+                (MoveType[*Move]) = 2;
+                (MoveTime[*Move]) = MiniLeftFlick;
+                *Move = *Move+1; 
+
+                // just go in that direction roughly
                 return 2; // Direction of bomb is roughly ahead
             }     
         } 

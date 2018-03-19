@@ -5,7 +5,7 @@ Linker command line:
 --edf=C:\Program Files (x86)\Microchip\xc8\v1.35\dat\en_msgs.txt -cs \
   -h+dist/default/debug\BombFinderV2.X.debug.sym \
   --cmf=dist/default/debug\BombFinderV2.X.debug.cmf -z -Q18F4331 \
-  -oC:\Users\tr514\AppData\Local\Temp\sa2g.2 \
+  -oC:\Users\tr514\AppData\Local\Temp\s3as.2 \
   -Mdist/default/debug/BombFinderV2.X.debug.map -E1 -ver=XC8 \
   -ASTACK=0264h-02eeh -pstack=STACK -ACODE=00h-01CFFh -ACONST=00h-01CFFh \
   -ASMALLCONST=0300h-03FFhx26 -AMEDIUMCONST=0300h-01CFFh -ACOMRAM=01h-05Fh \
@@ -22,7 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\tr514\AppData\Local\Temp\sa2g.obj \
+  C:\Users\tr514\AppData\Local\Temp\s3as.obj \
   dist/default/debug\BombFinderV2.X.debug.obj 
 
 Object code version is 3.11
@@ -35,7 +35,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\tr514\AppData\Local\Temp\sa2g.obj
+C:\Users\tr514\AppData\Local\Temp\s3as.obj
                 end_init                             D6       D6        4        C       0
                 reset_vec                             0        0        6        0       0
                 idloc                            200000   200000        8   200000       0
