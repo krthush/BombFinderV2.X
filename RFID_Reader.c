@@ -25,19 +25,6 @@ while (!PIR1bits.RCIF); //wait for the data to arrive
     return RCREG; //return byte in RCREG
 }
 
-void Serial_String(char *string){
-    //While the data pointed to isn't a 0x00 do below
-    while(*string != 0){
-    //Send out the current byte pointed to
-    // and increment the pointer
-    sendCharToSerial(*string++);
-    __delay_us(50); //so we can see each character
-    //being printed in turn (remove delay if you want
-    //your message to appear almost instantly)
-    }
-}
-
-
 //String can be divided into 5 pairs of Hex numbers, e.g.
 //
 //123456789A -> 0x12 | 0x34 | 0x56 | 0x78 | 0x9A
