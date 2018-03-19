@@ -1,6 +1,6 @@
 #include <xc.h>
 #include "dc_motor.h"
-#define _XTAL_FREQ 2000000
+#define _XTAL_FREQ 8000000
 #include "IR_Reading.h"
 #include "Movement.h"
 #include "LCD.h"
@@ -165,11 +165,11 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
         // TODO: Timer1 does not seem to be recorded correctly here, it activates
         // at the start
         if (SensorResult[1]>DirectionFoundThreshold) {
-            RightFlag=millis;
+            RightFlag=*millis;
         }
         
         if (SensorResult[0]>DirectionFoundThreshold) {
-            LeftFlag=millis;
+            LeftFlag=*millis;
         }
         
         // Increment counter if any of the IR sensors has seen the beacon
@@ -184,14 +184,14 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 TimeAboveThreshold=LeftFlag-RightFlag;
                 TMR0L = 0; //Reset the timer
                 TMR0H = 0;
-                millis = 0;
+                *millis = 0;
                 stop(mL,mR);
-                while (millis<(TimeAboveThreshold>>1)) {
+                while (*millis<(TimeAboveThreshold>>1)) {
                     turnLeft(mL,mR, MotorPower);
                 }
                 T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
-                //Let's return the net time spent turning left 
+                //Let's output the net time spent turning left 
                 (MoveType[*Move]) = 1;
                 (MoveTime[*Move]) = -(RightFlag + (TimeAboveThreshold>>1));
                 *Move = *Move+1;
@@ -203,7 +203,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 // Signal was only found once
                 // Record movement of turn up to now
                 (MoveType[*Move]) = 1;
-                (MoveTime[*Move]) = -millis;
+                (MoveTime[*Move]) = -(*millis);
                 *Move = *Move+1;  
                 stop(mL,mR);
                 

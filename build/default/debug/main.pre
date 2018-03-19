@@ -4655,7 +4655,6 @@ void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power
 
 # 12 "RFID_Reader.h"
 void initRFID(void);
-void sendCharToSerial(char charToSend);
 char getCharSerial(void);
 void Serial_String(char *string);
 unsigned char VerifySignal(unsigned char *Signal);
@@ -4674,7 +4673,8 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR);
 
 
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
-int *MoveTime, char *Move, char *MoveType, char *RFID_Read);
+int *MoveTime, char *Move, char *MoveType, char *RFID_Read,
+unsigned int *millis);
 
 # 15 "IR_Reading.h"
 void initIR(void);
@@ -4799,7 +4799,7 @@ volatile unsigned char ReceivedString[16];
 volatile unsigned char i=0;
 volatile unsigned char RFID_Read=0;
 volatile signed char mode=0;
-
+volatile unsigned int millis=0;
 
 void interrupt low_priority InterruptHandlerLow ()
 {
@@ -4832,6 +4832,10 @@ mode=-1;
 delay_tenth_s(2);
 INTCONbits.INT0IF=0;
 }
+if (INTCONbits.TMR0IF) {
+millis++;
+INTCONbits.TMR0IF = 0;
+}
 }
 
 void main(void){
@@ -4852,7 +4856,7 @@ char buf[40];
 
 unsigned char ScanAngle=60;
 
-# 76
+# 80
 INTCONbits.GIEH=1;
 INTCONbits.GIEL=1;
 INTCONbits.PEIE=1;
@@ -4886,7 +4890,7 @@ mR.dutyHighByte=(unsigned char *)(&PDC1H);
 mR.dir_pin=2;
 mR.PWMperiod=199;
 
-OSCCON = 0x72;
+OSCCON = 0b1110010;
 while(!OSCCONbits.IOFS);
 
 while(1){
@@ -4894,7 +4898,7 @@ while(1){
 switch (mode) {
 case -1:
 
-# 121
+# 125
 stop(&mL, &mR);
 
 
@@ -4968,7 +4972,7 @@ DirectionFound=0;
 } else if (DirectionFound==0) {
 
 DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
-&MoveTime, &Move, &MoveType, &RFID_Read);
+&MoveTime, &Move, &MoveType, &RFID_Read, &millis);
 } else if (DirectionFound==1) {
 
 DirectionFound=ScanIR(&mL, &mR);
@@ -5037,16 +5041,17 @@ delay_tenth_s(MoveTime[Move]);
 T0CONbits.TMR0ON=0;
 TMR0L = 0;
 TMR0H = 0;
+millis = 0;
 if (MoveTime[Move]>0) {
 T0CONbits.TMR0ON=1;
 turnRight(&mL,&mR,40);
-while (((TMR0H<<8)+TMR0L)<MoveTime[Move]);
+while (millis<MoveTime[Move]);
 
 T0CONbits.TMR0ON=0;
 } else {
 T0CONbits.TMR0ON=1;
 turnLeft(&mL,&mR,40);
-while (((TMR0H<<8)+TMR0L)<(-MoveTime[Move]));
+while (millis<(-MoveTime[Move]));
 
 T0CONbits.TMR0ON=0;
 }

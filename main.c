@@ -58,10 +58,10 @@ void main(void){
     unsigned char Message[10]; // Code on RFID Card
     unsigned char i=0; // Counter variable
     signed char DirectionFound=0; // Flag for if the robot has decided it knows where the bomb is
-    signed int MoveTime[25] = { 0 }; // Array to store time spent on each type of movement.
+    signed int MoveTime[50] = { 0 }; // Array to store time spent on each type of movement.
     // For left/right, left is defined as positive. For forwards/backwards,
     // forwards is positive.
-    unsigned char MoveType[25] = { 0 }; // Array to store movement types - 0 is forwards based 
+    unsigned char MoveType[50] = { 0 }; // Array to store movement types - 0 is forwards based 
     // on tenth-second delays, 1 is left/right based on timer, 2 is left/right 
     // based on tenth second delays.
     signed char Move=0; // Move counter - signed so it does not overflow when 0 reached
@@ -280,7 +280,8 @@ void main(void){
                         }
                     } else if (MoveType[Move]==2) { //If 0.1s left/right
                         if (MoveTime[Move]>0) { //If left turn
-                            turnRight(&mL,&mR,100);
+                            turnRight(&mL,&mR,78); // USERVARIABLE
+                            //Reduced power to correct motor imbalance
                             delay_tenth_s(MoveTime[Move]);
                         } else { //If right turn
                             turnLeft(&mL,&mR,100);
