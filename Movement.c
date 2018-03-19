@@ -198,7 +198,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 // Signal was only found once
                 // Record movement of turn up to now
                 (MoveType[*Move]) = 1;
-                (MoveTime[*Move]) = ((TMR0H<<8)+TMR0L);
+                (MoveTime[*Move]) = -((TMR0H<<8)+TMR0L);
                 *Move = *Move+1;  
                 stop(mL,mR);
                 
