@@ -190,7 +190,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _VerifySignal `(uc ~T0 @X0 0 ef1`*uc ]
 "28 dc_motor.h
 [v _fullSpeedBack `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
-"26
+"7055 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4331.h
+[s S381 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S381 . T0PS PSA T0SE T0CS T016BIT TMR0ON ]
+"7063
+[s S382 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S382 . T0PS0 T0PS1 T0PS2 T0PS3 ]
+"7054
+[u S380 `S381 1 `S382 1 ]
+[n S380 . . . ]
+"7070
+[v _T0CONbits `VS380 ~T0 @X0 0 e@4053 ]
+"7130
+[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
+"7136
+[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
+"26 dc_motor.h
 [v _turnRight `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
 "24
 [v _turnLeft `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
@@ -3914,18 +3929,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _DirectionFound `c ~T0 @X0 1 a ]
 [; ;main.c: 56: signed char DirectionFound=0;
 [e = _DirectionFound -> -> 0 `i `c ]
+[v F3893 `i ~T0 @X0 -> 50 `i s ]
+[i F3893
+:U ..
 "57
-[v _MoveTime `i ~T0 @X0 -> 100 `i a ]
+-> 0 `i
+..
+]
+[v _MoveTime `i ~T0 @X0 -> 50 `i a ]
+[; ;main.c: 57: int MoveTime[50] = { 0 };
+[e = _MoveTime F3893 ]
+[v F3895 `uc ~T0 @X0 -> 50 `i s ]
+[i F3895
+:U ..
 "60
-[v _MoveType `uc ~T0 @X0 -> 100 `i a ]
+-> -> 0 `i `uc
+..
+]
+[v _MoveType `uc ~T0 @X0 -> 50 `i a ]
+[; ;main.c: 60: char MoveType[50] = { 0 };
+[e = _MoveType F3895 ]
 "63
 [v _Move `uc ~T0 @X0 1 a ]
-[; ;main.c: 57: int MoveTime[100];
-[; ;main.c: 60: char MoveType[100];
 [; ;main.c: 63: char Move=0;
 [e = _Move -> -> 0 `i `uc ]
-[v F3896 `ui ~T0 @X0 -> 2 `i s ]
-[i F3896
+[v F3898 `ui ~T0 @X0 -> 2 `i s ]
+[i F3898
 :U ..
 "64
 -> -> 0 `i `ui
@@ -3934,7 +3963,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [v _SensorResult `ui ~T0 @X0 -> 2 `i a ]
 [; ;main.c: 64: unsigned int SensorResult[2]={0,0};
-[e = _SensorResult F3896 ]
+[e = _SensorResult F3898 ]
 "65
 [v _buf `uc ~T0 @X0 -> 40 `i a ]
 "67
@@ -4235,7 +4264,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "218
 [e $ ! & == -> *U + &U _ReceivedString * -> -> -> 0 `i `ui `ux -> -> # *U &U _ReceivedString `ui `ux `i -> 2 `i == -> *U + &U _ReceivedString * -> -> -> 15 `i `ui `ux -> -> # *U &U _ReceivedString `ui `ux `i -> 3 `i 440  ]
 {
-[; ;main.c: 219: if (VerifySignal(ReceivedString)){
+[; ;main.c: 219: if (VerifySignal(&ReceivedString)){
 "219
 [e $ ! != -> ( _VerifySignal (1 -> &U _ReceivedString `*uc `i -> -> -> 0 `i `uc `i 441  ]
 {
@@ -4354,17 +4383,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 256: LCD_String("Going Home");
 "256
 [e ( _LCD_String (1 -> :s 4C `*uc ]
-[; ;main.c: 257: stop(&mL,&mR);
-"257
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 259: for (Move=Move; Move>=0; Move--) {
-"259
+[; ;main.c: 258: for (Move=Move; Move>=0; Move--) {
+"258
 {
 [e = _Move _Move ]
 [e $ >= -> _Move `i -> 0 `i 451  ]
 [e $U 452  ]
 [e :U 451 ]
 {
+[; ;main.c: 259: stop(&mL,&mR);
+"259
+[e ( _stop (2 , &U _mL &U _mR ]
 [; ;main.c: 260: if (MoveType[Move]==0) {
 "260
 [e $ ! == -> *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux `i -> 0 `i 454  ]
@@ -4382,55 +4411,112 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 454 ]
 [e $ ! == -> *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux `i -> 1 `i 456  ]
 {
-[; ;main.c: 264: if (MoveTime[Move]>0) {
+[; ;main.c: 264: T0CONbits.TMR0ON=0;
 "264
+[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 265: TMR0L = 0;
+"265
+[e = _TMR0L -> -> 0 `i `uc ]
+[; ;main.c: 266: TMR0H = 0;
+"266
+[e = _TMR0H -> -> 0 `i `uc ]
+[; ;main.c: 267: if (MoveTime[Move]>0) {
+"267
 [e $ ! > *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux -> 0 `i 457  ]
 {
-[; ;main.c: 265: turnRight(&mL,&mR,100);
-"265
-[e ( _turnRight (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-[; ;main.c: 266: delay_tenth_s(MoveTime[Move]);
-"266
-[e ( _delay_tenth_s (1 -> *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux `uc ]
-"267
-}
-[; ;main.c: 267: } else {
+[; ;main.c: 268: T0CONbits.TMR0ON=1;
+"268
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 269: turnRight(&mL,&mR,40);
+"269
+[e ( _turnRight (3 , , &U _mL &U _mR -> -> 40 `i `uc ]
+[; ;main.c: 270: while (((TMR0H<<8)+TMR0L)<MoveTime[Move]);
+"270
 [e $U 458  ]
+[e :U 459 ]
+[e :U 458 ]
+[e $ < + << -> _TMR0H `i -> 8 `i -> _TMR0L `i *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux 459  ]
+[e :U 460 ]
+"272
+}
+[; ;main.c: 272: } else {
+[e $U 461  ]
 [e :U 457 ]
 {
-[; ;main.c: 268: turnLeft(&mL,&mR,100);
-"268
-[e ( _turnLeft (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
-[; ;main.c: 269: delay_tenth_s(MoveTime[Move]);
-"269
-[e ( _delay_tenth_s (1 -> *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux `uc ]
-"270
+[; ;main.c: 273: T0CONbits.TMR0ON=1;
+"273
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 274: turnLeft(&mL,&mR,40);
+"274
+[e ( _turnLeft (3 , , &U _mL &U _mR -> -> 40 `i `uc ]
+[; ;main.c: 275: while (((TMR0H<<8)+TMR0L)<MoveTime[Move]);
+"275
+[e $U 462  ]
+[e :U 463 ]
+[e :U 462 ]
+[e $ < + << -> _TMR0H `i -> 8 `i -> _TMR0L `i *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux 463  ]
+[e :U 464 ]
+"277
 }
-[e :U 458 ]
-"271
+[e :U 461 ]
+"278
 }
+[; ;main.c: 277: }
+[; ;main.c: 278: } else if (MoveType[Move]==2) {
+[e $U 465  ]
 [e :U 456 ]
-"272
+[e $ ! == -> *U + &U _MoveType * -> _Move `ux -> -> # *U &U _MoveType `ui `ux `i -> 2 `i 466  ]
+{
+[; ;main.c: 279: if (MoveTime[Move]>0) {
+"279
+[e $ ! > *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux -> 0 `i 467  ]
+{
+[; ;main.c: 280: turnRight(&mL,&mR,100);
+"280
+[e ( _turnRight (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
+[; ;main.c: 281: delay_tenth_s(MoveTime[Move]);
+"281
+[e ( _delay_tenth_s (1 -> *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux `uc ]
+"282
+}
+[; ;main.c: 282: } else {
+[e $U 468  ]
+[e :U 467 ]
+{
+[; ;main.c: 283: turnLeft(&mL,&mR,100);
+"283
+[e ( _turnLeft (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
+[; ;main.c: 284: delay_tenth_s(MoveTime[Move]);
+"284
+[e ( _delay_tenth_s (1 -> *U + &U _MoveTime * -> _Move `ux -> -> # *U &U _MoveTime `ui `ux `uc ]
+"285
+}
+[e :U 468 ]
+"286
+}
+[e :U 466 ]
+"287
+[e :U 465 ]
 [e :U 455 ]
 }
-"259
+"258
 [e -- _Move -> -> 1 `i `uc ]
 [e $ >= -> _Move `i -> 0 `i 451  ]
 [e :U 452 ]
-"272
+"287
 }
-[; ;main.c: 270: }
-[; ;main.c: 271: }
-[; ;main.c: 272: }
-[; ;main.c: 273: mode=-1;
-"273
+[; ;main.c: 285: }
+[; ;main.c: 286: }
+[; ;main.c: 287: }
+[; ;main.c: 288: mode=-1;
+"288
 [e = _mode -> -U -> 1 `i `c ]
-[; ;main.c: 275: break;
-"275
+[; ;main.c: 290: break;
+"290
 [e $U 424  ]
-"276
+"291
 }
-[; ;main.c: 276: }
+[; ;main.c: 291: }
 [e $U 424  ]
 "114
 [e :U 425 ]
@@ -4440,17 +4526,17 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 2 `i `c 438
  , $ -> -> 3 `i `c 450
  424 ]
-"276
+"291
 [e :U 424 ]
-"277
+"292
 }
 [e :U 421 ]
 "112
 [e $U 422  ]
 [e :U 423 ]
-[; ;main.c: 277: }
-[; ;main.c: 278: }
-"278
+[; ;main.c: 292: }
+[; ;main.c: 293: }
+"293
 [e :UE 417 ]
 }
 [p f _sprintf 8421508 ]

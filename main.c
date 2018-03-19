@@ -54,10 +54,10 @@ void main(void){
     unsigned char Message[10]; // Code on RFID Card
     unsigned char i=0; // Counter variable
     signed char DirectionFound=0; // Flag for if the robot has decided it knows where the bomb is
-    int MoveTime[100]; // Array to store time spent on each type of movement.
+    int MoveTime[50] = { 0 }; // Array to store time spent on each type of movement.
     // For left/right, left is defined as positive. For forwards/backwards,
     // forwards is positive.
-    char MoveType[100]; // Array to store movement types - 0 is forwards based 
+    char MoveType[50] = { 0 }; // Array to store movement types - 0 is forwards based 
     //on tenth-second delays, 1 is left/right based on timer, 2 is left/right 
     //based on tenth second delays
     char Move=0; // Move counter
@@ -216,7 +216,7 @@ void main(void){
                 if (RFID_Read) {
                     stop(&mL, &mR);
                     if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){ //If we have a valid ASCII signal
-                        if (VerifySignal(ReceivedString)){ //and if the checksum is correct
+                        if (VerifySignal(&ReceivedString)){ //and if the checksum is correct
                             //Put the RFID data into the Message variable
                             for (i=0; i<10; i++){
                                 Message[i] = ReceivedString[i+1]; 
@@ -241,6 +241,7 @@ void main(void){
                     // Bot needs to head for the bomb
                     fullSpeedAhead(&mL,&mR, 100);
                     delay_tenth_s(5);
+                    Move++;
                     MoveType[Move] = 0;
                     MoveTime[Move] = 5;
                 }
@@ -266,16 +267,16 @@ void main(void){
                         TMR0H = 0;
                         if (MoveTime[Move]>0) {
                             T0CONbits.TMR0ON=1; // Start the timer
-                            turnRight(&mL,&mR,100);
+                            turnRight(&mL,&mR,40);
                             while (((TMR0H<<8)+TMR0L)<MoveTime[Move]); //Delay 
                             //until it's turned as far as it did originally
                         } else {
                             T0CONbits.TMR0ON=1; // Start the timer
-                            turnLeft(&mL,&mR,100);
+                            turnLeft(&mL,&mR,40);
                             while (((TMR0H<<8)+TMR0L)<MoveTime[Move]); //Delay 
                             //until it's turned as far as it did originally
                         }
-                    } else if (MoveType==2) { //If 0.1s left/right
+                    } else if (MoveType[Move]==2) { //If 0.1s left/right
                         if (MoveTime[Move]>0) { //If left turn
                             turnRight(&mL,&mR,100);
                             delay_tenth_s(MoveTime[Move]);

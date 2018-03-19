@@ -4637,7 +4637,11 @@ char getCharSerial(void);
 void Serial_String(char *string);
 unsigned char VerifySignal(unsigned char *Signal);
 
+
 # 5 "RFID_Reader.c"
+#pragma config OSC = IRCIO
+
+
 void initRFID(void){
 TRISC = TRISC | 0b11000000;
 
@@ -4675,25 +4679,20 @@ _delay((unsigned long)((50)*(8000000/4000000.0)));
 }
 }
 
-# 55
+# 58
 unsigned char VerifySignal(unsigned char *Signal){
 unsigned char checksum=0;
 unsigned int hexByte=0;
 unsigned char i=0;
+unsigned char *ptr;
 
 
 hexByte = (Signal[3]<<8) + Signal[4];
 checksum = ((Signal[1]<<8) + Signal[2]) ^ hexByte;
 
-
-for (i=5; i<10; i+=2){
-hexByte = (Signal[i]<<8) + Signal[i+1];
-checksum = checksum ^ hexByte;
-}
-
-if ((checksum==((Signal[11]<<8)+Signal[12]))){
+# 75
 return 1;
-} else{
-return 0;
-}
+
+
+
 }

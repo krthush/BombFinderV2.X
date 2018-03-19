@@ -4822,7 +4822,7 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
 unsigned int SensorResult[2]={0,0};
 char buf[40];
 
-const unsigned int DirectionMoveThreshold=2500;
+const unsigned int DirectionMoveThreshold=1000;
 
 
 
@@ -4872,21 +4872,27 @@ unsigned int i=0;
 unsigned int n=0;
 unsigned char TimeAboveThreshold=0;
 
-const unsigned int DirectionFoundThreshold=3000;
+const unsigned int DirectionFoundThreshold=1000;
 
-const unsigned char power=40;
+const unsigned char MotorPower=40;
 
-# 122
+const unsigned char LeftFlick=2;
+
+const unsigned char MiniLeftFlick=1;
+
+
+
+
 *Move++;
 (MoveType[*Move]) = 2;
 (MoveTime[*Move]) = -3;
 
 turnLeft(mL,mR, 100);
-delay_tenth_s(3);
+delay_tenth_s(LeftFlick);
 stop(mL,mR);
 
 
-turnRight(mL,mR, power);
+turnRight(mL,mR, MotorPower);
 
 
 TMR0L = 0;
@@ -4926,7 +4932,7 @@ if (SensorResult[0]>DirectionFoundThreshold) {
 LeftFlag=(TMR0H<<8)+TMR0L;
 }
 
-# 176
+# 175
 if (LeftFlag>0) {
 
 
@@ -4936,7 +4942,7 @@ TMR0L = 0;
 TMR0H = 0;
 stop(mL,mR);
 while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
-turnLeft(mL,mR, power);
+turnLeft(mL,mR, MotorPower);
 }
 T0CONbits.TMR0ON=0;
 stop(mL,mR);
@@ -4948,6 +4954,12 @@ stop(mL,mR);
 return 2;
 } else {
 
+*Move++;
+(MoveType[*Move]) = 2;
+(MoveTime[*Move]) = 1;
+stop(mL,mR);
+turnLeft(mL,mR,100);
+delay_tenth_s(MiniLeftFlick);
 T0CONbits.TMR0ON=0;
 stop(mL,mR);
 return 2;

@@ -4840,10 +4840,10 @@ void main(void){
 unsigned char Message[10];
 unsigned char i=0;
 signed char DirectionFound=0;
-int MoveTime[100];
+int MoveTime[50] = { 0 };
 
 
-char MoveType[100];
+char MoveType[50] = { 0 };
 
 
 char Move=0;
@@ -4989,7 +4989,7 @@ case 2 :
 if (RFID_Read) {
 stop(&mL, &mR);
 if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){
-if (VerifySignal(ReceivedString)){
+if (VerifySignal(&ReceivedString)){
 
 for (i=0; i<10; i++){
 Message[i] = ReceivedString[i+1];
@@ -5027,13 +5027,28 @@ SetLine(1);
 LCD_String(Message);
 SetLine(2);
 LCD_String("Going Home");
-stop(&mL,&mR);
 
 for (Move=Move; Move>=0; Move--) {
+stop(&mL,&mR);
 if (MoveType[Move]==0) {
 fullSpeedBack(&mL,&mR,100);
 delay_tenth_s(MoveTime[Move]);
 } else if (MoveType[Move]==1) {
+T0CONbits.TMR0ON=0;
+TMR0L = 0;
+TMR0H = 0;
+if (MoveTime[Move]>0) {
+T0CONbits.TMR0ON=1;
+turnRight(&mL,&mR,40);
+while (((TMR0H<<8)+TMR0L)<MoveTime[Move]);
+
+} else {
+T0CONbits.TMR0ON=1;
+turnLeft(&mL,&mR,40);
+while (((TMR0H<<8)+TMR0L)<MoveTime[Move]);
+
+}
+} else if (MoveType[Move]==2) {
 if (MoveTime[Move]>0) {
 turnRight(&mL,&mR,100);
 delay_tenth_s(MoveTime[Move]);

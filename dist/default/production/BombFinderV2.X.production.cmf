@@ -11,85 +11,86 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\krthu\AppData\Local\Temp\s6fc.obj
+$C:\Users\tr514\AppData\Local\Temp\sa0g.obj
 idloc IDLOC 0 200000 200000 8 1
-init CODE 0 F6 F6 4 1
 reset_vec CODE 0 0 0 4 1
+end_init CODE 0 D6 D6 4 1
 config CONFIG 0 300000 300000 E 1
 $dist/default/production\BombFinderV2.X.production.obj
-intcodelo CODE 0 18 18 DE 1
-cinit CODE 0 1AA2 1AA2 26 1
-intcode_body CODE 0 144C 144C B2 1
-text0 CODE 0 350 350 590 1
-text1 CODE 0 1B28 1B28 12 1
-text2 CODE 0 1B0C 1B0C 1C 1
-text3 CODE 0 1A1C 1A1C 32 1
-text4 CODE 0 12B4 12B4 CE 1
-text5 CODE 0 1AC8 1AC8 22 1
-text6 CODE 0 18C2 18C2 3C 1
-text7 CODE 0 1A4E 1A4E 2C 1
-text8 CODE 0 10C0 10C0 FC 1
-text9 CODE 0 8E0 8E0 400 1
-text10 CODE 0 18FE 18FE 3C 1
-text11 CODE 0 193A 193A 3C 1
-text12 CODE 0 1616 1616 7C 1
-text13 CODE 0 1880 1880 42 1
-text14 CODE 0 11BC 11BC F8 1
-text15 CODE 0 14FE 14FE 92 1
-text16 CODE 0 F82 F82 13E 1
-text17 CODE 0 1590 1590 86 1
-text18 CODE 0 CE0 CE0 2A2 1
-text19 CODE 0 1AEA 1AEA 22 1
-text20 CODE 0 1A7A 1A7A 28 1
-text21 CODE 0 183C 183C 44 1
-text22 CODE 0 17E8 17E8 54 1
-text23 CODE 0 1692 1692 7A 1
-text24 CODE 0 170C 170C 7A 1
-text25 CODE 0 19E6 19E6 36 1
-text26 CODE 0 1786 1786 62 1
-text27 CODE 0 1976 1976 38 1
-text28 CODE 0 1382 1382 CA 1
-text29 CODE 0 1B3A 1B3A E 1
-text32 CODE 0 19AE 19AE 38 1
-cstackCOMRAM COMRAM 1 1 1 2B 1
-cstackBANK0 BANK0 1 60 60 9E 1
-cstackBANK1 BANK1 1 100 100 E5 1
-cstackBANK2 BANK2 1 200 200 64 1
-temp COMRAM 1 36 36 1 1
-bssBANK1 BANK1 1 1E5 1E5 15 1
-intcode CODE 0 8 8 6 1
+intcodelo CODE 0 18 18 BE 1
+cinit CODE 0 1BC2 1BC2 36 1
+intcode_body CODE 0 16DC 16DC 8A 1
+text0 CODE 0 350 350 78A 1
+text1 CODE 0 1D32 1D32 12 1
+text2 CODE 0 1D16 1D16 1C 1
+text3 CODE 0 1BF8 1BF8 32 1
+text4 CODE 0 158C 158C BC 1
+text5 CODE 0 1CD6 1CD6 22 1
+text6 CODE 0 1A98 1A98 3E 1
+text7 CODE 0 1C8A 1C8A 26 1
+text8 CODE 0 19AC 19AC 58 1
+text9 CODE 0 ADA ADA 4B2 1
+text10 CODE 0 1AD6 1AD6 3E 1
+text11 CODE 0 1B14 1B14 3E 1
+text12 CODE 0 17EA 17EA 80 1
+text13 CODE 0 1B52 1B52 38 1
+text14 CODE 0 13CC 13CC FA 1
+text15 CODE 0 1648 1648 94 1
+text16 CODE 0 1292 1292 13A 1
+text17 CODE 0 1766 1766 84 1
+text18 CODE 0 F8C F8C 306 1
+text19 CODE 0 1CF8 1CF8 1E 1
+text20 CODE 0 1CB0 1CB0 26 1
+text21 CODE 0 1A56 1A56 42 1
+text22 CODE 0 1A04 1A04 52 1
+text23 CODE 0 186A 186A 72 1
+text24 CODE 0 18DC 18DC 72 1
+text25 CODE 0 1C2A 1C2A 30 1
+text26 CODE 0 194E 194E 5E 1
+text27 CODE 0 1C5A 1C5A 30 1
+text28 CODE 0 14C6 14C6 C6 1
+text29 CODE 0 1D44 1D44 E 1
+text32 CODE 0 1B8A 1B8A 38 1
+cstackCOMRAM COMRAM 1 1 1 39 1
+cstackBANK0 BANK0 1 60 60 5F 1
+cstackBANK1 BANK1 1 100 100 E2 1
+temp COMRAM 1 3C 3C 1 1
+bssBANK0 BANK0 1 BF BF 3A 1
+bssBANK1 BANK1 1 1E2 1E2 15 1
+bssBANK2 BANK2 1 200 200 64 1
+intcode CODE 0 8 8 E 1
 smallconst SMALLCONST 0 300 300 50 1
-bssCOMRAM COMRAM 1 2C 2C A 1
+bssCOMRAM COMRAM 1 3A 3A 2 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM FE-FF 1
-RAM 1FA-1FF 1
+RAM F9-FF 1
+RAM 1F7-1FF 1
 RAM 264-2FF 1
 SFR F60-FFF 1
-BANK0 FE-FF 1
-BANK1 1FA-1FF 1
+BANK0 F9-FF 1
+BANK1 1F7-1FF 1
 BANK2 264-2FF 1
 CONST 4-7 1
-CONST E-17 1
-CONST FA-2FF 1
-CONST 1B48-1FFF 1
+CONST 16-17 1
+CONST DA-2FF 1
+CONST 1D52-1FFF 1
 STACK 264-2FF 1
-SMALLCONST 1B48-1FFF 1
+SMALLCONST 1D52-1FFF 1
 CODE 4-7 1
-CODE E-17 1
-CODE FA-2FF 1
-CODE 1B48-1FFF 1
-BIGRAM 37-5F 1
-BIGRAM FE-FF 1
-BIGRAM 1FA-1FF 1
+CODE 16-17 1
+CODE DA-2FF 1
+CODE 1D52-1FFF 1
+BIGRAM 3D-5F 1
+BIGRAM F9-FF 1
+BIGRAM 1F7-1FF 1
 BIGRAM 264-2FF 1
-COMRAM 37-5F 1
+COMRAM 3D-5F 1
 EEDATA F00000-F000FF 1
-MEDIUMCONST 1B48-1FFF 1
+MEDIUMCONST 1D52-1FFF 1
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -104,623 +105,603 @@ MEDIUMCONST 1B48-1FFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\BombFinderV2.X.production.obj
-18 intcodelo CODE >11:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-18 intcodelo CODE >18:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-6E intcodelo CODE >20:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-72 intcodelo CODE >21:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-86 intcodelo CODE >22:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-8C intcodelo CODE >23:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-94 intcodelo CODE >24:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-98 intcodelo CODE >25:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-9A intcodelo CODE >26:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-9C intcodelo CODE >27:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-9C intcodelo CODE >28:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-9E intcodelo CODE >29:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-9E intcodelo CODE >30:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-8 intcode CODE >30:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-8 intcode CODE >34:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-19AE text32 CODE >32:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-19B0 text32 CODE >33:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-19B8 text32 CODE >34:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-19C2 text32 CODE >36:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-19D0 text32 CODE >34:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-144C intcode_body CODE >34:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-1494 intcode_body CODE >35:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-1498 intcode_body CODE >36:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-149E intcode_body CODE >38:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-14A2 intcode_body CODE >39:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-14A8 intcode_body CODE >43:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-14AA intcode_body CODE >44:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-14AA intcode_body CODE >46:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-14B0 intcode_body CODE >47:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-14B2 intcode_body CODE >48:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-14B2 intcode_body CODE >49:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-1B3A text29 CODE >5:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1B3A text29 CODE >8:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1B3C text29 CODE >9:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1B44 text29 CODE >10:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1B46 text29 CODE >11:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1382 text28 CODE >14:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1386 text28 CODE >17:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-13B4 text28 CODE >18:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-13E2 text28 CODE >19:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-140C text28 CODE >20:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-143E text28 CODE >21:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1442 text28 CODE >22:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-144A text28 CODE >24:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1976 text27 CODE >27:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-197A text27 CODE >30:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1986 text27 CODE >32:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1992 text27 CODE >33:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-199A text27 CODE >35:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-19A4 text27 CODE >36:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-19AC text27 CODE >37:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1786 text26 CODE >83:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1786 text26 CODE >85:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1788 text26 CODE >88:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-17B8 text26 CODE >89:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-17C0 text26 CODE >85:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-17C0 text26 CODE >92:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-19E6 text25 CODE >74:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-19EA text25 CODE >75:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-19F2 text25 CODE >76:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-19FC text25 CODE >77:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1A08 text25 CODE >78:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1A12 text25 CODE >79:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1A12 text25 CODE >80:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1A1A text25 CODE >81:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-170C text24 CODE >90:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-170C text24 CODE >92:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1716 text24 CODE >93:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-171A text24 CODE >95:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1726 text24 CODE >97:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1750 text24 CODE >98:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1762 text24 CODE >95:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1768 text24 CODE >101:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1692 text23 CODE >74:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1692 text23 CODE >76:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-169C text23 CODE >77:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-16A0 text23 CODE >79:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-16AC text23 CODE >81:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-16D6 text23 CODE >82:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-16E8 text23 CODE >79:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-16EE text23 CODE >85:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-17E8 text22 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-17E8 text22 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-17F2 text22 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-17FA text22 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-17FE text22 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-1800 text22 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-1806 text22 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-1808 text22 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-1808 text22 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-180C text22 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-1812 text22 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-181E text22 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-1826 text22 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-1828 text22 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-1828 text22 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-182E text22 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-1832 text22 CODE >30:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-183A text22 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-183C text21 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-183C text21 CODE >13:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-1846 text21 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-184A text21 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-184C text21 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-1852 text21 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-1854 text21 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-1854 text21 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-1858 text21 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-1864 text21 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-186C text21 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-1872 text21 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-1876 text21 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-187E text21 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-1A7A text20 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
-1A7A text20 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
-1A88 text20 CODE >38:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
-1A90 text20 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
-1A98 text20 CODE >52:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
-1AEA text19 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\isdigit.c
-1AEE text19 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\isdigit.c
-CE0 text18 CODE >492:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-CE0 text18 CODE >533:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-CEA text18 CODE >536:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-CEC text18 CODE >538:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-CF4 text18 CODE >541:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D04 text18 CODE >542:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D06 text18 CODE >543:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D06 text18 CODE >546:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D0E text18 CODE >548:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D12 text18 CODE >551:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D14 text18 CODE >579:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D14 text18 CODE >580:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D18 text18 CODE >581:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D1C text18 CODE >551:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D2E text18 CODE >597:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D42 text18 CODE >598:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D4C text18 CODE >599:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D4C text18 CODE >600:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D6A text18 CODE >601:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-D98 text18 CODE >602:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-DAC text18 CODE >635:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-DD4 text18 CODE >822:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-DD4 text18 CODE >1259:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-DEE text18 CODE >1261:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-DF2 text18 CODE >1262:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-DF6 text18 CODE >1263:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-DFE text18 CODE >1264:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-DFE text18 CODE >1305:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E0A text18 CODE >1306:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E2A text18 CODE >1305:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E2E text18 CODE >1345:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E42 text18 CODE >1346:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E48 text18 CODE >1381:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E5E text18 CODE >1382:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E6C text18 CODE >1383:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E6C text18 CODE >1384:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E74 text18 CODE >1387:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E78 text18 CODE >1392:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E84 text18 CODE >1393:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E94 text18 CODE >1415:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-E9C text18 CODE >1417:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-EAC text18 CODE >1418:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-EB4 text18 CODE >1420:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-EB4 text18 CODE >1428:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-EBC text18 CODE >1430:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-ECC text18 CODE >1431:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-EDA text18 CODE >1438:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-EE6 text18 CODE >1439:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-EF6 text18 CODE >1472:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-EFA text18 CODE >1474:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-EFC text18 CODE >1489:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-F42 text18 CODE >1524:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-F52 text18 CODE >1474:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-F52 text18 CODE >1525:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-F5A text18 CODE >536:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-F74 text18 CODE >1538:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\doprnt.c
-1590 text17 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-1590 text17 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-1596 text17 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-159A text17 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15A2 text17 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15A6 text17 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15A6 text17 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15AA text17 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15B2 text17 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15B6 text17 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15B6 text17 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15BE text17 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15C6 text17 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15CA text17 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15CC text17 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15D2 text17 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15D4 text17 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15D4 text17 CODE >29:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15D8 text17 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15DE text17 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15EA text17 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15F2 text17 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15F4 text17 CODE >35:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15F4 text17 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15FA text17 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-15FE text17 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-1604 text17 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-160C text17 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
-F82 text16 CODE >26:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-F82 text16 CODE >30:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-FCC text16 CODE >32:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-FE0 text16 CODE >34:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1008 text16 CODE >35:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1038 text16 CODE >36:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-103A text16 CODE >37:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-103A text16 CODE >39:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1064 text16 CODE >40:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1064 text16 CODE >43:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1088 text16 CODE >44:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-10BE text16 CODE >45:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-14FE text15 CODE >67:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-14FE text15 CODE >70:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1500 text15 CODE >71:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-150E text15 CODE >72:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1518 text15 CODE >73:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1518 text15 CODE >74:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1526 text15 CODE >75:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1530 text15 CODE >76:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1530 text15 CODE >77:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-153C text15 CODE >78:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1548 text15 CODE >79:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1550 text15 CODE >70:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1550 text15 CODE >80:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-156C text15 CODE >81:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-157E text15 CODE >82:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-158E text15 CODE >83:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-11BC text14 CODE >44:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-11BC text14 CODE >47:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-11CC text14 CODE >50:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-11D6 text14 CODE >55:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-11E2 text14 CODE >56:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-11EE text14 CODE >60:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-11F2 text14 CODE >61:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-11F6 text14 CODE >62:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-11FA text14 CODE >63:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-11FE text14 CODE >66:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-120A text14 CODE >67:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1212 text14 CODE >68:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-121E text14 CODE >69:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1230 text14 CODE >70:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1236 text14 CODE >71:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1244 text14 CODE >72:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-124A text14 CODE >73:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1270 text14 CODE >74:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-127E text14 CODE >79:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1298 text14 CODE >80:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-129A text14 CODE >81:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-129C text14 CODE >82:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-12B0 text14 CODE >83:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1880 text13 CODE >32:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1884 text13 CODE >33:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-188E text13 CODE >34:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1898 text13 CODE >36:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-18AA text13 CODE >34:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1616 text12 CODE >108:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1616 text12 CODE >111:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1618 text12 CODE >112:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-162A text12 CODE >113:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1634 text12 CODE >114:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1634 text12 CODE >115:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1644 text12 CODE >116:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-164E text12 CODE >117:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-164E text12 CODE >118:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-165A text12 CODE >119:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1666 text12 CODE >120:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-166E text12 CODE >111:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-166E text12 CODE >121:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-193A text11 CODE >87:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-193A text11 CODE >91:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-194C text11 CODE >92:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-195C text11 CODE >93:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1974 text11 CODE >94:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-18FE text10 CODE >98:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-18FE text10 CODE >102:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1910 text10 CODE >103:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1920 text10 CODE >104:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1938 text10 CODE >105:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-8E0 text9 CODE >98:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-8E0 text9 CODE >102:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-8F0 text9 CODE >103:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-8FA text9 CODE >104:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-902 text9 CODE >106:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-90A text9 CODE >107:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-912 text9 CODE >108:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-916 text9 CODE >110:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-91E text9 CODE >112:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-922 text9 CODE >122:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-926 text9 CODE >123:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-946 text9 CODE >124:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-96A text9 CODE >126:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-982 text9 CODE >127:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-988 text9 CODE >128:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-99C text9 CODE >131:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9B4 text9 CODE >134:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9B8 text9 CODE >135:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9BC text9 CODE >136:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9BE text9 CODE >138:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9CA text9 CODE >141:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9D6 text9 CODE >142:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9E2 text9 CODE >146:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9E6 text9 CODE >147:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9EA text9 CODE >148:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9EE text9 CODE >149:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9F2 text9 CODE >153:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-9FE text9 CODE >154:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A06 text9 CODE >155:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A12 text9 CODE >156:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A24 text9 CODE >157:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A2A text9 CODE >158:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A38 text9 CODE >159:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A3E text9 CODE >160:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A64 text9 CODE >161:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A72 text9 CODE >163:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A80 text9 CODE >164:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A92 text9 CODE >165:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A92 text9 CODE >167:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-A9E text9 CODE >168:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-AB0 text9 CODE >169:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-AB0 text9 CODE >176:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-AB8 text9 CODE >179:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-AC0 text9 CODE >180:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-AC8 text9 CODE >181:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-ACC text9 CODE >182:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-AD0 text9 CODE >183:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-AE4 text9 CODE >184:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-AE6 text9 CODE >185:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-AFE text9 CODE >184:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-AFE text9 CODE >186:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-B30 text9 CODE >187:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-B32 text9 CODE >188:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-B46 text9 CODE >190:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-B4C text9 CODE >191:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-B6C text9 CODE >192:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-BA4 text9 CODE >194:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-BA8 text9 CODE >195:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-BA8 text9 CODE >197:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-BAC text9 CODE >198:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-BCC text9 CODE >199:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-BF0 text9 CODE >200:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C04 text9 CODE >201:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C1E text9 CODE >202:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C24 text9 CODE >203:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C26 text9 CODE >204:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C3A text9 CODE >205:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C3E text9 CODE >206:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C3E text9 CODE >209:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C4C text9 CODE >210:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C50 text9 CODE >138:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C50 text9 CODE >211:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C62 text9 CODE >215:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C66 text9 CODE >216:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-C86 text9 CODE >217:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-CAA text9 CODE >218:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-CC2 text9 CODE >219:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-CC8 text9 CODE >220:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-CDC text9 CODE >221:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-10C0 text8 CODE >55:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-10C0 text8 CODE >56:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-10C6 text8 CODE >57:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-10CE text8 CODE >58:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-10D2 text8 CODE >61:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1104 text8 CODE >62:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1116 text8 CODE >65:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1122 text8 CODE >66:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1166 text8 CODE >67:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-116C text8 CODE >65:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1172 text8 CODE >70:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-11B4 text8 CODE >71:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-11B6 text8 CODE >72:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-11B8 text8 CODE >73:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1A4E text7 CODE >106:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1A52 text7 CODE >108:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1A5A text7 CODE >109:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1A64 text7 CODE >110:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1A6E text7 CODE >111:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1A78 text7 CODE >112:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-18C2 text6 CODE >125:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-18C2 text6 CODE >128:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-18D4 text6 CODE >129:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-18E4 text6 CODE >130:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-18FC text6 CODE >131:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1AC8 text5 CODE >30:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1AC8 text5 CODE >36:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1ACA text5 CODE >37:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1ACC text5 CODE >39:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1ACE text5 CODE >40:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1AD0 text5 CODE >42:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1AD2 text5 CODE >43:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1AD4 text5 CODE >46:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1AD6 text5 CODE >47:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1AD8 text5 CODE >52:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1ADC text5 CODE >53:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1AE0 text5 CODE >56:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1AE2 text5 CODE >59:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1AE4 text5 CODE >69:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-1AE8 text5 CODE >70:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\IR_Reading.c
-12B4 text4 CODE >38:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12B4 text4 CODE >44:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12B6 text4 CODE >45:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12B8 text4 CODE >46:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12BA text4 CODE >47:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12BC text4 CODE >48:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12BE text4 CODE >49:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12C0 text4 CODE >51:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12D0 text4 CODE >52:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12D6 text4 CODE >53:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12E8 text4 CODE >54:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12EE text4 CODE >55:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12F6 text4 CODE >56:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-12FC text4 CODE >57:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1304 text4 CODE >58:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-130A text4 CODE >59:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1312 text4 CODE >62:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-131E text4 CODE >63:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1326 text4 CODE >64:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1332 text4 CODE >65:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-133A text4 CODE >66:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1346 text4 CODE >67:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1358 text4 CODE >68:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1364 text4 CODE >69:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-136C text4 CODE >70:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1378 text4 CODE >71:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1380 text4 CODE >72:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\LCD.c
-1A1C text3 CODE >4:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A1C text3 CODE >6:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A20 text3 CODE >7:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A24 text3 CODE >8:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A28 text3 CODE >9:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A2C text3 CODE >11:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A30 text3 CODE >12:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A34 text3 CODE >13:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A38 text3 CODE >14:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A3C text3 CODE >15:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A40 text3 CODE >16:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A44 text3 CODE >19:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A46 text3 CODE >20:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A48 text3 CODE >21:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A4A text3 CODE >22:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1A4C text3 CODE >23:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\dc_motor.c
-1B0C text2 CODE >5:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1B0C text2 CODE >6:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1B12 text2 CODE >10:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1B16 text2 CODE >11:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1B1A text2 CODE >12:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1B1C text2 CODE >13:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1B1E text2 CODE >14:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1B20 text2 CODE >15:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1B22 text2 CODE >16:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1B24 text2 CODE >17:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1B26 text2 CODE >18:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\RFID_Reader.c
-1B28 text1 CODE >8:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1B28 text1 CODE >10:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1B2A text1 CODE >11:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1B2C text1 CODE >12:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1B2E text1 CODE >13:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1B30 text1 CODE >14:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1B36 text1 CODE >17:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-1B38 text1 CODE >18:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
-350 text0 CODE >51:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-350 text0 CODE >55:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-356 text0 CODE >56:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-35A text0 CODE >63:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-360 text0 CODE >64:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-370 text0 CODE >67:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-376 text0 CODE >76:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-378 text0 CODE >77:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-37A text0 CODE >78:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-37C text0 CODE >79:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-37E text0 CODE >82:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-380 text0 CODE >83:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-382 text0 CODE >86:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-384 text0 CODE >87:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-386 text0 CODE >90:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-388 text0 CODE >91:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-38A text0 CODE >95:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-390 text0 CODE >96:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-394 text0 CODE >97:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-39C text0 CODE >98:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3A4 text0 CODE >99:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3A8 text0 CODE >100:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3B0 text0 CODE >102:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3B4 text0 CODE >103:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3B8 text0 CODE >104:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3C0 text0 CODE >105:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3C8 text0 CODE >106:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3CC text0 CODE >107:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3D4 text0 CODE >109:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3D8 text0 CODE >110:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3DE text0 CODE >115:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3DE text0 CODE >122:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3F4 text0 CODE >123:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-3FA text0 CODE >126:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-406 text0 CODE >127:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-412 text0 CODE >131:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-416 text0 CODE >132:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-41A text0 CODE >133:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-41E text0 CODE >134:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-422 text0 CODE >137:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-42E text0 CODE >138:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-436 text0 CODE >139:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-442 text0 CODE >140:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-454 text0 CODE >141:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-45A text0 CODE >142:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-468 text0 CODE >143:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-46E text0 CODE >144:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-476 text0 CODE >145:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-484 text0 CODE >146:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-486 text0 CODE >147:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-4AC text0 CODE >148:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-4BA text0 CODE >152:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-4BC text0 CODE >154:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-4BC text0 CODE >157:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-4C0 text0 CODE >158:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-4C4 text0 CODE >159:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-4C8 text0 CODE >160:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-4CC text0 CODE >161:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-4D0 text0 CODE >163:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-4DC text0 CODE >164:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-4E8 text0 CODE >167:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-502 text0 CODE >168:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-508 text0 CODE >170:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-50A text0 CODE >174:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-50A text0 CODE >180:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-510 text0 CODE >181:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-51E text0 CODE >183:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-526 text0 CODE >188:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-52A text0 CODE >189:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-53E text0 CODE >190:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-556 text0 CODE >191:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-570 text0 CODE >192:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-576 text0 CODE >193:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-58C text0 CODE >194:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-590 text0 CODE >195:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-596 text0 CODE >198:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-5D4 text0 CODE >199:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-5D6 text0 CODE >200:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-5DE text0 CODE >202:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-5F6 text0 CODE >203:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-600 text0 CODE >205:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-604 text0 CODE >206:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-61A text0 CODE >209:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-61C text0 CODE >211:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-61C text0 CODE >216:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-624 text0 CODE >217:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-63A text0 CODE >218:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-666 text0 CODE >219:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-678 text0 CODE >221:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-686 text0 CODE >222:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-6B4 text0 CODE >221:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-6B8 text0 CODE >226:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-6C4 text0 CODE >227:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-6D8 text0 CODE >226:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-6DC text0 CODE >229:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-6E0 text0 CODE >231:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-6E2 text0 CODE >232:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-6FC text0 CODE >233:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-702 text0 CODE >234:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-718 text0 CODE >235:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-732 text0 CODE >238:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-734 text0 CODE >239:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-73A text0 CODE >240:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-73E text0 CODE >242:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-756 text0 CODE >243:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-75C text0 CODE >244:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-772 text0 CODE >245:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-78A text0 CODE >248:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-78C text0 CODE >250:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-78C text0 CODE >253:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-792 text0 CODE >254:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-7A0 text0 CODE >255:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-7A6 text0 CODE >256:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-7B4 text0 CODE >257:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-7CA text0 CODE >259:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-7CA text0 CODE >260:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-7E2 text0 CODE >261:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-7FC text0 CODE >262:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-814 text0 CODE >263:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-82E text0 CODE >264:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-850 text0 CODE >265:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-86A text0 CODE >266:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-882 text0 CODE >267:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-884 text0 CODE >268:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-89E text0 CODE >269:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-8B6 text0 CODE >259:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-8B6 text0 CODE >270:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-8BC text0 CODE >273:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-8BE text0 CODE >114:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-8BE text0 CODE >276:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-8DE text0 CODE >112:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\main.c
-1AA2 cinit CODE >2476:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AA2 cinit CODE >2478:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AA2 cinit CODE >2481:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AA2 cinit CODE >2511:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AA6 cinit CODE >2512:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AA8 cinit CODE >2513:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AA8 cinit CODE >2514:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AAA cinit CODE >2515:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AAC cinit CODE >2516:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AAE cinit CODE >2519:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AB2 cinit CODE >2520:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AB4 cinit CODE >2521:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AB4 cinit CODE >2522:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AB6 cinit CODE >2523:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AB8 cinit CODE >2524:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1ABA cinit CODE >2530:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1ABA cinit CODE >2532:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1ABC cinit CODE >2533:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1ABE cinit CODE >2535:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AC0 cinit CODE >2536:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AC2 cinit CODE >2537:C:\Users\krthu\AppData\Local\Temp\s6fc.
-1AC4 cinit CODE >2538:C:\Users\krthu\AppData\Local\Temp\s6fc.
+18 intcodelo CODE >11:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+18 intcodelo CODE >18:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+5E intcodelo CODE >20:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+62 intcodelo CODE >21:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+76 intcodelo CODE >22:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+7C intcodelo CODE >23:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+84 intcodelo CODE >24:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+88 intcodelo CODE >25:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+8A intcodelo CODE >26:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+8C intcodelo CODE >28:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+8E intcodelo CODE >30:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+8 intcode CODE >30:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+8 intcode CODE >34:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+1B8A text32 CODE >32:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1B8C text32 CODE >33:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1B94 text32 CODE >34:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1B9E text32 CODE >36:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1BAC text32 CODE >34:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+16DC intcode_body CODE >34:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+170C intcode_body CODE >35:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+1710 intcode_body CODE >36:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+1716 intcode_body CODE >38:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+171A intcode_body CODE >39:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+1720 intcode_body CODE >43:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+1722 intcode_body CODE >46:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+1728 intcode_body CODE >47:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+172A intcode_body CODE >49:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+1D44 text29 CODE >5:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1D44 text29 CODE >8:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1D46 text29 CODE >9:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1D4E text29 CODE >10:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1D50 text29 CODE >11:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+14C6 text28 CODE >14:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+14C8 text28 CODE >17:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+14F4 text28 CODE >18:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1522 text28 CODE >19:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+154C text28 CODE >20:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+157E text28 CODE >21:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1582 text28 CODE >22:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+158A text28 CODE >24:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C5A text27 CODE >27:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C5C text27 CODE >30:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C66 text27 CODE >32:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C70 text27 CODE >33:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C78 text27 CODE >35:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C80 text27 CODE >36:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C88 text27 CODE >37:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+194E text26 CODE >83:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+194E text26 CODE >85:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1950 text26 CODE >88:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+197C text26 CODE >89:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1984 text26 CODE >85:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C2A text25 CODE >74:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C2C text25 CODE >75:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C32 text25 CODE >76:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C3C text25 CODE >77:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C46 text25 CODE >78:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C50 text25 CODE >80:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1C58 text25 CODE >81:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+18DC text24 CODE >90:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+18DC text24 CODE >92:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+18E4 text24 CODE >93:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+18E8 text24 CODE >95:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+18F4 text24 CODE >97:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+191E text24 CODE >98:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+192C text24 CODE >95:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1930 text24 CODE >101:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+186A text23 CODE >74:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+186A text23 CODE >76:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1872 text23 CODE >77:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1876 text23 CODE >79:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1882 text23 CODE >81:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+18AC text23 CODE >82:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+18BA text23 CODE >79:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+18BE text23 CODE >85:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1A04 text22 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A04 text22 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A0C text22 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A14 text22 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A18 text22 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A1A text22 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A20 text22 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A22 text22 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A26 text22 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A2C text22 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A38 text22 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A40 text22 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A42 text22 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A48 text22 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A4C text22 CODE >29:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A4C text22 CODE >30:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A54 text22 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+1A56 text21 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A56 text21 CODE >13:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A5E text21 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A62 text21 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A64 text21 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A6A text21 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A6C text21 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A70 text21 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A7C text21 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A84 text21 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A8A text21 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A8E text21 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A8E text21 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1A96 text21 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+1CB0 text20 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul16.c
+1CB0 text20 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul16.c
+1CBC text20 CODE >38:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul16.c
+1CC4 text20 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul16.c
+1CCC text20 CODE >52:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul16.c
+1CF8 text19 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\isdigit.c
+1CFA text19 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\isdigit.c
+F8C text18 CODE >492:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+F8C text18 CODE >533:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+F98 text18 CODE >536:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+F9A text18 CODE >538:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+FA4 text18 CODE >541:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+FB4 text18 CODE >542:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+FB6 text18 CODE >546:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+FC0 text18 CODE >548:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+FC6 text18 CODE >551:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+FC8 text18 CODE >580:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+FCC text18 CODE >581:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+FD0 text18 CODE >551:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+FE2 text18 CODE >597:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+FF6 text18 CODE >598:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1000 text18 CODE >600:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+101C text18 CODE >601:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+105E text18 CODE >602:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1072 text18 CODE >635:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+109A text18 CODE >1259:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+10B4 text18 CODE >1261:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+10BA text18 CODE >1262:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+10C0 text18 CODE >1263:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+10CA text18 CODE >1305:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+10DA text18 CODE >1306:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1100 text18 CODE >1305:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1106 text18 CODE >1345:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1120 text18 CODE >1346:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1128 text18 CODE >1381:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+114A text18 CODE >1382:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1160 text18 CODE >1384:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+116A text18 CODE >1387:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1170 text18 CODE >1392:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+117E text18 CODE >1393:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+118E text18 CODE >1415:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+119A text18 CODE >1417:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+11AA text18 CODE >1418:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+11B4 text18 CODE >1428:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+11C0 text18 CODE >1430:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+11D0 text18 CODE >1431:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+11E4 text18 CODE >1438:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+11F2 text18 CODE >1439:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1202 text18 CODE >1472:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1206 text18 CODE >1474:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1208 text18 CODE >1489:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+124E text18 CODE >1524:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+125E text18 CODE >1474:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+126A text18 CODE >536:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1284 text18 CODE >1538:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
+1766 text17 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+1766 text17 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+176A text17 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+176E text17 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+1776 text17 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+177A text17 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+177E text17 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+1786 text17 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+178A text17 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+1792 text17 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+179A text17 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+179E text17 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17A0 text17 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17A6 text17 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17A8 text17 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17AC text17 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17B2 text17 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17BE text17 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17C6 text17 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17C8 text17 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17CE text17 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17D2 text17 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17D8 text17 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+17E0 text17 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+1292 text16 CODE >26:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1292 text16 CODE >30:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+12D8 text16 CODE >32:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+12EA text16 CODE >34:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1310 text16 CODE >35:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1344 text16 CODE >36:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1346 text16 CODE >39:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+136E text16 CODE >40:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+136E text16 CODE >43:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1394 text16 CODE >44:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+13CA text16 CODE >45:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1648 text15 CODE >67:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1648 text15 CODE >70:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+164A text15 CODE >71:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1658 text15 CODE >72:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1662 text15 CODE >74:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1670 text15 CODE >75:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+167A text15 CODE >77:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1686 text15 CODE >78:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1692 text15 CODE >79:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+169A text15 CODE >70:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+16B6 text15 CODE >81:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+16C8 text15 CODE >82:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+16DA text15 CODE >83:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+13CC text14 CODE >44:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+13CC text14 CODE >47:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+13DC text14 CODE >50:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+13E6 text14 CODE >55:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+13F2 text14 CODE >56:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+13FE text14 CODE >60:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1402 text14 CODE >61:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1406 text14 CODE >62:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+140A text14 CODE >63:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+140E text14 CODE >66:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1418 text14 CODE >67:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1420 text14 CODE >68:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+142A text14 CODE >69:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+143A text14 CODE >70:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1440 text14 CODE >71:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+144C text14 CODE >72:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1452 text14 CODE >73:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1476 text14 CODE >74:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1482 text14 CODE >79:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+14AA text14 CODE >80:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+14AC text14 CODE >81:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+14AE text14 CODE >82:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+14C2 text14 CODE >83:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1B52 text13 CODE >32:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1B54 text13 CODE >33:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1B5C text13 CODE >34:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1B66 text13 CODE >36:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1B74 text13 CODE >34:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+17EA text12 CODE >108:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+17EA text12 CODE >111:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+17EC text12 CODE >112:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+17FE text12 CODE >113:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1808 text12 CODE >115:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+181A text12 CODE >116:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1824 text12 CODE >118:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1830 text12 CODE >119:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+183C text12 CODE >120:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1844 text12 CODE >111:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1844 text12 CODE >121:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1B14 text11 CODE >87:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1B14 text11 CODE >91:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1B26 text11 CODE >92:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1B38 text11 CODE >93:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1B50 text11 CODE >94:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1AD6 text10 CODE >98:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1AD6 text10 CODE >102:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1AE8 text10 CODE >103:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1AFA text10 CODE >104:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1B12 text10 CODE >105:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+ADA text9 CODE >98:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+ADA text9 CODE >102:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+AEA text9 CODE >103:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+AF4 text9 CODE >104:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+AFE text9 CODE >106:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+B08 text9 CODE >107:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+B12 text9 CODE >108:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+B18 text9 CODE >110:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+B22 text9 CODE >112:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+B28 text9 CODE >114:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+B2E text9 CODE >116:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+B34 text9 CODE >121:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+B3A text9 CODE >122:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+B62 text9 CODE >123:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+B8E text9 CODE >125:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+BA8 text9 CODE >126:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+BB0 text9 CODE >127:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+BC4 text9 CODE >130:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+BDC text9 CODE >133:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+BE0 text9 CODE >134:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+BE4 text9 CODE >135:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+BE6 text9 CODE >137:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+BF2 text9 CODE >140:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+BFE text9 CODE >141:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C0A text9 CODE >145:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C0E text9 CODE >146:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C12 text9 CODE >147:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C16 text9 CODE >148:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C1A text9 CODE >152:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C24 text9 CODE >153:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C2C text9 CODE >154:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C36 text9 CODE >155:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C48 text9 CODE >156:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C4E text9 CODE >157:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C5A text9 CODE >158:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C60 text9 CODE >159:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C84 text9 CODE >160:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+C90 text9 CODE >162:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+CA4 text9 CODE >163:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+CC0 text9 CODE >164:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+CC0 text9 CODE >166:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+CD4 text9 CODE >167:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+CF0 text9 CODE >168:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+CF0 text9 CODE >175:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+CFC text9 CODE >178:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+D08 text9 CODE >179:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+D16 text9 CODE >180:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+D1A text9 CODE >181:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+D1E text9 CODE >182:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+D32 text9 CODE >183:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+D34 text9 CODE >184:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+D4C text9 CODE >183:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+D92 text9 CODE >186:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+D94 text9 CODE >187:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+DA8 text9 CODE >189:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+DAE text9 CODE >190:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+DD6 text9 CODE >191:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+E22 text9 CODE >193:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+E26 text9 CODE >196:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+E2C text9 CODE >197:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+E54 text9 CODE >198:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+E80 text9 CODE >199:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+E94 text9 CODE >200:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+EAE text9 CODE >201:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+EB6 text9 CODE >202:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+EB8 text9 CODE >203:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+ECC text9 CODE >204:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+ECE text9 CODE >208:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+EDC text9 CODE >209:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+EE0 text9 CODE >137:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+EFA text9 CODE >214:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+F00 text9 CODE >215:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+F28 text9 CODE >216:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+F54 text9 CODE >217:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+F6E text9 CODE >218:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+F74 text9 CODE >219:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+F88 text9 CODE >220:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+19AC text8 CODE >58:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+19AC text8 CODE >59:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+19B0 text8 CODE >60:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+19B8 text8 CODE >61:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+19BC text8 CODE >65:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+19EE text8 CODE >66:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1A00 text8 CODE >75:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1C8A text7 CODE >106:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1C8C text7 CODE >108:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1C92 text7 CODE >109:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1C9C text7 CODE >110:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CA4 text7 CODE >111:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CAE text7 CODE >112:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1A98 text6 CODE >125:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1A98 text6 CODE >128:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1AAA text6 CODE >129:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1ABC text6 CODE >130:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1AD4 text6 CODE >131:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1CD6 text5 CODE >30:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CD6 text5 CODE >36:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CD8 text5 CODE >37:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CDA text5 CODE >39:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CDC text5 CODE >40:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CDE text5 CODE >42:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CE0 text5 CODE >43:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CE2 text5 CODE >46:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CE4 text5 CODE >47:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CE6 text5 CODE >52:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CEA text5 CODE >53:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CEE text5 CODE >56:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CF0 text5 CODE >59:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CF2 text5 CODE >69:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+1CF6 text5 CODE >70:H:\MPLABXProjects\ECM\BombFinderV2.X\IR_Reading.c
+158C text4 CODE >38:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+158C text4 CODE >44:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+158E text4 CODE >45:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1590 text4 CODE >46:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1592 text4 CODE >47:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1594 text4 CODE >48:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1596 text4 CODE >49:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1598 text4 CODE >51:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+15A8 text4 CODE >52:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+15AE text4 CODE >53:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+15BC text4 CODE >54:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+15C2 text4 CODE >55:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+15CA text4 CODE >56:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+15D0 text4 CODE >57:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+15D8 text4 CODE >58:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+15DE text4 CODE >59:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+15E6 text4 CODE >62:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+15F0 text4 CODE >63:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+15F8 text4 CODE >64:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1602 text4 CODE >65:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+160A text4 CODE >66:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1614 text4 CODE >67:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1622 text4 CODE >68:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+162C text4 CODE >69:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1634 text4 CODE >70:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+163E text4 CODE >71:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1646 text4 CODE >72:H:\MPLABXProjects\ECM\BombFinderV2.X\LCD.c
+1BF8 text3 CODE >4:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1BF8 text3 CODE >6:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1BFC text3 CODE >7:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C00 text3 CODE >8:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C04 text3 CODE >9:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C08 text3 CODE >11:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C0C text3 CODE >12:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C10 text3 CODE >13:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C14 text3 CODE >14:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C18 text3 CODE >15:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C1C text3 CODE >16:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C20 text3 CODE >19:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C22 text3 CODE >20:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C24 text3 CODE >21:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C26 text3 CODE >22:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1C28 text3 CODE >23:H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
+1D16 text2 CODE >8:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1D16 text2 CODE >9:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1D1C text2 CODE >13:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1D20 text2 CODE >14:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1D24 text2 CODE >15:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1D26 text2 CODE >16:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1D28 text2 CODE >17:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1D2A text2 CODE >18:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1D2C text2 CODE >19:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1D2E text2 CODE >20:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1D30 text2 CODE >21:H:\MPLABXProjects\ECM\BombFinderV2.X\RFID_Reader.c
+1D32 text1 CODE >8:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1D32 text1 CODE >10:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1D34 text1 CODE >11:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1D36 text1 CODE >12:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1D38 text1 CODE >13:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1D3A text1 CODE >14:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1D40 text1 CODE >17:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+1D42 text1 CODE >18:H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
+350 text0 CODE >51:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+350 text0 CODE >55:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+356 text0 CODE >56:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+35C text0 CODE >57:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+36E text0 CODE >60:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+380 text0 CODE >63:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+386 text0 CODE >64:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+396 text0 CODE >67:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+39C text0 CODE >76:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+39E text0 CODE >77:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3A0 text0 CODE >78:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3A2 text0 CODE >79:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3A4 text0 CODE >82:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3A6 text0 CODE >83:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3A8 text0 CODE >86:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3AA text0 CODE >87:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3AC text0 CODE >90:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3AE text0 CODE >91:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3B0 text0 CODE >95:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3B6 text0 CODE >96:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3BC text0 CODE >97:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3C8 text0 CODE >98:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3D4 text0 CODE >99:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3DA text0 CODE >100:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3E4 text0 CODE >102:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3EA text0 CODE >103:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3F0 text0 CODE >104:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+3FC text0 CODE >105:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+408 text0 CODE >106:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+40E text0 CODE >107:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+418 text0 CODE >109:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+41C text0 CODE >110:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+422 text0 CODE >122:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+43E text0 CODE >123:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+444 text0 CODE >126:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+450 text0 CODE >127:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+45C text0 CODE >131:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+460 text0 CODE >132:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+464 text0 CODE >133:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+468 text0 CODE >134:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+46C text0 CODE >137:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+476 text0 CODE >138:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+47E text0 CODE >139:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+488 text0 CODE >140:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+49A text0 CODE >141:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+4A0 text0 CODE >142:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+4AC text0 CODE >143:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+4B2 text0 CODE >144:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+4BA text0 CODE >145:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+4C6 text0 CODE >146:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+4C8 text0 CODE >147:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+4EC text0 CODE >148:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+4F8 text0 CODE >152:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+4FA text0 CODE >157:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+4FE text0 CODE >158:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+502 text0 CODE >159:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+506 text0 CODE >160:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+50A text0 CODE >161:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+50E text0 CODE >163:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+518 text0 CODE >164:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+522 text0 CODE >167:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+544 text0 CODE >168:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+54A text0 CODE >170:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+54C text0 CODE >180:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+552 text0 CODE >181:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+55E text0 CODE >183:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+566 text0 CODE >188:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+56A text0 CODE >189:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+580 text0 CODE >190:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+59A text0 CODE >191:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+5BC text0 CODE >192:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+5C2 text0 CODE >193:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+5DE text0 CODE >194:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+5E2 text0 CODE >195:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+5EC text0 CODE >198:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+644 text0 CODE >199:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+646 text0 CODE >200:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+64E text0 CODE >202:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+66E text0 CODE >203:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+67A text0 CODE >205:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+67E text0 CODE >206:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+694 text0 CODE >209:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+696 text0 CODE >216:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+69E text0 CODE >217:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+6BA text0 CODE >218:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+6E6 text0 CODE >219:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+6F8 text0 CODE >221:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+708 text0 CODE >222:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+742 text0 CODE >221:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+748 text0 CODE >226:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+758 text0 CODE >227:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+76E text0 CODE >226:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+774 text0 CODE >229:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+778 text0 CODE >231:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+77A text0 CODE >232:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+79C text0 CODE >233:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+7A2 text0 CODE >234:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+7BE text0 CODE >235:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+7E0 text0 CODE >238:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+7E2 text0 CODE >239:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+7E8 text0 CODE >240:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+7EC text0 CODE >242:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+80E text0 CODE >243:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+814 text0 CODE >244:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+82A text0 CODE >245:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+844 text0 CODE >248:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+846 text0 CODE >253:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+84C text0 CODE >254:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+858 text0 CODE >255:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+85E text0 CODE >256:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+86A text0 CODE >259:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+886 text0 CODE >260:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+89E text0 CODE >261:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+8C0 text0 CODE >262:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+8D8 text0 CODE >263:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+8F2 text0 CODE >264:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+8F4 text0 CODE >265:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+8F8 text0 CODE >266:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+8FC text0 CODE >267:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+920 text0 CODE >268:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+922 text0 CODE >269:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+944 text0 CODE >270:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+98E text0 CODE >272:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+98E text0 CODE >273:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+990 text0 CODE >274:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+9B2 text0 CODE >275:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+9FC text0 CODE >278:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+A16 text0 CODE >279:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+A3A text0 CODE >280:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+A5C text0 CODE >281:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+A74 text0 CODE >282:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+A76 text0 CODE >283:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+A98 text0 CODE >284:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+AB0 text0 CODE >258:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+AB6 text0 CODE >288:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+AB8 text0 CODE >114:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+AD8 text0 CODE >112:H:\MPLABXProjects\ECM\BombFinderV2.X\main.c
+1BC2 cinit CODE >2580:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BC2 cinit CODE >2582:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BC2 cinit CODE >2585:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BC2 cinit CODE >2625:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BC6 cinit CODE >2626:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BC8 cinit CODE >2627:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BC8 cinit CODE >2628:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BCA cinit CODE >2629:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BCC cinit CODE >2630:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BCE cinit CODE >2633:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BD2 cinit CODE >2634:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BD4 cinit CODE >2635:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BD4 cinit CODE >2636:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BD6 cinit CODE >2637:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BD8 cinit CODE >2638:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BDA cinit CODE >2641:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BDE cinit CODE >2642:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BE0 cinit CODE >2643:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BE0 cinit CODE >2644:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BE2 cinit CODE >2645:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BE4 cinit CODE >2646:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BE6 cinit CODE >2649:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BE8 cinit CODE >2650:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BEA cinit CODE >2656:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BEA cinit CODE >2658:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BEC cinit CODE >2659:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BEE cinit CODE >2661:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BF0 cinit CODE >2662:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BF2 cinit CODE >2663:C:\Users\tr514\AppData\Local\Temp\sa0g.
+1BF4 cinit CODE >2664:C:\Users\tr514\AppData\Local\Temp\sa0g.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -733,123 +714,123 @@ CDC text9 CODE >221:C:\Users\krthu\Desktop\ME3\ECM\BombFinderV2.X\Movement.c
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
-_i 35 0 COMRAM 1 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
-___awdiv@counter 6A 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-ScanIR@F3540 30 0 COMRAM 1 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
-___lwmod@counter 6B 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+_i 3A 0 COMRAM 1 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
+___awdiv@counter 2E 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+ScanIR@F3879 F1 0 BANK0 1 bssBANK0 dist/default/production\BombFinderV2.X.production.obj
+___lwmod@counter 2F 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\BombFinderV2.X.production.obj
-LCD_String@string 66 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+LCD_String@string 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __Hspace_0 30000E 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Hspace_1 264 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Hspace_2 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __size_of_initRFID 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-grabLeftIR@i 67 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-VerifySignal@hexByte 68 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+grabLeftIR@i 2B 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+VerifySignal@hexByte 2C 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 _PWMCON0 F6F 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _PWMCON1 F6E 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\BombFinderV2.X.production.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\krthu\AppData\Local\Temp\s6fc.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\tr514\AppData\Local\Temp\sa0g.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\BombFinderV2.X.production.obj
-__end_of_LCDout 144C 0 CODE 0 text28 dist/default/production\BombFinderV2.X.production.obj
-setMotorPWM@m 6E 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@Move 8A 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-grabRightIR@IR_signal 65 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-main@i FD 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-VerifySignal@Signal 60 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+__end_of_LCDout 158C 0 CODE 0 text28 dist/default/production\BombFinderV2.X.production.obj
+setMotorPWM@m 32 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@Move 75 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+grabRightIR@IR_signal 29 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+main@i 1CE 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
+VerifySignal@Signal 24 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __Lsmallconst 300 0 SMALLCONST 0 smallconst dist/default/production\BombFinderV2.X.production.obj
-enableSensor@sensor 61 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+enableSensor@sensor 25 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 _LATB F8A 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\krthu\AppData\Local\Temp\s6fc.obj
+___sp 0 0 STACK 2 stack C:\Users\tr514\AppData\Local\Temp\sa0g.obj
 _main 350 0 CODE 0 text0 dist/default/production\BombFinderV2.X.production.obj
-_mode 34 0 COMRAM 1 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
-_stop 14FE 0 CODE 0 text15 dist/default/production\BombFinderV2.X.production.obj
-btemp 36 0 COMRAM 1 temp dist/default/production\BombFinderV2.X.production.obj
-turnLeft@power 81 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-enableSensor@status 60 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+_mode 3B 0 COMRAM 1 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
+_stop 1648 0 CODE 0 text15 dist/default/production\BombFinderV2.X.production.obj
+btemp 3C 0 COMRAM 1 temp dist/default/production\BombFinderV2.X.production.obj
+turnLeft@power 6B 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+enableSensor@status 24 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __size_of_grabLeftIR 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-main@ScanAngle F7 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-start F6 0 CODE 0 init C:\Users\krthu\AppData\Local\Temp\s6fc.obj
-_SendLCD 1976 0 CODE 0 text27 dist/default/production\BombFinderV2.X.production.obj
+main@ScanAngle 1C8 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
+start D6 0 CODE 0 init C:\Users\tr514\AppData\Local\Temp\sa0g.obj
+_SendLCD 1C5A 0 CODE 0 text27 dist/default/production\BombFinderV2.X.production.obj
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-_SetLine 19E6 0 CODE 0 text25 dist/default/production\BombFinderV2.X.production.obj
+_SetLine 1C2A 0 CODE 0 text25 dist/default/production\BombFinderV2.X.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __size_of_stop 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __size_of___lwdiv 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __size_of___lwmod 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __CFG_WDTEN$OFF 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
-fullSpeedAhead@power 7B 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-?___wmul 60 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-?_grabLeftIR 60 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-__Hpowerup F6 0 CODE 0 powerup dist/default/production\BombFinderV2.X.production.obj
-__end_of_ScanIR 12B4 0 CODE 0 text14 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@LeftFlag C4 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+fullSpeedAhead@power 66 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+?___wmul 24 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+?_grabLeftIR 24 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+__Hpowerup D6 0 CODE 0 powerup dist/default/production\BombFinderV2.X.production.obj
+__end_of_ScanIR 14C6 0 CODE 0 text14 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@LeftFlag B1 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 _T0CONbits FD5 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@buf 95 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-__accesstop 60 0 ABS 0 - C:\Users\krthu\AppData\Local\Temp\s6fc.obj
-intlevel0 0 0 CODE 0 text C:\Users\krthu\AppData\Local\Temp\s6fc.obj
-intlevel1 0 0 CODE 0 text C:\Users\krthu\AppData\Local\Temp\s6fc.obj
-intlevel2 0 0 CODE 0 text C:\Users\krthu\AppData\Local\Temp\s6fc.obj
-intlevel3 0 0 CODE 0 text C:\Users\krthu\AppData\Local\Temp\s6fc.obj
+ScanWithRange@buf 80 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+__accesstop 60 0 ABS 0 - C:\Users\tr514\AppData\Local\Temp\sa0g.obj
+intlevel0 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\sa0g.obj
+intlevel1 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\sa0g.obj
+intlevel2 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\sa0g.obj
+intlevel3 0 0 CODE 0 text C:\Users\tr514\AppData\Local\Temp\sa0g.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
-_initRFID 1B0C 0 CODE 0 text2 dist/default/production\BombFinderV2.X.production.obj
+_initRFID 1D16 0 CODE 0 text2 dist/default/production\BombFinderV2.X.production.obj
 _OSCCONbits FD3 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\BombFinderV2.X.production.obj
-wtemp6 37 0 COMRAM 1 temp dist/default/production\BombFinderV2.X.production.obj
 __Hifardata 0 0 CODE 0 ifardata dist/default/production\BombFinderV2.X.production.obj
-SetLine@line 66 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-___awdiv@sign 6B 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+SetLine@line 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+___awdiv@sign 2F 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production\BombFinderV2.X.production.obj
-__end_of_initRFID 1B28 0 CODE 0 text2 dist/default/production\BombFinderV2.X.production.obj
-delay_tenth_s@tenth_seconds 61 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-__end_ofi2_delay_tenth_s 19E6 0 CODE 0 text32 dist/default/production\BombFinderV2.X.production.obj
-___wmul@multiplicand 62 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@MoveTime 88 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@MoveType 8C 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-_grabRightIR 1692 0 CODE 0 text23 dist/default/production\BombFinderV2.X.production.obj
-___awdiv@dividend 66 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-___inthi_sp 0 0 STACK 2 stack C:\Users\krthu\AppData\Local\Temp\s6fc.obj
-___intlo_sp 0 0 STACK 2 stack C:\Users\krthu\AppData\Local\Temp\s6fc.obj
-ScanWithRange@DirectionFoundThreshold C1 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-_LCD_String 1786 0 CODE 0 text26 dist/default/production\BombFinderV2.X.production.obj
+__end_of_initRFID 1D32 0 CODE 0 text2 dist/default/production\BombFinderV2.X.production.obj
+delay_tenth_s@tenth_seconds 25 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+__end_ofi2_delay_tenth_s 1BC2 0 CODE 0 text32 dist/default/production\BombFinderV2.X.production.obj
+___wmul@multiplicand 26 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@MoveTime 73 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@MoveType 77 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+_grabRightIR 186A 0 CODE 0 text23 dist/default/production\BombFinderV2.X.production.obj
+___awdiv@dividend 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+___inthi_sp 0 0 STACK 2 stack C:\Users\tr514\AppData\Local\Temp\sa0g.obj
+___intlo_sp 0 0 STACK 2 stack C:\Users\tr514\AppData\Local\Temp\sa0g.obj
+ScanWithRange@DirectionFoundThreshold AE 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+_LCD_String 194E 0 CODE 0 text26 dist/default/production\BombFinderV2.X.production.obj
 __size_of_initLCD 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\BombFinderV2.X.production.obj
-__end_of___wmul 1AA2 0 CODE 0 text20 dist/default/production\BombFinderV2.X.production.obj
-_RFID_Read 1F9 0 BANK1 1 bssBANK1 dist/default/production\BombFinderV2.X.production.obj
-_initMotorPWM 1A1C 0 CODE 0 text3 dist/default/production\BombFinderV2.X.production.obj
+__end_of___wmul 1CD6 0 CODE 0 text20 dist/default/production\BombFinderV2.X.production.obj
+_RFID_Read 1F6 0 BANK1 1 bssBANK1 dist/default/production\BombFinderV2.X.production.obj
+_initMotorPWM 1BF8 0 CODE 0 text3 dist/default/production\BombFinderV2.X.production.obj
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\BombFinderV2.X.production.obj
-main@buf CF 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+main@buf 100 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
 __size_of_sprintf 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _BAUDCONbits FAA 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\BombFinderV2.X.production.obj
-__Hintcodelo F6 0 CODE 0 intcodelo dist/default/production\BombFinderV2.X.production.obj
-___awdiv@divisor 68 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-___lwmod@divisor 69 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@SensorResult C7 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-__end_of___awdiv 1616 0 CODE 0 text17 dist/default/production\BombFinderV2.X.production.obj
-__end_of___lwdiv 183C 0 CODE 0 text22 dist/default/production\BombFinderV2.X.production.obj
-__end_of___lwmod 1880 0 CODE 0 text21 dist/default/production\BombFinderV2.X.production.obj
+__Hintcodelo D6 0 CODE 0 intcodelo dist/default/production\BombFinderV2.X.production.obj
+___awdiv@divisor 2C 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+___lwmod@divisor 2D 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@SensorResult B4 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+__end_of___awdiv 17EA 0 CODE 0 text17 dist/default/production\BombFinderV2.X.production.obj
+__end_of___lwdiv 1A56 0 CODE 0 text22 dist/default/production\BombFinderV2.X.production.obj
+__end_of___lwmod 1A98 0 CODE 0 text21 dist/default/production\BombFinderV2.X.production.obj
 __size_of_isdigit 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-ScanIR@mL 81 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-ScanIR@mR 83 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanIR@mL 6D 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanIR@mR 6F 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 _dpowers 301 0 SMALLCONST 0 smallconst dist/default/production\BombFinderV2.X.production.obj
 __size_of_E_TOG 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-___lwdiv@quotient 65 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-_LCDout 1382 0 CODE 0 text28 dist/default/production\BombFinderV2.X.production.obj
+___lwdiv@quotient 28 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+_LCDout 14C6 0 CODE 0 text28 dist/default/production\BombFinderV2.X.production.obj
 _CAP1BUFH F69 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _CAP1BUFL F68 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _CAP2BUFH F67 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _CAP2BUFL F66 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-i2_delay_tenth_s 19AE 0 CODE 0 text32 dist/default/production\BombFinderV2.X.production.obj
-___lwmod@dividend 67 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-_ScanWithRange 8E0 0 CODE 0 text9 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@MiniLeftFlick AB 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+i2_delay_tenth_s 1B8A 0 CODE 0 text32 dist/default/production\BombFinderV2.X.production.obj
+___lwmod@dividend 2B 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+_ScanWithRange ADA 0 CODE 0 text9 dist/default/production\BombFinderV2.X.production.obj
 __Lintcodelo 18 0 CODE 0 intcodelo dist/default/production\BombFinderV2.X.production.obj
 __CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-__end_of_initIR 1AEA 0 CODE 0 text5 dist/default/production\BombFinderV2.X.production.obj
-start_initialization 1AA2 0 CODE 0 cinit dist/default/production\BombFinderV2.X.production.obj
+__end_of_initIR 1CF8 0 CODE 0 text5 dist/default/production\BombFinderV2.X.production.obj
+start_initialization 1BC2 0 CODE 0 cinit dist/default/production\BombFinderV2.X.production.obj
 __size_of_fullSpeedAhead 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _OSCCON FD3 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-_setMotorPWM F82 0 CODE 0 text16 dist/default/production\BombFinderV2.X.production.obj
+_setMotorPWM 1292 0 CODE 0 text16 dist/default/production\BombFinderV2.X.production.obj
 __size_of_initMotorPWM 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\BombFinderV2.X.production.obj
 _TRISAbits F92 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
@@ -861,28 +842,27 @@ _TRISBbits F93 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _TRISCbits F94 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _TRISDbits F95 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _TRISEbits F96 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-__end_of_LCD_String 17E8 0 CODE 0 text26 dist/default/production\BombFinderV2.X.production.obj
+__end_of_LCD_String 19AC 0 CODE 0 text26 dist/default/production\BombFinderV2.X.production.obj
 ___rparam_used 1 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __size_of_turnLeft 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _SPBRGH FB0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __pcstackBANK0 60 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __pcstackBANK1 100 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
-__pcstackBANK2 200 0 BANK2 1 cstackBANK2 dist/default/production\BombFinderV2.X.production.obj
 _IPR1bits F9F 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-_ScanIR 11BC 0 CODE 0 text14 dist/default/production\BombFinderV2.X.production.obj
-main@DirectionFound FC 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-turnLeft@mL 7D 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-turnLeft@mR 7F 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-__end_of_initMotorPWM 1A4E 0 CODE 0 text3 dist/default/production\BombFinderV2.X.production.obj
+_ScanIR 13CC 0 CODE 0 text14 dist/default/production\BombFinderV2.X.production.obj
+main@DirectionFound 1CD 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
+turnLeft@mL 67 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+turnLeft@mR 69 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+__end_of_initMotorPWM 1C2A 0 CODE 0 text3 dist/default/production\BombFinderV2.X.production.obj
 __size_of_LCDout 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-__end_of_initLCD 1382 0 CODE 0 text4 dist/default/production\BombFinderV2.X.production.obj
-grabRightIR@i 67 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+__end_of_initLCD 1648 0 CODE 0 text4 dist/default/production\BombFinderV2.X.production.obj
+grabRightIR@i 2B 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __Hbank0 0 0 ABS 0 bank0 dist/default/production\BombFinderV2.X.production.obj
 __Hbank1 0 0 ABS 0 bank1 dist/default/production\BombFinderV2.X.production.obj
 __Hbank2 0 0 ABS 0 bank2 dist/default/production\BombFinderV2.X.production.obj
-ScanIR@DirectionMoveThreshold AE 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanIR@DirectionMoveThreshold 99 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __Hcinit 0 0 ABS 0 cinit dist/default/production\BombFinderV2.X.production.obj
-__Hconst 0 0 CONST 0 const dist/default/production\BombFinderV2.X.production.obj
+__Hconst 0 0 CODE 0 const dist/default/production\BombFinderV2.X.production.obj
 __Hidata 0 0 CODE 0 idata dist/default/production\BombFinderV2.X.production.obj
 __Hidloc 200008 0 IDLOC 0 idloc dist/default/production\BombFinderV2.X.production.obj
 __Hnvbit 0 0 COMRAM 1 nvbit dist/default/production\BombFinderV2.X.production.obj
@@ -899,27 +879,27 @@ __Htext6 0 0 ABS 0 text6 dist/default/production\BombFinderV2.X.production.obj
 __Htext7 0 0 ABS 0 text7 dist/default/production\BombFinderV2.X.production.obj
 __Htext8 0 0 ABS 0 text8 dist/default/production\BombFinderV2.X.production.obj
 __Htext9 0 0 ABS 0 text9 dist/default/production\BombFinderV2.X.production.obj
-___lwdiv@counter 64 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+___lwdiv@counter 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 _InterruptHandlerHigh 8 0 CODE 0 intcode dist/default/production\BombFinderV2.X.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\BombFinderV2.X.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production\BombFinderV2.X.production.obj
-__smallconst 300 0 SMALLCONST 0 smallconst C:\Users\krthu\AppData\Local\Temp\s6fc.obj
-__end_of_sprintf F82 0 CODE 0 text18 dist/default/production\BombFinderV2.X.production.obj
+__smallconst 300 0 SMALLCONST 0 smallconst C:\Users\tr514\AppData\Local\Temp\sa0g.obj
+__end_of_sprintf 1292 0 CODE 0 text18 dist/default/production\BombFinderV2.X.production.obj
 __Hcomram 0 0 ABS 0 comram dist/default/production\BombFinderV2.X.production.obj
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production\BombFinderV2.X.production.obj
 __Lbank0 0 0 ABS 0 bank0 dist/default/production\BombFinderV2.X.production.obj
 __Lbank1 0 0 ABS 0 bank1 dist/default/production\BombFinderV2.X.production.obj
 __Lbank2 0 0 ABS 0 bank2 dist/default/production\BombFinderV2.X.production.obj
-__end_of_isdigit 1B0C 0 CODE 0 text19 dist/default/production\BombFinderV2.X.production.obj
+__end_of_isdigit 1D16 0 CODE 0 text19 dist/default/production\BombFinderV2.X.production.obj
 __Lcinit 0 0 ABS 0 cinit dist/default/production\BombFinderV2.X.production.obj
-__Lconst 0 0 CONST 0 const dist/default/production\BombFinderV2.X.production.obj
+__Lconst 0 0 CODE 0 const dist/default/production\BombFinderV2.X.production.obj
 __Lidata 0 0 CODE 0 idata dist/default/production\BombFinderV2.X.production.obj
 __Lidloc 200000 0 IDLOC 0 idloc dist/default/production\BombFinderV2.X.production.obj
-_enableSensor 1A4E 0 CODE 0 text7 dist/default/production\BombFinderV2.X.production.obj
+_enableSensor 1C8A 0 CODE 0 text7 dist/default/production\BombFinderV2.X.production.obj
 __Lnvbit 0 0 COMRAM 1 nvbit dist/default/production\BombFinderV2.X.production.obj
 __Lparam 0 0 COMRAM 1 rparam dist/default/production\BombFinderV2.X.production.obj
 __Lrdata 0 0 COMRAM 1 rdata dist/default/production\BombFinderV2.X.production.obj
-_fullSpeedBack 18C2 0 CODE 0 text6 dist/default/production\BombFinderV2.X.production.obj
+_fullSpeedBack 1A98 0 CODE 0 text6 dist/default/production\BombFinderV2.X.production.obj
 __Lstack 0 0 STACK 2 stack dist/default/production\BombFinderV2.X.production.obj
 __Ltext0 0 0 ABS 0 text0 dist/default/production\BombFinderV2.X.production.obj
 __Ltext1 0 0 ABS 0 text1 dist/default/production\BombFinderV2.X.production.obj
@@ -931,70 +911,70 @@ __Ltext6 0 0 ABS 0 text6 dist/default/production\BombFinderV2.X.production.obj
 __Ltext7 0 0 ABS 0 text7 dist/default/production\BombFinderV2.X.production.obj
 __Ltext8 0 0 ABS 0 text8 dist/default/production\BombFinderV2.X.production.obj
 __Ltext9 0 0 ABS 0 text9 dist/default/production\BombFinderV2.X.production.obj
-_ReceivedString 1E9 0 BANK1 1 bssBANK1 dist/default/production\BombFinderV2.X.production.obj
+_ReceivedString 1E6 0 BANK1 1 bssBANK1 dist/default/production\BombFinderV2.X.production.obj
 __Hfarbss 0 0 FARRAM 0 farbss dist/default/production\BombFinderV2.X.production.obj
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\BombFinderV2.X.production.obj
 _INTCONbits FF2 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Habs1 0 0 ABS 0 abs1 dist/default/production\BombFinderV2.X.production.obj
 __Hdata 0 0 ABS 0 data dist/default/production\BombFinderV2.X.production.obj
-__Hinit FA 0 CODE 0 init dist/default/production\BombFinderV2.X.production.obj
+__Hinit D6 0 CODE 0 init dist/default/production\BombFinderV2.X.production.obj
 __Hrbit 0 0 COMRAM 1 rbit dist/default/production\BombFinderV2.X.production.obj
 __Hrbss 0 0 COMRAM 1 rbss dist/default/production\BombFinderV2.X.production.obj
-__Htemp 37 0 COMRAM 1 temp dist/default/production\BombFinderV2.X.production.obj
+__Htemp 3D 0 COMRAM 1 temp dist/default/production\BombFinderV2.X.production.obj
 __Htext 0 0 ABS 0 text dist/default/production\BombFinderV2.X.production.obj
 __Labs1 0 0 ABS 0 abs1 dist/default/production\BombFinderV2.X.production.obj
 __Ldata 0 0 ABS 0 data dist/default/production\BombFinderV2.X.production.obj
-__Linit F6 0 CODE 0 init dist/default/production\BombFinderV2.X.production.obj
+__Linit D6 0 CODE 0 init dist/default/production\BombFinderV2.X.production.obj
 __Lrbit 0 0 COMRAM 1 rbit dist/default/production\BombFinderV2.X.production.obj
 __Lrbss 0 0 COMRAM 1 rbss dist/default/production\BombFinderV2.X.production.obj
-__Ltemp 36 0 COMRAM 1 temp dist/default/production\BombFinderV2.X.production.obj
+__Ltemp 3C 0 COMRAM 1 temp dist/default/production\BombFinderV2.X.production.obj
 __Ltext 0 0 ABS 0 text dist/default/production\BombFinderV2.X.production.obj
 __size_of_ScanIR 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-___wmul 1A7A 0 CODE 0 text20 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@F3553 2C 0 COMRAM 1 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
+___wmul 1CB0 0 CODE 0 text20 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@F3892 F5 0 BANK0 1 bssBANK0 dist/default/production\BombFinderV2.X.production.obj
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __LcstackBANK1 0 0 ABS 0 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
-__LcstackBANK2 0 0 ABS 0 cstackBANK2 dist/default/production\BombFinderV2.X.production.obj
-int$flags 36 0 COMRAM 1 temp dist/default/production\BombFinderV2.X.production.obj
-_turnLeft 193A 0 CODE 0 text11 dist/default/production\BombFinderV2.X.production.obj
-delay_tenth_s@i 62 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+int$flags 3C 0 COMRAM 1 temp dist/default/production\BombFinderV2.X.production.obj
+_turnLeft 1B14 0 CODE 0 text11 dist/default/production\BombFinderV2.X.production.obj
+delay_tenth_s@i 26 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@RightFlag CB 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@RightFlag B8 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __size_of_InterruptHandlerLow 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Hintret 0 0 ABS 0 intret dist/default/production\BombFinderV2.X.production.obj
 __Hirdata 0 0 CODE 0 irdata dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@loops 86 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@loops 71 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __S0 30000E 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __S1 264 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __S2 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@power C3 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __size_ofi2_delay_tenth_s 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-fullSpeedBack@power 81 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-fullSpeedAhead@mL 77 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-fullSpeedAhead@mR 79 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-__end_of_turnLeft 1976 0 CODE 0 text11 dist/default/production\BombFinderV2.X.production.obj
+fullSpeedBack@power 6B 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+fullSpeedAhead@mL 62 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+fullSpeedAhead@mR 64 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+__end_of_turnLeft 1B52 0 CODE 0 text11 dist/default/production\BombFinderV2.X.production.obj
 __size_of_ScanWithRange 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __size_of_SendLCD 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __size_of_SetLine 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-fullSpeedBack@mL 7D 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-fullSpeedBack@mR 7F 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+fullSpeedBack@mL 67 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+fullSpeedBack@mR 69 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production\BombFinderV2.X.production.obj
 __Hnvrram 0 0 COMRAM 1 nvrram dist/default/production\BombFinderV2.X.production.obj
-sprintf@val 7B 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+sprintf@val 67 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __size_of_enableSensor 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-int_func 144C 0 CODE 0 intcode_body dist/default/production\BombFinderV2.X.production.obj
-turnRight@mL 7D 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-turnRight@mR 7F 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-LCDout@number 63 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+int_func 16DC 0 CODE 0 intcode_body dist/default/production\BombFinderV2.X.production.obj
+turnRight@mL 67 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+turnRight@mR 69 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+LCDout@number 27 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __Lintentry 0 0 ABS 0 intentry dist/default/production\BombFinderV2.X.production.obj
 __Hramtop 300 0 RAM 0 ramtop dist/default/production\BombFinderV2.X.production.obj
 __Hrparam 0 0 COMRAM 1 rparam dist/default/production\BombFinderV2.X.production.obj
-_initIR 1AC8 0 CODE 0 text5 dist/default/production\BombFinderV2.X.production.obj
-VerifySignal@i 6B 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+_initIR 1CD6 0 CODE 0 text5 dist/default/production\BombFinderV2.X.production.obj
+VerifySignal@i 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __activetblptr 2 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Hstruct 0 0 COMRAM 1 struct dist/default/production\BombFinderV2.X.production.obj
 __size_of___wmul 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
+__LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\BombFinderV2.X.production.obj
 __LbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production\BombFinderV2.X.production.obj
+__LbssBANK2 0 0 ABS 0 bssBANK2 dist/default/production\BombFinderV2.X.production.obj
 __Htext10 0 0 ABS 0 text10 dist/default/production\BombFinderV2.X.production.obj
 __Htext11 0 0 ABS 0 text11 dist/default/production\BombFinderV2.X.production.obj
 __Htext12 0 0 ABS 0 text12 dist/default/production\BombFinderV2.X.production.obj
@@ -1016,121 +996,126 @@ __Htext27 0 0 ABS 0 text27 dist/default/production\BombFinderV2.X.production.obj
 __Htext28 0 0 ABS 0 text28 dist/default/production\BombFinderV2.X.production.obj
 __Htext29 0 0 ABS 0 text29 dist/default/production\BombFinderV2.X.production.obj
 __Htext32 0 0 ABS 0 text32 dist/default/production\BombFinderV2.X.production.obj
-__end_of_ScanWithRange CE0 0 CODE 0 text9 dist/default/production\BombFinderV2.X.production.obj
+__end_of_ScanWithRange F8C 0 CODE 0 text9 dist/default/production\BombFinderV2.X.production.obj
 _InterruptHandlerLow 18 0 CODE 0 intcodelo dist/default/production\BombFinderV2.X.production.obj
-__end_of_grabRightIR 170C 0 CODE 0 text23 dist/default/production\BombFinderV2.X.production.obj
+__end_of_grabRightIR 18DC 0 CODE 0 text23 dist/default/production\BombFinderV2.X.production.obj
 _RCSTAbits FAB 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _PIE1bits F9D 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-__end_of_initTimer 1B3A 0 CODE 0 text1 dist/default/production\BombFinderV2.X.production.obj
-main@Message 1C8 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
-sprintf@flag 7D 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-sprintf@prec 7A 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-__end_of_enableSensor 1A7A 0 CODE 0 text7 dist/default/production\BombFinderV2.X.production.obj
-__ptext10 18FE 0 CODE 0 text10 dist/default/production\BombFinderV2.X.production.obj
-__ptext11 193A 0 CODE 0 text11 dist/default/production\BombFinderV2.X.production.obj
-__ptext12 1616 0 CODE 0 text12 dist/default/production\BombFinderV2.X.production.obj
-__ptext13 1880 0 CODE 0 text13 dist/default/production\BombFinderV2.X.production.obj
-__ptext14 11BC 0 CODE 0 text14 dist/default/production\BombFinderV2.X.production.obj
-__ptext15 14FE 0 CODE 0 text15 dist/default/production\BombFinderV2.X.production.obj
-__ptext16 F82 0 CODE 0 text16 dist/default/production\BombFinderV2.X.production.obj
-__ptext17 1590 0 CODE 0 text17 dist/default/production\BombFinderV2.X.production.obj
-__ptext18 CE0 0 CODE 0 text18 dist/default/production\BombFinderV2.X.production.obj
-__ptext19 1AEA 0 CODE 0 text19 dist/default/production\BombFinderV2.X.production.obj
-__ptext20 1A7A 0 CODE 0 text20 dist/default/production\BombFinderV2.X.production.obj
-__ptext21 183C 0 CODE 0 text21 dist/default/production\BombFinderV2.X.production.obj
-__ptext22 17E8 0 CODE 0 text22 dist/default/production\BombFinderV2.X.production.obj
-__ptext23 1692 0 CODE 0 text23 dist/default/production\BombFinderV2.X.production.obj
-__ptext24 170C 0 CODE 0 text24 dist/default/production\BombFinderV2.X.production.obj
-__ptext25 19E6 0 CODE 0 text25 dist/default/production\BombFinderV2.X.production.obj
-__ptext26 1786 0 CODE 0 text26 dist/default/production\BombFinderV2.X.production.obj
-__ptext27 1976 0 CODE 0 text27 dist/default/production\BombFinderV2.X.production.obj
-__ptext28 1382 0 CODE 0 text28 dist/default/production\BombFinderV2.X.production.obj
-__ptext29 1B3A 0 CODE 0 text29 dist/default/production\BombFinderV2.X.production.obj
-__ptext32 19AE 0 CODE 0 text32 dist/default/production\BombFinderV2.X.production.obj
+__end_of_initTimer 1D44 0 CODE 0 text1 dist/default/production\BombFinderV2.X.production.obj
+main@Message 1BE 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
+sprintf@flag 69 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+sprintf@prec 66 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+__end_of_enableSensor 1CB0 0 CODE 0 text7 dist/default/production\BombFinderV2.X.production.obj
+__ptext10 1AD6 0 CODE 0 text10 dist/default/production\BombFinderV2.X.production.obj
+__ptext11 1B14 0 CODE 0 text11 dist/default/production\BombFinderV2.X.production.obj
+__ptext12 17EA 0 CODE 0 text12 dist/default/production\BombFinderV2.X.production.obj
+__ptext13 1B52 0 CODE 0 text13 dist/default/production\BombFinderV2.X.production.obj
+__ptext14 13CC 0 CODE 0 text14 dist/default/production\BombFinderV2.X.production.obj
+__ptext15 1648 0 CODE 0 text15 dist/default/production\BombFinderV2.X.production.obj
+__ptext16 1292 0 CODE 0 text16 dist/default/production\BombFinderV2.X.production.obj
+__ptext17 1766 0 CODE 0 text17 dist/default/production\BombFinderV2.X.production.obj
+__ptext18 F8C 0 CODE 0 text18 dist/default/production\BombFinderV2.X.production.obj
+__ptext19 1CF8 0 CODE 0 text19 dist/default/production\BombFinderV2.X.production.obj
+__ptext20 1CB0 0 CODE 0 text20 dist/default/production\BombFinderV2.X.production.obj
+__ptext21 1A56 0 CODE 0 text21 dist/default/production\BombFinderV2.X.production.obj
+__ptext22 1A04 0 CODE 0 text22 dist/default/production\BombFinderV2.X.production.obj
+__ptext23 186A 0 CODE 0 text23 dist/default/production\BombFinderV2.X.production.obj
+__ptext24 18DC 0 CODE 0 text24 dist/default/production\BombFinderV2.X.production.obj
+__ptext25 1C2A 0 CODE 0 text25 dist/default/production\BombFinderV2.X.production.obj
+__ptext26 194E 0 CODE 0 text26 dist/default/production\BombFinderV2.X.production.obj
+__ptext27 1C5A 0 CODE 0 text27 dist/default/production\BombFinderV2.X.production.obj
+__ptext28 14C6 0 CODE 0 text28 dist/default/production\BombFinderV2.X.production.obj
+__ptext29 1D44 0 CODE 0 text29 dist/default/production\BombFinderV2.X.production.obj
+__ptext32 1B8A 0 CODE 0 text32 dist/default/production\BombFinderV2.X.production.obj
 __size_of_initTimer 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-___awdiv 1590 0 CODE 0 text17 dist/default/production\BombFinderV2.X.production.obj
-_grabLeftIR 170C 0 CODE 0 text24 dist/default/production\BombFinderV2.X.production.obj
-__pintcode_body 144C 0 CODE 0 intcode_body dist/default/production\BombFinderV2.X.production.obj
-___lwdiv 17E8 0 CODE 0 text22 dist/default/production\BombFinderV2.X.production.obj
-___lwmod 183C 0 CODE 0 text21 dist/default/production\BombFinderV2.X.production.obj
+___awdiv 1766 0 CODE 0 text17 dist/default/production\BombFinderV2.X.production.obj
+_grabLeftIR 18DC 0 CODE 0 text24 dist/default/production\BombFinderV2.X.production.obj
+__pintcode_body 16DC 0 CODE 0 intcode_body dist/default/production\BombFinderV2.X.production.obj
+___lwdiv 1A04 0 CODE 0 text22 dist/default/production\BombFinderV2.X.production.obj
+___lwmod 1A56 0 CODE 0 text21 dist/default/production\BombFinderV2.X.production.obj
 __Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production\BombFinderV2.X.production.obj
 __Lbigram 0 0 ABS 0 bigram dist/default/production\BombFinderV2.X.production.obj
 __Lcomram 0 0 ABS 0 comram dist/default/production\BombFinderV2.X.production.obj
 __Lconfig 300000 0 CONFIG 0 config dist/default/production\BombFinderV2.X.production.obj
-___wmul@multiplier 60 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+___wmul@multiplier 24 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 _LATAbits F89 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _LATCbits F8B 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _LATDbits F8C 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _LATEbits F8D 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@MotorPower B0 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __size_of_fullSpeedBack 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-main@F3557 1E5 0 BANK1 1 bssBANK1 dist/default/production\BombFinderV2.X.production.obj
+main@F3893 200 0 BANK2 1 bssBANK2 dist/default/production\BombFinderV2.X.production.obj
+main@F3895 BF 0 BANK0 1 bssBANK0 dist/default/production\BombFinderV2.X.production.obj
+main@F3898 1E2 0 BANK1 1 bssBANK1 dist/default/production\BombFinderV2.X.production.obj
 __size_of_LCD_String 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-main@Move 1D2 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
+main@Move 1CF 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production\BombFinderV2.X.production.obj
-_initTimer 1B28 0 CODE 0 text1 dist/default/production\BombFinderV2.X.production.obj
-___lwdiv@divisor 62 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+_initTimer 1D32 0 CODE 0 text1 dist/default/production\BombFinderV2.X.production.obj
+___lwdiv@divisor 26 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\BombFinderV2.X.production.obj
-setMotorPWM@PWMduty 75 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+setMotorPWM@PWMduty 60 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __size_of_initIR 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-stackhi 2FF 0 ABS 0 - C:\Users\krthu\AppData\Local\Temp\s6fc.obj
-stacklo 264 0 ABS 0 - C:\Users\krthu\AppData\Local\Temp\s6fc.obj
-stop@mL 77 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-stop@mR 79 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+stackhi 2FF 0 ABS 0 - C:\Users\tr514\AppData\Local\Temp\sa0g.obj
+stacklo 264 0 ABS 0 - C:\Users\tr514\AppData\Local\Temp\sa0g.obj
+stop@mL 62 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+stop@mR 64 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __Lintcode 8 0 CODE 0 intcode dist/default/production\BombFinderV2.X.production.obj
 __Lintret 0 0 ABS 0 intret dist/default/production\BombFinderV2.X.production.obj
 __Lirdata 0 0 CODE 0 irdata dist/default/production\BombFinderV2.X.production.obj
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-__end_of_SendLCD 19AE 0 CODE 0 text27 dist/default/production\BombFinderV2.X.production.obj
+__end_of_SendLCD 1C8A 0 CODE 0 text27 dist/default/production\BombFinderV2.X.production.obj
 __Lspace_0 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Lspace_1 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Lspace_2 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-main@mL 1D3 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
-main@mR 1DC 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
-__end_of_SetLine 1A1C 0 CODE 0 text25 dist/default/production\BombFinderV2.X.production.obj
-__pbssCOMRAM 2C 0 COMRAM 1 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
-_delay_tenth_s 1880 0 CODE 0 text13 dist/default/production\BombFinderV2.X.production.obj
+main@mL 1D0 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
+main@mR 1D9 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
+__end_of_SetLine 1C5A 0 CODE 0 text25 dist/default/production\BombFinderV2.X.production.obj
+__pbssCOMRAM 3A 0 COMRAM 1 bssCOMRAM dist/default/production\BombFinderV2.X.production.obj
+_delay_tenth_s 1B52 0 CODE 0 text13 dist/default/production\BombFinderV2.X.production.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __HcstackBANK1 0 0 ABS 0 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
-__HcstackBANK2 0 0 ABS 0 cstackBANK2 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@TimeAboveThreshold C6 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@TimeAboveThreshold B3 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 _PIR1bits F9E 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-__end_of_turnRight 193A 0 CODE 0 text10 dist/default/production\BombFinderV2.X.production.obj
+__Lend_init D6 0 CODE 0 end_init dist/default/production\BombFinderV2.X.production.obj
+__end_of_turnRight 1B14 0 CODE 0 text10 dist/default/production\BombFinderV2.X.production.obj
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
-__end_of_setMotorPWM 10C0 0 CODE 0 text16 dist/default/production\BombFinderV2.X.production.obj
-__end_of_fullSpeedBack 18FE 0 CODE 0 text6 dist/default/production\BombFinderV2.X.production.obj
+__end_of_setMotorPWM 13CC 0 CODE 0 text16 dist/default/production\BombFinderV2.X.production.obj
+__end_of_fullSpeedBack 1AD6 0 CODE 0 text6 dist/default/production\BombFinderV2.X.production.obj
 __size_of_turnRight 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-end_of_initialization 1ABA 0 CODE 0 cinit dist/default/production\BombFinderV2.X.production.obj
+end_of_initialization 1BEA 0 CODE 0 cinit dist/default/production\BombFinderV2.X.production.obj
 i2delay_tenth_s@tenth_seconds 2 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __Lnvrram 0 0 COMRAM 1 nvrram dist/default/production\BombFinderV2.X.production.obj
 __Hintentry 0 0 ABS 0 intentry dist/default/production\BombFinderV2.X.production.obj
 _RCONbits FD0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-___awdiv@quotient 6C 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-?___awdiv 66 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-___lwdiv@dividend 60 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-?___lwdiv 60 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-?___lwmod 67 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-__end_of_grabLeftIR 1786 0 CODE 0 text24 dist/default/production\BombFinderV2.X.production.obj
+___awdiv@quotient 30 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+?___awdiv 2A 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+___lwdiv@dividend 24 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+?___lwdiv 24 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+?___lwmod 2B 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+__end_of_grabLeftIR 194E 0 CODE 0 text24 dist/default/production\BombFinderV2.X.production.obj
 __Hreset_vec 4 0 CODE 0 reset_vec dist/default/production\BombFinderV2.X.production.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\BombFinderV2.X.production.obj
 __HbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production\BombFinderV2.X.production.obj
-turnRight@power 81 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@mL 82 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@mR 84 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-_initLCD 12B4 0 CODE 0 text4 dist/default/production\BombFinderV2.X.production.obj
+__HbssBANK2 0 0 ABS 0 bssBANK2 dist/default/production\BombFinderV2.X.production.obj
+turnRight@power 6B 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@mL 6D 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@mR 6F 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+_initLCD 158C 0 CODE 0 text4 dist/default/production\BombFinderV2.X.production.obj
 __Lramtop 300 0 RAM 0 ramtop dist/default/production\BombFinderV2.X.production.obj
 __Lrparam 0 0 COMRAM 1 rparam dist/default/production\BombFinderV2.X.production.obj
-_fullSpeedAhead 1616 0 CODE 0 text12 dist/default/production\BombFinderV2.X.production.obj
-__pcinit 1AA2 0 CODE 0 cinit dist/default/production\BombFinderV2.X.production.obj
-_turnRight 18FE 0 CODE 0 text10 dist/default/production\BombFinderV2.X.production.obj
+_fullSpeedAhead 17EA 0 CODE 0 text12 dist/default/production\BombFinderV2.X.production.obj
+__pcinit 1BC2 0 CODE 0 cinit dist/default/production\BombFinderV2.X.production.obj
+_turnRight 1AD6 0 CODE 0 text10 dist/default/production\BombFinderV2.X.production.obj
 __ptext0 350 0 CODE 0 text0 dist/default/production\BombFinderV2.X.production.obj
-__ptext1 1B28 0 CODE 0 text1 dist/default/production\BombFinderV2.X.production.obj
-__ptext2 1B0C 0 CODE 0 text2 dist/default/production\BombFinderV2.X.production.obj
-__ptext3 1A1C 0 CODE 0 text3 dist/default/production\BombFinderV2.X.production.obj
-__ptext4 12B4 0 CODE 0 text4 dist/default/production\BombFinderV2.X.production.obj
-__ptext5 1AC8 0 CODE 0 text5 dist/default/production\BombFinderV2.X.production.obj
-__ptext6 18C2 0 CODE 0 text6 dist/default/production\BombFinderV2.X.production.obj
-__ptext7 1A4E 0 CODE 0 text7 dist/default/production\BombFinderV2.X.production.obj
-__ptext8 10C0 0 CODE 0 text8 dist/default/production\BombFinderV2.X.production.obj
-__ptext9 8E0 0 CODE 0 text9 dist/default/production\BombFinderV2.X.production.obj
+__ptext1 1D32 0 CODE 0 text1 dist/default/production\BombFinderV2.X.production.obj
+__ptext2 1D16 0 CODE 0 text2 dist/default/production\BombFinderV2.X.production.obj
+__ptext3 1BF8 0 CODE 0 text3 dist/default/production\BombFinderV2.X.production.obj
+__ptext4 158C 0 CODE 0 text4 dist/default/production\BombFinderV2.X.production.obj
+__ptext5 1CD6 0 CODE 0 text5 dist/default/production\BombFinderV2.X.production.obj
+__ptext6 1A98 0 CODE 0 text6 dist/default/production\BombFinderV2.X.production.obj
+__ptext7 1C8A 0 CODE 0 text7 dist/default/production\BombFinderV2.X.production.obj
+__ptext8 19AC 0 CODE 0 text8 dist/default/production\BombFinderV2.X.production.obj
+__ptext9 ADA 0 CODE 0 text9 dist/default/production\BombFinderV2.X.production.obj
 __Lstruct 0 0 COMRAM 1 struct dist/default/production\BombFinderV2.X.production.obj
 __Ltext10 0 0 ABS 0 text10 dist/default/production\BombFinderV2.X.production.obj
 __Ltext11 0 0 ABS 0 text11 dist/default/production\BombFinderV2.X.production.obj
@@ -1153,51 +1138,53 @@ __Ltext27 0 0 ABS 0 text27 dist/default/production\BombFinderV2.X.production.obj
 __Ltext28 0 0 ABS 0 text28 dist/default/production\BombFinderV2.X.production.obj
 __Ltext29 0 0 ABS 0 text29 dist/default/production\BombFinderV2.X.production.obj
 __Ltext32 0 0 ABS 0 text32 dist/default/production\BombFinderV2.X.production.obj
-__end_of_InterruptHandlerLow F6 0 CODE 0 intcodelo dist/default/production\BombFinderV2.X.production.obj
-__ramtop 300 0 RAM 0 ramtop C:\Users\krthu\AppData\Local\Temp\s6fc.obj
-_sprintf CE0 0 CODE 0 text18 dist/default/production\BombFinderV2.X.production.obj
-__Lpowerup F6 0 CODE 0 powerup dist/default/production\BombFinderV2.X.production.obj
+__end_of_InterruptHandlerLow D6 0 CODE 0 intcodelo dist/default/production\BombFinderV2.X.production.obj
+__ramtop 300 0 RAM 0 ramtop C:\Users\tr514\AppData\Local\Temp\sa0g.obj
+_sprintf F8C 0 CODE 0 text18 dist/default/production\BombFinderV2.X.production.obj
+__Lpowerup D6 0 CODE 0 powerup dist/default/production\BombFinderV2.X.production.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\BombFinderV2.X.production.obj
-?_grabRightIR 60 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-sprintf@ap 78 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-sprintf@sp 6C 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-_isdigit 1AEA 0 CODE 0 text19 dist/default/production\BombFinderV2.X.production.obj
-grabLeftIR@IR_signal 65 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+?_grabRightIR 24 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+sprintf@ap 64 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+sprintf@sp 30 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+_isdigit 1CF8 0 CODE 0 text19 dist/default/production\BombFinderV2.X.production.obj
+grabLeftIR@IR_signal 29 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __psmallconst 300 0 SMALLCONST 0 smallconst dist/default/production\BombFinderV2.X.production.obj
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\BombFinderV2.X.production.obj
-_VerifySignal 10C0 0 CODE 0 text8 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@RFID_Read 8E 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-___param_bank 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
+_VerifySignal 19AC 0 CODE 0 text8 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@RFID_Read 79 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+___param_bank 10 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\BombFinderV2.X.production.obj
-__end_of__initialization 1ABA 0 CODE 0 cinit dist/default/production\BombFinderV2.X.production.obj
+__end_of__initialization 1BEA 0 CODE 0 cinit dist/default/production\BombFinderV2.X.production.obj
 __Libigdata 0 0 CODE 0 ibigdata dist/default/production\BombFinderV2.X.production.obj
-ScanIR@buf 86 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanIR@buf 71 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@LeftFlick AA 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __size_of_grabRightIR 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Lclrtext 0 0 ABS 0 clrtext dist/default/production\BombFinderV2.X.production.obj
 __CFG_OSC$IRCIO 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-main@MoveTime 100 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
-main@MoveType 200 0 BANK2 1 cstackBANK2 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@i BF 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-ScanWithRange@n BD 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+main@MoveTime 15A 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
+main@MoveType 128 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@i AC 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanWithRange@n A8 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __pintcodelo 18 0 CODE 0 intcodelo dist/default/production\BombFinderV2.X.production.obj
 __pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 _TXSTAbits FAC 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-__end_of_fullSpeedAhead 1692 0 CODE 0 text12 dist/default/production\BombFinderV2.X.production.obj
-sprintf@c 80 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-sprintf@f 6E 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-__end_of_main 8E0 0 CODE 0 text0 dist/default/production\BombFinderV2.X.production.obj
-__end_of_stop 1590 0 CODE 0 text15 dist/default/production\BombFinderV2.X.production.obj
+__end_of_fullSpeedAhead 186A 0 CODE 0 text12 dist/default/production\BombFinderV2.X.production.obj
+__Hend_init DA 0 CODE 0 end_init dist/default/production\BombFinderV2.X.production.obj
+sprintf@c 6C 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+sprintf@f 32 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+__end_of_main ADA 0 CODE 0 text0 dist/default/production\BombFinderV2.X.production.obj
+__end_of_stop 16DC 0 CODE 0 text15 dist/default/production\BombFinderV2.X.production.obj
 __pintcode 8 0 CODE 0 intcode dist/default/production\BombFinderV2.X.production.obj
 __size_of_delay_tenth_s 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-__end_of_E_TOG 1B48 0 CODE 0 text29 dist/default/production\BombFinderV2.X.production.obj
-isdigit@c 62 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+__end_of_E_TOG 1D52 0 CODE 0 text29 dist/default/production\BombFinderV2.X.production.obj
+isdigit@c 26 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __end_of_dpowers 30B 0 SMALLCONST 0 smallconst dist/default/production\BombFinderV2.X.production.obj
-_E_TOG 1B3A 0 CODE 0 text29 dist/default/production\BombFinderV2.X.production.obj
+_E_TOG 1D44 0 CODE 0 text29 dist/default/production\BombFinderV2.X.production.obj
 __size_of_VerifySignal 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _CAP1CON F63 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _CAP2CON F62 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-?_sprintf 6C 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-_isdigit$1693 61 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+?_sprintf 30 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+_isdigit$1986 25 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 _PDC0H F78 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _PDC0L F79 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 _PDC1H F76 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
@@ -1217,27 +1204,29 @@ __LRAM 1 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
 __Lbss 0 0 RAM 1 bss dist/default/production\BombFinderV2.X.production.obj
 __Lram 0 0 ABS 0 ram dist/default/production\BombFinderV2.X.production.obj
 __Lsfr 0 0 ABS 0 sfr dist/default/production\BombFinderV2.X.production.obj
-ScanIR@SensorResult B0 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-main@SensorResult F8 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-sprintf@width 7E 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+ScanIR@SensorResult 9B 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+main@SensorResult 1C9 0 BANK1 1 cstackBANK1 dist/default/production\BombFinderV2.X.production.obj
+sprintf@width 6A 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
 __size_of_InterruptHandlerHigh 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-__initialization 1AA2 0 CODE 0 cinit dist/default/production\BombFinderV2.X.production.obj
-__pbssBANK1 1E5 0 BANK1 1 bssBANK1 dist/default/production\BombFinderV2.X.production.obj
+__initialization 1BC2 0 CODE 0 cinit dist/default/production\BombFinderV2.X.production.obj
+__pbssBANK0 BF 0 BANK0 1 bssBANK0 dist/default/production\BombFinderV2.X.production.obj
+__pbssBANK1 1E2 0 BANK1 1 bssBANK1 dist/default/production\BombFinderV2.X.production.obj
+__pbssBANK2 200 0 BANK2 1 bssBANK2 dist/default/production\BombFinderV2.X.production.obj
 i2delay_tenth_s@i 3 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __Hfardata 0 0 FARRAM 0 fardata dist/default/production\BombFinderV2.X.production.obj
-___wmul@product 64 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+___wmul@product 28 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __Hsmallconst 350 0 SMALLCONST 0 smallconst dist/default/production\BombFinderV2.X.production.obj
 __Lifardata 0 0 CODE 0 ifardata dist/default/production\BombFinderV2.X.production.obj
-__end_of_VerifySignal 11BC 0 CODE 0 text8 dist/default/production\BombFinderV2.X.production.obj
+__end_of_VerifySignal 1A04 0 CODE 0 text8 dist/default/production\BombFinderV2.X.production.obj
 _ANSEL0bits FB8 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-__end_of_delay_tenth_s 18C2 0 CODE 0 text13 dist/default/production\BombFinderV2.X.production.obj
-VerifySignal@checksum 6A 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+__end_of_delay_tenth_s 1B8A 0 CODE 0 text13 dist/default/production\BombFinderV2.X.production.obj
+VerifySignal@checksum 2B 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 __Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\BombFinderV2.X.production.obj
-__end_of_InterruptHandlerHigh 14FE 0 CODE 0 intcode_body dist/default/production\BombFinderV2.X.production.obj
-__Hintcode E 0 CODE 0 intcode dist/default/production\BombFinderV2.X.production.obj
+__end_of_InterruptHandlerHigh 1766 0 CODE 0 intcode_body dist/default/production\BombFinderV2.X.production.obj
+__Hintcode 16 0 CODE 0 intcode dist/default/production\BombFinderV2.X.production.obj
 __size_of_setMotorPWM 0 0 ABS 0 - dist/default/production\BombFinderV2.X.production.obj
-SendLCD@Byte 65 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
-SendLCD@type 64 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.production.obj
+SendLCD@Byte 29 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
+SendLCD@type 28 0 COMRAM 1 cstackCOMRAM dist/default/production\BombFinderV2.X.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -1262,14 +1251,14 @@ SendLCD@type 64 0 BANK0 1 cstackBANK0 dist/default/production\BombFinderV2.X.pro
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-intcodelo 0 18 18 E2 1
+intcodelo 0 18 18 C2 1
 idloc 0 200000 200000 8 1
-text0 0 350 350 17F8 1
-cstackCOMRAM 1 1 1 36 1
-cstackBANK0 1 60 60 9E 1
-cstackBANK1 1 100 100 FA 1
-cstackBANK2 1 200 200 64 1
+text0 0 350 350 1A02 1
+cstackCOMRAM 1 1 1 3C 1
+cstackBANK0 1 60 60 99 1
+cstackBANK1 1 100 100 F7 1
 reset_vec 0 0 0 4 1
-intcode 0 8 8 6 1
+bssBANK2 1 200 200 64 1
+intcode 0 8 8 E 1
 smallconst 0 300 300 50 1
 config 0 300000 300000 E 1
