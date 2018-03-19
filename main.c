@@ -265,10 +265,16 @@ void main(void){
                         TMR0L = 0; //Reset the timer
                         TMR0H = 0;
                         if (MoveTime[Move]>0) {
-                            
+                            T0CONbits.TMR0ON=1; // Start the timer
+                            turnRight(&mL,&mR,100);
+                            while (((TMR0H<<8)+TMR0L)<MoveTime[Move]); //Delay 
+                            //until it's turned as far as it did originally
                         } else {
+                            T0CONbits.TMR0ON=1; // Start the timer
+                            turnLeft(&mL,&mR,100);
+                            while (((TMR0H<<8)+TMR0L)<MoveTime[Move]); //Delay 
+                            //until it's turned as far as it did originally
                         }
-                        
                     } else if (MoveType==2) { //If 0.1s left/right
                         if (MoveTime[Move]>0) { //If left turn
                             turnRight(&mL,&mR,100);
