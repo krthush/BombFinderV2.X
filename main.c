@@ -106,7 +106,7 @@ void main(void){
     mR.dir_pin=2; //pin RB0/PWM0 controls direction
     mR.PWMperiod=199; //store PWMperiod for motor
 
-    OSCCON = 0b1010010; //2MHz clock
+    OSCCON = 0x72; //8MHz clock
     while(!OSCCONbits.IOFS); //wait until stable
     
     while(1){
