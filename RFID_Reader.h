@@ -11,7 +11,6 @@
 
 void initRFID(void);
 char getCharSerial(void);
-void Serial_String(char *string);
 unsigned char VerifySignal(unsigned char *Signal); //Checks RFID Checksum
 
 #endif	/* RFID_READER_H */
