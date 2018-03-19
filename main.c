@@ -254,13 +254,22 @@ void main(void){
                 LCD_String(Message);
                 SetLine(2);
                 LCD_String("Going Home");
-                stop(&mL,&mR);
                 
                 for (Move=Move; Move>=0; Move--) { //Go backwards along the moves
+                    stop(&mL,&mR);
                     if (MoveType[Move]==0) { //If move was forwards
                         fullSpeedBack(&mL,&mR,100);
                         delay_tenth_s(MoveTime[Move]);
-                    } else if (MoveType[Move]==1) { //If move was left/right
+                    } else if (MoveType[Move]==1) { //If timer left/right
+                        T0CONbits.TMR0ON=0; // Stop the timer
+                        TMR0L = 0; //Reset the timer
+                        TMR0H = 0;
+                        if (MoveTime[Move]>0) {
+                            
+                        } else {
+                        }
+                        
+                    } else if (MoveType==2) { //If 0.1s left/right
                         if (MoveTime[Move]>0) { //If left turn
                             turnRight(&mL,&mR,100);
                             delay_tenth_s(MoveTime[Move]);
