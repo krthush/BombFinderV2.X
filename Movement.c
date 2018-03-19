@@ -1,6 +1,6 @@
 #include <xc.h>
 #include "dc_motor.h"
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 2000000
 #include "IR_Reading.h"
 #include "Movement.h"
 #include "LCD.h"
@@ -14,7 +14,7 @@ void initTimer(void){
     T0CONbits.T0PS=0b010; // 1:8 Prescale
     // With 8 MHz clock this gives the clock incrementing 980 times every second
     
-    INTCONbits.TMR0IE=0; // Disable interrupt on overflow
+    INTCONbits.TMR0IE=1; // Enable interrupt on overflow
 }
 
 // Function to delay in seconds
@@ -96,7 +96,8 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
 // the robot spins out a expanding spiral path
 //  - making sure the signal is always found.
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
-        int *MoveTime, char *Move, char *MoveType, char *RFID_Read) {
+        int *MoveTime, char *Move, char *MoveType, char *RFID_Read, 
+        unsigned int *millis) {
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
@@ -104,8 +105,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     unsigned int RightFlag=0;
     char buf[40]; // Buffer for characters for LCD
     unsigned int i=0;
-    unsigned int n=0;
-    unsigned char TimeAboveThreshold=0;
+    unsigned int TimeAboveThreshold=0;
     // USERVARIABLE TOLERANCES
     const unsigned int DirectionFoundThreshold=1000; // Minimum signal strength 
     // required for sensor to be considered directly aimed at beacon.
@@ -164,11 +164,11 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
         // TODO: Timer1 does not seem to be recorded correctly here, it activates
         // at the start
         if (SensorResult[1]>DirectionFoundThreshold) {
-            RightFlag= (TMR0H<<8)+TMR0L;
+            RightFlag=TMR0L+(TMR0H<<8);
         }
         
         if (SensorResult[0]>DirectionFoundThreshold) {
-            LeftFlag=(TMR0H<<8)+TMR0L;
+            LeftFlag=TMR0L+(TMR0H<<8);
         }
         
         // Increment counter if any of the IR sensors has seen the beacon
@@ -180,11 +180,11 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
             // Both Sensors have seen the beacon, travel back to
             // half the length of the FlagCounter and go!
             if (RightFlag>0) {
-                TimeAboveThreshold = LeftFlag - RightFlag;
+                TimeAboveThreshold=LeftFlag-RightFlag;
                 TMR0L = 0; //Reset the timer
                 TMR0H = 0;
                 stop(mL,mR);
-                while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
+                while ((TMR0L+(TMR0H<<8))<(TimeAboveThreshold>>1)) {
                     turnLeft(mL,mR, MotorPower);
                 }
                 T0CONbits.TMR0ON=0; // Stop the timer
@@ -201,7 +201,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 // Signal was only found once
                 // Record movement of turn up to now
                 (MoveType[*Move]) = 1;
-                (MoveTime[*Move]) = -((TMR0H<<8)+TMR0L);
+                (MoveTime[*Move]) = -(TMR0L+(TMR0H<<8));
                 *Move = *Move+1;  
                 stop(mL,mR);
                 
@@ -224,11 +224,13 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     }
     
     // No clear signal found, rotate and move a bit and hope to find it!
+    // This is what causes the spiral and make the robot definitly find the 
+    // signal.
     (MoveType[*Move]) = 2;
     (MoveTime[*Move]) = -2;
     *Move = *Move+1;
     turnRight(mL,mR, 100);
-    delay_tenth_s(2);
+    delay_tenth_s(LeftFlick);
     stop(mL,mR);
     return -1; // No clear signal found
 }

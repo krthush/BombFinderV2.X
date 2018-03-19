@@ -4673,7 +4673,7 @@ while(*string != 0){
 
 
 sendCharToSerial(*string++);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 
 
 }

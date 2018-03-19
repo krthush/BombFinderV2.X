@@ -4869,20 +4869,19 @@ unsigned int LeftFlag=0;
 unsigned int RightFlag=0;
 char buf[40];
 unsigned int i=0;
-unsigned int n=0;
-unsigned char TimeAboveThreshold=0;
+unsigned int TimeAboveThreshold=0;
 
 const unsigned int DirectionFoundThreshold=1000;
 
 const unsigned char MotorPower=40;
 
-const unsigned char LeftFlick=2;
+const signed char LeftFlick=2;
+
+
 
 const unsigned char MiniLeftFlick=1;
 
-
-
-
+# 123
 (MoveType[*Move]) = 2;
 (MoveTime[*Move]) = LeftFlick;
 *Move = *Move+1;
@@ -4926,23 +4925,23 @@ LCD_String(buf);
 
 
 if (SensorResult[1]>DirectionFoundThreshold) {
-RightFlag= (TMR0H<<8)+TMR0L;
+RightFlag=TMR0L+(TMR0H<<8);
 }
 
 if (SensorResult[0]>DirectionFoundThreshold) {
-LeftFlag=(TMR0H<<8)+TMR0L;
+LeftFlag=TMR0L+(TMR0H<<8);
 }
 
-# 176
+# 178
 if (LeftFlag>0) {
 
 
 if (RightFlag>0) {
-TimeAboveThreshold = LeftFlag - RightFlag;
+TimeAboveThreshold=LeftFlag-RightFlag;
 TMR0L = 0;
 TMR0H = 0;
 stop(mL,mR);
-while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
+while ((TMR0L+(TMR0H<<8))<(TimeAboveThreshold>>1)) {
 turnLeft(mL,mR, MotorPower);
 }
 T0CONbits.TMR0ON=0;
@@ -4959,11 +4958,19 @@ T0CONbits.TMR0ON=0;
 
 
 (MoveType[*Move]) = 1;
-(MoveTime[*Move]) = -((TMR0H<<8)+TMR0L);
+(MoveTime[*Move]) = -(TMR0L+(TMR0H<<8));
 *Move = *Move+1;
 stop(mL,mR);
 
-# 214
+
+turnLeft(mL,mR,100);
+delay_tenth_s(MiniLeftFlick);
+stop(mL,mR);
+(MoveType[*Move]) = 2;
+(MoveTime[*Move]) = MiniLeftFlick;
+*Move = *Move+1;
+
+
 return 2;
 }
 }
@@ -4974,11 +4981,13 @@ return 2;
 }
 
 
+
+
 (MoveType[*Move]) = 2;
 (MoveTime[*Move]) = -2;
 *Move = *Move+1;
 turnRight(mL,mR, 100);
-delay_tenth_s(2);
+delay_tenth_s(LeftFlick);
 stop(mL,mR);
 return -1;
 }

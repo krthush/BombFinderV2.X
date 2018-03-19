@@ -13,7 +13,7 @@ volatile unsigned char ReceivedString[16]; //Global variable to read from RFID
 volatile unsigned char i=0;
 volatile unsigned char RFID_Read=0;
 volatile signed char mode=0; // Robot mode - see switch case tree in main loop
-
+volatile unsigned int millis=0; //Approximate milisecond timer
 // High priority interrupt routine
 void interrupt low_priority InterruptHandlerLow ()
 {
@@ -32,7 +32,7 @@ void interrupt low_priority InterruptHandlerLow ()
 // Low priority interrupt routine for button 
 // Switches between inert mode vs. other modes
 void interrupt InterruptHandlerHigh () {
-    if (INTCONbits.INT0IF) {
+    if (INTCONbits.INT0IF) { //If button pressed
         if (mode==-1) { // If in inert mode
             // Start searching and then perform tasks   
             mode=1;
@@ -46,6 +46,10 @@ void interrupt InterruptHandlerHigh () {
         delay_tenth_s(2);
         INTCONbits.INT0IF=0; // clear the flag
     }
+    if (INTCONbits.TMR0IF) { //If timer has overflowed
+        millis++; // Increment millisecond counter
+        INTCONbits.TMR0IF = 0; // Clear the flag
+    }
 }
 
 void main(void){
@@ -54,10 +58,10 @@ void main(void){
     unsigned char Message[10]; // Code on RFID Card
     unsigned char i=0; // Counter variable
     signed char DirectionFound=0; // Flag for if the robot has decided it knows where the bomb is
-    int MoveTime[50] = { 0 }; // Array to store time spent on each type of movement.
+    signed int MoveTime[25] = { 0 }; // Array to store time spent on each type of movement.
     // For left/right, left is defined as positive. For forwards/backwards,
     // forwards is positive.
-    char MoveType[50] = { 0 }; // Array to store movement types - 0 is forwards based 
+    unsigned char MoveType[25] = { 0 }; // Array to store movement types - 0 is forwards based 
     // on tenth-second delays, 1 is left/right based on timer, 2 is left/right 
     // based on tenth second delays.
     signed char Move=0; // Move counter - signed so it does not overflow when 0 reached
@@ -106,7 +110,7 @@ void main(void){
     mR.dir_pin=2; //pin RB0/PWM0 controls direction
     mR.PWMperiod=199; //store PWMperiod for motor
 
-    OSCCON = 0b1010010; //2MHz clock
+    OSCCON = 0b1110010; //8MHz clock
     while(!OSCCONbits.IOFS); //wait until stable
     
     while(1){
@@ -191,7 +195,7 @@ void main(void){
                 } else if (DirectionFound==0) {
                     // Scans a wide range if it's unsure about direction
                     DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
-                            &MoveTime, &Move, &MoveType, &RFID_Read);
+                            &MoveTime, &Move, &MoveType, &RFID_Read, &millis);
                 } else if (DirectionFound==1) {
                      // Keeps direction and just scans, robot thinks it's close
                     DirectionFound=ScanIR(&mL, &mR);

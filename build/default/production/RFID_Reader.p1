@@ -3688,9 +3688,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID_Reader.c: 38: sendCharToSerial(*string++);
 "38
 [e ( _sendCharToSerial (1 *U ++ _string * -> -> 1 `i `x -> -> # *U _string `i `x ]
-[; ;RFID_Reader.c: 39: _delay((unsigned long)((50)*(8000000/4000000.0)));
+[; ;RFID_Reader.c: 39: _delay((unsigned long)((50)*(2000000/4000000.0)));
 "39
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 2000000 `l `d .4000000.0 `ul ]
 "42
 }
 [e :U 415 ]

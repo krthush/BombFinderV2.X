@@ -4707,7 +4707,7 @@ void setMotorFullSpeed(struct DC_motor *m)
 {
 for (m->power; (m->power)<=100; m->power++){
 setMotorPWM(m);
-_delay((unsigned long)((1)*(8000000/4000.0)));
+_delay((unsigned long)((1)*(2000000/4000.0)));
 }
 }
 
@@ -4717,7 +4717,7 @@ void stopMotor(struct DC_motor *m)
 
 for (m->power; (m->power)>0; m->power--){
 setMotorPWM(m);
-_delay((unsigned long)((5)*(8000000/4000.0)));
+_delay((unsigned long)((5)*(2000000/4000.0)));
 }
 }
 
@@ -4734,7 +4734,7 @@ mR->power--;
 }
 setMotorPWM(mL);
 setMotorPWM(mR);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 }
 mL->direction=1;
 mR->direction=1;
@@ -4775,7 +4775,7 @@ mR->power++;
 }
 setMotorPWM(mL);
 setMotorPWM(mR);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 }
 }
 

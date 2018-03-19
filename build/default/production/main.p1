@@ -3929,25 +3929,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _DirectionFound `c ~T0 @X0 1 a ]
 [; ;main.c: 56: signed char DirectionFound=0;
 [e = _DirectionFound -> -> 0 `i `c ]
-[v F3893 `i ~T0 @X0 -> 50 `i s ]
+[v F3893 `i ~T0 @X0 -> 25 `i s ]
 [i F3893
 :U ..
 "57
 -> 0 `i
 ..
 ]
-[v _MoveTime `i ~T0 @X0 -> 50 `i a ]
-[; ;main.c: 57: int MoveTime[50] = { 0 };
+[v _MoveTime `i ~T0 @X0 -> 25 `i a ]
+[; ;main.c: 57: signed int MoveTime[25] = { 0 };
 [e = _MoveTime F3893 ]
-[v F3895 `uc ~T0 @X0 -> 50 `i s ]
+[v F3895 `uc ~T0 @X0 -> 25 `i s ]
 [i F3895
 :U ..
 "60
 -> -> 0 `i `uc
 ..
 ]
-[v _MoveType `uc ~T0 @X0 -> 50 `i a ]
-[; ;main.c: 60: char MoveType[50] = { 0 };
+[v _MoveType `uc ~T0 @X0 -> 25 `i a ]
+[; ;main.c: 60: unsigned char MoveType[25] = { 0 };
 [e = _MoveType F3895 ]
 "63
 [v _Move `c ~T0 @X0 1 a ]
@@ -4041,9 +4041,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 107: mR.PWMperiod=199;
 "107
 [e = . _mR 5 -> 199 `i ]
-[; ;main.c: 109: OSCCON = 0x72;
+[; ;main.c: 109: OSCCON = 0b1010010;
 "109
-[e = _OSCCON -> -> 114 `i `uc ]
+[e = _OSCCON -> -> 82 `i `uc ]
 [; ;main.c: 110: while(!OSCCONbits.IOFS);
 "110
 [e $U 418  ]
@@ -4092,15 +4092,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 139: SendLCD(0b00000001,0);
 "139
 [e ( _SendLCD (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 140: _delay((unsigned long)((50)*(8000000/4000000.0)));
+[; ;main.c: 140: _delay((unsigned long)((50)*(2000000/4000000.0)));
 "140
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 2000000 `l `d .4000000.0 `ul ]
 [; ;main.c: 141: SendLCD(0b00000010,0);
 "141
 [e ( _SendLCD (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 142: _delay((unsigned long)((2)*(8000000/4000.0)));
+[; ;main.c: 142: _delay((unsigned long)((2)*(2000000/4000.0)));
 "142
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
 [; ;main.c: 143: SetLine(1);
 "143
 [e ( _SetLine (1 -> -> 1 `i `uc ]

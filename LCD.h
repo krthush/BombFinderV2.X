@@ -6,7 +6,7 @@
  */
 #ifndef LCD_H
 #define	LCD_H
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 2000000
 
 #include <string.h>
 #include <stdio.h>
