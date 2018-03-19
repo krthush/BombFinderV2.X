@@ -67,7 +67,7 @@ void main(void){
     unsigned char ScanAngle=60; //MAX VALUE: 255, P.S. This currently actually
     // determines the number of loops the bot scans while spinning, make sure
     // the total time for this scan is UNDER 8 seconds or Timer0 within
-    // ScanWithRange will fail.
+    // ScanWithRange will overflow and mess up the timings.
     // Also this should be calibrated for the spiral effect -> if the robot
     // never finds a signal it spirals out from its location making sure it 
     // gets close enough to find it.
@@ -113,7 +113,6 @@ void main(void){
        
        switch (mode) {
            case -1: //Inert Mode
-               
                 // Robot has finished start-up, and now ready to go!
                 // Robot also enters this mode after successfully finishing the task.
                 // If button is pressed while robot is performing, it will return to inert mode.
@@ -148,11 +147,9 @@ void main(void){
                     LCD_String(buf);
                 }
                 
-               
                 break;
                
            case 0 : //Start-up Mode
-               
                 //Initialise EVERYTHING
                 initMotorPWM();  //setup PWM registers
                 initTimer();
@@ -173,11 +170,7 @@ void main(void){
                
            case 1 : //Search Mode
                
-                // TODO: do calibration routine here
-                // Pseudo code:
-                // if(!calibrated){calibrate()}
-               
-                SetLine(1); //Set Line 1
+                SetLine(1); //Set LCD Line 1
                 LCD_String("Searching");
                                
                 if (DirectionFound==-1) {
