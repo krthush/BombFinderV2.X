@@ -112,17 +112,10 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     const unsigned char power=40; // Adjusts the speed of the turning, currently
     // seems to lose clarity past 43ish.
     
-    // Flip right before starting scan from left side
-//    for (i=1; i<=(milliseconds>>1); i++) {
-//        turnRight(mL,mR);
-//        __delay_ms(1);
-//        stop(mL,mR);
-//    }
-    // THIS CAN BE MADE BETTER
-    *Move++;
+    // Flip left before starting scan from left side
+    *Move = *Move+1;
     (MoveType[*Move]) = 2;
     (MoveTime[*Move]) = -3;
-    
     turnLeft(mL,mR, 100);
     delay_tenth_s(3);
     stop(mL,mR);
@@ -187,14 +180,14 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
                 //Let's return the net time spent turning left 
-                *Move++;  
+                *Move = *Move+1;
                 (MoveType[*Move]) = 1;
                 (MoveTime[*Move]) = RightFlag + (TimeAboveThreshold>>1);
                 
                 return 2; // Direction of bomb is directly ahead
             } else {
                 // Signal was only found once, just go in that direction roughly
-                *Move++;
+                *Move = *Move+1;
                 (MoveType[*Move]) = 2;
                 (MoveTime[*Move]) = 1;
                 stop(mL,mR);
@@ -212,7 +205,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     }
     
     // No clear signal found, rotate and move a bit and hope to find it!
-    *Move++;
+    *Move = *Move+1;
     (MoveType[*Move]) = 2;
     (MoveTime[*Move]) = -2;
     turnRight(mL,mR, 100);
