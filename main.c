@@ -264,16 +264,17 @@ void main(void){
                         T0CONbits.TMR0ON=0; // Stop the timer
                         TMR0L = 0; //Reset the timer
                         TMR0H = 0;
+                        millis = 0;
                         if (MoveTime[Move]>0) { //If left turn
                             T0CONbits.TMR0ON=1; // Start the timer
                             turnRight(&mL,&mR,40);
-                            while (((TMR0H<<8)+TMR0L)<MoveTime[Move]); //Delay 
+                            while (millis<MoveTime[Move]); //Delay 
                             //until it's turned as far as it did originally
                             T0CONbits.TMR0ON=0; // Stop the timer
                         } else { //If right turn
                             T0CONbits.TMR0ON=1; // Start the timer
                             turnLeft(&mL,&mR,40);
-                            while (((TMR0H<<8)+TMR0L)<(-MoveTime[Move])); //Delay 
+                            while (millis<(-MoveTime[Move])); //Delay 
                             //until it's turned as far as it did originally
                             T0CONbits.TMR0ON=0; // Stop the timer
                         }

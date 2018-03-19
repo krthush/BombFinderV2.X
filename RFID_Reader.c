@@ -20,11 +20,6 @@ void initRFID(void){
     RCSTAbits.RX9=0; //8-bit reception  
 }
 
-void sendCharToSerial(char charToSend){
- while (!PIR1bits.TXIF); // wait for flag to be set
- TXREG=charToSend; //transfer char H to transmitter
-}
-
 char getCharSerial(void){
 while (!PIR1bits.RCIF); //wait for the data to arrive
     return RCREG; //return byte in RCREG

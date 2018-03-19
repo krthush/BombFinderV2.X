@@ -134,6 +134,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     // Initialise Timer0 vales to 0
     TMR0L = 0;
     TMR0H = 0;
+    *millis = 0;
     T0CONbits.TMR0ON=1; // turn on timer0
     // This loop is turning Right, while scanning
     for (i=1; i<=loops; i++) {
@@ -164,11 +165,11 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
         // TODO: Timer1 does not seem to be recorded correctly here, it activates
         // at the start
         if (SensorResult[1]>DirectionFoundThreshold) {
-            RightFlag=TMR0L+(TMR0H<<8);
+            RightFlag=millis;
         }
         
         if (SensorResult[0]>DirectionFoundThreshold) {
-            LeftFlag=TMR0L+(TMR0H<<8);
+            LeftFlag=millis;
         }
         
         // Increment counter if any of the IR sensors has seen the beacon
@@ -183,8 +184,9 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 TimeAboveThreshold=LeftFlag-RightFlag;
                 TMR0L = 0; //Reset the timer
                 TMR0H = 0;
+                millis = 0;
                 stop(mL,mR);
-                while ((TMR0L+(TMR0H<<8))<(TimeAboveThreshold>>1)) {
+                while (millis<(TimeAboveThreshold>>1)) {
                     turnLeft(mL,mR, MotorPower);
                 }
                 T0CONbits.TMR0ON=0; // Stop the timer
@@ -201,7 +203,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 // Signal was only found once
                 // Record movement of turn up to now
                 (MoveType[*Move]) = 1;
-                (MoveTime[*Move]) = -(TMR0L+(TMR0H<<8));
+                (MoveTime[*Move]) = -millis;
                 *Move = *Move+1;  
                 stop(mL,mR);
                 
