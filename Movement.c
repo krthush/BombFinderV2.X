@@ -186,7 +186,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 stop(mL,mR);
                 //Let's return the net time spent turning left 
                 (MoveType[*Move]) = 1;
-                (MoveTime[*Move]) = RightFlag + (TimeAboveThreshold>>1);
+                (MoveTime[*Move]) = -(RightFlag + (TimeAboveThreshold>>1));
                 *Move = *Move+1;
                 
                 return 2; // Direction of bomb is directly ahead
