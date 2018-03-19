@@ -4840,10 +4840,10 @@ void main(void){
 unsigned char Message[10];
 unsigned char i=0;
 signed char DirectionFound=0;
-int MoveTime[50] = { 0 };
+signed int MoveTime[25] = { 0 };
 
 
-char MoveType[50] = { 0 };
+unsigned char MoveType[25] = { 0 };
 
 
 signed char Move=0;
