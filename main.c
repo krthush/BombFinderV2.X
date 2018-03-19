@@ -60,7 +60,7 @@ void main(void){
     char MoveType[50] = { 0 }; // Array to store movement types - 0 is forwards based 
     // on tenth-second delays, 1 is left/right based on timer, 2 is left/right 
     // based on tenth second delays.
-    char Move=0; // Move counter
+    signed char Move=0; // Move counter - signed so it does not overflow when 0 reached
     unsigned int SensorResult[2]={0,0};
     char buf[40]; // Buffer for characters for LCD
     // USERVARIABLE TOLERANCES
@@ -119,7 +119,10 @@ void main(void){
                 // If button is pressed while robot is in inert mode, it will start performing.
                 // Robot will also display IR values for easy calibration
                 stop(&mL, &mR);
+                
+                // Reset Crucial Starting Variables
                 RFID_Read=0;
+                Move=0;
                 
                 // Scan Data
                 SensorResult[0]=grabLeftIR();
@@ -232,7 +235,7 @@ void main(void){
                     mode=1;
                     // Bot needs to head for the bomb
                     fullSpeedAhead(&mL,&mR, 100);
-                    delay_tenth_s(5);
+                    delay_tenth_s(1);
                     MoveType[Move] = 0;
                     MoveTime[Move] = 5;
                     Move++;

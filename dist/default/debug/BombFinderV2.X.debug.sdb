@@ -674,7 +674,7 @@
 "64
 [v main@SensorResult SensorResult `[2]ui  1 a 4 201 ]
 "63
-[v main@Move Move `uc  1 a 1 207 ]
+[v main@Move Move `c  1 a 1 207 ]
 "54
 [v main@i i `uc  1 a 1 206 ]
 "56
@@ -687,7 +687,7 @@
 [v main@F3895 F3895 `[50]uc  1 s 50 F3895 ]
 "63
 [v main@F3898 F3898 `[2]ui  1 s 4 F3898 ]
-"288
+"292
 } 0
 "8 H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
 [v _initTimer initTimer `(v  1 e 0 0 ]

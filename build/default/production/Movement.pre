@@ -4949,7 +4949,7 @@ T0CONbits.TMR0ON=0;
 stop(mL,mR);
 
 (MoveType[*Move]) = 1;
-(MoveTime[*Move]) = RightFlag + (TimeAboveThreshold>>1);
+(MoveTime[*Move]) = -(RightFlag + (TimeAboveThreshold>>1));
 *Move = *Move+1;
 
 return 2;
@@ -4959,7 +4959,7 @@ T0CONbits.TMR0ON=0;
 
 
 (MoveType[*Move]) = 1;
-(MoveTime[*Move]) = ((TMR0H<<8)+TMR0L);
+(MoveTime[*Move]) = -((TMR0H<<8)+TMR0L);
 *Move = *Move+1;
 stop(mL,mR);
 

@@ -4052,9 +4052,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 190: (MoveType[*Move]) = 1;
 "190
 [e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 1 `i `uc ]
-[; ;Movement.c: 191: (MoveTime[*Move]) = RightFlag + (TimeAboveThreshold>>1);
+[; ;Movement.c: 191: (MoveTime[*Move]) = -(RightFlag + (TimeAboveThreshold>>1));
 "191
-[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> + _RightFlag -> >> -> _TimeAboveThreshold `i -> 1 `i `ui `i ]
+[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> -U + _RightFlag -> >> -> _TimeAboveThreshold `i -> 1 `i `ui `i ]
 [; ;Movement.c: 192: *Move = *Move+1;
 "192
 [e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
@@ -4074,9 +4074,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 200: (MoveType[*Move]) = 1;
 "200
 [e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 1 `i `uc ]
-[; ;Movement.c: 201: (MoveTime[*Move]) = ((TMR0H<<8)+TMR0L);
+[; ;Movement.c: 201: (MoveTime[*Move]) = -((TMR0H<<8)+TMR0L);
 "201
-[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux + << -> _TMR0H `i -> 8 `i -> _TMR0L `i ]
+[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -U + << -> _TMR0H `i -> 8 `i -> _TMR0L `i ]
 [; ;Movement.c: 202: *Move = *Move+1;
 "202
 [e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]

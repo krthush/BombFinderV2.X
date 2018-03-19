@@ -4846,7 +4846,7 @@ int MoveTime[50] = { 0 };
 char MoveType[50] = { 0 };
 
 
-char Move=0;
+signed char Move=0;
 unsigned int SensorResult[2]={0,0};
 char buf[40];
 
@@ -4896,7 +4896,10 @@ case -1:
 
 # 121
 stop(&mL, &mR);
+
+
 RFID_Read=0;
+Move=0;
 
 
 SensorResult[0]=grabLeftIR();
@@ -5009,7 +5012,7 @@ DirectionFound=1;
 mode=1;
 
 fullSpeedAhead(&mL,&mR, 100);
-delay_tenth_s(5);
+delay_tenth_s(1);
 MoveType[Move] = 0;
 MoveTime[Move] = 5;
 Move++;
@@ -5057,6 +5060,7 @@ delay_tenth_s(MoveTime[Move]);
 }
 }
 }
+stop(&mL,&mR);
 mode=-1;
 
 break;
