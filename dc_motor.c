@@ -20,6 +20,11 @@ void initMotorPWM(){
     TRISBbits.RB1=0;
     TRISBbits.RB2=0;
     TRISBbits.RB3=0;
+    
+    LATBbits.LATB0=0;
+    LATBbits.LATB1=0;
+    LATBbits.LATB2=0;
+    LATBbits.LATB3=0;
 }
 
 // function to set PWM output from the values in the motor structure
