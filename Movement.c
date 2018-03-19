@@ -47,7 +47,7 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
     unsigned int SensorResult[2]={0,0};
     char buf[40]; // Buffer for characters for LCD
     // USERVARIABLE TOLERANCES
-    const unsigned int DirectionMoveThreshold=2000; // Minimum signal strength 
+    const unsigned int DirectionMoveThreshold=1000; // Minimum signal strength 
     // required for both sensors to be considered directly aimed at beacon
     // while moving.
     
@@ -109,19 +109,24 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     // USERVARIABLE TOLERANCES
     const unsigned int DirectionFoundThreshold=1000; // Minimum signal strength 
     // required for sensor to be considered directly aimed at beacon.
-    const unsigned char power=40; // Adjusts the speed of the turning, currently
+    const unsigned char MotorPower=40; // Adjusts the speed of the turning, currently
     // seems to lose clarity past 43ish.
+    const unsigned char LeftFlick=2; // The flick before scanning is started.
+    // Value should ideally be as low as possible.
+    const unsigned char MiniLeftFlick=1; // The flick before movement if only
+    // one signal is picked up. Value should ideally be as low as possible.
     
-    // Flip left before starting scan from left side
+    // Flip left before starting scan from right side, this increases chance of
+    // bot quickly finding the beacon if it just missed it
     *Move = *Move+1;
     (MoveType[*Move]) = 2;
     (MoveTime[*Move]) = -3;
     turnLeft(mL,mR, 100);
-    delay_tenth_s(3);
+    delay_tenth_s(LeftFlick);
     stop(mL,mR);
     
     // Turn right slowly for scanning
-    turnRight(mL,mR, power);
+    turnRight(mL,mR, MotorPower);
     
     // Initialise Timer0 vales to 0
     TMR0L = 0;
@@ -175,7 +180,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 TMR0H = 0;
                 stop(mL,mR);
                 while (((TMR0H<<8)+TMR0L)<(TimeAboveThreshold>>1)) {
-                    turnLeft(mL,mR, power);
+                    turnLeft(mL,mR, MotorPower);
                 }
                 T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
@@ -192,7 +197,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 (MoveTime[*Move]) = 1;
                 stop(mL,mR);
                 turnLeft(mL,mR,100);
-                delay_tenth_s(1);
+                delay_tenth_s(MiniLeftFlick);
                 T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
                 return 2; // Direction of bomb is roughly ahead
