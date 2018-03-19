@@ -1,6 +1,6 @@
 #include "IR_Reading.h"
 #include <xc.h>
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 2000000
 
 // PLEASE NOTE: Decided to not use CCP module, 
 // using motion capture module instead for IR tracking

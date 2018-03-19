@@ -4886,7 +4886,7 @@ mR.dutyHighByte=(unsigned char *)(&PDC1H);
 mR.dir_pin=2;
 mR.PWMperiod=199;
 
-OSCCON = 0x72;
+OSCCON = 0b1010010;
 while(!OSCCONbits.IOFS);
 
 while(1){
@@ -4914,9 +4914,9 @@ CAP2BUFL=0;
 
 
 SendLCD(0b00000001,0);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 SendLCD(0b00000010,0);
-_delay((unsigned long)((2)*(8000000/4000.0)));
+_delay((unsigned long)((2)*(2000000/4000.0)));
 SetLine(1);
 LCD_String("      Inert Mode");
 SetLine(2);

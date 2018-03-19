@@ -1,7 +1,7 @@
 #ifndef _DC_MOTOR_H
 #define _DC_MOTOR_H
 
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 2000000
 
 #include <xc.h>
 
