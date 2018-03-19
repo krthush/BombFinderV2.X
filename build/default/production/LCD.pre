@@ -4742,7 +4742,7 @@ void E_TOG(void){
 
 
 LATCbits.LATC0=1;
-_delay((unsigned long)((5)*(8000000/4000000.0)));
+_delay((unsigned long)((5)*(2000000/4000000.0)));
 LATCbits.LATC0=0;
 }
 
@@ -4755,7 +4755,7 @@ LATCbits.LATC2 = (number<<6)>>7;
 LATDbits.LATD0 = (number<<5)>>7;
 LATDbits.LATD1 = (number<<4)>>7;
 E_TOG();
-_delay((unsigned long)((5)*(8000000/4000000.0)));
+_delay((unsigned long)((5)*(2000000/4000000.0)));
 
 }
 
@@ -4766,10 +4766,10 @@ void SendLCD(unsigned char Byte, char type){
 LATAbits.LATA6=type;
 
 LCDout((Byte&0xF0)>>4);
-_delay((unsigned long)((10)*(8000000/4000000.0)));
+_delay((unsigned long)((10)*(2000000/4000000.0)));
 
 LCDout(Byte&0x0F);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 }
 void initLCD(void){
 
@@ -4781,27 +4781,27 @@ TRISCbits.RC2=0;
 TRISDbits.RD0=0;
 TRISDbits.RD1=0;
 
-_delay((unsigned long)((15)*(8000000/4000.0)));
+_delay((unsigned long)((15)*(2000000/4000.0)));
 LCDout(0b0011);
-_delay((unsigned long)((5)*(8000000/4000.0)));
+_delay((unsigned long)((5)*(2000000/4000.0)));
 LCDout(0b0011);
-_delay((unsigned long)((200)*(8000000/4000000.0)));
+_delay((unsigned long)((200)*(2000000/4000000.0)));
 LCDout(0b0011);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 LCDout(0b0010);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 
 
 SendLCD(0b00101000,0);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 SendLCD(0b00001000,0);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 SendLCD(0b00000001,0);
-_delay((unsigned long)((5)*(8000000/4000.0)));
+_delay((unsigned long)((5)*(2000000/4000.0)));
 SendLCD(0b00000110,0);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 SendLCD(0b00001100,0);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 }
 
 void SetLine (char line) {
@@ -4810,7 +4810,7 @@ SendLCD(0x80,0);
 } else if (line==2) {
 SendLCD(0xC0,0);
 }
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 }
 
 void LCD_String(char *string){
@@ -4819,7 +4819,7 @@ while(*string != 0){
 
 
 SendLCD(*string++,1);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
+_delay((unsigned long)((50)*(2000000/4000000.0)));
 
 
 }
