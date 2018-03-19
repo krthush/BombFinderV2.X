@@ -687,7 +687,7 @@
 [v main@F3895 F3895 `[50]uc  1 s 50 F3895 ]
 "63
 [v main@F3898 F3898 `[2]ui  1 s 4 F3898 ]
-"295
+"289
 } 0
 "8 H:\MPLABXProjects\ECM\BombFinderV2.X\Movement.c
 [v _initTimer initTimer `(v  1 e 0 0 ]
@@ -758,19 +758,19 @@
 "103
 [v ScanWithRange@LeftFlag LeftFlag `ui  1 a 2 81 ]
 "110
-[v ScanWithRange@DirectionFoundThreshold DirectionFoundThreshold `Cui  1 a 2 78 ]
+[v ScanWithRange@DirectionFoundThreshold DirectionFoundThreshold `Cui  1 a 2 76 ]
 "106
-[v ScanWithRange@i i `ui  1 a 2 76 ]
+[v ScanWithRange@i i `ui  1 a 2 74 ]
 "107
 [v ScanWithRange@n n `ui  1 a 2 72 ]
 "108
 [v ScanWithRange@TimeAboveThreshold TimeAboveThreshold `uc  1 a 1 83 ]
-"112
-[v ScanWithRange@MotorPower MotorPower `Cuc  1 a 1 80 ]
 "116
-[v ScanWithRange@MiniLeftFlick MiniLeftFlick `Cuc  1 a 1 75 ]
+[v ScanWithRange@MiniLeftFlick MiniLeftFlick `Cuc  1 a 1 80 ]
 "114
-[v ScanWithRange@LeftFlick LeftFlick `Cuc  1 a 1 74 ]
+[v ScanWithRange@LeftFlick LeftFlick `Cuc  1 a 1 79 ]
+"112
+[v ScanWithRange@MotorPower MotorPower `Cuc  1 a 1 78 ]
 [s S71 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyLowByte 2 2 `*.39uc 1 dutyHighByte 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
 "98
 [v ScanWithRange@mL mL `*.39S71  1 p 2 13 ]
@@ -782,7 +782,7 @@
 [v ScanWithRange@MoveType MoveType `*.39uc  1 p 2 23 ]
 [v ScanWithRange@RFID_Read RFID_Read `*.39uc  1 p 2 25 ]
 [v ScanWithRange@F3892 F3892 `[2]ui  1 s 4 F3892 ]
-"220
+"231
 } 0
 "98 H:\MPLABXProjects\ECM\BombFinderV2.X\dc_motor.c
 [v _turnRight turnRight `(v  1 e 0 0 ]

@@ -4884,7 +4884,7 @@ const unsigned char MiniLeftFlick=1;
 
 
 (MoveType[*Move]) = 2;
-(MoveTime[*Move]) = -3;
+(MoveTime[*Move]) = LeftFlick;
 *Move = *Move+1;
 turnLeft(mL,mR, 100);
 delay_tenth_s(LeftFlick);
@@ -4923,6 +4923,8 @@ SetLine(2);
 sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
 LCD_String(buf);
 
+
+
 if (SensorResult[1]>DirectionFoundThreshold) {
 RightFlag= (TMR0H<<8)+TMR0L;
 }
@@ -4931,7 +4933,7 @@ if (SensorResult[0]>DirectionFoundThreshold) {
 LeftFlag=(TMR0H<<8)+TMR0L;
 }
 
-# 174
+# 176
 if (LeftFlag>0) {
 
 
@@ -4952,15 +4954,24 @@ stop(mL,mR);
 
 return 2;
 } else {
+T0CONbits.TMR0ON=0;
 
-(MoveType[*Move]) = 2;
-(MoveTime[*Move]) = 1;
+
+
+(MoveType[*Move]) = 1;
+(MoveTime[*Move]) = ((TMR0H<<8)+TMR0L);
 *Move = *Move+1;
 stop(mL,mR);
+
+
 turnLeft(mL,mR,100);
 delay_tenth_s(MiniLeftFlick);
-T0CONbits.TMR0ON=0;
 stop(mL,mR);
+(MoveType[*Move]) = 2;
+(MoveTime[*Move]) = MiniLeftFlick;
+*Move = *Move+1;
+
+
 return 2;
 }
 }
