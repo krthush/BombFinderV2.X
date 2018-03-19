@@ -50,15 +50,15 @@ void Serial_String(char *string){
 //etc...
 //
 //For our RFID card the checksum should be 0x60
-unsigned char VerifySignal(unsigned char *Signal){
+unsigned char VerifySignal(unsigned char *RecievedString){
     unsigned char checksum=0;
     unsigned int hexByte=0;
     unsigned char i=0;
     unsigned char *ptr;
 
     //First run through - XOR first two hex bytes
-    hexByte = (Signal[3]<<8) + Signal[4];
-    checksum = ((Signal[1]<<8) + Signal[2]) ^ hexByte; //First 2 chars XOR second 2
+    hexByte = (RecievedString[3]<<8) + RecievedString[4];
+    checksum = ((RecievedString[1]<<8) + RecievedString[2]) ^ hexByte; //First 2 chars XOR second 2
 
     //Loop through, XORing the previous result with the next hex byte in turn
 //    for (i=5; i<10; i+=2){
