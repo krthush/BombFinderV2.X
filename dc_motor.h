@@ -24,7 +24,7 @@ void stop(struct DC_motor *mL, struct DC_motor *mR);
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 // PLEASE NOTE: stop(motors) needs to called be correct use of this, WHY?!
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
 #endif

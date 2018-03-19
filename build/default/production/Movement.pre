@@ -4650,7 +4650,7 @@ void stop(struct DC_motor *mL, struct DC_motor *mR);
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
 # 15 "IR_Reading.h"
@@ -4876,21 +4876,13 @@ const unsigned int DirectionFoundThreshold=1000;
 
 const unsigned char MotorPower=40;
 
-const unsigned char LeftFlick=2;
+const signed char LeftFlick=2;
+
+
 
 const unsigned char MiniLeftFlick=1;
 
-
-
-
-(MoveType[*Move]) = 2;
-(MoveTime[*Move]) = LeftFlick;
-*Move = *Move+1;
-turnLeft(mL,mR, 100);
-delay_tenth_s(LeftFlick);
-stop(mL,mR);
-
-
+# 132
 turnRight(mL,mR, MotorPower);
 
 
@@ -4933,7 +4925,7 @@ if (SensorResult[0]>DirectionFoundThreshold) {
 LeftFlag=(TMR0H<<8)+TMR0L;
 }
 
-# 176
+# 179
 if (LeftFlag>0) {
 
 
@@ -4963,15 +4955,7 @@ T0CONbits.TMR0ON=0;
 *Move = *Move+1;
 stop(mL,mR);
 
-
-turnLeft(mL,mR,100);
-delay_tenth_s(MiniLeftFlick);
-stop(mL,mR);
-(MoveType[*Move]) = 2;
-(MoveTime[*Move]) = MiniLeftFlick;
-*Move = *Move+1;
-
-
+# 217
 return 2;
 }
 }

@@ -181,7 +181,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "18
 [v _enableSensor `(v ~T0 @X0 0 ef2`uc`uc ]
 "27 dc_motor.h
-[v _fullSpeedAhead `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
+[v _fullSpeed `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
 "23 Movement.h
 [v _ScanWithRange `(uc ~T0 @X0 0 ef7`*S405`*S405`i`*i`*uc`*uc`*uc ]
 "18
@@ -3703,7 +3703,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
 [; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 27: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 27: void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;RFID_Reader.h: 12: void initRFID(void);
 [; ;RFID_Reader.h: 13: void sendCharToSerial(char charToSend);
@@ -4160,9 +4160,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 164: enableSensor(1, 1);
 "164
 [e ( _enableSensor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 167: fullSpeedAhead(&mL, &mR, 100);
+[; ;main.c: 167: fullSpeed(&mL, &mR, 100);
 "167
-[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
+[e ( _fullSpeed (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
 [; ;main.c: 168: delay_tenth_s(1);
 "168
 [e ( _delay_tenth_s (1 -> -> 1 `i `uc ]
@@ -4194,9 +4194,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 186: Move++;
 "186
 [e ++ _Move -> -> 1 `i `c ]
-[; ;main.c: 187: fullSpeedAhead(&mL, &mR, 100);
+[; ;main.c: 187: fullSpeed(&mL, &mR, 100);
 "187
-[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
+[e ( _fullSpeed (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
 [; ;main.c: 188: delay_tenth_s(6);
 "188
 [e ( _delay_tenth_s (1 -> -> 6 `i `uc ]
@@ -4326,9 +4326,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 229: stop(&mL,&mR);
 "229
 [e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 230: fullSpeedAhead(&mL,&mR, 100);
+[; ;main.c: 230: fullSpeed(&mL,&mR, 100);
 "230
-[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
+[e ( _fullSpeed (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
 "231
 }
 [e :U 448 ]
@@ -4349,9 +4349,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 235: mode=1;
 "235
 [e = _mode -> -> 1 `i `c ]
-[; ;main.c: 237: fullSpeedAhead(&mL,&mR, 100);
+[; ;main.c: 237: fullSpeed(&mL,&mR, 100);
 "237
-[e ( _fullSpeedAhead (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
+[e ( _fullSpeed (3 , , &U _mL &U _mR -> -> 100 `i `uc ]
 [; ;main.c: 238: delay_tenth_s(1);
 "238
 [e ( _delay_tenth_s (1 -> -> 1 `i `uc ]
@@ -4455,7 +4455,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 271: turnLeft(&mL,&mR,40);
 "271
 [e ( _turnLeft (3 , , &U _mL &U _mR -> -> 40 `i `uc ]
-[; ;main.c: 272: while (((TMR0H<<8)+TMR0L)<-MoveTime[Move]);
+[; ;main.c: 272: while (((TMR0H<<8)+TMR0L)<(-MoveTime[Move]));
 "272
 [e $U 462  ]
 [e :U 463 ]
@@ -4507,28 +4507,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 "285
 [e :U 465 ]
 [e :U 455 ]
+[; ;main.c: 283: }
+[; ;main.c: 284: }
+[; ;main.c: 285: if (mode==-1) {
+[e $ ! == -> _mode `i -U -> 1 `i 469  ]
+{
+[; ;main.c: 286: break;
+"286
+[e $U 452  ]
+"287
+}
+[e :U 469 ]
+"288
 }
 "254
 [e -- _Move -> -> 1 `i `c ]
 [e $ >= -> _Move `i -> 0 `i 451  ]
 [e :U 452 ]
-"285
+"288
 }
-[; ;main.c: 283: }
-[; ;main.c: 284: }
-[; ;main.c: 285: }
-[; ;main.c: 286: stop(&mL,&mR);
-"286
-[e ( _stop (2 , &U _mL &U _mR ]
-[; ;main.c: 287: mode=-1;
-"287
-[e = _mode -> -U -> 1 `i `c ]
-[; ;main.c: 289: break;
+[; ;main.c: 287: }
+[; ;main.c: 288: }
+[; ;main.c: 289: stop(&mL,&mR);
 "289
-[e $U 424  ]
+[e ( _stop (2 , &U _mL &U _mR ]
+[; ;main.c: 290: mode=-1;
 "290
+[e = _mode -> -U -> 1 `i `c ]
+[; ;main.c: 292: break;
+"292
+[e $U 424  ]
+"293
 }
-[; ;main.c: 290: }
+[; ;main.c: 293: }
 [e $U 424  ]
 "114
 [e :U 425 ]
@@ -4538,17 +4549,17 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 2 `i `c 438
  , $ -> -> 3 `i `c 450
  424 ]
-"290
+"293
 [e :U 424 ]
-"291
+"294
 }
 [e :U 421 ]
 "112
 [e $U 422  ]
 [e :U 423 ]
-[; ;main.c: 291: }
-[; ;main.c: 292: }
-"292
+[; ;main.c: 294: }
+[; ;main.c: 295: }
+"295
 [e :UE 417 ]
 }
 [p f _sprintf 8421508 ]

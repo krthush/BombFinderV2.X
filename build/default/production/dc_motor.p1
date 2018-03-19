@@ -72,7 +72,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v __delay `JF3644 ~T0 @X0 0 e ]
 [p i __delay ]
 "27 dc_motor.h
-[v _fullSpeedAhead `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
+[v _fullSpeed `(v ~T0 @X0 0 ef3`*S405`*S405`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3567,7 +3567,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
 [; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 27: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 27: void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 "4 dc_motor.c
 [v _initMotorPWM `(v ~T0 @X0 1 ef ]
@@ -3849,9 +3849,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 97: mR->direction=0;
 "97
 [e = . *U _mR 1 -> -> 0 `i `uc ]
-[; ;dc_motor.c: 98: fullSpeedAhead(mL, mR, power);
+[; ;dc_motor.c: 98: fullSpeed(mL, mR, power);
 "98
-[e ( _fullSpeedAhead (3 , , _mL _mR _power ]
+[e ( _fullSpeed (3 , , _mL _mR _power ]
 [; ;dc_motor.c: 99: }
 "99
 [e :UE 426 ]
@@ -3875,20 +3875,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.c: 108: mR->direction=1;
 "108
 [e = . *U _mR 1 -> -> 1 `i `uc ]
-[; ;dc_motor.c: 109: fullSpeedAhead(mL, mR, power);
+[; ;dc_motor.c: 109: fullSpeed(mL, mR, power);
 "109
-[e ( _fullSpeedAhead (3 , , _mL _mR _power ]
+[e ( _fullSpeed (3 , , _mL _mR _power ]
 [; ;dc_motor.c: 110: }
 "110
 [e :UE 427 ]
 }
 "113
-[v _fullSpeedAhead `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
+[v _fullSpeed `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
 "114
 {
-[; ;dc_motor.c: 113: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+[; ;dc_motor.c: 113: void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 [; ;dc_motor.c: 114: {
-[e :U _fullSpeedAhead ]
+[e :U _fullSpeed ]
 "113
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
@@ -3942,29 +3942,55 @@ Version 3.2 HI-TECH Software Intermediate Code
 "127
 [e :UE 428 ]
 }
+"129
+[v _fullSpeedForward `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
 "130
-[v _fullSpeedBack `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
-"131
 {
-[; ;dc_motor.c: 130: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
-[; ;dc_motor.c: 131: {
-[e :U _fullSpeedBack ]
-"130
+[; ;dc_motor.c: 129: void fullSpeedForward(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+[; ;dc_motor.c: 130: {
+[e :U _fullSpeedForward ]
+"129
 [v _mL `*S405 ~T0 @X0 1 r1 ]
 [v _mR `*S405 ~T0 @X0 1 r2 ]
 [v _power `uc ~T0 @X0 1 r3 ]
-"131
+"130
 [f ]
-[; ;dc_motor.c: 133: mL->direction=0;
+[; ;dc_motor.c: 132: mL->direction=1;
+"132
+[e = . *U _mL 1 -> -> 1 `i `uc ]
+[; ;dc_motor.c: 133: mR->direction=1;
 "133
-[e = . *U _mL 1 -> -> 0 `i `uc ]
-[; ;dc_motor.c: 134: mR->direction=0;
+[e = . *U _mR 1 -> -> 1 `i `uc ]
+[; ;dc_motor.c: 134: fullSpeed(mL, mR, power);
 "134
-[e = . *U _mR 1 -> -> 0 `i `uc ]
-[; ;dc_motor.c: 135: fullSpeedAhead(mL, mR, power);
+[e ( _fullSpeed (3 , , _mL _mR _power ]
+[; ;dc_motor.c: 135: }
 "135
-[e ( _fullSpeedAhead (3 , , _mL _mR _power ]
-[; ;dc_motor.c: 136: }
-"136
 [e :UE 434 ]
+}
+"138
+[v _fullSpeedBack `(v ~T0 @X0 1 ef3`*S405`*S405`uc ]
+"139
+{
+[; ;dc_motor.c: 138: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+[; ;dc_motor.c: 139: {
+[e :U _fullSpeedBack ]
+"138
+[v _mL `*S405 ~T0 @X0 1 r1 ]
+[v _mR `*S405 ~T0 @X0 1 r2 ]
+[v _power `uc ~T0 @X0 1 r3 ]
+"139
+[f ]
+[; ;dc_motor.c: 141: mL->direction=0;
+"141
+[e = . *U _mL 1 -> -> 0 `i `uc ]
+[; ;dc_motor.c: 142: mR->direction=0;
+"142
+[e = . *U _mR 1 -> -> 0 `i `uc ]
+[; ;dc_motor.c: 143: fullSpeed(mL, mR, power);
+"143
+[e ( _fullSpeed (3 , , _mL _mR _power ]
+[; ;dc_motor.c: 144: }
+"144
+[e :UE 435 ]
 }

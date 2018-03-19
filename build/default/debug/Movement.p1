@@ -3561,7 +3561,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
 [; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 27: void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 27: void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;IR_Reading.h: 15: void initIR(void);
 [; ;IR_Reading.h: 16: unsigned int grabRightIR(void);
@@ -4083,24 +4083,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 203: stop(mL,mR);
 "203
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 206: turnLeft(mL,mR,100);
-"206
-[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 207: delay_tenth_s(MiniLeftFlick);
-"207
-[e ( _delay_tenth_s (1 _MiniLeftFlick ]
-[; ;Movement.c: 208: stop(mL,mR);
-"208
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 209: (MoveType[*Move]) = 2;
-"209
-[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 2 `i `uc ]
-[; ;Movement.c: 210: (MoveTime[*Move]) = MiniLeftFlick;
-"210
-[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> _MiniLeftFlick `i ]
-[; ;Movement.c: 211: *Move = *Move+1;
-"211
-[e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
 [; ;Movement.c: 214: return 2;
 "214
 [e ) -> -> 2 `i `uc ]

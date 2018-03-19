@@ -4650,7 +4650,7 @@ void stop(struct DC_motor *mL, struct DC_motor *mR);
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
 # 15 "IR_Reading.h"
@@ -4963,15 +4963,7 @@ T0CONbits.TMR0ON=0;
 *Move = *Move+1;
 stop(mL,mR);
 
-
-turnLeft(mL,mR,100);
-delay_tenth_s(MiniLeftFlick);
-stop(mL,mR);
-(MoveType[*Move]) = 2;
-(MoveTime[*Move]) = MiniLeftFlick;
-*Move = *Move+1;
-
-
+# 214
 return 2;
 }
 }

@@ -111,10 +111,13 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     // required for sensor to be considered directly aimed at beacon.
     const unsigned char MotorPower=40; // Adjusts the speed of the turning, currently
     // seems to lose clarity past 43ish.
-    const unsigned char LeftFlick=2; // The flick before scanning is started.
-    // Value should ideally be as low as possible.
+    const signed char LeftFlick=2; // The flick before scanning is started.
+    // Value should ideally be as low as possible for speed, but low values
+    // are less robust as the robot can miss the beacon if it's overshot to
+    // the left.
     const unsigned char MiniLeftFlick=1; // The flick before movement if only
-    // one signal is picked up. Value should ideally be as low as possible.
+    // one signal is picked up. Value should tuned to match the most common
+    // amount of overlap.
     
     // Flip left before starting scan from right side, this increases chance of
     // bot quickly finding the beacon if it just missed it

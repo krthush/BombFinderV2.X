@@ -164,7 +164,7 @@ void main(void){
                 enableSensor(1, 1); // DEBUG ONLY - enable sensors to test signals
                 
                 // Small movement to signify initialise code has been successful
-                fullSpeedAhead(&mL, &mR, 100);
+                fullSpeed(&mL, &mR, 100);
                 delay_tenth_s(1);
                 
                 mode=-1;  //TODO: Make mode change on button press
@@ -184,7 +184,7 @@ void main(void){
                     MoveType[Move]=0;
                     MoveTime[Move]=6;
                     Move++;
-                    fullSpeedAhead(&mL, &mR, 100);
+                    fullSpeed(&mL, &mR, 100);
                     delay_tenth_s(6);
                     stop(&mL,&mR);
                     DirectionFound=0;
@@ -227,14 +227,14 @@ void main(void){
                             fullSpeedBack(&mL,&mR, 100); //Go back a bit then stop
                             delay_tenth_s(5);
                             stop(&mL,&mR);
-                            fullSpeedAhead(&mL,&mR, 100); //Try again
+                            fullSpeed(&mL,&mR, 100); //Try again
                         }  
                     }
                 } else {
                     DirectionFound=1;
                     mode=1;
                     // Bot needs to head for the bomb
-                    fullSpeedAhead(&mL,&mR, 100);
+                    fullSpeed(&mL,&mR, 100);
                     delay_tenth_s(1);
                     MoveType[Move] = 0;
                     MoveTime[Move] = 5;
@@ -260,16 +260,16 @@ void main(void){
                         T0CONbits.TMR0ON=0; // Stop the timer
                         TMR0L = 0; //Reset the timer
                         TMR0H = 0;
-                        if (MoveTime[Move]>0) {
+                        if (MoveTime[Move]>0) { //If left turn
                             T0CONbits.TMR0ON=1; // Start the timer
                             turnRight(&mL,&mR,40);
                             while (((TMR0H<<8)+TMR0L)<MoveTime[Move]); //Delay 
                             //until it's turned as far as it did originally
                             T0CONbits.TMR0ON=0; // Stop the timer
-                        } else {
+                        } else { //If right turn
                             T0CONbits.TMR0ON=1; // Start the timer
                             turnLeft(&mL,&mR,40);
-                            while (((TMR0H<<8)+TMR0L)<-MoveTime[Move]); //Delay 
+                            while (((TMR0H<<8)+TMR0L)<(-MoveTime[Move])); //Delay 
                             //until it's turned as far as it did originally
                             T0CONbits.TMR0ON=0; // Stop the timer
                         }
@@ -277,10 +277,13 @@ void main(void){
                         if (MoveTime[Move]>0) { //If left turn
                             turnRight(&mL,&mR,100);
                             delay_tenth_s(MoveTime[Move]);
-                        } else {
+                        } else { //If right turn
                             turnLeft(&mL,&mR,100);
                             delay_tenth_s(MoveTime[Move]);
                         }
+                    }
+                    if (mode==-1) { //Check if button has been pressed
+                        break; //Exit the loop if it has
                     }
                 }
                 stop(&mL,&mR);

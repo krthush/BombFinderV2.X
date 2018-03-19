@@ -83,11 +83,11 @@ void SetLine (char line) {
 void LCD_String(char *string){
     //While the data pointed to isn?t a 0x00 do below
     while(*string != 0){
-    //Send out the current byte pointed to
-    // and increment the pointer
-    SendLCD(*string++,1);
-    __delay_us(50); //so we can see each character
-    //being printed in turn (remove delay if you want
-    //your message to appear almost instantly)
+        //Send out the current byte pointed to
+        // and increment the pointer
+        SendLCD(*string++,1);
+        __delay_us(50); //so we can see each character
+        //being printed in turn (remove delay if you want
+        //your message to appear almost instantly)
     }
 }

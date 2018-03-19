@@ -95,7 +95,7 @@ void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 	//remember to change the power gradually
     mL->direction=1;
     mR->direction=0;
-    fullSpeedAhead(mL, mR, power);
+    fullSpeed(mL, mR, power);
 }
 
 //function to make the robot turn right
@@ -106,11 +106,11 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 	//remember to change the power gradually
     mL->direction=0;
     mR->direction=1;
-    fullSpeedAhead(mL, mR, power);
+    fullSpeed(mL, mR, power);
 }
 
 //function to make the robot go straight
-void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
 	//remember to change the power gradually
     while(mL->power<power || mR->power<power){
@@ -126,11 +126,19 @@ void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char powe
     }    
 }
 
+void fullSpeedForward(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+{
+    //remember to change the power gradually
+    mL->direction=1;
+    mR->direction=1;
+    fullSpeed(mL, mR, power);
+}
+
 //function to make the robot go backward
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
     //remember to change the power gradually
     mL->direction=0;
     mR->direction=0;
-    fullSpeedAhead(mL, mR, power);
+    fullSpeed(mL, mR, power);
 }

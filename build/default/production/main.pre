@@ -4650,7 +4650,7 @@ void stop(struct DC_motor *mL, struct DC_motor *mR);
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-void fullSpeedAhead(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
 # 12 "RFID_Reader.h"
@@ -4941,7 +4941,7 @@ enableSensor(0, 1);
 enableSensor(1, 1);
 
 
-fullSpeedAhead(&mL, &mR, 100);
+fullSpeed(&mL, &mR, 100);
 delay_tenth_s(1);
 
 mode=-1;
@@ -4961,7 +4961,7 @@ if (DirectionFound==-1) {
 MoveType[Move]=0;
 MoveTime[Move]=6;
 Move++;
-fullSpeedAhead(&mL, &mR, 100);
+fullSpeed(&mL, &mR, 100);
 delay_tenth_s(6);
 stop(&mL,&mR);
 DirectionFound=0;
@@ -5004,14 +5004,14 @@ mode=3;
 fullSpeedBack(&mL,&mR, 100);
 delay_tenth_s(5);
 stop(&mL,&mR);
-fullSpeedAhead(&mL,&mR, 100);
+fullSpeed(&mL,&mR, 100);
 }
 }
 } else {
 DirectionFound=1;
 mode=1;
 
-fullSpeedAhead(&mL,&mR, 100);
+fullSpeed(&mL,&mR, 100);
 delay_tenth_s(1);
 MoveType[Move] = 0;
 MoveTime[Move] = 5;
@@ -5046,7 +5046,7 @@ T0CONbits.TMR0ON=0;
 } else {
 T0CONbits.TMR0ON=1;
 turnLeft(&mL,&mR,40);
-while (((TMR0H<<8)+TMR0L)<-MoveTime[Move]);
+while (((TMR0H<<8)+TMR0L)<(-MoveTime[Move]));
 
 T0CONbits.TMR0ON=0;
 }
@@ -5058,6 +5058,9 @@ delay_tenth_s(MoveTime[Move]);
 turnLeft(&mL,&mR,100);
 delay_tenth_s(MoveTime[Move]);
 }
+}
+if (mode==-1) {
+break;
 }
 }
 stop(&mL,&mR);
