@@ -8,11 +8,11 @@
 void initTimer(void){
     //timer setup
     T0CONbits.TMR0ON=0; // turn off timer0
-    T0CONbits.T016BIT=0; // 16-bit mode
+    T0CONbits.T016BIT=1; // 8-bit mode
     T0CONbits.T0CS=0; // use internal clock (Fosc/4)
-    T0CONbits.PSA=0; // disable prescaler
-    T0CONbits.T0PS=0b111; // 1:256 Prescale
-    // With 8 MHz clock this gives the clock incrementing every 0.000128 s
+    T0CONbits.PSA=0; // enable prescaler
+    T0CONbits.T0PS=0b010; // 1:8 Prescale
+    // With 8 MHz clock this gives the clock incrementing 980 times every second
     
     INTCONbits.TMR0IE=0; // Disable interrupt on overflow
 }
