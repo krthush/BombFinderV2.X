@@ -14,7 +14,7 @@ void initTimer(void){
     T0CONbits.T0PS=0b111; // 1:256 Prescale
     // With 8 MHz clock this gives the clock incrementing every 0.000128 s
     
-    INTCONbits.TMR0IE=0; // Disable interrupt on overflow
+    INTCONbits.TMR0IE=1; // Enable interrupt on overflow
 }
 
 // Function to delay in seconds
@@ -96,7 +96,8 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
 // the robot spins out a expanding spiral path
 //  - making sure the signal is always found.
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
-        int *MoveTime, char *Move, char *MoveType, char *RFID_Read) {
+        int *MoveTime, char *Move, char *MoveType, char *RFID_Read, 
+        unsigned int *millis) {
     
     // Initialise variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};

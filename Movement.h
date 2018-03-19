@@ -21,7 +21,8 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR);
 // Once accurate direction is found, function will return DirectionFound=2, 
 // which switches the program to move mode.
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
-        int *MoveTime, char *Move, char *MoveType, char *RFID_Read);
+        int *MoveTime, char *Move, char *MoveType, char *RFID_Read, 
+        unsigned int *millis);
 
 #endif	/* MOVEMENT_H */
 
