@@ -4894,7 +4894,7 @@ while(1){
 switch (mode) {
 case -1:
 
-# 122
+# 121
 stop(&mL, &mR);
 RFID_Read=0;
 
@@ -4924,11 +4924,9 @@ sprintf(buf,"      %04d, %04d",SensorResult[0],SensorResult[1]);
 LCD_String(buf);
 }
 
-
 break;
 
 case 0 :
-
 
 initMotorPWM();
 initTimer();
@@ -4949,7 +4947,6 @@ break;
 
 case 1 :
 
-# 180
 SetLine(1);
 LCD_String("Searching");
 

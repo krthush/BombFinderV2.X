@@ -280,6 +280,7 @@ void main(void){
                         }
                     }
                 }
+                stop(&mL,&mR);
                 mode=-1;
 
                 break;
