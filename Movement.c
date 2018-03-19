@@ -1,6 +1,6 @@
 #include <xc.h>
 #include "dc_motor.h"
-#define _XTAL_FREQ 2000000
+#define _XTAL_FREQ 8000000
 #include "IR_Reading.h"
 #include "Movement.h"
 #include "LCD.h"

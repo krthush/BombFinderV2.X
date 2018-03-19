@@ -3668,9 +3668,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;IR_Reading.c: 81: IR_signal+=((CAP1BUFH << 7) | (CAP1BUFL>>1));
 "81
 [e =+ _IR_signal -> | << -> _CAP1BUFH `i -> 7 `i >> -> _CAP1BUFL `i -> 1 `i `ui ]
-[; ;IR_Reading.c: 82: _delay((unsigned long)((50)*(2000000/4000.0)));
+[; ;IR_Reading.c: 82: _delay((unsigned long)((50)*(8000000/4000.0)));
 "82
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "83
 }
 "79
@@ -3713,9 +3713,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;IR_Reading.c: 97: IR_signal+=((CAP2BUFH << 7) | (CAP2BUFL>>1));
 "97
 [e =+ _IR_signal -> | << -> _CAP2BUFH `i -> 7 `i >> -> _CAP2BUFL `i -> 1 `i `ui ]
-[; ;IR_Reading.c: 98: _delay((unsigned long)((50)*(2000000/4000.0)));
+[; ;IR_Reading.c: 98: _delay((unsigned long)((50)*(8000000/4000.0)));
 "98
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "99
 }
 "95

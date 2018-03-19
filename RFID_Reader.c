@@ -3,7 +3,7 @@
 //#include <stdio.h>//include stdio and std lib to use strtol() function for conversion
 //#include <stdlib.h>
 #pragma config OSC = IRCIO
-#define _XTAL_FREQ 2000000
+#define _XTAL_FREQ 8000000
 
 void initRFID(void){
     TRISC = TRISC | 0b11000000; //set data direction registers

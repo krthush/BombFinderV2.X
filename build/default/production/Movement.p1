@@ -3684,9 +3684,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 412  ]
 [e :U 409 ]
 {
-[; ;Movement.c: 27: _delay((unsigned long)((50)*(2000000/4000.0)));
+[; ;Movement.c: 27: _delay((unsigned long)((50)*(8000000/4000.0)));
 "27
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "28
 }
 "25
@@ -3719,9 +3719,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 417  ]
 [e :U 414 ]
 {
-[; ;Movement.c: 36: _delay((unsigned long)((50)*(2000000/4000.0)));
+[; ;Movement.c: 36: _delay((unsigned long)((50)*(8000000/4000.0)));
 "36
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "37
 }
 "34
@@ -3783,15 +3783,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 66: SendLCD(0b00000001,0);
 "66
 [e ( _SendLCD (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;Movement.c: 67: _delay((unsigned long)((50)*(2000000/4000000.0)));
+[; ;Movement.c: 67: _delay((unsigned long)((50)*(8000000/4000000.0)));
 "67
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 2000000 `l `d .4000000.0 `ul ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 [; ;Movement.c: 68: SendLCD(0b00000010,0);
 "68
 [e ( _SendLCD (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-[; ;Movement.c: 69: _delay((unsigned long)((2)*(2000000/4000.0)));
+[; ;Movement.c: 69: _delay((unsigned long)((2)*(8000000/4000.0)));
 "69
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 [; ;Movement.c: 70: SetLine(1);
 "70
 [e ( _SetLine (1 -> -> 1 `i `uc ]
@@ -3958,15 +3958,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 153: SendLCD(0b00000001,0);
 "153
 [e ( _SendLCD (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;Movement.c: 154: _delay((unsigned long)((50)*(2000000/4000000.0)));
+[; ;Movement.c: 154: _delay((unsigned long)((50)*(8000000/4000000.0)));
 "154
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 2000000 `l `d .4000000.0 `ul ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 [; ;Movement.c: 155: SendLCD(0b00000010,0);
 "155
 [e ( _SendLCD (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-[; ;Movement.c: 156: _delay((unsigned long)((2)*(2000000/4000.0)));
+[; ;Movement.c: 156: _delay((unsigned long)((2)*(8000000/4000.0)));
 "156
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 [; ;Movement.c: 157: SetLine(1);
 "157
 [e ( _SetLine (1 -> -> 1 `i `uc ]

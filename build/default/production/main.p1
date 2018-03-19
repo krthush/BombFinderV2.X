@@ -4041,9 +4041,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 107: mR.PWMperiod=199;
 "107
 [e = . _mR 5 -> 199 `i ]
-[; ;main.c: 109: OSCCON = 0b1010010;
+[; ;main.c: 109: OSCCON = 0x72;
 "109
-[e = _OSCCON -> -> 82 `i `uc ]
+[e = _OSCCON -> -> 114 `i `uc ]
 [; ;main.c: 110: while(!OSCCONbits.IOFS);
 "110
 [e $U 418  ]
@@ -4092,15 +4092,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 139: SendLCD(0b00000001,0);
 "139
 [e ( _SendLCD (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 140: _delay((unsigned long)((50)*(2000000/4000000.0)));
+[; ;main.c: 140: _delay((unsigned long)((50)*(8000000/4000000.0)));
 "140
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 2000000 `l `d .4000000.0 `ul ]
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
 [; ;main.c: 141: SendLCD(0b00000010,0);
 "141
 [e ( _SendLCD (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 142: _delay((unsigned long)((2)*(2000000/4000.0)));
+[; ;main.c: 142: _delay((unsigned long)((2)*(8000000/4000.0)));
 "142
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 2000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 [; ;main.c: 143: SetLine(1);
 "143
 [e ( _SetLine (1 -> -> 1 `i `uc ]
