@@ -3,10 +3,10 @@
 
 //function to toggle enable bit on then off
 void E_TOG(void){
-//don?t forget to put a delay between the on and off
-//commands! 5us will be plenty.
+    //Allows changes to the LCD state to be displayed - display only changes
+    //when E_TOG() called
     LCD_E=1;
-    __delay_us(5); // 5us delay ? remember to define _XTAL_FREQ
+    __delay_us(5); // 5us delay to allow instruction to complete
     LCD_E=0;
 }
 
@@ -35,11 +35,10 @@ void SendLCD(unsigned char Byte, char type){
     LCDout(Byte&0x0F);
     __delay_us(50); // 10us delay
 }
+
+//function to initialise LCD display
 void initLCD(void){
- // set initial LAT output values (they start up in a random state)
-    //LATA=0;
-    //LATC=0;
-    //LATD=0;
+
  // set LCD pins as output (TRIS registers)
     TRISAbits.RA6=0;
     TRISCbits.RC0=0;
@@ -81,13 +80,11 @@ void SetLine (char line) {
 }
 
 void LCD_String(char *string){
-    //While the data pointed to isn?t a 0x00 do below
+    //While the data pointed to isn't a 0x00 (array end entry) do below
     while(*string != 0){
         //Send out the current byte pointed to
         // and increment the pointer
         SendLCD(*string++,1);
-        __delay_us(50); //so we can see each character
-        //being printed in turn (remove delay if you want
-        //your message to appear almost instantly)
+        __delay_us(50); 
     }
 }
