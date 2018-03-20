@@ -71,7 +71,7 @@ void stopMotor(struct DC_motor *m)
 //function to stop the robot gradually 
 void stop(struct DC_motor *mL, struct DC_motor *mR)
 {
-	// a loop to slow both motors down to zero power
+    // a loop to slow both motors down to zero power
     while(mL->power>0 || mR->power>0){
         // Does both motors roughly simultaneously to avoid turning every time
         if(mL->power>0){
@@ -84,6 +84,7 @@ void stop(struct DC_motor *mL, struct DC_motor *mR)
         setMotorPWM(mR);
         __delay_us(50);
     }
+    //Reset both motor directions to forward to avoid issues later
     mL->direction=1;
     mR->direction=1;
 }
@@ -112,7 +113,7 @@ void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 //changing direction
 void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
-	//remember to change the power gradually
+    //remember to change the power gradually
     while(mL->power<power || mR->power<power){
         if(mL->power<power){
             mL->power++;            
@@ -127,9 +128,10 @@ void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 }
 
 //function to make the robot go backward at a given power setting
-void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
-{
+void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR,
+unsigned char power) {
     //remember to change the power gradually
+    //Both motors going backwards
     mL->direction=0;
     mR->direction=0;
     fullSpeed(mL, mR, power);
