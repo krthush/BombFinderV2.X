@@ -1,7 +1,7 @@
 #include <xc.h>
 #include "LCD.h"
 
-//function to toggle enable bit on then off
+// Function to toggle enable bit on then off
 void E_TOG(void){
     //Allows changes to the LCD state to be displayed - display only changes
     //when E_TOG() called
@@ -10,7 +10,7 @@ void E_TOG(void){
     LCD_E=0;
 }
 
-// function to send four bits to the LCD
+// Function to send four bits to the LCD
 void LCDout(unsigned char number){
 //set data pins using the four bits from number
 //toggle the enable bit to send data
@@ -23,7 +23,7 @@ void LCDout(unsigned char number){
     
 }
 
-//function to send data/commands over a 4bit interface
+// Function to send data/commands over a 4bit interface
 void SendLCD(unsigned char Byte, char type){
  // set RS pin whether it is a Command (0) or Data/Char (1)
  // using type as the argument
@@ -36,7 +36,7 @@ void SendLCD(unsigned char Byte, char type){
     __delay_us(50); // 10us delay
 }
 
-//function to initialise LCD display
+// Function to initialize LCD display
 void initLCD(void){
 
  // set LCD pins as output (TRIS registers)
@@ -46,7 +46,7 @@ void initLCD(void){
     TRISCbits.RC2=0;
     TRISDbits.RD0=0;
     TRISDbits.RD1=0;
- // Initialisation sequence code - see the data sheet
+ // Initialization sequence code - see the data sheet
     __delay_ms(15); //delay 15mS
     LCDout(0b0011); //send 0b0011 using LCDout
     __delay_ms(5); //delay 5ms
@@ -57,7 +57,7 @@ void initLCD(void){
     LCDout(0b0010); //send 0b0010 using LCDout set to four bit mode
     __delay_us(50); //delay 50us
  // now use SendLCD to send whole bytes ? send function set, clear
- // screen, set entry mode, display on etc to finish initialisation
+ // screen, set entry mode, display on etc to finish initialization
     SendLCD(0b00101000,0); //Function set - 2-line display, 5x10 dots
     __delay_us(50); //delay 50us
     SendLCD(0b00001000,0); //Display off
@@ -69,7 +69,8 @@ void initLCD(void){
     SendLCD(0b00001100,0); //Display on
     __delay_us(50); //delay 50us
 }
-//function to put cursor to start of line
+
+// Function to put cursor to start of line
 void SetLine (char line) {
     if (line==1) {
         SendLCD(0x80,0); //Send 0x80 to set line to 1 (0x00 ddram address)
@@ -79,6 +80,7 @@ void SetLine (char line) {
  __delay_us(50); // 50us delay
 }
 
+// Function that takes a string and sends it to be displayed on the LCD
 void LCD_String(char *string){
     //While the data pointed to isn't a 0x00 (array end entry) do below
     while(*string != 0){

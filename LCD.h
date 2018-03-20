@@ -20,11 +20,22 @@
 #define LCD_DB7 LATDbits.LATD1
 #define LCD_RS LATAbits.LATA6
 
+// Function to toggle enable bit on then off.
 void initLCD(void);
+
+// Function to send four bits to the LCD.
 void E_TOG(void);
+
+// Function to send data/commands over a 4bit interface.
 void LCDout(unsigned char number);
+
+// Function to initialize LCD display.
 void SendLCD(unsigned char Byte, char type);
+
+// Function to put cursor to start of line.
 void SetLine (char line);
+
+// Function that takes a string and sends it to be displayed on the LCD.
 void LCD_String(char *string);
 
 #endif	/* LCD_H */
