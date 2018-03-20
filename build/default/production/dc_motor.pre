@@ -4386,14 +4386,32 @@ int PWMperiod;
 };
 
 
+
+
 void initMotorPWM();
+
+
 void setMotorPWM(struct DC_motor *m);
+
+
 void setMotorFullSpeed(struct DC_motor *m);
+
+
 void stopMotor(struct DC_motor *m);
+
+
 void stop(struct DC_motor *mL, struct DC_motor *mR);
+
+
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
+
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
+
+
 void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
 
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
@@ -4481,6 +4499,7 @@ setMotorPWM(mL);
 setMotorPWM(mR);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
 }
+
 mL->direction=1;
 mR->direction=1;
 }
@@ -4524,8 +4543,9 @@ _delay((unsigned long)((50)*(8000000/4000000.0)));
 }
 
 
-void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
-{
+void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR,
+unsigned char power) {
+
 
 mL->direction=0;
 mR->direction=0;

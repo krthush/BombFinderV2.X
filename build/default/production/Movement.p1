@@ -31,7 +31,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "8 dc_motor.h
 [s S309 `uc 1 `uc 1 `*uc 1 `*uc 1 `uc 1 `i 1 ]
 [n S309 DC_motor power direction dutyLowByte dutyHighByte dir_pin PWMperiod ]
-"17 IR_Reading.h
+"19 IR_Reading.h
 [v _grabLeftIR `(ui ~T0 @X0 0 ef ]
 "16
 [v _grabRightIR `(ui ~T0 @X0 0 ef ]
@@ -43,19 +43,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _CAP2BUFH `Vuc ~T0 @X0 0 e@3943 ]
 "315
 [v _CAP2BUFL `Vuc ~T0 @X0 0 e@3942 ]
-"26 LCD.h
+"33 LCD.h
 [v _SendLCD `(v ~T0 @X0 0 ef2`uc`uc ]
-"27
+"36
 [v _SetLine `(v ~T0 @X0 0 ef1`uc ]
-"28
+"39
 [v _LCD_String `(v ~T0 @X0 0 ef1`*uc ]
 "194 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-"22 dc_motor.h
+"32 dc_motor.h
 [v _stop `(v ~T0 @X0 0 ef2`*S309`*S309 ]
-"23
+"35
 [v _turnLeft `(v ~T0 @X0 0 ef3`*S309`*S309`uc ]
-"24
+"38
 [v _turnRight `(v ~T0 @X0 0 ef3`*S309`*S309`uc ]
 "6869 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f4331.h
 [v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
@@ -3220,26 +3220,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.h: 13: char dir_pin;
 [; ;dc_motor.h: 14: int PWMperiod;
 [; ;dc_motor.h: 15: };
-[; ;dc_motor.h: 18: void initMotorPWM();
-[; ;dc_motor.h: 19: void setMotorPWM(struct DC_motor *m);
-[; ;dc_motor.h: 20: void setMotorFullSpeed(struct DC_motor *m);
-[; ;dc_motor.h: 21: void stopMotor(struct DC_motor *m);
-[; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 23: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 24: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 25: void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 27: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;IR_Reading.h: 15: void initIR(void);
+[; ;dc_motor.h: 20: void initMotorPWM();
+[; ;dc_motor.h: 23: void setMotorPWM(struct DC_motor *m);
+[; ;dc_motor.h: 26: void setMotorFullSpeed(struct DC_motor *m);
+[; ;dc_motor.h: 29: void stopMotor(struct DC_motor *m);
+[; ;dc_motor.h: 32: void stop(struct DC_motor *mL, struct DC_motor *mR);
+[; ;dc_motor.h: 35: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 38: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 42: void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 45: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;IR_Reading.h: 13: void initIR(void);
 [; ;IR_Reading.h: 16: unsigned int grabRightIR(void);
-[; ;IR_Reading.h: 17: unsigned int grabLeftIR(void);
-[; ;IR_Reading.h: 18: void enableSensor(char sensor, char status);
-[; ;Movement.h: 11: void initTimer(void);
-[; ;Movement.h: 13: void delay_s(char seconds);
-[; ;Movement.h: 15: void delay_tenth_s(char tenth_seconds);
-[; ;Movement.h: 18: char ScanIR(struct DC_motor *mL, struct DC_motor *mR);
-[; ;Movement.h: 23: char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
-[; ;Movement.h: 24: int *MoveTime, char *Move, char *MoveType, char *RFID_Read,
-[; ;Movement.h: 25: unsigned int *millis);
+[; ;IR_Reading.h: 19: unsigned int grabLeftIR(void);
+[; ;IR_Reading.h: 22: void enableSensor(char sensor, char status);
+[; ;Movement.h: 12: void initTimer(void);
+[; ;Movement.h: 15: void delay_s(char seconds);
+[; ;Movement.h: 18: void delay_tenth_s(char tenth_seconds);
+[; ;Movement.h: 22: char ScanIR(struct DC_motor *mL, struct DC_motor *mR);
+[; ;Movement.h: 27: char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
+[; ;Movement.h: 28: int *MoveTime, char *Move, char *MoveType, char *RFID_Read,
+[; ;Movement.h: 29: unsigned int *millis);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
 [; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
@@ -3299,12 +3299,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "13 LCD.h
 [p x OSC=IRCIO ]
 [p x WDTEN=OFF ]
-[; ;LCD.h: 23: void initLCD(void);
-[; ;LCD.h: 24: void E_TOG(void);
-[; ;LCD.h: 25: void LCDout(unsigned char number);
-[; ;LCD.h: 26: void SendLCD(unsigned char Byte, char type);
-[; ;LCD.h: 27: void SetLine (char line);
-[; ;LCD.h: 28: void LCD_String(char *string);
+[; ;LCD.h: 24: void initLCD(void);
+[; ;LCD.h: 27: void E_TOG(void);
+[; ;LCD.h: 30: void LCDout(unsigned char number);
+[; ;LCD.h: 33: void SendLCD(unsigned char Byte, char type);
+[; ;LCD.h: 36: void SetLine (char line);
+[; ;LCD.h: 39: void LCD_String(char *string);
 "8 Movement.c
 [v _initTimer `(v ~T0 @X0 1 ef ]
 {
@@ -3326,87 +3326,87 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 14: T0CONbits.T0PS=0b010;
 "14
 [e = . . _T0CONbits 0 0 -> -> 2 `i `uc ]
-[; ;Movement.c: 17: INTCONbits.TMR0IE=1;
-"17
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-[; ;Movement.c: 18: }
+[; ;Movement.c: 18: INTCONbits.TMR0IE=1;
 "18
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;Movement.c: 19: }
+"19
 [e :UE 311 ]
 }
-"23
+"24
 [v _delay_s `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;Movement.c: 23: void delay_s(char seconds) {
+[; ;Movement.c: 24: void delay_s(char seconds) {
 [e :U _delay_s ]
 [v _seconds `uc ~T0 @X0 1 r1 ]
 [f ]
-"24
-[v _i `ui ~T0 @X0 1 a ]
-[; ;Movement.c: 24: unsigned int i=0;
-[e = _i -> -> 0 `i `ui ]
-[; ;Movement.c: 25: for (i=1; i<=seconds*20; i++) {
 "25
+[v _i `ui ~T0 @X0 1 a ]
+[; ;Movement.c: 25: unsigned int i=0;
+[e = _i -> -> 0 `i `ui ]
+[; ;Movement.c: 26: for (i=1; i<=seconds*20; i++) {
+"26
 {
 [e = _i -> -> 1 `i `ui ]
 [e $U 316  ]
 [e :U 313 ]
 {
-[; ;Movement.c: 27: _delay((unsigned long)((50)*(8000000/4000.0)));
-"27
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Movement.c: 28: _delay((unsigned long)((50)*(8000000/4000.0)));
 "28
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"29
 }
-"25
+"26
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 316 ]
 [e $ <= _i -> * -> _seconds `i -> 20 `i `ui 313  ]
 [e :U 314 ]
-"28
-}
-[; ;Movement.c: 28: }
-[; ;Movement.c: 29: }
 "29
+}
+[; ;Movement.c: 29: }
+[; ;Movement.c: 30: }
+"30
 [e :UE 312 ]
 }
-"32
+"33
 [v _delay_tenth_s `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;Movement.c: 32: void delay_tenth_s(char tenth_seconds) {
+[; ;Movement.c: 33: void delay_tenth_s(char tenth_seconds) {
 [e :U _delay_tenth_s ]
 [v _tenth_seconds `uc ~T0 @X0 1 r1 ]
 [f ]
-"33
-[v _i `ui ~T0 @X0 1 a ]
-[; ;Movement.c: 33: unsigned int i=0;
-[e = _i -> -> 0 `i `ui ]
-[; ;Movement.c: 34: for (i=1; i<=tenth_seconds*2; i++) {
 "34
+[v _i `ui ~T0 @X0 1 a ]
+[; ;Movement.c: 34: unsigned int i=0;
+[e = _i -> -> 0 `i `ui ]
+[; ;Movement.c: 35: for (i=1; i<=tenth_seconds*2; i++) {
+"35
 {
 [e = _i -> -> 1 `i `ui ]
 [e $U 321  ]
 [e :U 318 ]
 {
-[; ;Movement.c: 36: _delay((unsigned long)((50)*(8000000/4000.0)));
-"36
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Movement.c: 37: _delay((unsigned long)((50)*(8000000/4000.0)));
 "37
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"38
 }
-"34
+"35
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 321 ]
 [e $ <= _i -> * -> _tenth_seconds `i -> 2 `i `ui 318  ]
 [e :U 319 ]
-"37
-}
-[; ;Movement.c: 37: }
-[; ;Movement.c: 38: }
 "38
+}
+[; ;Movement.c: 38: }
+[; ;Movement.c: 39: }
+"39
 [e :UE 317 ]
 }
-"44
+"45
 [v _ScanIR `(uc ~T0 @X0 1 ef2`*S309`*S309 ]
 {
-[; ;Movement.c: 44: char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
+[; ;Movement.c: 45: char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
 [e :U _ScanIR ]
 [v _mL `*S309 ~T0 @X0 1 r1 ]
 [v _mR `*S309 ~T0 @X0 1 r2 ]
@@ -3414,94 +3414,94 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v F3541 `ui ~T0 @X0 -> 2 `i s ]
 [i F3541
 :U ..
-"47
+"48
 -> -> 0 `i `ui
 -> -> 0 `i `ui
 ..
 ]
 [v _SensorResult `ui ~T0 @X0 -> 2 `i a ]
-[; ;Movement.c: 47: unsigned int SensorResult[2]={0,0};
+[; ;Movement.c: 48: unsigned int SensorResult[2]={0,0};
 [e = _SensorResult F3541 ]
-"48
+"49
 [v _buf `uc ~T0 @X0 -> 40 `i a ]
-"50
+"51
 [v _DirectionMoveThreshold `Cui ~T0 @X0 1 a ]
-[; ;Movement.c: 48: char buf[40];
-[; ;Movement.c: 50: const unsigned int DirectionMoveThreshold=500;
+[; ;Movement.c: 49: char buf[40];
+[; ;Movement.c: 51: const unsigned int DirectionMoveThreshold=500;
 [e = _DirectionMoveThreshold -> -> 500 `i `ui ]
-[; ;Movement.c: 55: SensorResult[0]=grabLeftIR();
-"55
-[e = *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabLeftIR ..  ]
-[; ;Movement.c: 56: SensorResult[1]=grabRightIR();
+[; ;Movement.c: 56: SensorResult[0]=grabLeftIR();
 "56
+[e = *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabLeftIR ..  ]
+[; ;Movement.c: 57: SensorResult[1]=grabRightIR();
+"57
 [e = *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ( _grabRightIR ..  ]
-[; ;Movement.c: 60: CAP1BUFH=0;
-"60
-[e = _CAP1BUFH -> -> 0 `i `uc ]
-[; ;Movement.c: 61: CAP1BUFL=0;
+[; ;Movement.c: 61: CAP1BUFH=0;
 "61
-[e = _CAP1BUFL -> -> 0 `i `uc ]
-[; ;Movement.c: 62: CAP2BUFH=0;
+[e = _CAP1BUFH -> -> 0 `i `uc ]
+[; ;Movement.c: 62: CAP1BUFL=0;
 "62
-[e = _CAP2BUFH -> -> 0 `i `uc ]
-[; ;Movement.c: 63: CAP2BUFL=0;
+[e = _CAP1BUFL -> -> 0 `i `uc ]
+[; ;Movement.c: 63: CAP2BUFH=0;
 "63
+[e = _CAP2BUFH -> -> 0 `i `uc ]
+[; ;Movement.c: 64: CAP2BUFL=0;
+"64
 [e = _CAP2BUFL -> -> 0 `i `uc ]
-[; ;Movement.c: 66: SendLCD(0b00000001,0);
-"66
-[e ( _SendLCD (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;Movement.c: 67: _delay((unsigned long)((50)*(8000000/4000000.0)));
+[; ;Movement.c: 67: SendLCD(0b00000001,0);
 "67
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-[; ;Movement.c: 68: SendLCD(0b00000010,0);
+[e ( _SendLCD (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;Movement.c: 68: _delay((unsigned long)((50)*(8000000/4000000.0)));
 "68
-[e ( _SendLCD (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-[; ;Movement.c: 69: _delay((unsigned long)((2)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[; ;Movement.c: 69: SendLCD(0b00000010,0);
 "69
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;Movement.c: 70: SetLine(1);
+[e ( _SendLCD (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;Movement.c: 70: _delay((unsigned long)((2)*(8000000/4000.0)));
 "70
-[e ( _SetLine (1 -> -> 1 `i `uc ]
-[; ;Movement.c: 71: LCD_String("     ScanIR");
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;Movement.c: 71: SetLine(1);
 "71
-[e ( _LCD_String (1 -> :s 1C `*uc ]
-[; ;Movement.c: 72: SetLine(2);
+[e ( _SetLine (1 -> -> 1 `i `uc ]
+[; ;Movement.c: 72: LCD_String("     ScanIR");
 "72
-[e ( _SetLine (1 -> -> 2 `i `uc ]
-[; ;Movement.c: 73: sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
+[e ( _LCD_String (1 -> :s 1C `*uc ]
+[; ;Movement.c: 73: SetLine(2);
 "73
-[e ( _sprintf (1 , , (. , &U _buf :s 2C *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ]
-[; ;Movement.c: 74: LCD_String(buf);
+[e ( _SetLine (1 -> -> 2 `i `uc ]
+[; ;Movement.c: 74: sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
 "74
+[e ( _sprintf (1 , , (. , &U _buf :s 2C *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux ]
+[; ;Movement.c: 75: LCD_String(buf);
+"75
 [e ( _LCD_String (1 &U _buf ]
-[; ;Movement.c: 78: if ((SensorResult[0]>DirectionMoveThreshold)&&(SensorResult[1]>
-[; ;Movement.c: 79: DirectionMoveThreshold)) {
-"79
+[; ;Movement.c: 79: if ((SensorResult[0]>DirectionMoveThreshold)&&(SensorResult[1]>
+[; ;Movement.c: 80: DirectionMoveThreshold)) {
+"80
 [e $ ! && > *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionMoveThreshold > *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionMoveThreshold 323  ]
 {
-[; ;Movement.c: 80: return 2;
-"80
+[; ;Movement.c: 81: return 2;
+"81
 [e ) -> -> 2 `i `uc ]
 [e $UE 322  ]
-"81
+"82
 }
-[; ;Movement.c: 81: } else {
+[; ;Movement.c: 82: } else {
 [e $U 324  ]
 [e :U 323 ]
 {
-[; ;Movement.c: 82: stop(mL,mR);
-"82
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 83: return 0;
+[; ;Movement.c: 83: stop(mL,mR);
 "83
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 84: return 0;
+"84
 [e ) -> -> 0 `i `uc ]
 [e $UE 322  ]
-"84
+"85
 }
 [e :U 324 ]
-[; ;Movement.c: 84: }
 [; ;Movement.c: 85: }
-"85
+[; ;Movement.c: 86: }
+"86
 [e :UE 322 ]
 }
 "98
@@ -3655,182 +3655,182 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Movement.c: 163: LCD_String(buf);
 "163
 [e ( _LCD_String (1 &U _buf ]
-[; ;Movement.c: 167: if (SensorResult[1]>DirectionFoundThreshold) {
-"167
+[; ;Movement.c: 166: if (SensorResult[1]>DirectionFoundThreshold) {
+"166
 [e $ ! > *U + &U _SensorResult * -> -> -> 1 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionFoundThreshold 330  ]
 {
-[; ;Movement.c: 168: RightFlag=*millis;
-"168
+[; ;Movement.c: 167: RightFlag=*millis;
+"167
 [e = _RightFlag *U _millis ]
-"169
+"168
 }
 [e :U 330 ]
-[; ;Movement.c: 169: }
-[; ;Movement.c: 171: if (SensorResult[0]>DirectionFoundThreshold) {
-"171
+[; ;Movement.c: 168: }
+[; ;Movement.c: 169: if (SensorResult[0]>DirectionFoundThreshold) {
+"169
 [e $ ! > *U + &U _SensorResult * -> -> -> 0 `i `ui `ux -> -> # *U &U _SensorResult `ui `ux _DirectionFoundThreshold 331  ]
 {
-[; ;Movement.c: 172: LeftFlag=*millis;
-"172
+[; ;Movement.c: 170: LeftFlag=*millis;
+"170
 [e = _LeftFlag *U _millis ]
-"173
+"171
 }
 [e :U 331 ]
-[; ;Movement.c: 173: }
-[; ;Movement.c: 180: if (LeftFlag>0) {
-"180
+[; ;Movement.c: 171: }
+[; ;Movement.c: 174: if (LeftFlag>0) {
+"174
 [e $ ! > _LeftFlag -> -> 0 `i `ui 332  ]
 {
-[; ;Movement.c: 183: if (RightFlag>0) {
-"183
+[; ;Movement.c: 177: if (RightFlag>0) {
+"177
 [e $ ! > _RightFlag -> -> 0 `i `ui 333  ]
 {
-[; ;Movement.c: 184: TimeAboveThreshold=LeftFlag-RightFlag;
-"184
+[; ;Movement.c: 178: TimeAboveThreshold=LeftFlag-RightFlag;
+"178
 [e = _TimeAboveThreshold - _LeftFlag _RightFlag ]
-[; ;Movement.c: 185: TMR0L = 0;
-"185
+[; ;Movement.c: 179: TMR0L = 0;
+"179
 [e = _TMR0L -> -> 0 `i `uc ]
-[; ;Movement.c: 186: TMR0H = 0;
-"186
+[; ;Movement.c: 180: TMR0H = 0;
+"180
 [e = _TMR0H -> -> 0 `i `uc ]
-[; ;Movement.c: 187: *millis = 0;
-"187
+[; ;Movement.c: 181: *millis = 0;
+"181
 [e = *U _millis -> -> 0 `i `ui ]
-[; ;Movement.c: 188: stop(mL,mR);
-"188
+[; ;Movement.c: 182: stop(mL,mR);
+"182
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 189: while (*millis<(TimeAboveThreshold>>1)) {
-"189
+[; ;Movement.c: 183: while (*millis<(TimeAboveThreshold>>1)) {
+"183
 [e $U 334  ]
 [e :U 335 ]
 {
-[; ;Movement.c: 192: turnLeft(mL,mR, MotorPower);
-"192
+[; ;Movement.c: 186: turnLeft(mL,mR, MotorPower);
+"186
 [e ( _turnLeft (3 , , _mL _mR _MotorPower ]
-"193
+"187
 }
 [e :U 334 ]
-"189
+"183
 [e $ < *U _millis >> _TimeAboveThreshold -> 1 `i 335  ]
 [e :U 336 ]
-[; ;Movement.c: 193: }
-[; ;Movement.c: 194: T0CONbits.TMR0ON=0;
-"194
+[; ;Movement.c: 187: }
+[; ;Movement.c: 188: T0CONbits.TMR0ON=0;
+"188
 [e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;Movement.c: 195: stop(mL,mR);
-"195
+[; ;Movement.c: 189: stop(mL,mR);
+"189
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 197: (MoveType[*Move]) = 1;
-"197
+[; ;Movement.c: 191: (MoveType[*Move]) = 1;
+"191
 [e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 1 `i `uc ]
-[; ;Movement.c: 198: (MoveTime[*Move]) = -(RightFlag + (TimeAboveThreshold>>1));
-"198
+[; ;Movement.c: 192: (MoveTime[*Move]) = -(RightFlag + (TimeAboveThreshold>>1));
+"192
 [e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> -U + _RightFlag >> _TimeAboveThreshold -> 1 `i `i ]
-[; ;Movement.c: 199: *Move = *Move+1;
-"199
+[; ;Movement.c: 193: *Move = *Move+1;
+"193
 [e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
-[; ;Movement.c: 201: return 2;
-"201
+[; ;Movement.c: 195: return 2;
+"195
 [e ) -> -> 2 `i `uc ]
 [e $UE 325  ]
-"202
+"197
 }
-[; ;Movement.c: 202: } else {
+[; ;Movement.c: 197: } else {
 [e $U 337  ]
 [e :U 333 ]
 {
-[; ;Movement.c: 203: T0CONbits.TMR0ON=0;
-"203
+[; ;Movement.c: 198: T0CONbits.TMR0ON=0;
+"198
 [e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;Movement.c: 207: (MoveType[*Move]) = 1;
-"207
+[; ;Movement.c: 202: (MoveType[*Move]) = 1;
+"202
 [e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 1 `i `uc ]
-[; ;Movement.c: 208: (MoveTime[*Move]) = -(*millis);
-"208
+[; ;Movement.c: 203: (MoveTime[*Move]) = -(*millis);
+"203
 [e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> -U *U _millis `i ]
-[; ;Movement.c: 209: *Move = *Move+1;
+[; ;Movement.c: 204: *Move = *Move+1;
+"204
+[e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
+[; ;Movement.c: 205: stop(mL,mR);
+"205
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 209: turnLeft(mL,mR,100);
 "209
-[e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
-[; ;Movement.c: 210: stop(mL,mR);
-"210
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 213: turnLeft(mL,mR,100);
-"213
 [e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 214: delay_tenth_s(MiniLeftFlick);
-"214
+[; ;Movement.c: 210: delay_tenth_s(MiniLeftFlick);
+"210
 [e ( _delay_tenth_s (1 _MiniLeftFlick ]
-[; ;Movement.c: 215: stop(mL,mR);
-"215
+[; ;Movement.c: 211: stop(mL,mR);
+"211
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 216: (MoveType[*Move]) = 2;
-"216
+[; ;Movement.c: 212: (MoveType[*Move]) = 2;
+"212
 [e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 2 `i `uc ]
-[; ;Movement.c: 217: (MoveTime[*Move]) = MiniLeftFlick;
-"217
+[; ;Movement.c: 213: (MoveTime[*Move]) = MiniLeftFlick;
+"213
 [e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> _MiniLeftFlick `i ]
-[; ;Movement.c: 218: *Move = *Move+1;
-"218
+[; ;Movement.c: 214: *Move = *Move+1;
+"214
 [e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
-[; ;Movement.c: 221: return 2;
-"221
+[; ;Movement.c: 217: return 2;
+"217
 [e ) -> -> 2 `i `uc ]
 [e $UE 325  ]
-"222
+"219
 }
 [e :U 337 ]
-"223
+"220
 }
 [e :U 332 ]
-[; ;Movement.c: 222: }
-[; ;Movement.c: 223: }
-[; ;Movement.c: 225: if (*RFID_Read==1) {
-"225
+[; ;Movement.c: 219: }
+[; ;Movement.c: 220: }
+[; ;Movement.c: 222: if (*RFID_Read==1) {
+"222
 [e $ ! == -> *U _RFID_Read `i -> 1 `i 338  ]
 {
-[; ;Movement.c: 226: return 2;
-"226
+[; ;Movement.c: 223: return 2;
+"223
 [e ) -> -> 2 `i `uc ]
 [e $UE 325  ]
-"227
+"224
 }
 [e :U 338 ]
-"228
+"225
 }
 "140
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 329 ]
 [e $ <= _i -> _loops `ui 326  ]
 [e :U 327 ]
-"228
+"225
 }
-[; ;Movement.c: 227: }
-[; ;Movement.c: 228: }
-[; ;Movement.c: 233: (MoveType[*Move]) = 2;
-"233
+[; ;Movement.c: 224: }
+[; ;Movement.c: 225: }
+[; ;Movement.c: 230: (MoveType[*Move]) = 2;
+"230
 [e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 2 `i `uc ]
-[; ;Movement.c: 234: (MoveTime[*Move]) = -2;
-"234
+[; ;Movement.c: 231: (MoveTime[*Move]) = -2;
+"231
 [e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -U -> 2 `i ]
-[; ;Movement.c: 235: *Move = *Move+1;
-"235
+[; ;Movement.c: 232: *Move = *Move+1;
+"232
 [e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
-[; ;Movement.c: 236: turnRight(mL,mR, 100);
-"236
+[; ;Movement.c: 233: turnRight(mL,mR, 100);
+"233
 [e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 237: delay_tenth_s(LeftFlick);
-"237
+[; ;Movement.c: 234: delay_tenth_s(LeftFlick);
+"234
 [e ( _delay_tenth_s (1 -> _LeftFlick `uc ]
-[; ;Movement.c: 238: stop(mL,mR);
-"238
+[; ;Movement.c: 235: stop(mL,mR);
+"235
 [e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 239: return -1;
-"239
+[; ;Movement.c: 236: return -1;
+"236
 [e ) -> -U -> 1 `i `uc ]
 [e $UE 325  ]
-[; ;Movement.c: 240: }
-"240
+[; ;Movement.c: 237: }
+"237
 [e :UE 325 ]
 }
 [p f _sprintf 8421508 ]

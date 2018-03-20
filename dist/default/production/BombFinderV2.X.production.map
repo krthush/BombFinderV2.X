@@ -5,7 +5,7 @@ Linker command line:
 --edf=C:\Program Files (x86)\Microchip\xc8\v1.45\dat\en_msgs.txt -cs \
   -h+dist/default/production\BombFinderV2.X.production.sym \
   --cmf=dist/default/production\BombFinderV2.X.production.cmf -z -Q18F4331 \
-  -oC:\Users\krthu\AppData\Local\Temp\shhk.2 \
+  -oC:\Users\krthu\AppData\Local\Temp\sen4.2 \
   -Mdist/default/production/BombFinderV2.X.production.map -E1 -ver=XC8 \
   -ASTACK=0296h-02ffh -pstack=STACK -ACODE=00h-01FFFh -ACONST=00h-01FFFh \
   -ASMALLCONST=0300h-03FFhx29 -AMEDIUMCONST=0300h-01FFFh -ACOMRAM=01h-05Fh \
@@ -20,7 +20,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\krthu\AppData\Local\Temp\shhk.obj \
+  C:\Users\krthu\AppData\Local\Temp\sen4.obj \
   dist/default/production\BombFinderV2.X.production.obj 
 
 Object code version is 3.11
@@ -33,7 +33,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\krthu\AppData\Local\Temp\shhk.obj
+C:\Users\krthu\AppData\Local\Temp\sen4.obj
                 init                                 F6       F6        4        C       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
@@ -663,7 +663,7 @@ _initMotorPWM                         text3        001B82
 _initRFID                             text2        001D82
 _initTimer                            text1        001D9E
 _isdigit                              text20       001D64
-_isdigit$1765                         cstackCOMRAM 00002D
+_isdigit$1743                         cstackCOMRAM 00002D
 _main                                 text0        000350
 _memset                               text9        001CC8
 _millis                               bssBANK1     0001F7
@@ -700,9 +700,9 @@ intlevel2                             text         000000
 intlevel3                             text         000000
 isdigit@c                             cstackCOMRAM 00002E
 main@DirectionFound                   cstackBANK1  0001CE
-main@F3552                            bssBANK2     000200
-main@F3554                            bssBANK2     000264
-main@F3557                            bssBANK1     0001E3
+main@F3550                            bssBANK2     000200
+main@F3552                            bssBANK2     000264
+main@F3555                            bssBANK1     0001E3
 main@Message                          cstackBANK1  0001BE
 main@MotorPower                       cstackBANK1  0001CD
 main@Move                             cstackBANK1  0001D0
@@ -747,7 +747,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 58 in file "main.c"
+		line 71 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -837,7 +837,7 @@ Total ram usage:        0 bytes
 
  *************** function _initRFID *****************
  Defined at:
-		line 7 in file "RFID_Reader.c"
+		line 8 in file "RFID_Reader.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -897,7 +897,7 @@ Total ram usage:        0 bytes
 
  *************** function _initLCD *****************
  Defined at:
-		line 38 in file "LCD.c"
+		line 40 in file "LCD.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -958,7 +958,7 @@ Total ram usage:        0 bytes
 
  *************** function _fullSpeedBack *****************
  Defined at:
-		line 130 in file "dc_motor.c"
+		line 131 in file "dc_motor.c"
  Parameters:    Size  Location     Type
   mL              2   23[BANK0 ] PTR struct DC_motor
 		 -> main@mL(9), 
@@ -1023,7 +1023,7 @@ Total ram usage:        2 bytes
 
  *************** function _VerifySignal *****************
  Defined at:
-		line 39 in file "RFID_Reader.c"
+		line 38 in file "RFID_Reader.c"
  Parameters:    Size  Location     Type
   ReceivedStri    2    2[BANK0 ] PTR unsigned char 
 		 -> ReceivedString(16), 
@@ -1153,7 +1153,7 @@ Total ram usage:       77 bytes
 
  *************** function _turnRight *****************
  Defined at:
-		line 102 in file "dc_motor.c"
+		line 103 in file "dc_motor.c"
  Parameters:    Size  Location     Type
   mL              2   23[BANK0 ] PTR struct DC_motor
 		 -> main@mL(9), 
@@ -1188,7 +1188,7 @@ Total ram usage:        5 bytes
 
  *************** function _turnLeft *****************
  Defined at:
-		line 92 in file "dc_motor.c"
+		line 93 in file "dc_motor.c"
  Parameters:    Size  Location     Type
   mL              2   23[BANK0 ] PTR struct DC_motor
 		 -> main@mL(9), 
@@ -1223,7 +1223,7 @@ Total ram usage:        5 bytes
 
  *************** function _fullSpeed *****************
  Defined at:
-		line 113 in file "dc_motor.c"
+		line 114 in file "dc_motor.c"
  Parameters:    Size  Location     Type
   mL              2   17[BANK0 ] PTR struct DC_motor
 		 -> main@mL(9), 
@@ -1260,7 +1260,7 @@ Total ram usage:        6 bytes
 
  *************** function _delay_tenth_s *****************
  Defined at:
-		line 32 in file "Movement.c"
+		line 33 in file "Movement.c"
  Parameters:    Size  Location     Type
   tenth_second    1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -1292,7 +1292,7 @@ Total ram usage:        4 bytes
 
  *************** function _ScanIR *****************
  Defined at:
-		line 44 in file "Movement.c"
+		line 45 in file "Movement.c"
  Parameters:    Size  Location     Type
   mL              2   28[BANK0 ] PTR struct DC_motor
 		 -> main@mL(9), 
@@ -1706,7 +1706,7 @@ Total ram usage:        1 bytes
 
  *************** function _LCD_String *****************
  Defined at:
-		line 83 in file "LCD.c"
+		line 84 in file "LCD.c"
  Parameters:    Size  Location     Type
   string          2    0[BANK0 ] PTR unsigned char 
 		 -> STR_8(11), STR_7(10), STR_5(17), main@Message(10), 
@@ -1837,7 +1837,7 @@ Total ram usage:        0 bytes
 
  *************** function _InterruptHandlerLow *****************
  Defined at:
-		line 20 in file "main.c"
+		line 29 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1867,7 +1867,7 @@ Total ram usage:       21 bytes
 
  *************** function _InterruptHandlerHigh *****************
  Defined at:
-		line 36 in file "main.c"
+		line 45 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1897,7 +1897,7 @@ Total ram usage:       18 bytes
 
  *************** function i2_delay_tenth_s *****************
  Defined at:
-		line 32 in file "Movement.c"
+		line 33 in file "Movement.c"
  Parameters:    Size  Location     Type
   tenth_second    1    wreg     unsigned char 
  Auto vars:     Size  Location     Type

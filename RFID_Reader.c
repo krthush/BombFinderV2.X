@@ -4,6 +4,7 @@
 #pragma config OSC = IRCIO
 #define _XTAL_FREQ 8000000
 
+// Initialize bits for RFID readings
 void initRFID(void){
     TRISC = TRISC | 0b11000000; //set data direction registers
                         //both need to be 1 even though RC6
@@ -21,11 +22,6 @@ void initRFID(void){
     RCSTAbits.RX9=0; //8-bit reception  
 }
 
-char getCharSerial(void){
-while (!PIR1bits.RCIF); //wait for the data to arrive
-    return RCREG; //return byte in RCREG
-}
-
 //String can be divided into 5 pairs of Hex numbers, e.g.
 //
 //123456789A -> 0x12 | 0x34 | 0x56 | 0x78 | 0x9A
@@ -37,7 +33,8 @@ while (!PIR1bits.RCIF); //wait for the data to arrive
 //Step2 = XOR(Step1, Hex3)
 //etc...
 //
-//For our RFID card the checksum should be 0x60
+
+// For our RFID card the checksum should be 0x60
 unsigned char VerifySignal(unsigned char *ReceivedString){
     unsigned char i=0;
     unsigned char xorOutput=0;
@@ -45,12 +42,12 @@ unsigned char VerifySignal(unsigned char *ReceivedString){
     unsigned char ASCIICheckSum=0;
     memset(translation,0,12);
     
-    //Decode the ASCII into hex - ASCII 0 == 0x30
+    // Decode the ASCII into hex - ASCII 0 == 0x30
     for(i=0;i<12;i++){
         if(ReceivedString[i]>'F'){ 
-            //If we have a character greater than F it's not valid hex
-            return 0; //So the signal is invalid
-        } else if (ReceivedString[i]>='A') { //Treat anything above A differently
+            // If we have a character greater than F it's not valid hex
+            return 0; // So the signal is invalid
+        } else if (ReceivedString[i]>='A') { // Treat anything above A differently
             translation[i]=ReceivedString[i]-'A'+10;            
         } else if (ReceivedString[i]>='0') { // anything else is just the 
             // difference between the value and the one for 0

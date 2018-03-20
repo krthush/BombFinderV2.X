@@ -4375,9 +4375,10 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 12 "RFID_Reader.h"
+# 13 "RFID_Reader.h"
 void initRFID(void);
-char getCharSerial(void);
+
+
 unsigned char VerifySignal(unsigned char *Signal);
 
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
@@ -4420,13 +4421,16 @@ extern char * strrichr(const char *, int);
 #pragma config OSC = IRCIO
 
 
+
 void initRFID(void){
 TRISC = TRISC | 0b11000000;
 
 
 
+
 SPBRG=205;
 SPBRGH=0;
+
 BAUDCONbits.BRG16=1;
 TXSTAbits.BRGH=1;
 RCSTAbits.CREN=1;
@@ -4435,12 +4439,7 @@ TXSTAbits.SYNC=0;
 RCSTAbits.RX9=0;
 }
 
-char getCharSerial(void){
-while (!PIR1bits.RCIF);
-return RCREG;
-}
-
-# 39
+# 38
 unsigned char VerifySignal(unsigned char *ReceivedString){
 unsigned char i=0;
 unsigned char xorOutput=0;

@@ -4386,29 +4386,56 @@ int PWMperiod;
 };
 
 
+
+
 void initMotorPWM();
+
+
 void setMotorPWM(struct DC_motor *m);
+
+
 void setMotorFullSpeed(struct DC_motor *m);
+
+
 void stopMotor(struct DC_motor *m);
+
+
 void stop(struct DC_motor *mL, struct DC_motor *mR);
+
+
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
+
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
+
+
 void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
 
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
-# 15 "IR_Reading.h"
+# 13 "IR_Reading.h"
 void initIR(void);
+
+
 unsigned int grabRightIR(void);
+
+
 unsigned int grabLeftIR(void);
+
+
 void enableSensor(char sensor, char status);
 
-# 11 "Movement.h"
+# 12 "Movement.h"
 void initTimer(void);
+
 
 void delay_s(char seconds);
 
+
 void delay_tenth_s(char tenth_seconds);
+
 
 
 char ScanIR(struct DC_motor *mL, struct DC_motor *mR);
@@ -4519,12 +4546,22 @@ extern int printf(const char *, ...);
 # 13 "LCD.h"
 #pragma config OSC = IRCIO, WDTEN=OFF
 
-# 23
+# 24
 void initLCD(void);
+
+
 void E_TOG(void);
+
+
 void LCDout(unsigned char number);
+
+
 void SendLCD(unsigned char Byte, char type);
+
+
 void SetLine (char line);
+
+
 void LCD_String(char *string);
 
 # 8 "Movement.c"
@@ -4535,6 +4572,7 @@ T0CONbits.T016BIT=1;
 T0CONbits.T0CS=0;
 T0CONbits.PSA=0;
 T0CONbits.T0PS=0b010;
+
 
 
 INTCONbits.TMR0IE=1;
@@ -4560,7 +4598,7 @@ _delay((unsigned long)((50)*(8000000/4000.0)));
 }
 }
 
-# 44
+# 45
 char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
 
 
@@ -4670,16 +4708,14 @@ sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
 LCD_String(buf);
 
 
-
 if (SensorResult[1]>DirectionFoundThreshold) {
 RightFlag=*millis;
 }
-
 if (SensorResult[0]>DirectionFoundThreshold) {
 LeftFlag=*millis;
 }
 
-# 180
+
 if (LeftFlag>0) {
 
 
@@ -4702,6 +4738,7 @@ stop(mL,mR);
 *Move = *Move+1;
 
 return 2;
+
 } else {
 T0CONbits.TMR0ON=0;
 
@@ -4713,6 +4750,7 @@ T0CONbits.TMR0ON=0;
 stop(mL,mR);
 
 
+
 turnLeft(mL,mR,100);
 delay_tenth_s(MiniLeftFlick);
 stop(mL,mR);
@@ -4722,6 +4760,7 @@ stop(mL,mR);
 
 
 return 2;
+
 }
 }
 

@@ -9,9 +9,11 @@
 #define	RFID_READER_H
 #include <xc.h>
 
+// Initialize bits for RFID readings
 void initRFID(void);
-char getCharSerial(void);
-unsigned char VerifySignal(unsigned char *Signal); //Checks RFID Checksum
+
+ // Checks RFID Checksum.
+unsigned char VerifySignal(unsigned char *Signal);
 
 #endif	/* RFID_READER_H */
 

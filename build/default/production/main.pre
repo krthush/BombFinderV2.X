@@ -4386,28 +4386,50 @@ int PWMperiod;
 };
 
 
+
+
 void initMotorPWM();
+
+
 void setMotorPWM(struct DC_motor *m);
+
+
 void setMotorFullSpeed(struct DC_motor *m);
+
+
 void stopMotor(struct DC_motor *m);
+
+
 void stop(struct DC_motor *mL, struct DC_motor *mR);
+
+
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
+
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
+
+
 void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
 
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
-# 12 "RFID_Reader.h"
+# 13 "RFID_Reader.h"
 void initRFID(void);
-char getCharSerial(void);
+
+
 unsigned char VerifySignal(unsigned char *Signal);
 
-# 11 "Movement.h"
+# 12 "Movement.h"
 void initTimer(void);
+
 
 void delay_s(char seconds);
 
+
 void delay_tenth_s(char tenth_seconds);
+
 
 
 char ScanIR(struct DC_motor *mL, struct DC_motor *mR);
@@ -4419,10 +4441,16 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
 int *MoveTime, char *Move, char *MoveType, char *RFID_Read,
 unsigned int *millis);
 
-# 15 "IR_Reading.h"
+# 13 "IR_Reading.h"
 void initIR(void);
+
+
 unsigned int grabRightIR(void);
+
+
 unsigned int grabLeftIR(void);
+
+
 void enableSensor(char sensor, char status);
 
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
@@ -4524,28 +4552,36 @@ extern int printf(const char *, ...);
 # 13 "LCD.h"
 #pragma config OSC = IRCIO, WDTEN=OFF
 
-# 23
+# 24
 void initLCD(void);
+
+
 void E_TOG(void);
+
+
 void LCDout(unsigned char number);
+
+
 void SendLCD(unsigned char Byte, char type);
+
+
 void SetLine (char line);
+
+
 void LCD_String(char *string);
 
 
 # 8 "main.c"
 #pragma config MCLRE=OFF, LVP=OFF, OSC = IRCIO, WDTEN = OFF
 
-
-
+# 16
 volatile unsigned char ReceivedString[16];
 volatile unsigned char i=0;
 volatile unsigned char RFID_Read=0;
 volatile signed char mode=0;
 volatile unsigned int millis=0;
 
-
-
+# 29
 void interrupt low_priority InterruptHandlerLow ()
 {
 if (PIR1bits.RCIF) {
@@ -4584,30 +4620,36 @@ INTCONbits.TMR0IF = 0;
 }
 }
 
+# 71
 void main(void){
 
-
+# 77
 unsigned char Message[10];
 unsigned char i=0;
 signed char DirectionFound=0;
+
 signed int MoveTime[50] = { 0 };
+
 
 
 
 unsigned char MoveType[50] = { 0 };
 
 
+
 signed char Move=0;
+
 unsigned int SensorResult[2]={0,0};
 char buf[40];
 
 unsigned char ScanAngle=60;
 
-# 82
+
+
+
 const unsigned char MotorPower=40;
 
-
-
+# 107
 INTCONbits.GIEH=1;
 INTCONbits.GIEL=1;
 INTCONbits.PEIE=1;
@@ -4619,37 +4661,46 @@ PIE1bits.RCIE=1;
 
 
 TRISCbits.RC3=1;
+
 INTCONbits.INT0IE=1;
 
 
 PIR1bits.RC1IF=0;
 INTCONbits.INT0IF=0;
 
-
+# 129
 struct DC_motor mL, mR;
 mL.power=0;
 mL.direction=1;
 mL.dutyLowByte=(unsigned char *)(&PDC0L);
+
 mL.dutyHighByte=(unsigned char *)(&PDC0H);
+
 mL.dir_pin=0;
 mL.PWMperiod=199;
+
 
 mR.power=0;
 mR.direction=1;
 mR.dutyLowByte=(unsigned char *)(&PDC1L);
+
 mR.dutyHighByte=(unsigned char *)(&PDC1H);
+
 mR.dir_pin=2;
 mR.PWMperiod=199;
 
+# 153
 OSCCON = 0b1110010;
 while(!OSCCONbits.IOFS);
 
+# 160
 while(1){
 
 switch (mode) {
+
 case -1:
 
-# 131
+# 176
 stop(&mL, &mR);
 
 
@@ -4677,6 +4728,7 @@ if (Message[0]==0) {
 LCD_String("      Inert Mode");
 } else {
 LCD_String(Message);
+
 }
 
 
@@ -4686,6 +4738,9 @@ sprintf(buf,"      %04d, %04d",SensorResult[0],SensorResult[1]);
 break;
 
 case 0 :
+
+
+
 
 initMotorPWM();
 initTimer();
@@ -4706,15 +4761,14 @@ break;
 
 case 1 :
 
+
 SetLine(1);
 LCD_String("Searching");
 
-# 195
+# 246
 if (DirectionFound==-1) {
 
-
-
-
+# 252
 MoveType[Move]=0;
 MoveTime[Move]=6;
 Move++;
@@ -4738,12 +4792,12 @@ break;
 
 case 2 :
 
-
-
-
+# 280
 if (RFID_Read) {
 stop(&mL, &mR);
+
 if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){
+
 if (VerifySignal(&ReceivedString)){
 
 for (i=0; i<10; i++){
@@ -4770,6 +4824,7 @@ mode=1;
 
 fullSpeed(&mL,&mR, 100);
 delay_tenth_s(1);
+
 MoveType[Move] = 0;
 MoveTime[Move] = 5;
 Move++;
@@ -4780,8 +4835,10 @@ break;
 case 3 :
 
 
+
 SetLine(1);
 LCD_String(Message);
+
 SetLine(2);
 LCD_String("Going Home");
 
@@ -4811,7 +4868,6 @@ T0CONbits.TMR0ON=0;
 } else if (MoveType[Move]==2) {
 if (MoveTime[Move]>0) {
 turnRight(&mL,&mR,78);
-
 
 
 delay_tenth_s(MoveTime[Move]);

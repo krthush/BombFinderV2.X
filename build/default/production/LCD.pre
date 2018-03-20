@@ -4474,12 +4474,22 @@ extern int printf(const char *, ...);
 # 13 "LCD.h"
 #pragma config OSC = IRCIO, WDTEN=OFF
 
-# 23
+# 24
 void initLCD(void);
+
+
 void E_TOG(void);
+
+
 void LCDout(unsigned char number);
+
+
 void SendLCD(unsigned char Byte, char type);
+
+
 void SetLine (char line);
+
+
 void LCD_String(char *string);
 
 # 5 "LCD.c"
@@ -4516,9 +4526,11 @@ _delay((unsigned long)((10)*(8000000/4000000.0)));
 LCDout(Byte&0x0F);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
 }
+
+
 void initLCD(void){
 
-# 44
+
 TRISAbits.RA6=0;
 TRISCbits.RC0=0;
 TRISCbits.RC1=0;
@@ -4549,6 +4561,7 @@ SendLCD(0b00001100,0);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
 }
 
+
 void SetLine (char line) {
 if (line==1) {
 SendLCD(0x80,0);
@@ -4558,6 +4571,7 @@ SendLCD(0xC0,0);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
 }
 
+
 void LCD_String(char *string){
 
 while(*string != 0){
@@ -4565,7 +4579,5 @@ while(*string != 0){
 
 SendLCD(*string++,1);
 _delay((unsigned long)((50)*(8000000/4000000.0)));
-
-
 }
 }

@@ -3220,10 +3220,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;IR_Reading.h: 15: void initIR(void);
+[; ;IR_Reading.h: 13: void initIR(void);
 [; ;IR_Reading.h: 16: unsigned int grabRightIR(void);
-[; ;IR_Reading.h: 17: unsigned int grabLeftIR(void);
-[; ;IR_Reading.h: 18: void enableSensor(char sensor, char status);
+[; ;IR_Reading.h: 19: unsigned int grabLeftIR(void);
+[; ;IR_Reading.h: 22: void enableSensor(char sensor, char status);
 "7 IR_Reading.c
 [v _initIR `(v ~T0 @X0 1 ef ]
 {
