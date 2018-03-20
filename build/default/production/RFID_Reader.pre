@@ -4441,10 +4441,37 @@ return RCREG;
 }
 
 # 39
-unsigned char VerifySignal(unsigned char *RecievedString){
-unsigned char checksum=0;
-unsigned int hexByte=0;
+unsigned char VerifySignal(unsigned char *ReceivedString){
 unsigned char i=0;
+unsigned char xorOutput=0;
+unsigned char translation[12];
+unsigned char ASCIICheckSum=0;
+memset(translation,0,12);
 
-# 59
+
+for(i=0;i<12;i++){
+if(ReceivedString[i]>'F'){
+
+return 0;
+} else if (ReceivedString[i]>='A') {
+translation[i]=ReceivedString[i]-'A'+10;
+} else if (ReceivedString[i]>='0') {
+
+translation[i]=ReceivedString[i]-'0';
+}
+}
+
+
+for (i=0;i<5;i++) {
+xorOutput^=(translation[2*i]<<4)+translation[2*i+1];
+}
+
+
+ASCIICheckSum=(translation[10]<<4)+(translation[11]&0xF);
+
+if (ASCIICheckSum==xorOutput){
+return 1;
+}
+
+return 0;
 }

@@ -78,6 +78,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PIR1bits `VS124 ~T0 @X0 0 e@3998 ]
 "4849
 [v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
+"16 C:\Program Files (x86)\Microchip\xc8\v1.45\include\string.h
+[v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3322,23 +3324,119 @@ Version 3.2 HI-TECH Software Intermediate Code
 "39
 [v _VerifySignal `(uc ~T0 @X0 1 ef1`*uc ]
 {
-[; ;RFID_Reader.c: 39: unsigned char VerifySignal(unsigned char *RecievedString){
+[; ;RFID_Reader.c: 39: unsigned char VerifySignal(unsigned char *ReceivedString){
 [e :U _VerifySignal ]
-[v _RecievedString `*uc ~T0 @X0 1 r1 ]
+[v _ReceivedString `*uc ~T0 @X0 1 r1 ]
 [f ]
 "40
-[v _checksum `uc ~T0 @X0 1 a ]
-[; ;RFID_Reader.c: 40: unsigned char checksum=0;
-[e = _checksum -> -> 0 `i `uc ]
-"41
-[v _hexByte `ui ~T0 @X0 1 a ]
-[; ;RFID_Reader.c: 41: unsigned int hexByte=0;
-[e = _hexByte -> -> 0 `i `ui ]
-"42
 [v _i `uc ~T0 @X0 1 a ]
-[; ;RFID_Reader.c: 42: unsigned char i=0;
+[; ;RFID_Reader.c: 40: unsigned char i=0;
 [e = _i -> -> 0 `i `uc ]
-[; ;RFID_Reader.c: 59: }
-"59
+"41
+[v _xorOutput `uc ~T0 @X0 1 a ]
+[; ;RFID_Reader.c: 41: unsigned char xorOutput=0;
+[e = _xorOutput -> -> 0 `i `uc ]
+"42
+[v _translation `uc ~T0 @X0 -> 12 `i a ]
+"43
+[v _ASCIICheckSum `uc ~T0 @X0 1 a ]
+[; ;RFID_Reader.c: 42: unsigned char translation[12];
+[; ;RFID_Reader.c: 43: unsigned char ASCIICheckSum=0;
+[e = _ASCIICheckSum -> -> 0 `i `uc ]
+[; ;RFID_Reader.c: 44: memset(translation,0,12);
+"44
+[e ( _memset (3 , , -> &U _translation `*v -> 0 `i -> -> 12 `i `ui ]
+[; ;RFID_Reader.c: 47: for(i=0;i<12;i++){
+"47
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 12 `i 315  ]
+[e $U 316  ]
+[e :U 315 ]
+{
+[; ;RFID_Reader.c: 48: if(ReceivedString[i]>'F'){
+"48
+[e $ ! > -> *U + _ReceivedString * -> _i `ux -> -> # *U _ReceivedString `ui `ux `ui -> 70 `ui 318  ]
+{
+[; ;RFID_Reader.c: 50: return 0;
+"50
+[e ) -> -> 0 `i `uc ]
+[e $UE 314  ]
+"51
+}
+[; ;RFID_Reader.c: 51: } else if (ReceivedString[i]>='A') {
+[e $U 319  ]
+[e :U 318 ]
+[e $ ! >= -> *U + _ReceivedString * -> _i `ux -> -> # *U _ReceivedString `ui `ux `ui -> 65 `ui 320  ]
+{
+[; ;RFID_Reader.c: 52: translation[i]=ReceivedString[i]-'A'+10;
+"52
+[e = *U + &U _translation * -> _i `ux -> -> # *U &U _translation `ui `ux -> + - -> *U + _ReceivedString * -> _i `ux -> -> # *U _ReceivedString `ui `ux `ui -> 65 `ui -> -> 10 `i `ui `uc ]
+"53
+}
+[; ;RFID_Reader.c: 53: } else if (ReceivedString[i]>='0') {
+[e $U 321  ]
+[e :U 320 ]
+[e $ ! >= -> *U + _ReceivedString * -> _i `ux -> -> # *U _ReceivedString `ui `ux `ui -> 48 `ui 322  ]
+{
+[; ;RFID_Reader.c: 55: translation[i]=ReceivedString[i]-'0';
+"55
+[e = *U + &U _translation * -> _i `ux -> -> # *U &U _translation `ui `ux -> - -> *U + _ReceivedString * -> _i `ux -> -> # *U _ReceivedString `ui `ux `ui -> 48 `ui `uc ]
+"56
+}
+[e :U 322 ]
+"57
+[e :U 321 ]
+[e :U 319 ]
+}
+"47
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 12 `i 315  ]
+[e :U 316 ]
+"57
+}
+[; ;RFID_Reader.c: 56: }
+[; ;RFID_Reader.c: 57: }
+[; ;RFID_Reader.c: 60: for (i=0;i<5;i++) {
+"60
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 5 `i 323  ]
+[e $U 324  ]
+[e :U 323 ]
+{
+[; ;RFID_Reader.c: 61: xorOutput^=(translation[2*i]<<4)+translation[2*i+1];
+"61
+[e =^ _xorOutput -> + << -> *U + &U _translation * -> -> * -> 2 `i -> _i `i `ui `ux -> -> # *U &U _translation `ui `ux `i -> 4 `i -> *U + &U _translation * -> -> + * -> 2 `i -> _i `i -> 1 `i `ui `ux -> -> # *U &U _translation `ui `ux `i `uc ]
+"62
+}
+"60
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 5 `i 323  ]
+[e :U 324 ]
+"62
+}
+[; ;RFID_Reader.c: 62: }
+[; ;RFID_Reader.c: 65: ASCIICheckSum=(translation[10]<<4)+(translation[11]&0xF);
+"65
+[e = _ASCIICheckSum -> + << -> *U + &U _translation * -> -> -> 10 `i `ui `ux -> -> # *U &U _translation `ui `ux `i -> 4 `i & -> *U + &U _translation * -> -> -> 11 `i `ui `ux -> -> # *U &U _translation `ui `ux `i -> 15 `i `uc ]
+[; ;RFID_Reader.c: 67: if (ASCIICheckSum==xorOutput){
+"67
+[e $ ! == -> _ASCIICheckSum `i -> _xorOutput `i 326  ]
+{
+[; ;RFID_Reader.c: 68: return 1;
+"68
+[e ) -> -> 1 `i `uc ]
+[e $UE 314  ]
+"69
+}
+[e :U 326 ]
+[; ;RFID_Reader.c: 69: }
+[; ;RFID_Reader.c: 71: return 0;
+"71
+[e ) -> -> 0 `i `uc ]
+[e $UE 314  ]
+[; ;RFID_Reader.c: 72: }
+"72
 [e :UE 314 ]
 }

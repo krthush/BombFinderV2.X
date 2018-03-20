@@ -73,6 +73,7 @@ void stop(struct DC_motor *mL, struct DC_motor *mR)
 {
 	// a loop to slow both motors down to zero power
     while(mL->power>0 || mR->power>0){
+        // Does both motors roughly simultaneously to avoid turning every time
         if(mL->power>0){
             mL->power--;            
         }
@@ -88,28 +89,27 @@ void stop(struct DC_motor *mL, struct DC_motor *mR)
 }
 
 //function to make the robot turn left
-// PLEASE NOTE: stop(motors) needs to called be correct use of this, WHY?!
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
 //    stop(mL, mR);
 	//remember to change the power gradually
-    mL->direction=1;
-    mR->direction=0;
+    mL->direction=1; //Left side goes forwards
+    mR->direction=0; //Right side goes backwards
     fullSpeed(mL, mR, power);
 }
 
 //function to make the robot turn right
-// PLEASE NOTE: stop(motors) needs to called be correct use of this, WHY?!
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
 //    stop(mL, mR);
 	//remember to change the power gradually
-    mL->direction=0;
-    mR->direction=1;
+    mL->direction=0; //Left side goes backwards
+    mR->direction=1; //Right side goes forwards
     fullSpeed(mL, mR, power);
 }
 
-//function to make the robot go straight
+//function to make the robot power on the motors to the specified power without
+//changing direction
 void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
 	//remember to change the power gradually
@@ -126,15 +126,15 @@ void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
     }    
 }
 
-void fullSpeedForward(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
-{
+// Function to tell the robot to go forward at a given power setting
+void fullSpeedForward(struct DC_motor *mL, struct DC_motor *mR, unsigned char power){
     //remember to change the power gradually
     mL->direction=1;
     mR->direction=1;
     fullSpeed(mL, mR, power);
 }
 
-//function to make the robot go backward
+//function to make the robot go backward at a given power setting
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
     //remember to change the power gradually

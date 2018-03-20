@@ -10,27 +10,29 @@
 #define PWMcycle 1 //need to calculate this
 
 volatile unsigned char ReceivedString[16]; //Global variable to read from RFID
-volatile unsigned char i=0;
+volatile unsigned char i=0; //for loop iterator
 volatile unsigned char RFID_Read=0;
 volatile signed char mode=0; // Robot mode - see switch case tree in main loop
 volatile unsigned int millis=0; //Approximate milisecond timer
+
+
 // High priority interrupt routine
 void interrupt low_priority InterruptHandlerLow ()
 {
-    if (PIR1bits.RCIF) {
-        ReceivedString[i]=RCREG;
-        RFID_Read=1;
-        if (i==15){
-            i=0;
+    if (PIR1bits.RCIF) { //If the serial receive interrupt is active
+        ReceivedString[i]=RCREG; //read the data byte
+        RFID_Read=1; //make sure that the robot knows it's reached the RFID card
+        if (i==15){ //if we've reached the end of the signal
+            i=0; //reset the counter so we can go again if we need to
         }else{
-            i++;  
+            i++; //increment the counter so we can fill the next character
         }
         PIR1bits.RCIF=0; // clear the flag
     }
 }
 
-// Low priority interrupt routine for button 
-// Switches between inert mode vs. other modes
+// Low priority interrupt routine for button and timer overflow
+// Switches between inert mode vs. other modes and increments a timer counter
 void interrupt InterruptHandlerHigh () {
     if (INTCONbits.INT0IF) { //If button pressed
         if (mode==-1) { // If in inert mode
@@ -46,6 +48,7 @@ void interrupt InterruptHandlerHigh () {
         delay_tenth_s(2);
         INTCONbits.INT0IF=0; // clear the flag
     }
+    //Also handle the timer overflowing
     if (INTCONbits.TMR0IF) { //If timer has overflowed
         millis++; // Increment millisecond counter
         INTCONbits.TMR0IF = 0; // Clear the flag
@@ -66,7 +69,7 @@ void main(void){
     // on tenth-second delays, 1 is left/right based on timer, 2 is left/right 
     // based on tenth second delays.
     signed char Move=0; // Move counter - signed so it does not overflow when 0 reached
-    unsigned int SensorResult[2]={0,0};
+    unsigned int SensorResult[2]={0,0}; //IR readings left and right
     char buf[40]; // Buffer for characters for LCD
     // USERVARIABLE TOLERANCES
     unsigned char ScanAngle=60; //MAX VALUE: 255, P.S. This currently actually
@@ -116,7 +119,7 @@ void main(void){
     OSCCON = 0b1110010; //8MHz clock
     while(!OSCCONbits.IOFS); //wait until stable
     
-    while(1){
+    while(1){ //loop forever
        
        switch (mode) {
            case -1: //Inert Mode
@@ -125,7 +128,7 @@ void main(void){
                 // If button is pressed while robot is performing, it will return to inert mode.
                 // If button is pressed while robot is in inert mode, it will start performing.
                 // Robot will also display IR values for easy calibration
-                stop(&mL, &mR);
+                stop(&mL, &mR); //Make sure we're stationary in this mode
                 
                 // Reset Crucial Starting Variables
                 RFID_Read=0;
@@ -209,9 +212,8 @@ void main(void){
                      // Keeps direction and just scans, robot thinks it's close
                     DirectionFound=ScanIR(&mL, &mR);
                 } else if (DirectionFound==2) {
-                     // Robot thinks its on track, switch to move mode
-                     mode=2;
-                     MoveType[Move]=1;
+                     // Robot thinks its on track
+                     mode=2; //switch to move mode
                 }
                
                 break;

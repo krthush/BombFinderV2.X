@@ -53,9 +53,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "22 dc_motor.h
 [v _stop `(v ~T0 @X0 0 ef2`*S309`*S309 ]
-"24
+"23
 [v _turnLeft `(v ~T0 @X0 0 ef3`*S309`*S309`uc ]
-"26
+"24
 [v _turnRight `(v ~T0 @X0 0 ef3`*S309`*S309`uc ]
 "6869 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18f4331.h
 [v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
@@ -3225,10 +3225,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.h: 20: void setMotorFullSpeed(struct DC_motor *m);
 [; ;dc_motor.h: 21: void stopMotor(struct DC_motor *m);
 [; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 27: void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 23: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 24: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 25: void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 27: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 [; ;IR_Reading.h: 15: void initIR(void);
 [; ;IR_Reading.h: 16: unsigned int grabRightIR(void);
 [; ;IR_Reading.h: 17: unsigned int grabLeftIR(void);
@@ -3705,132 +3705,132 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 334  ]
 [e :U 335 ]
 {
-[; ;Movement.c: 190: turnLeft(mL,mR, MotorPower);
-"190
+[; ;Movement.c: 192: turnLeft(mL,mR, MotorPower);
+"192
 [e ( _turnLeft (3 , , _mL _mR _MotorPower ]
-"191
+"193
 }
 [e :U 334 ]
 "189
 [e $ < *U _millis >> _TimeAboveThreshold -> 1 `i 335  ]
 [e :U 336 ]
-[; ;Movement.c: 191: }
-[; ;Movement.c: 192: T0CONbits.TMR0ON=0;
-"192
+[; ;Movement.c: 193: }
+[; ;Movement.c: 194: T0CONbits.TMR0ON=0;
+"194
 [e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;Movement.c: 193: stop(mL,mR);
-"193
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 195: (MoveType[*Move]) = 1;
+[; ;Movement.c: 195: stop(mL,mR);
 "195
-[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 1 `i `uc ]
-[; ;Movement.c: 196: (MoveTime[*Move]) = -(RightFlag + (TimeAboveThreshold>>1));
-"196
-[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> -U + _RightFlag >> _TimeAboveThreshold -> 1 `i `i ]
-[; ;Movement.c: 197: *Move = *Move+1;
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 197: (MoveType[*Move]) = 1;
 "197
-[e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
-[; ;Movement.c: 199: return 2;
+[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 1 `i `uc ]
+[; ;Movement.c: 198: (MoveTime[*Move]) = -(RightFlag + (TimeAboveThreshold>>1));
+"198
+[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> -U + _RightFlag >> _TimeAboveThreshold -> 1 `i `i ]
+[; ;Movement.c: 199: *Move = *Move+1;
 "199
+[e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
+[; ;Movement.c: 201: return 2;
+"201
 [e ) -> -> 2 `i `uc ]
 [e $UE 325  ]
-"200
+"202
 }
-[; ;Movement.c: 200: } else {
+[; ;Movement.c: 202: } else {
 [e $U 337  ]
 [e :U 333 ]
 {
-[; ;Movement.c: 201: T0CONbits.TMR0ON=0;
-"201
+[; ;Movement.c: 203: T0CONbits.TMR0ON=0;
+"203
 [e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;Movement.c: 205: (MoveType[*Move]) = 1;
-"205
-[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 1 `i `uc ]
-[; ;Movement.c: 206: (MoveTime[*Move]) = -(*millis);
-"206
-[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> -U *U _millis `i ]
-[; ;Movement.c: 207: *Move = *Move+1;
+[; ;Movement.c: 207: (MoveType[*Move]) = 1;
 "207
-[e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
-[; ;Movement.c: 208: stop(mL,mR);
+[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 1 `i `uc ]
+[; ;Movement.c: 208: (MoveTime[*Move]) = -(*millis);
 "208
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 211: turnLeft(mL,mR,100);
-"211
-[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 212: delay_tenth_s(MiniLeftFlick);
-"212
-[e ( _delay_tenth_s (1 _MiniLeftFlick ]
-[; ;Movement.c: 213: stop(mL,mR);
-"213
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 214: (MoveType[*Move]) = 2;
-"214
-[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 2 `i `uc ]
-[; ;Movement.c: 215: (MoveTime[*Move]) = MiniLeftFlick;
-"215
-[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> _MiniLeftFlick `i ]
-[; ;Movement.c: 216: *Move = *Move+1;
-"216
+[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> -U *U _millis `i ]
+[; ;Movement.c: 209: *Move = *Move+1;
+"209
 [e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
-[; ;Movement.c: 219: return 2;
-"219
+[; ;Movement.c: 210: stop(mL,mR);
+"210
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 213: turnLeft(mL,mR,100);
+"213
+[e ( _turnLeft (3 , , _mL _mR -> -> 100 `i `uc ]
+[; ;Movement.c: 214: delay_tenth_s(MiniLeftFlick);
+"214
+[e ( _delay_tenth_s (1 _MiniLeftFlick ]
+[; ;Movement.c: 215: stop(mL,mR);
+"215
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 216: (MoveType[*Move]) = 2;
+"216
+[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 2 `i `uc ]
+[; ;Movement.c: 217: (MoveTime[*Move]) = MiniLeftFlick;
+"217
+[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -> _MiniLeftFlick `i ]
+[; ;Movement.c: 218: *Move = *Move+1;
+"218
+[e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
+[; ;Movement.c: 221: return 2;
+"221
 [e ) -> -> 2 `i `uc ]
 [e $UE 325  ]
-"220
+"222
 }
 [e :U 337 ]
-"221
+"223
 }
 [e :U 332 ]
-[; ;Movement.c: 220: }
-[; ;Movement.c: 221: }
-[; ;Movement.c: 223: if (*RFID_Read==1) {
-"223
+[; ;Movement.c: 222: }
+[; ;Movement.c: 223: }
+[; ;Movement.c: 225: if (*RFID_Read==1) {
+"225
 [e $ ! == -> *U _RFID_Read `i -> 1 `i 338  ]
 {
-[; ;Movement.c: 224: return 2;
-"224
+[; ;Movement.c: 226: return 2;
+"226
 [e ) -> -> 2 `i `uc ]
 [e $UE 325  ]
-"225
+"227
 }
 [e :U 338 ]
-"226
+"228
 }
 "140
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 329 ]
 [e $ <= _i -> _loops `ui 326  ]
 [e :U 327 ]
-"226
+"228
 }
-[; ;Movement.c: 225: }
-[; ;Movement.c: 226: }
-[; ;Movement.c: 231: (MoveType[*Move]) = 2;
-"231
-[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 2 `i `uc ]
-[; ;Movement.c: 232: (MoveTime[*Move]) = -2;
-"232
-[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -U -> 2 `i ]
-[; ;Movement.c: 233: *Move = *Move+1;
+[; ;Movement.c: 227: }
+[; ;Movement.c: 228: }
+[; ;Movement.c: 233: (MoveType[*Move]) = 2;
 "233
-[e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
-[; ;Movement.c: 234: turnRight(mL,mR, 100);
+[e = *U + _MoveType * -> *U _Move `ux -> -> # *U _MoveType `ui `ux -> -> 2 `i `uc ]
+[; ;Movement.c: 234: (MoveTime[*Move]) = -2;
 "234
-[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
-[; ;Movement.c: 235: delay_tenth_s(LeftFlick);
+[e = *U + _MoveTime * -> *U _Move `ux -> -> # *U _MoveTime `ui `ux -U -> 2 `i ]
+[; ;Movement.c: 235: *Move = *Move+1;
 "235
-[e ( _delay_tenth_s (1 -> _LeftFlick `uc ]
-[; ;Movement.c: 236: stop(mL,mR);
+[e = *U _Move -> + -> *U _Move `i -> 1 `i `uc ]
+[; ;Movement.c: 236: turnRight(mL,mR, 100);
 "236
-[e ( _stop (2 , _mL _mR ]
-[; ;Movement.c: 237: return -1;
+[e ( _turnRight (3 , , _mL _mR -> -> 100 `i `uc ]
+[; ;Movement.c: 237: delay_tenth_s(LeftFlick);
 "237
+[e ( _delay_tenth_s (1 -> _LeftFlick `uc ]
+[; ;Movement.c: 238: stop(mL,mR);
+"238
+[e ( _stop (2 , _mL _mR ]
+[; ;Movement.c: 239: return -1;
+"239
 [e ) -> -U -> 1 `i `uc ]
 [e $UE 325  ]
-[; ;Movement.c: 238: }
-"238
+[; ;Movement.c: 240: }
+"240
 [e :UE 325 ]
 }
 [p f _sprintf 8421508 ]

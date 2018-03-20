@@ -2,29 +2,6 @@
 #include <xc.h>
 #define _XTAL_FREQ 8000000
 
-// PLEASE NOTE: Decided to not use CCP module, 
-// using motion capture module instead for IR tracking
-
-//void getTimerVal(void){
-//    //Disable interrupt to avoid false interrupt
-//    PIE1bits.CCP1IE=0; 
-//    //If set to falling edge
-//    if ((CCP1CON<<4)>>4 == 0b0100) { 
-//        //Reset Timer1
-//        TMR1H=0; 
-//        TMR1L=0;
-//        //Change to rising
-//        CCP1CON = 0b0101; //Syntax safe because bits 5 and 6 are unused
-//    //Else vice versa
-//    } else if ((CCP1CON<<4)>>4 == 0b0101) { 
-//        //Store rising timer value
-//        TimerVal=(CCPR1H);//<<8); //+ CCPR1L; 
-//        CCP1CON = 0b0100;
-//    }
-//    //Re-enable interrupt
-//    PIE1bits.CCP1IE=1;
-//}
-
 // Function that initialises the motion capture module such that it can be used
 // to obtain IR PWM measurements.
 void initIR(void){
@@ -106,8 +83,8 @@ unsigned int grabLeftIR(void){
 void enableSensor(char sensor, char status){
     //Enable/disable power for IR sensor
     if (sensor==0){
-        LATEbits.LATE0 = status;
+        LATEbits.LATE0 = status; //Set digital output on or off
     } else if (sensor==1){
-        LATEbits.LATE1 = status;
+        LATEbits.LATE1 = status; //Set digital output on or off
     }
 }

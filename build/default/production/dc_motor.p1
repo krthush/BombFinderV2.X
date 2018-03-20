@@ -50,7 +50,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "164 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic18.h
 [v __delay `JF3305 ~T0 @X0 0 e ]
 [p i __delay ]
-"27 dc_motor.h
+"25 dc_motor.h
 [v _fullSpeed `(v ~T0 @X0 0 ef3`*S309`*S309`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -3216,10 +3216,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;dc_motor.h: 20: void setMotorFullSpeed(struct DC_motor *m);
 [; ;dc_motor.h: 21: void stopMotor(struct DC_motor *m);
 [; ;dc_motor.h: 22: void stop(struct DC_motor *mL, struct DC_motor *mR);
-[; ;dc_motor.h: 24: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 26: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 27: void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-[; ;dc_motor.h: 28: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 23: void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 24: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 25: void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+[; ;dc_motor.h: 27: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 "4 dc_motor.c
 [v _initMotorPWM `(v ~T0 @X0 1 ef ]
 {
@@ -3433,52 +3433,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 325  ]
 [e :U 326 ]
 {
-[; ;dc_motor.c: 76: if(mL->power>0){
-"76
+[; ;dc_motor.c: 77: if(mL->power>0){
+"77
 [e $ ! > -> . *U _mL 0 `i -> 0 `i 328  ]
 {
-[; ;dc_motor.c: 77: mL->power--;
-"77
-[e -- . *U _mL 0 -> -> 1 `i `uc ]
+[; ;dc_motor.c: 78: mL->power--;
 "78
+[e -- . *U _mL 0 -> -> 1 `i `uc ]
+"79
 }
 [e :U 328 ]
-[; ;dc_motor.c: 78: }
-[; ;dc_motor.c: 79: if(mR->power>0){
-"79
+[; ;dc_motor.c: 79: }
+[; ;dc_motor.c: 80: if(mR->power>0){
+"80
 [e $ ! > -> . *U _mR 0 `i -> 0 `i 329  ]
 {
-[; ;dc_motor.c: 80: mR->power--;
-"80
-[e -- . *U _mR 0 -> -> 1 `i `uc ]
+[; ;dc_motor.c: 81: mR->power--;
 "81
+[e -- . *U _mR 0 -> -> 1 `i `uc ]
+"82
 }
 [e :U 329 ]
-[; ;dc_motor.c: 81: }
-[; ;dc_motor.c: 82: setMotorPWM(mL);
-"82
-[e ( _setMotorPWM (1 _mL ]
-[; ;dc_motor.c: 83: setMotorPWM(mR);
+[; ;dc_motor.c: 82: }
+[; ;dc_motor.c: 83: setMotorPWM(mL);
 "83
-[e ( _setMotorPWM (1 _mR ]
-[; ;dc_motor.c: 84: _delay((unsigned long)((50)*(8000000/4000000.0)));
+[e ( _setMotorPWM (1 _mL ]
+[; ;dc_motor.c: 84: setMotorPWM(mR);
 "84
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+[e ( _setMotorPWM (1 _mR ]
+[; ;dc_motor.c: 85: _delay((unsigned long)((50)*(8000000/4000000.0)));
 "85
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"86
 }
 [e :U 325 ]
 "75
 [e $ || > -> . *U _mL 0 `i -> 0 `i > -> . *U _mR 0 `i -> 0 `i 326  ]
 [e :U 327 ]
-[; ;dc_motor.c: 85: }
-[; ;dc_motor.c: 86: mL->direction=1;
-"86
-[e = . *U _mL 1 -> -> 1 `i `uc ]
-[; ;dc_motor.c: 87: mR->direction=1;
+[; ;dc_motor.c: 86: }
+[; ;dc_motor.c: 87: mL->direction=1;
 "87
-[e = . *U _mR 1 -> -> 1 `i `uc ]
-[; ;dc_motor.c: 88: }
+[e = . *U _mL 1 -> -> 1 `i `uc ]
+[; ;dc_motor.c: 88: mR->direction=1;
 "88
+[e = . *U _mR 1 -> -> 1 `i `uc ]
+[; ;dc_motor.c: 89: }
+"89
 [e :UE 324 ]
 }
 "92
@@ -3507,30 +3507,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 "99
 [e :UE 330 ]
 }
-"103
+"102
 [v _turnRight `(v ~T0 @X0 1 ef3`*S309`*S309`uc ]
-"104
-{
-[; ;dc_motor.c: 103: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
-[; ;dc_motor.c: 104: {
-[e :U _turnRight ]
 "103
+{
+[; ;dc_motor.c: 102: void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+[; ;dc_motor.c: 103: {
+[e :U _turnRight ]
+"102
 [v _mL `*S309 ~T0 @X0 1 r1 ]
 [v _mR `*S309 ~T0 @X0 1 r2 ]
 [v _power `uc ~T0 @X0 1 r3 ]
-"104
+"103
 [f ]
-[; ;dc_motor.c: 107: mL->direction=0;
-"107
+[; ;dc_motor.c: 106: mL->direction=0;
+"106
 [e = . *U _mL 1 -> -> 0 `i `uc ]
-[; ;dc_motor.c: 108: mR->direction=1;
-"108
+[; ;dc_motor.c: 107: mR->direction=1;
+"107
 [e = . *U _mR 1 -> -> 1 `i `uc ]
-[; ;dc_motor.c: 109: fullSpeed(mL, mR, power);
-"109
+[; ;dc_motor.c: 108: fullSpeed(mL, mR, power);
+"108
 [e ( _fullSpeed (3 , , _mL _mR _power ]
-[; ;dc_motor.c: 110: }
-"110
+[; ;dc_motor.c: 109: }
+"109
 [e :UE 331 ]
 }
 "113
@@ -3593,55 +3593,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 "127
 [e :UE 332 ]
 }
-"129
-[v _fullSpeedForward `(v ~T0 @X0 1 ef3`*S309`*S309`uc ]
 "130
-{
-[; ;dc_motor.c: 129: void fullSpeedForward(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
-[; ;dc_motor.c: 130: {
-[e :U _fullSpeedForward ]
-"129
-[v _mL `*S309 ~T0 @X0 1 r1 ]
-[v _mR `*S309 ~T0 @X0 1 r2 ]
-[v _power `uc ~T0 @X0 1 r3 ]
-"130
-[f ]
-[; ;dc_motor.c: 132: mL->direction=1;
-"132
-[e = . *U _mL 1 -> -> 1 `i `uc ]
-[; ;dc_motor.c: 133: mR->direction=1;
-"133
-[e = . *U _mR 1 -> -> 1 `i `uc ]
-[; ;dc_motor.c: 134: fullSpeed(mL, mR, power);
-"134
-[e ( _fullSpeed (3 , , _mL _mR _power ]
-[; ;dc_motor.c: 135: }
-"135
-[e :UE 338 ]
-}
-"138
 [v _fullSpeedBack `(v ~T0 @X0 1 ef3`*S309`*S309`uc ]
-"139
+"131
 {
-[; ;dc_motor.c: 138: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
-[; ;dc_motor.c: 139: {
+[; ;dc_motor.c: 130: void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+[; ;dc_motor.c: 131: {
 [e :U _fullSpeedBack ]
-"138
+"130
 [v _mL `*S309 ~T0 @X0 1 r1 ]
 [v _mR `*S309 ~T0 @X0 1 r2 ]
 [v _power `uc ~T0 @X0 1 r3 ]
-"139
+"131
 [f ]
-[; ;dc_motor.c: 141: mL->direction=0;
-"141
+[; ;dc_motor.c: 133: mL->direction=0;
+"133
 [e = . *U _mL 1 -> -> 0 `i `uc ]
-[; ;dc_motor.c: 142: mR->direction=0;
-"142
+[; ;dc_motor.c: 134: mR->direction=0;
+"134
 [e = . *U _mR 1 -> -> 0 `i `uc ]
-[; ;dc_motor.c: 143: fullSpeed(mL, mR, power);
-"143
+[; ;dc_motor.c: 135: fullSpeed(mL, mR, power);
+"135
 [e ( _fullSpeed (3 , , _mL _mR _power ]
-[; ;dc_motor.c: 144: }
-"144
-[e :UE 339 ]
+[; ;dc_motor.c: 136: }
+"136
+[e :UE 338 ]
 }

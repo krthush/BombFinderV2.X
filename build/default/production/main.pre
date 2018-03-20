@@ -4391,11 +4391,10 @@ void setMotorPWM(struct DC_motor *m);
 void setMotorFullSpeed(struct DC_motor *m);
 void stopMotor(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
-
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
 # 12 "RFID_Reader.h"
@@ -4545,6 +4544,8 @@ volatile unsigned char RFID_Read=0;
 volatile signed char mode=0;
 volatile unsigned int millis=0;
 
+
+
 void interrupt low_priority InterruptHandlerLow ()
 {
 if (PIR1bits.RCIF) {
@@ -4576,6 +4577,7 @@ mode=-1;
 delay_tenth_s(2);
 INTCONbits.INT0IF=0;
 }
+
 if (INTCONbits.TMR0IF) {
 millis++;
 INTCONbits.TMR0IF = 0;
@@ -4601,7 +4603,7 @@ char buf[40];
 
 unsigned char ScanAngle=60;
 
-# 79
+# 82
 const unsigned char MotorPower=40;
 
 
@@ -4647,7 +4649,7 @@ while(1){
 switch (mode) {
 case -1:
 
-# 128
+# 131
 stop(&mL, &mR);
 
 
@@ -4676,13 +4678,10 @@ LCD_String("      Inert Mode");
 } else {
 LCD_String(Message);
 }
+
+
 SetLine(2);
-if (RFID_Read) {
-LCD_String(Message);
-} else {
 sprintf(buf,"      %04d, %04d",SensorResult[0],SensorResult[1]);
-LCD_String(buf);
-}
 
 break;
 
@@ -4710,6 +4709,7 @@ case 1 :
 SetLine(1);
 LCD_String("Searching");
 
+# 195
 if (DirectionFound==-1) {
 
 
@@ -4732,7 +4732,6 @@ DirectionFound=ScanIR(&mL, &mR);
 } else if (DirectionFound==2) {
 
 mode=2;
-MoveType[Move]=1;
 }
 
 break;
@@ -4751,7 +4750,6 @@ for (i=0; i<10; i++){
 Message[i] = ReceivedString[i+1];
 }
 
-
 for (i=0; i<16; i++) {
 ReceivedString[i]=0;
 }
@@ -4762,6 +4760,8 @@ fullSpeedBack(&mL,&mR, 100);
 delay_tenth_s(5);
 stop(&mL,&mR);
 fullSpeed(&mL,&mR, 100);
+delay_tenth_s(5);
+stop(&mL,&mR);
 }
 }
 } else {
@@ -4811,6 +4811,8 @@ T0CONbits.TMR0ON=0;
 } else if (MoveType[Move]==2) {
 if (MoveTime[Move]>0) {
 turnRight(&mL,&mR,78);
+
+
 
 delay_tenth_s(MoveTime[Move]);
 } else {

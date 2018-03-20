@@ -69,21 +69,4 @@ unsigned char VerifySignal(unsigned char *ReceivedString){
     }
     
     return 0; // Otherwise it failed
-    
-
-//    //First run through - XOR first two hex bytes
-//    hexByte = (RecievedString[3]<<8) + RecievedString[4];
-//    checksum = ((RecievedString[1]<<8) + RecievedString[2]) ^ hexByte; //First 2 chars XOR second 2
-//
-//    //Loop through, XORing the previous result with the next hex byte in turn
-////    for (i=5; i<10; i+=2){
-////        hexByte = (Signal[i]<<8) + Signal[i+1];
-////        checksum = checksum ^ strtol(hexByte, &ptr, 16);
-////    }
-//
-////    if ((checksum==((Signal[11]<<8)+Signal[12]))){
-//        return 1;
-////    } else{
-////        return 0;
-////    }
 }

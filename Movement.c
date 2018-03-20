@@ -56,7 +56,7 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
     SensorResult[1]=grabRightIR();
 
     // Reset the timers to avoid same reading being picked up if there is
-    // no signal.
+    // no signal. (basically problem with 100% duty cycle PWM)
     CAP1BUFH=0;
     CAP1BUFL=0;
     CAP2BUFH=0;
@@ -92,7 +92,7 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
 // finds midpoint, otherwise it uses just one of the signals as a guess.
 // Once accurate direction is found, function will return DirectionFound=2, 
 // which switches the program to move mode.
-// If no accurate signal is found it spins in an adjusted manoeuvre such that
+// If no accurate signal is found it spins in an adjusted manoeuver such that
 // the robot spins out a expanding spiral path
 //  - making sure the signal is always found.
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
@@ -100,11 +100,11 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
         unsigned int *millis) {
     
     // Initialise variable that is used to judge the strength of signals
-    unsigned int SensorResult[2]={0,0};
-    unsigned int LeftFlag=0;
-    unsigned int RightFlag=0;
+    unsigned int SensorResult[2]={0,0}; //Left and right sensor values
+    unsigned int LeftFlag=0; //millis value when left sensor first reads
+    unsigned int RightFlag=0; //millis value when right sensor first reads
     char buf[40]; // Buffer for characters for LCD
-    unsigned int i=0;
+    unsigned int i=0; //Counter
     unsigned int TimeAboveThreshold=0;
     // USERVARIABLE TOLERANCES
     const unsigned int DirectionFoundThreshold=500; // Minimum signal strength 
@@ -187,11 +187,13 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 *millis = 0;
                 stop(mL,mR);
                 while (*millis<(TimeAboveThreshold>>1)) {
+                    // Keep turning left until it's gone for half the time between
+                    //the two readings
                     turnLeft(mL,mR, MotorPower);
                 }
                 T0CONbits.TMR0ON=0; // Stop the timer
                 stop(mL,mR);
-                //Let's output the net time spent turning left 
+                //Let's record the net time spent turning left 
                 (MoveType[*Move]) = 1;
                 (MoveTime[*Move]) = -(RightFlag + (TimeAboveThreshold>>1));
                 *Move = *Move+1;
@@ -201,7 +203,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 T0CONbits.TMR0ON=0; // Stop the timer
                 
                 // Signal was only found once
-                // Record movement of turn up to now
+                // Record movement of turn up to now then stop
                 (MoveType[*Move]) = 1;
                 (MoveTime[*Move]) = -(*millis);
                 *Move = *Move+1;  
@@ -226,7 +228,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     }
     
     // No clear signal found, rotate and move a bit and hope to find it!
-    // This is what causes the spiral and make the robot definitly find the 
+    // This is what causes the spiral and make the robot definitely find the 
     // signal.
     (MoveType[*Move]) = 2;
     (MoveTime[*Move]) = -2;

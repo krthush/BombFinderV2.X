@@ -4391,11 +4391,10 @@ void setMotorPWM(struct DC_motor *m);
 void setMotorFullSpeed(struct DC_motor *m);
 void stopMotor(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
-
 void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
-
 void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
 
 # 15 "IR_Reading.h"
@@ -4691,6 +4690,8 @@ TMR0H = 0;
 *millis = 0;
 stop(mL,mR);
 while (*millis<(TimeAboveThreshold>>1)) {
+
+
 turnLeft(mL,mR, MotorPower);
 }
 T0CONbits.TMR0ON=0;

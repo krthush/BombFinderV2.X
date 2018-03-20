@@ -4381,10 +4381,10 @@ unsigned int grabRightIR(void);
 unsigned int grabLeftIR(void);
 void enableSensor(char sensor, char status);
 
-# 30 "IR_Reading.c"
+# 7 "IR_Reading.c"
 void initIR(void){
 
-# 36
+# 13
 LATAbits.LA2=0;
 LATAbits.LA3=0;
 
@@ -4410,7 +4410,7 @@ TRISEbits.RE0=0;
 
 TRISEbits.RE1=0;
 
-# 69
+# 46
 T5CON=0b01011001;
 }
 
