@@ -47,7 +47,7 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
     unsigned int SensorResult[2]={0,0};
     char buf[40]; // Buffer for characters for LCD
     // USERVARIABLE TOLERANCES
-    const unsigned int DirectionMoveThreshold=1000; // Minimum signal strength 
+    const unsigned int DirectionMoveThreshold=500; // Minimum signal strength 
     // required for both sensors to be considered directly aimed at beacon
     // while moving.
     
@@ -107,7 +107,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     unsigned int i=0;
     unsigned int TimeAboveThreshold=0;
     // USERVARIABLE TOLERANCES
-    const unsigned int DirectionFoundThreshold=1000; // Minimum signal strength 
+    const unsigned int DirectionFoundThreshold=500; // Minimum signal strength 
     // required for sensor to be considered directly aimed at beacon.
     const unsigned char MotorPower=40; // Adjusts the speed of the turning, currently
     // seems to lose clarity past 43ish.

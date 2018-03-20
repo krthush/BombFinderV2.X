@@ -1,5 +1,5 @@
 
-# 1 "RFID_Reader.c"
+# 1 "dc_motor.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4375,76 +4375,168 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 12 "RFID_Reader.h"
-void initRFID(void);
-char getCharSerial(void);
-unsigned char VerifySignal(unsigned char *Signal);
-
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
-typedef unsigned size_t;
-
-# 14 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\string.h"
-extern void * memcpy(void *, const void *, size_t);
-extern void * memmove(void *, const void *, size_t);
-extern void * memset(void *, int, size_t);
-
-# 36
-extern char * strcat(char *, const char *);
-extern char * strcpy(char *, const char *);
-extern char * strncat(char *, const char *, size_t);
-extern char * strncpy(char *, const char *, size_t);
-extern char * strdup(const char *);
-extern char * strtok(char *, const char *);
+# 8 "dc_motor.h"
+struct DC_motor {
+char power;
+char direction;
+unsigned char *dutyLowByte;
+unsigned char *dutyHighByte;
+char dir_pin;
+int PWMperiod;
+};
 
 
-extern int memcmp(const void *, const void *, size_t);
-extern int strcmp(const char *, const char *);
-extern int stricmp(const char *, const char *);
-extern int strncmp(const char *, const char *, size_t);
-extern int strnicmp(const char *, const char *, size_t);
-extern void * memchr(const void *, int, size_t);
-extern size_t strcspn(const char *, const char *);
-extern char * strpbrk(const char *, const char *);
-extern size_t strspn(const char *, const char *);
-extern char * strstr(const char *, const char *);
-extern char * stristr(const char *, const char *);
-extern char * strerror(int);
-extern size_t strlen(const char *);
-extern char * strchr(const char *, int);
-extern char * strichr(const char *, int);
-extern char * strrchr(const char *, int);
-extern char * strrichr(const char *, int);
+void initMotorPWM();
+void setMotorPWM(struct DC_motor *m);
+void setMotorFullSpeed(struct DC_motor *m);
+void stopMotor(struct DC_motor *m);
+void stop(struct DC_motor *mL, struct DC_motor *mR);
+
+void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
+void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power);
+
+# 4 "dc_motor.c"
+void initMotorPWM(){
+
+PTCON0 = 0b00000000;
+PTCON1 = 0b10000000;
+PWMCON0 = 0b01101111;
+PWMCON1 = 0x00;
+
+PTPERL = 0b11000111;
+PTPERH = 0b00000000;
+PDC0L = 0<<2;
+PDC0H = 0>>6;
+PDC1L = 0<<2;
+PDC1H = 0>>6;
 
 
-# 4 "RFID_Reader.c"
-#pragma config OSC = IRCIO
+TRISBbits.RB0=0;
+TRISBbits.RB1=0;
+TRISBbits.RB2=0;
+TRISBbits.RB3=0;
 
-
-void initRFID(void){
-TRISC = TRISC | 0b11000000;
-
-
-
-SPBRG=205;
-SPBRGH=0;
-BAUDCONbits.BRG16=1;
-TXSTAbits.BRGH=1;
-RCSTAbits.CREN=1;
-RCSTAbits.SPEN=1;
-TXSTAbits.SYNC=0;
-RCSTAbits.RX9=0;
+LATBbits.LATB0=0;
+LATBbits.LATB1=0;
+LATBbits.LATB2=0;
+LATBbits.LATB3=0;
 }
 
-char getCharSerial(void){
-while (!PIR1bits.RCIF);
-return RCREG;
+
+void setMotorPWM(struct DC_motor *m)
+{
+int PWMduty;
+
+PWMduty = (m->power*m->PWMperiod)/100;
+
+if (m->direction)
+{
+LATB=LATB|(1<<(m->dir_pin));
+PWMduty=m->PWMperiod-PWMduty;
+}
+else
+{
+LATB=LATB&(~(1<<(m->dir_pin)));
 }
 
-# 39
-unsigned char VerifySignal(unsigned char *RecievedString){
-unsigned char checksum=0;
-unsigned int hexByte=0;
-unsigned char i=0;
 
-# 59
+*(m->dutyLowByte)=PWMduty<<2;
+*(m->dutyHighByte)=PWMduty>>6;
+}
+
+
+void setMotorFullSpeed(struct DC_motor *m)
+{
+for (m->power; (m->power)<=100; m->power++){
+setMotorPWM(m);
+_delay((unsigned long)((1)*(8000000/4000.0)));
+}
+}
+
+
+void stopMotor(struct DC_motor *m)
+{
+
+for (m->power; (m->power)>0; m->power--){
+setMotorPWM(m);
+_delay((unsigned long)((5)*(8000000/4000.0)));
+}
+}
+
+
+void stop(struct DC_motor *mL, struct DC_motor *mR)
+{
+
+while(mL->power>0 || mR->power>0){
+if(mL->power>0){
+mL->power--;
+}
+if(mR->power>0){
+mR->power--;
+}
+setMotorPWM(mL);
+setMotorPWM(mR);
+_delay((unsigned long)((50)*(8000000/4000000.0)));
+}
+mL->direction=1;
+mR->direction=1;
+}
+
+
+
+void turnLeft(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+{
+
+
+mL->direction=1;
+mR->direction=0;
+fullSpeed(mL, mR, power);
+}
+
+
+
+void turnRight(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+{
+
+
+mL->direction=0;
+mR->direction=1;
+fullSpeed(mL, mR, power);
+}
+
+
+void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+{
+
+while(mL->power<power || mR->power<power){
+if(mL->power<power){
+mL->power++;
+}
+if(mR->power<power){
+mR->power++;
+}
+setMotorPWM(mL);
+setMotorPWM(mR);
+_delay((unsigned long)((50)*(8000000/4000000.0)));
+}
+}
+
+void fullSpeedForward(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+{
+
+mL->direction=1;
+mR->direction=1;
+fullSpeed(mL, mR, power);
+}
+
+
+void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
+{
+
+mL->direction=0;
+mR->direction=0;
+fullSpeed(mL, mR, power);
 }

@@ -3232,96 +3232,113 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RFID_Reader.h: 12: void initRFID(void);
 [; ;RFID_Reader.h: 13: char getCharSerial(void);
 [; ;RFID_Reader.h: 14: unsigned char VerifySignal(unsigned char *Signal);
-"5 RFID_Reader.c
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 16: extern void * memset(void *, int, size_t);
+[; ;string.h: 36: extern char * strcat(char *, const char *);
+[; ;string.h: 37: extern char * strcpy(char *, const char *);
+[; ;string.h: 38: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 40: extern char * strdup(const char *);
+[; ;string.h: 41: extern char * strtok(char *, const char *);
+[; ;string.h: 44: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 45: extern int strcmp(const char *, const char *);
+[; ;string.h: 46: extern int stricmp(const char *, const char *);
+[; ;string.h: 47: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 49: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 50: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 51: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 52: extern size_t strspn(const char *, const char *);
+[; ;string.h: 53: extern char * strstr(const char *, const char *);
+[; ;string.h: 54: extern char * stristr(const char *, const char *);
+[; ;string.h: 55: extern char * strerror(int);
+[; ;string.h: 56: extern size_t strlen(const char *);
+[; ;string.h: 57: extern char * strchr(const char *, int);
+[; ;string.h: 58: extern char * strichr(const char *, int);
+[; ;string.h: 59: extern char * strrchr(const char *, int);
+[; ;string.h: 60: extern char * strrichr(const char *, int);
+"4 RFID_Reader.c
 [p x OSC=IRCIO ]
-"8
+"7
 [v _initRFID `(v ~T0 @X0 1 ef ]
 {
-[; ;RFID_Reader.c: 8: void initRFID(void){
+[; ;RFID_Reader.c: 7: void initRFID(void){
 [e :U _initRFID ]
 [f ]
-[; ;RFID_Reader.c: 9: TRISC = TRISC | 0b11000000;
-"9
+[; ;RFID_Reader.c: 8: TRISC = TRISC | 0b11000000;
+"8
 [e = _TRISC -> | -> _TRISC `i -> 192 `i `uc ]
-[; ;RFID_Reader.c: 13: SPBRG=205;
-"13
+[; ;RFID_Reader.c: 12: SPBRG=205;
+"12
 [e = _SPBRG -> -> 205 `i `uc ]
-[; ;RFID_Reader.c: 14: SPBRGH=0;
-"14
+[; ;RFID_Reader.c: 13: SPBRGH=0;
+"13
 [e = _SPBRGH -> -> 0 `i `uc ]
-[; ;RFID_Reader.c: 15: BAUDCONbits.BRG16=1;
-"15
+[; ;RFID_Reader.c: 14: BAUDCONbits.BRG16=1;
+"14
 [e = . . _BAUDCONbits 0 3 -> -> 1 `i `uc ]
-[; ;RFID_Reader.c: 16: TXSTAbits.BRGH=1;
-"16
+[; ;RFID_Reader.c: 15: TXSTAbits.BRGH=1;
+"15
 [e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
-[; ;RFID_Reader.c: 17: RCSTAbits.CREN=1;
-"17
+[; ;RFID_Reader.c: 16: RCSTAbits.CREN=1;
+"16
 [e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
-[; ;RFID_Reader.c: 18: RCSTAbits.SPEN=1;
-"18
+[; ;RFID_Reader.c: 17: RCSTAbits.SPEN=1;
+"17
 [e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
-[; ;RFID_Reader.c: 19: TXSTAbits.SYNC=0;
-"19
+[; ;RFID_Reader.c: 18: TXSTAbits.SYNC=0;
+"18
 [e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
-[; ;RFID_Reader.c: 20: RCSTAbits.RX9=0;
-"20
+[; ;RFID_Reader.c: 19: RCSTAbits.RX9=0;
+"19
 [e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
-[; ;RFID_Reader.c: 21: }
-"21
+[; ;RFID_Reader.c: 20: }
+"20
 [e :UE 309 ]
 }
-"23
+"22
 [v _getCharSerial `(uc ~T0 @X0 1 ef ]
 {
-[; ;RFID_Reader.c: 23: char getCharSerial(void){
+[; ;RFID_Reader.c: 22: char getCharSerial(void){
 [e :U _getCharSerial ]
 [f ]
-[; ;RFID_Reader.c: 24: while (!PIR1bits.RCIF);
-"24
+[; ;RFID_Reader.c: 23: while (!PIR1bits.RCIF);
+"23
 [e $U 311  ]
 [e :U 312 ]
 [e :U 311 ]
 [e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 312  ]
 [e :U 313 ]
-[; ;RFID_Reader.c: 25: return RCREG;
-"25
+[; ;RFID_Reader.c: 24: return RCREG;
+"24
 [e ) _RCREG ]
 [e $UE 310  ]
-[; ;RFID_Reader.c: 26: }
-"26
+[; ;RFID_Reader.c: 25: }
+"25
 [e :UE 310 ]
 }
-"40
+"39
 [v _VerifySignal `(uc ~T0 @X0 1 ef1`*uc ]
 {
-[; ;RFID_Reader.c: 40: unsigned char VerifySignal(unsigned char *RecievedString){
+[; ;RFID_Reader.c: 39: unsigned char VerifySignal(unsigned char *RecievedString){
 [e :U _VerifySignal ]
 [v _RecievedString `*uc ~T0 @X0 1 r1 ]
 [f ]
-"41
+"40
 [v _checksum `uc ~T0 @X0 1 a ]
-[; ;RFID_Reader.c: 41: unsigned char checksum=0;
+[; ;RFID_Reader.c: 40: unsigned char checksum=0;
 [e = _checksum -> -> 0 `i `uc ]
-"42
+"41
 [v _hexByte `ui ~T0 @X0 1 a ]
-[; ;RFID_Reader.c: 42: unsigned int hexByte=0;
+[; ;RFID_Reader.c: 41: unsigned int hexByte=0;
 [e = _hexByte -> -> 0 `i `ui ]
-"43
+"42
 [v _i `uc ~T0 @X0 1 a ]
-[; ;RFID_Reader.c: 43: unsigned char i=0;
+[; ;RFID_Reader.c: 42: unsigned char i=0;
 [e = _i -> -> 0 `i `uc ]
-[; ;RFID_Reader.c: 46: hexByte = (RecievedString[3]<<8) + RecievedString[4];
-"46
-[e = _hexByte -> + << -> *U + _RecievedString * -> -> 3 `i `x -> -> # *U _RecievedString `i `x `i -> 8 `i -> *U + _RecievedString * -> -> 4 `i `x -> -> # *U _RecievedString `i `x `i `ui ]
-[; ;RFID_Reader.c: 47: checksum = ((RecievedString[1]<<8) + RecievedString[2]) ^ hexByte;
-"47
-[e = _checksum -> ^ -> + << -> *U + _RecievedString * -> -> 1 `i `x -> -> # *U _RecievedString `i `x `i -> 8 `i -> *U + _RecievedString * -> -> 2 `i `x -> -> # *U _RecievedString `i `x `i `ui _hexByte `uc ]
-[; ;RFID_Reader.c: 56: return 1;
-"56
-[e ) -> -> 1 `i `uc ]
-[e $UE 314  ]
-[; ;RFID_Reader.c: 60: }
-"60
+[; ;RFID_Reader.c: 59: }
+"59
 [e :UE 314 ]
 }

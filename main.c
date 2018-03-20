@@ -61,6 +61,7 @@ void main(void){
     signed int MoveTime[50] = { 0 }; // Array to store time spent on each type of movement.
     // For left/right, left is defined as positive. For forwards/backwards,
     // forwards is positive.
+    // Reduce this as well as MoveType if memory is needed.
     unsigned char MoveType[50] = { 0 }; // Array to store movement types - 0 is forwards based 
     // on tenth-second delays, 1 is left/right based on timer, 2 is left/right 
     // based on tenth second delays.
@@ -75,6 +76,8 @@ void main(void){
     // Also this should be calibrated for the spiral effect -> if the robot
     // never finds a signal it spirals out from its location making sure it 
     // gets close enough to find it.
+    const unsigned char MotorPower=40; // Adjusts the speed of the turning, currently
+    // seems to lose clarity past 43ish.
     
     // Enable general interrupt stuff
     INTCONbits.GIEH=1; // Global Interrupt Enable bit
@@ -145,28 +148,25 @@ void main(void){
                 SendLCD(0b00000010,0); // move cursor to home
                 __delay_ms(2);
                 SetLine(1); //Set Line 1
-                if (Message[0]==0) {
+                if (Message[0]==0) { //If we haven't got the RFID
                     LCD_String("      Inert Mode");
-                } else {
-                    LCD_String(Message);
-                }
-                SetLine(2); //Set Line 2, for signal strength readings
-                if (RFID_Read) {
-                    LCD_String(Message);
-                } else {
-                    sprintf(buf,"      %04d, %04d",SensorResult[0],SensorResult[1]);
-                    LCD_String(buf);
+                } else { 
+                    LCD_String(Message); //Display the RFID data for inspection
                 }
                 
+                //Display current IR readings on line 2
+                SetLine(2); //Set Line 2, for signal strength readings
+                sprintf(buf,"      %04d, %04d",SensorResult[0],SensorResult[1]);
+                 
                 break;
                
            case 0 : //Start-up Mode
                 //Initialise EVERYTHING
                 initMotorPWM();  //setup PWM registers
-                initTimer();
-                initRFID();
-                initLCD();
-                initIR();
+                initTimer(); //setup Timer0
+                initRFID(); //setup RFID pins
+                initLCD(); //initialise the LCD screen
+                initIR(); //initialise the IR sensors
               
                 enableSensor(0, 1); // DEBUG ONLY - enable sensors to test signals
                 enableSensor(1, 1); // DEBUG ONLY - enable sensors to test signals
@@ -175,7 +175,7 @@ void main(void){
                 fullSpeed(&mL, &mR, 100);
                 delay_tenth_s(1);
                 
-                mode=-1;  //TODO: Make mode change on button press
+                mode=-1;  //Go immediately into inert mode
                 
                 break;
                
@@ -183,20 +183,25 @@ void main(void){
                
                 SetLine(1); //Set LCD Line 1
                 LCD_String("Searching");
-                               
+                
+                // Does different things depending on the sensor readings - 
+                // if it hasn't got a strong reading it scans clockwise slowly
+                // If the beacon is in front it move forward, checking as it goes
+                // If it's totally lost it starts spiralling outward so it eventually
+                // finds the beacon
                 if (DirectionFound==-1) {
                     // Robot is completely lost, move a bit a hope to find it.
                     // PLEASE NOTE: this movement in combination with the
                     // rotation in ScanWithRange causes the robot to spiral 
                     // outwards such that it will ALWAYS get close enough to signal
-                    MoveType[Move]=0;
+                    MoveType[Move]=0; //Store the upcoming move in the buffers
                     MoveTime[Move]=6;
                     Move++;
                     fullSpeed(&mL, &mR, 100);
                     delay_tenth_s(6);
                     stop(&mL,&mR);
-                    DirectionFound=0;
-                } else if (DirectionFound==0) {
+                    DirectionFound=0; //Go back to ScanWithRange
+                } else if (DirectionFound==0) { //If it hasn't found the beacon
                     // Scans a wide range if it's unsure about direction
                     DirectionFound=ScanWithRange(&mL, &mR, ScanAngle,
                             &MoveTime, &Move, &MoveType, &RFID_Read, &millis);
@@ -216,7 +221,7 @@ void main(void){
                 // Move forward until RFID read and verified or a certain time
                 // has elapsed.
 
-                if (RFID_Read) {
+                if (RFID_Read) { // If the RFID interrupt has fired
                     stop(&mL, &mR);
                     if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){ //If we have a valid ASCII signal
                         if (VerifySignal(&ReceivedString)){ //and if the checksum is correct
@@ -224,7 +229,6 @@ void main(void){
                             for (i=0; i<10; i++){
                                 Message[i] = ReceivedString[i+1]; 
                             }
-//                             LCDString(Message); //Display code on LCD
                             //Clear the received string 
                             for (i=0; i<16; i++) {
                                 ReceivedString[i]=0;
@@ -236,12 +240,14 @@ void main(void){
                             delay_tenth_s(5);
                             stop(&mL,&mR);
                             fullSpeed(&mL,&mR, 100); //Try again
+                            delay_tenth_s(5);
+                            stop(&mL,&mR);
                         }  
                     }
                 } else {
-                    DirectionFound=1;
-                    mode=1;
-                    // Bot needs to head for the bomb
+                    DirectionFound=1; // It's found the beacon
+                    mode=1; // Return to search mode for ScanIR())
+                    // Bot needs to start heading for the bomb
                     fullSpeed(&mL,&mR, 100);
                     delay_tenth_s(1);
                     MoveType[Move] = 0;
@@ -262,7 +268,7 @@ void main(void){
                 for (Move; Move>=0; Move--) { //Go backwards along the moves
                     stop(&mL,&mR);
                     if (MoveType[Move]==0) { //If move was forwards
-                        fullSpeedBack(&mL,&mR,100);
+                        fullSpeedBack(&mL,&mR,100); // Go back
                         delay_tenth_s(MoveTime[Move]);
                     } else if (MoveType[Move]==1) { //If timer left/right
                         T0CONbits.TMR0ON=0; // Stop the timer
@@ -271,20 +277,22 @@ void main(void){
                         millis = 0;
                         if (MoveTime[Move]>0) { //If left turn
                             T0CONbits.TMR0ON=1; // Start the timer
-                            turnRight(&mL,&mR,40);
+                            turnRight(&mL,&mR,MotorPower); //Turn right
                             while (millis<MoveTime[Move]); //Delay 
                             //until it's turned as far as it did originally
                             T0CONbits.TMR0ON=0; // Stop the timer
                         } else { //If right turn
                             T0CONbits.TMR0ON=1; // Start the timer
-                            turnLeft(&mL,&mR,40);
+                            turnLeft(&mL,&mR,MotorPower); //Turn left
                             while (millis<(-MoveTime[Move])); //Delay 
                             //until it's turned as far as it did originally
                             T0CONbits.TMR0ON=0; // Stop the timer
                         }
                     } else if (MoveType[Move]==2) { //If 0.1s left/right
                         if (MoveTime[Move]>0) { //If left turn
-                            turnRight(&mL,&mR,78); // USERVARIABLE
+                            turnRight(&mL,&mR,78); // USERVARIABLE POWER
+                            // power of 78% calibrated to account for differences
+                            // in left/right motors
                             //Reduced power to correct motor imbalance
                             delay_tenth_s(MoveTime[Move]);
                         } else { //If right turn
@@ -297,7 +305,7 @@ void main(void){
                     }
                 }
                 stop(&mL,&mR);
-                mode=-1;
+                mode=-1; // Return to inert mode
 
                 break;
        }      

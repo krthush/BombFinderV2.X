@@ -1,7 +1,6 @@
 #include "RFID_Reader.h"
 #include <xc.h>
-//#include <stdio.h>//include stdio and std lib to use strtol() function for conversion
-//#include <stdlib.h>
+#include <string.h>
 #pragma config OSC = IRCIO
 #define _XTAL_FREQ 8000000
 
@@ -37,24 +36,54 @@ while (!PIR1bits.RCIF); //wait for the data to arrive
 //etc...
 //
 //For our RFID card the checksum should be 0x60
-unsigned char VerifySignal(unsigned char *RecievedString){
-    unsigned char checksum=0;
-    unsigned int hexByte=0;
+unsigned char VerifySignal(unsigned char *ReceivedString){
     unsigned char i=0;
+    unsigned char xorOutput=0;
+    unsigned char translation[12];
+    unsigned char ASCIICheckSum=0;
+    memset(translation,0,12);
+    
+    //Decode the ASCII into hex - ASCII 0 == 0x30
+    for(i=0;i<12;i++){
+        if(ReceivedString[i]>'F'){ 
+            //If we have a character greater than F it's not valid hex
+            return 0; //So the signal is invalid
+        } else if (ReceivedString[i]>='A') { //Treat anything above A differently
+            translation[i]=ReceivedString[i]-'A'+10;            
+        } else if (ReceivedString[i]>='0') { // anything else is just the 
+            // difference between the value and the one for 0
+            translation[i]=ReceivedString[i]-'0';
+        }
+    }
+    
+    // CHECKSUM - repeatedly XOR the hex bytes
+    for (i=0;i<5;i++) {
+        xorOutput^=(translation[2*i]<<4)+translation[2*i+1]; 
+    }
+    
+    // And the checksum from the received signal
+    ASCIICheckSum=(translation[10]<<4)+(translation[11]&0xF);
+    
+    if (ASCIICheckSum==xorOutput){ // If everything matches...
+        return 1; // It worked!
+    }
+    
+    return 0; // Otherwise it failed
+    
 
-    //First run through - XOR first two hex bytes
-    hexByte = (RecievedString[3]<<8) + RecievedString[4];
-    checksum = ((RecievedString[1]<<8) + RecievedString[2]) ^ hexByte; //First 2 chars XOR second 2
-
-    //Loop through, XORing the previous result with the next hex byte in turn
-//    for (i=5; i<10; i+=2){
-//        hexByte = (Signal[i]<<8) + Signal[i+1];
-//        checksum = checksum ^ strtol(hexByte, &ptr, 16);
-//    }
-
-//    if ((checksum==((Signal[11]<<8)+Signal[12]))){
-        return 1;
-//    } else{
-//        return 0;
-//    }
+//    //First run through - XOR first two hex bytes
+//    hexByte = (RecievedString[3]<<8) + RecievedString[4];
+//    checksum = ((RecievedString[1]<<8) + RecievedString[2]) ^ hexByte; //First 2 chars XOR second 2
+//
+//    //Loop through, XORing the previous result with the next hex byte in turn
+////    for (i=5; i<10; i+=2){
+////        hexByte = (Signal[i]<<8) + Signal[i+1];
+////        checksum = checksum ^ strtol(hexByte, &ptr, 16);
+////    }
+//
+////    if ((checksum==((Signal[11]<<8)+Signal[12]))){
+//        return 1;
+////    } else{
+////        return 0;
+////    }
 }

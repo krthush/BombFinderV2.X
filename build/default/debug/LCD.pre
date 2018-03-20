@@ -1,5 +1,5 @@
 
-# 1 "RFID_Reader.c"
+# 1 "LCD.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4375,11 +4375,6 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 12 "RFID_Reader.h"
-void initRFID(void);
-char getCharSerial(void);
-unsigned char VerifySignal(unsigned char *Signal);
-
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
 typedef unsigned size_t;
 
@@ -4415,36 +4410,162 @@ extern char * strichr(const char *, int);
 extern char * strrchr(const char *, int);
 extern char * strrichr(const char *, int);
 
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdarg.h"
+typedef void * va_list[1];
 
-# 4 "RFID_Reader.c"
-#pragma config OSC = IRCIO
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h"
+struct __prbuf
+{
+char * ptr;
+void (* func)(char);
+};
+
+# 29 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\errno.h"
+extern int errno;
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\conio.h"
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+# 23
+extern char * cgets(char *);
+extern void cputs(const char *);
+
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdio.h"
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
 
 
-void initRFID(void){
-TRISC = TRISC | 0b11000000;
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
 
 
+# 180
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
 
-SPBRG=205;
-SPBRGH=0;
-BAUDCONbits.BRG16=1;
-TXSTAbits.BRGH=1;
-RCSTAbits.CREN=1;
-RCSTAbits.SPEN=1;
-TXSTAbits.SYNC=0;
-RCSTAbits.RX9=0;
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+
+
+# 13 "LCD.h"
+#pragma config OSC = IRCIO, WDTEN=OFF
+
+# 23
+void initLCD(void);
+void E_TOG(void);
+void LCDout(unsigned char number);
+void SendLCD(unsigned char Byte, char type);
+void SetLine (char line);
+void LCD_String(char *string);
+
+# 5 "LCD.c"
+void E_TOG(void){
+
+
+LATCbits.LATC0=1;
+_delay((unsigned long)((5)*(8000000/4000000.0)));
+LATCbits.LATC0=0;
 }
 
-char getCharSerial(void){
-while (!PIR1bits.RCIF);
-return RCREG;
+
+void LCDout(unsigned char number){
+
+
+LATCbits.LATC1 = (number<<7)>>7;
+LATCbits.LATC2 = (number<<6)>>7;
+LATDbits.LATD0 = (number<<5)>>7;
+LATDbits.LATD1 = (number<<4)>>7;
+E_TOG();
+_delay((unsigned long)((5)*(8000000/4000000.0)));
+
 }
 
-# 39
-unsigned char VerifySignal(unsigned char *RecievedString){
-unsigned char checksum=0;
-unsigned int hexByte=0;
-unsigned char i=0;
 
-# 59
+void SendLCD(unsigned char Byte, char type){
+
+
+LATAbits.LATA6=type;
+
+LCDout((Byte&0xF0)>>4);
+_delay((unsigned long)((10)*(8000000/4000000.0)));
+
+LCDout(Byte&0x0F);
+_delay((unsigned long)((50)*(8000000/4000000.0)));
+}
+void initLCD(void){
+
+# 44
+TRISAbits.RA6=0;
+TRISCbits.RC0=0;
+TRISCbits.RC1=0;
+TRISCbits.RC2=0;
+TRISDbits.RD0=0;
+TRISDbits.RD1=0;
+
+_delay((unsigned long)((15)*(8000000/4000.0)));
+LCDout(0b0011);
+_delay((unsigned long)((5)*(8000000/4000.0)));
+LCDout(0b0011);
+_delay((unsigned long)((200)*(8000000/4000000.0)));
+LCDout(0b0011);
+_delay((unsigned long)((50)*(8000000/4000000.0)));
+LCDout(0b0010);
+_delay((unsigned long)((50)*(8000000/4000000.0)));
+
+
+SendLCD(0b00101000,0);
+_delay((unsigned long)((50)*(8000000/4000000.0)));
+SendLCD(0b00001000,0);
+_delay((unsigned long)((50)*(8000000/4000000.0)));
+SendLCD(0b00000001,0);
+_delay((unsigned long)((5)*(8000000/4000.0)));
+SendLCD(0b00000110,0);
+_delay((unsigned long)((50)*(8000000/4000000.0)));
+SendLCD(0b00001100,0);
+_delay((unsigned long)((50)*(8000000/4000000.0)));
+}
+
+void SetLine (char line) {
+if (line==1) {
+SendLCD(0x80,0);
+} else if (line==2) {
+SendLCD(0xC0,0);
+}
+_delay((unsigned long)((50)*(8000000/4000000.0)));
+}
+
+void LCD_String(char *string){
+
+while(*string != 0){
+
+
+SendLCD(*string++,1);
+_delay((unsigned long)((50)*(8000000/4000000.0)));
+
+
+}
 }

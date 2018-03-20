@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\BombFinderV2.X.production.hex">
+  <executable name="dist/default/debug\BombFinderV2.X.debug.hex">
     <memory name="program">
       <units>bytes</units>
       <length>8192</length>
-      <used>6770</used>
-      <free>1422</free>
+      <used>7118</used>
+      <free>1074</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
