@@ -41,7 +41,6 @@ unsigned char VerifySignal(unsigned char *RecievedString){
     unsigned char checksum=0;
     unsigned int hexByte=0;
     unsigned char i=0;
-    unsigned char *ptr;
 
     //First run through - XOR first two hex bytes
     hexByte = (RecievedString[3]<<8) + RecievedString[4];

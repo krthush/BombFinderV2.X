@@ -4378,7 +4378,6 @@ extern __nonreentrant void _delay3(unsigned char);
 # 12 "RFID_Reader.h"
 void initRFID(void);
 char getCharSerial(void);
-void Serial_String(char *string);
 unsigned char VerifySignal(unsigned char *Signal);
 
 
@@ -4406,30 +4405,17 @@ while (!PIR1bits.RCIF);
 return RCREG;
 }
 
-void Serial_String(char *string){
-
-while(*string != 0){
-
-
-sendCharToSerial(*string++);
-_delay((unsigned long)((50)*(8000000/4000000.0)));
-
-
-}
-}
-
-# 53
-unsigned char VerifySignal(unsigned char *Signal){
+# 40
+unsigned char VerifySignal(unsigned char *RecievedString){
 unsigned char checksum=0;
 unsigned int hexByte=0;
 unsigned char i=0;
-unsigned char *ptr;
 
 
-hexByte = (Signal[3]<<8) + Signal[4];
-checksum = ((Signal[1]<<8) + Signal[2]) ^ hexByte;
+hexByte = (RecievedString[3]<<8) + RecievedString[4];
+checksum = ((RecievedString[1]<<8) + RecievedString[2]) ^ hexByte;
 
-# 70
+# 56
 return 1;
 
 

@@ -145,7 +145,11 @@ void main(void){
                 SendLCD(0b00000010,0); // move cursor to home
                 __delay_ms(2);
                 SetLine(1); //Set Line 1
-                LCD_String("      Inert Mode");
+                if (Message[0]==0) {
+                    LCD_String("      Inert Mode");
+                } else {
+                    LCD_String(Message);
+                }
                 SetLine(2); //Set Line 2, for signal strength readings
                 if (RFID_Read) {
                     LCD_String(Message);

@@ -4401,7 +4401,6 @@ void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power
 # 12 "RFID_Reader.h"
 void initRFID(void);
 char getCharSerial(void);
-void Serial_String(char *string);
 unsigned char VerifySignal(unsigned char *Signal);
 
 # 11 "Movement.h"
@@ -4667,7 +4666,11 @@ _delay((unsigned long)((50)*(8000000/4000000.0)));
 SendLCD(0b00000010,0);
 _delay((unsigned long)((2)*(8000000/4000.0)));
 SetLine(1);
+if (Message[0]==0) {
 LCD_String("      Inert Mode");
+} else {
+LCD_String(Message);
+}
 SetLine(2);
 if (RFID_Read) {
 LCD_String(Message);
