@@ -9,16 +9,17 @@
 #define	IR_READING_H
 #include <xc.h>
 
-// PLEASE NOTE: Decided to not use CCP module, using motion capture module instead for IR tracking
-// void getTimerVal();
-
+//Initialises IR sensor registers (including CAP module)
 void initIR(void);
+
+//Gives right IR sensor value
 unsigned int grabRightIR(void);
+
+//Gives right IR sensor value
 unsigned int grabLeftIR(void);
-void enableSensor(char sensor, char status); //Turns IR sensor on or off
 
-
-
+//Turns IR sensor on or off
+void enableSensor(char sensor, char status); 
 
 #endif	/* IR_READING_H */
 
