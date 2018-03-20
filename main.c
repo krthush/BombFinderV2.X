@@ -160,7 +160,10 @@ void main(void){
     while(1){ // Loop forever
        
        switch (mode) {
-           case -1: // Inert Mode
+
+           case -1:
+           //Inert Mode//
+               
                 // Robot has finished start-up, and now ready to go!
                 // Robot also enters this mode after successfully finishing the 
                 // task.
@@ -169,6 +172,7 @@ void main(void){
                 // If button is pressed while robot is in inert mode, it will
                 // start performing.
                 // Robot will also display IR values for easy calibration.
+               
                 stop(&mL, &mR); // Make sure we're stationary in this mode.
                 
                 // Reset Crucial Starting Variables
@@ -205,8 +209,11 @@ void main(void){
                  
                 break;
                
-           case 0 : // Start-up Mode
+            case 0 : 
+            //Start-up Mode//
+                
                 // Initialize EVERYTHING
+                
                 initMotorPWM();  // Setup PWM registers.
                 initTimer(); // Setup Timer0.
                 initRFID(); // Setup RFID pins.
