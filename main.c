@@ -337,7 +337,6 @@ void main(void){
                             turnRight(&mL,&mR,78); // USERVARIABLE POWER
                             // power of 78% calibrated to account for differences
                             // in left/right motors
-                            //Reduced power to correct motor imbalance
                             delay_tenth_s(MoveTime[Move]);
                         } else { //If right turn
                             turnLeft(&mL,&mR,100);
