@@ -183,8 +183,8 @@ void main(void){
                 SensorResult[0]=grabLeftIR();
                 SensorResult[1]=grabRightIR();
 
-                // Reset the timers to avoid same reading being picked up if there is
-                // no signal.
+                // Reset the timers to avoid same reading being picked up if 
+                // there is no signal.
                 CAP1BUFH=0;
                 CAP1BUFL=0;
                 CAP2BUFH=0;
@@ -220,32 +220,35 @@ void main(void){
                 initLCD(); // Initialize the LCD screen.
                 initIR(); // Initialize the IR sensors.
               
-                enableSensor(0, 1); // DEBUG ONLY - enable sensors to test signals
-                enableSensor(1, 1); // DEBUG ONLY - enable sensors to test signals
+                enableSensor(0, 1); // Enable sensors to test signals
+                enableSensor(1, 1); // Enable sensors to test signals
                 
-                // Small movement to signify initialise code has been successful
+                // Small movement to signify initialize code has been successful
                 fullSpeed(&mL, &mR, 100);
                 delay_tenth_s(1);
                 
-                mode=-1;  //Go immediately into inert mode
+                mode=-1;  // Go immediately into inert mode.
                 
                 break;
                
-           case 1 : //Search Mode
+            case 1 : 
+            //Search Mode//
                
                 SetLine(1); //Set LCD Line 1
                 LCD_String("Searching");
                 
-                // Does different things depending on the sensor readings - 
-                // if it hasn't got a strong reading it scans clockwise slowly
-                // If the beacon is in front it move forward, checking as it goes
-                // If it's totally lost it starts spiralling outward so it eventually
-                // finds the beacon
+                // Does different things depending on the sensor readings - if 
+                // it hasn't got a strong reading it scans clockwise slowly.
+                // If the beacon is in front it moves forward, checking as it 
+                // goes.
+                // If it's totally lost it starts spiraling outward so it 
+                // eventually finds the beacon.
                 if (DirectionFound==-1) {
                     // Robot is completely lost, move a bit a hope to find it.
                     // PLEASE NOTE: this movement in combination with the
                     // rotation in ScanWithRange causes the robot to spiral 
-                    // outwards such that it will ALWAYS get close enough to signal
+                    // outwards such that it will ALWAYS get close enough to
+                    // signal.
                     MoveType[Move]=0; //Store the upcoming move in the buffers
                     MoveTime[Move]=6;
                     Move++;
@@ -267,38 +270,42 @@ void main(void){
                
                 break;
                
-            case 2 : // Go forward mode
+            case 2 :
+            //Forward Motion Mode//
+                
                 // Bot knows direction of bomb.
                 // Move forward until RFID read and verified or a certain time
                 // has elapsed.
 
                 if (RFID_Read) { // If the RFID interrupt has fired
                     stop(&mL, &mR);
-                    if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){ //If we have a valid ASCII signal
-                        if (VerifySignal(&ReceivedString)){ //and if the checksum is correct
-                            //Put the RFID data into the Message variable
+                    if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){ 
+                        // If we have a valid ASCII signal
+                        if (VerifySignal(&ReceivedString)){
+                            // And if the checksum is correct
+                            // Put the RFID data into the Message variable.
                             for (i=0; i<10; i++){
                                 Message[i] = ReceivedString[i+1]; 
                             }
-                            //Clear the received string 
+                            // Clear the received string.
                             for (i=0; i<16; i++) {
                                 ReceivedString[i]=0;
                             }
-                            mode=3; //Return to home!
+                            mode=3; // Return to home!
 
-                        } else { //If the signal doesn't check out
-                            fullSpeedBack(&mL,&mR, 100); //Go back a bit then stop
+                        } else { // If the signal doesn't check out.
+                            fullSpeedBack(&mL,&mR, 100); // Go back a bit.
                             delay_tenth_s(5);
-                            stop(&mL,&mR);
-                            fullSpeed(&mL,&mR, 100); //Try again
+                            stop(&mL,&mR); // Then stop.
+                            fullSpeed(&mL,&mR, 100); // Try again.
                             delay_tenth_s(5);
                             stop(&mL,&mR);
                         }  
                     }
                 } else {
-                    DirectionFound=1; // It's found the beacon
-                    mode=1; // Return to search mode for ScanIR())
-                    // Bot needs to start heading for the bomb
+                    DirectionFound=1; // It's found the direction of the beacon.
+                    mode=1; // Return to search mode for ScanIR().
+                    // Bot needs to start heading for the bomb.
                     fullSpeed(&mL,&mR, 100);
                     delay_tenth_s(1);
                     MoveType[Move] = 0;
@@ -308,54 +315,55 @@ void main(void){
                 
                 break;
                
-            case 3 : //Return Mode                  
-                //Return to original position using MoveType and MoveTime
+            case 3 :
+            //Return Mode//
                 
-                SetLine(1); //Set Line 1
+                // Return to original position using MoveType and MoveTime
+                SetLine(1); // Set Line 1.
                 LCD_String(Message);
                 SetLine(2);
                 LCD_String("Going Home");
                 
-                for (Move; Move>=0; Move--) { //Go backwards along the moves
+                for (Move; Move>=0; Move--) { // Go backwards along the moves.
                     stop(&mL,&mR);
-                    if (MoveType[Move]==0) { //If move was forwards
-                        fullSpeedBack(&mL,&mR,100); // Go back
+                    if (MoveType[Move]==0) { // If move was forwards
+                        fullSpeedBack(&mL,&mR,100);
                         delay_tenth_s(MoveTime[Move]);
-                    } else if (MoveType[Move]==1) { //If timer left/right
-                        T0CONbits.TMR0ON=0; // Stop the timer
-                        TMR0L = 0; //Reset the timer
+                    } else if (MoveType[Move]==1) { // If timer left/right
+                        T0CONbits.TMR0ON=0; // Stop the timer.
+                        TMR0L = 0; // Reset the timer.
                         TMR0H = 0;
                         millis = 0;
-                        if (MoveTime[Move]>0) { //If left turn
-                            T0CONbits.TMR0ON=1; // Start the timer
-                            turnRight(&mL,&mR,MotorPower); //Turn right
-                            while (millis<MoveTime[Move]); //Delay 
-                            //until it's turned as far as it did originally
-                            T0CONbits.TMR0ON=0; // Stop the timer
+                        if (MoveTime[Move]>0) { // If left turn
+                            T0CONbits.TMR0ON=1; // Start the timer.
+                            turnRight(&mL,&mR,MotorPower);
+                            while (millis<MoveTime[Move]); // Delay 
+                            // until it's turned as far as it did originally.
+                            T0CONbits.TMR0ON=0; // Stop the timer.
                         } else { //If right turn
-                            T0CONbits.TMR0ON=1; // Start the timer
-                            turnLeft(&mL,&mR,MotorPower); //Turn left
-                            while (millis<(-MoveTime[Move])); //Delay 
-                            //until it's turned as far as it did originally
-                            T0CONbits.TMR0ON=0; // Stop the timer
+                            T0CONbits.TMR0ON=1; // Start the timer.
+                            turnLeft(&mL,&mR,MotorPower);
+                            while (millis<(-MoveTime[Move])); // Delay 
+                            // until it's turned as far as it did originally.
+                            T0CONbits.TMR0ON=0; // Stop the timer.
                         }
-                    } else if (MoveType[Move]==2) { //If 0.1s left/right
-                        if (MoveTime[Move]>0) { //If left turn
+                    } else if (MoveType[Move]==2) { // If 0.1s left/right
+                        if (MoveTime[Move]>0) { // If left turn
                             turnRight(&mL,&mR,78); // USERVARIABLE POWER
                             // power of 78% calibrated to account for differences
-                            // in left/right motors
+                            // in left/right motors.
                             delay_tenth_s(MoveTime[Move]);
-                        } else { //If right turn
+                        } else { // If right turn
                             turnLeft(&mL,&mR,100);
                             delay_tenth_s(MoveTime[Move]);
                         }
                     }
-                    if (mode==-1) { //Check if button has been pressed
-                        break; //Exit the loop if it has
+                    if (mode==-1) { // Check if button has been pressed,
+                        break; // exit the loop if it has.
                     }
                 }
                 stop(&mL,&mR);
-                mode=-1; // Return to inert mode
+                mode=-1; // Return to inert mode.
 
                 break;
        }      
