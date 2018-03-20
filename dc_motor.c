@@ -126,14 +126,6 @@ void fullSpeed(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
     }    
 }
 
-// Function to tell the robot to go forward at a given power setting
-void fullSpeedForward(struct DC_motor *mL, struct DC_motor *mR, unsigned char power){
-    //remember to change the power gradually
-    mL->direction=1;
-    mR->direction=1;
-    fullSpeed(mL, mR, power);
-}
-
 //function to make the robot go backward at a given power setting
 void fullSpeedBack(struct DC_motor *mL, struct DC_motor *mR, unsigned char power)
 {
