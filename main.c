@@ -28,39 +28,39 @@ volatile unsigned int millis=0; // Approximate millisecond timer,
 // Confirms when RFID is read and stores the given serial string.
 void interrupt low_priority InterruptHandlerLow ()
 {
-    if (PIR1bits.RCIF) { //If the serial receive interrupt is active
-        ReceivedString[i]=RCREG; //read the data byte
-        RFID_Read=1; //make sure that the robot knows it's reached the RFID card
-        if (i==15){ //if we've reached the end of the signal
-            i=0; //reset the counter so we can go again if we need to
+    if (PIR1bits.RCIF) { // If the serial receive interrupt is active
+        ReceivedString[i]=RCREG; // Read the data byte.
+        RFID_Read=1; // Robot know it has reached RFID now.
+        if (i==15){ // If end of signal is reached
+            i=0; // Reset the counter to go again if needed.
         }else{
-            i++; //increment the counter so we can fill the next character
+            i++; // Increment the counter so the next character can be filled.  
         }
-        PIR1bits.RCIF=0; // clear the flag
+        PIR1bits.RCIF=0; // Clear the flag.
     }
 }
 
 // High priority interrupt routine for button and timer overflow.
 // Switches between inert mode vs. other modes and increments a timer counter.
 void interrupt InterruptHandlerHigh () {
-    if (INTCONbits.INT0IF) { //If button pressed
+    if (INTCONbits.INT0IF) { // If button pressed
         if (mode==-1) { // If in inert mode
-            // Start searching and then perform tasks   
+            // Start searching and then perform tasks.   
             mode=1;
         } else if (mode==0) { // If in start up mode
             // Do nothing! Needs to wait till bot is started.
-        } else { // If in any other mode...
-            // Enter inert mode
+        } else { // If in any other mode
+            // Enter inert mode.
             mode=-1;
         }
-        // Small delay to de-bounce switch interrupt
+        // Small delay to de-bounce switch interrupt.
         delay_tenth_s(2);
-        INTCONbits.INT0IF=0; // clear the flag
+        INTCONbits.INT0IF=0; // Clear the flag.
     }
-    //Also handle the timer overflowing
-    if (INTCONbits.TMR0IF) { //If timer has overflowed
-        millis++; // Increment millisecond counter
-        INTCONbits.TMR0IF = 0; // Clear the flag
+    // Also handle the timer overflowing.
+    if (INTCONbits.TMR0IF) { // If timer has overflowed
+        millis++; // Increment millisecond counter.
+        INTCONbits.TMR0IF = 0; // Clear the flag.
     }
 }
 
@@ -74,87 +74,102 @@ void main(void){
     //Initialize Main Loop Variables//
     //------------------------------------------------------------------------//
 
-    unsigned char Message[10]; // Code on RFID Card
-    unsigned char i=0; // Counter variable
-    signed char DirectionFound=0; // Flag for if the robot has decided it knows where the bomb is
-    signed int MoveTime[50] = { 0 }; // Array to store time spent on each type of movement.
+    unsigned char Message[10]; // Code on RFID Card.
+    unsigned char i=0; // Counter variable.
+    signed char DirectionFound=0; // Flag for if the direction of the bomb is
+    // known.
+    signed int MoveTime[50] = { 0 }; // Array to store time spent on each type 
+    // of movement.
     // For left/right, left is defined as positive. For forwards/backwards,
     // forwards is positive.
     // Reduce this as well as MoveType if memory is needed.
-    unsigned char MoveType[50] = { 0 }; // Array to store movement types - 0 is forwards based 
-    // on tenth-second delays, 1 is left/right based on timer, 2 is left/right 
-    // based on tenth second delays.
-    signed char Move=0; // Move counter - signed so it does not overflow when 0 reached
-    unsigned int SensorResult[2]={0,0}; //IR readings left and right
-    char buf[40]; // Buffer for characters for LCD
+    unsigned char MoveType[50] = { 0 }; // Array to store movement types:
+        // 0 is forwards based on tenth-second delays,
+        // 1 is left/right based on timer,
+        // 2 is left/right based on tenth second delays.
+    signed char Move=0; // Move counter - signed to prevent overflow when 0 
+    // reached.
+    unsigned int SensorResult[2]={0,0}; // IR readings left and right.
+    char buf[40]; // Buffer for characters for LCD.
     // USERVARIABLE TOLERANCES
-    unsigned char ScanAngle=60; //MAX VALUE: 255, P.S. This currently actually
-    // determines the number of loops the bot scans while spinning, make sure
-    // the total time for this scan is UNDER 8 seconds or Timer0 within
-    // ScanWithRange will overflow and mess up the timings.
+    unsigned char ScanAngle=60; // MAX VALUE: 255, P.S. This currently 
+    // determines the number of loops the bot scans while spinning.
     // Also this should be calibrated for the spiral effect -> if the robot
     // never finds a signal it spirals out from its location making sure it 
     // gets close enough to find it.
-    const unsigned char MotorPower=40; // Adjusts the speed of the turning, currently
-    // seems to lose clarity past 43ish.
+    const unsigned char MotorPower=40; // Adjusts the speed of the turning
+    // while scanning, currently seems to lose clarity past 43ish.
     
     //------------------------------------------------------------------------//
     //Initialize Interrupts//
     //------------------------------------------------------------------------//
     
-    INTCONbits.GIEH=1; // Global Interrupt Enable bit
-    INTCONbits.GIEL=1; // Peripheral/Low priority Interrupt Enable bit
-    INTCONbits.PEIE=1; // Enable Peripheral  interrupts
-    RCONbits.IPEN=1; // Enable interrupt priority
+    INTCONbits.GIEH=1; // Global Interrupt Enable bit.
+    INTCONbits.GIEL=1; // Peripheral/Low priority Interrupt Enable bit.
+    INTCONbits.PEIE=1; // Enable Peripheral  interrupts.
+    RCONbits.IPEN=1; // Enable interrupt priority.
     
     // Interrupt registers for EUSART
-    IPR1bits.RCIP=0; // Low Priority 
-    PIE1bits.RCIE=1; // Enable interrupt on serial reception
+    IPR1bits.RCIP=0; // Low Priority. 
+    PIE1bits.RCIE=1; // Enable interrupt on serial reception.
     
     // Interrupt registers for button
-    TRISCbits.RC3=1; //set RC3 pin to be an input pin to recognise the button press
-    INTCONbits.INT0IE=1; // Enables the INT0 external interrupt
+    TRISCbits.RC3=1; // Set RC3 pin to be an input pin to recognize the button 
+    // press.
+    INTCONbits.INT0IE=1; // Enables the INT0 external interrupt.
     
     // Clear interrupt flags
-    PIR1bits.RC1IF=0;// clear EUSART interrupt flag
-    INTCONbits.INT0IF=0;// clear flag on the button interrupt
+    PIR1bits.RC1IF=0;// Clear EUSART interrupt flag.
+    INTCONbits.INT0IF=0;// Clear flag on the button interrupt.
     
     //------------------------------------------------------------------------//
     //Initialize Motor Structures//
     //------------------------------------------------------------------------//
     
-    struct DC_motor mL, mR; //declare 2 motor structures
-    mL.power=0; //zero power to start
-    mL.direction=1; //set default motor direction
-    mL.dutyLowByte=(unsigned char *)(&PDC0L); //store address of PWM duty low byte
-    mL.dutyHighByte=(unsigned char *)(&PDC0H); //store address of PWM duty high byte
-    mL.dir_pin=0; //pin RB0/PWM0 controls direction
-    mL.PWMperiod=199; //store PWMperiod for motor
-    //same for motorR but different PWM registers and direction pin
-    mR.power=0; //zero power to start
-    mR.direction=1; //set default motor direction
-    mR.dutyLowByte=(unsigned char *)(&PDC1L); //store address of PWM duty low byte
-    mR.dutyHighByte=(unsigned char *)(&PDC1H); //store address of PWM duty high byte
-    mR.dir_pin=2; //pin RB0/PWM0 controls direction
-    mR.PWMperiod=199; //store PWMperiod for motor
-
-    OSCCON = 0b1110010; //8MHz clock
-    while(!OSCCONbits.IOFS); //wait until stable
+    struct DC_motor mL, mR; // Declare 2 motor structures.
+    mL.power=0; // Zero power to start.
+    mL.direction=1; // Set default motor direction.
+    mL.dutyLowByte=(unsigned char *)(&PDC0L); // Store address of PWM duty low 
+    // byte.
+    mL.dutyHighByte=(unsigned char *)(&PDC0H); // Store address of PWM duty high
+    // byte.
+    mL.dir_pin=0; // Pin RB0/PWM0 controls direction.
+    mL.PWMperiod=199; // Store PWMperiod for motor.
+    
+    // Same for motorR but different PWM registers and direction pin.
+    mR.power=0; // Zero power to start.
+    mR.direction=1; // Set default motor direction.
+    mR.dutyLowByte=(unsigned char *)(&PDC1L); // Store address of PWM duty low
+    // byte.
+    mR.dutyHighByte=(unsigned char *)(&PDC1H); // Store address of PWM duty high
+    // byte.
+    mR.dir_pin=2; // Pin RB0/PWM0 controls direction.
+    mR.PWMperiod=199; // Store PWMperiod for motor.
+    
+    //------------------------------------------------------------------------//
+    //CPU clock speed//
+    //------------------------------------------------------------------------//
+    
+    OSCCON = 0b1110010; // 8MHz clock
+    while(!OSCCONbits.IOFS); // Wait until stable.
     
     //------------------------------------------------------------------------//
     //Post Start Up Loop//
     //------------------------------------------------------------------------//
     
-    while(1){ //loop forever
+    while(1){ // Loop forever
        
        switch (mode) {
-           case -1: //Inert Mode
+           case -1: // Inert Mode
                 // Robot has finished start-up, and now ready to go!
-                // Robot also enters this mode after successfully finishing the task.
-                // If button is pressed while robot is performing, it will return to inert mode.
-                // If button is pressed while robot is in inert mode, it will start performing.
-                // Robot will also display IR values for easy calibration
-                stop(&mL, &mR); //Make sure we're stationary in this mode
+                // Robot also enters this mode after successfully finishing the 
+                // task.
+                // If button is pressed while robot is performing, it will 
+                // return to inert mode.
+                // If button is pressed while robot is in inert mode, it will
+                // start performing.
+                // Robot will also display IR values for easy calibration.
+                stop(&mL, &mR); // Make sure we're stationary in this mode.
                 
                 // Reset Crucial Starting Variables
                 RFID_Read=0;
@@ -172,30 +187,31 @@ void main(void){
                 CAP2BUFL=0;       
 
                 // Output signal strength to LCD
-                SendLCD(0b00000001,0); //Clear Display
-                __delay_us(50); //Delay to let display clearing finish
-                SendLCD(0b00000010,0); // move cursor to home
+                SendLCD(0b00000001,0); // Clear Display.
+                __delay_us(50); // Delay to let display clearing finish.
+                SendLCD(0b00000010,0); // Move cursor to home.
                 __delay_ms(2);
-                SetLine(1); //Set Line 1
-                if (Message[0]==0) { //If we haven't got the RFID
+                SetLine(1); // Set Line 1.
+                if (Message[0]==0) { // If we haven't got the RFID.
                     LCD_String("      Inert Mode");
                 } else { 
-                    LCD_String(Message); //Display the RFID data for inspection
+                    LCD_String(Message); // Display the RFID data for
+                    // inspection.
                 }
                 
-                //Display current IR readings on line 2
-                SetLine(2); //Set Line 2, for signal strength readings
+                // Display current IR readings on line 2
+                SetLine(2); // Set Line 2, for signal strength readings.
                 sprintf(buf,"      %04d, %04d",SensorResult[0],SensorResult[1]);
                  
                 break;
                
-           case 0 : //Start-up Mode
-                //Initialise EVERYTHING
-                initMotorPWM();  //setup PWM registers
-                initTimer(); //setup Timer0
-                initRFID(); //setup RFID pins
-                initLCD(); //initialise the LCD screen
-                initIR(); //initialise the IR sensors
+           case 0 : // Start-up Mode
+                // Initialize EVERYTHING
+                initMotorPWM();  // Setup PWM registers.
+                initTimer(); // Setup Timer0.
+                initRFID(); // Setup RFID pins.
+                initLCD(); // Initialize the LCD screen.
+                initIR(); // Initialize the IR sensors.
               
                 enableSensor(0, 1); // DEBUG ONLY - enable sensors to test signals
                 enableSensor(1, 1); // DEBUG ONLY - enable sensors to test signals
