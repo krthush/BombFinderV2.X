@@ -183,13 +183,8 @@ void main(void){
                 SensorResult[0]=grabLeftIR();
                 SensorResult[1]=grabRightIR();
 
-<<<<<<< HEAD
-                // Reset the timers to avoid same reading being picked up if 
-                // there is no signal.
-=======
                 // Reset the CAP buffers to avoid same reading being picked up 
                 // if there is no signal.
->>>>>>> ba4edfa72f828c7c56b5b47465ab778cc75fe6ae
                 CAP1BUFH=0;
                 CAP1BUFL=0;
                 CAP2BUFH=0;
@@ -242,20 +237,12 @@ void main(void){
                 SetLine(1); //Set LCD Line 1
                 LCD_String("Searching");
                 
-<<<<<<< HEAD
                 // Does different things depending on the sensor readings - if 
                 // it hasn't got a strong reading it scans clockwise slowly.
                 // If the beacon is in front it moves forward, checking as it 
                 // goes.
                 // If it's totally lost it starts spiraling outward so it 
                 // eventually finds the beacon.
-=======
-                // Does different things depending on the sensor readings - 
-                // if it hasn't got a strong reading it scans clockwise slowly
-                // If the beacon is in front, it moves forward, checking as it goes
-                // If it's totally lost it starts spiralling outward so it eventually
-                // finds the beacon
->>>>>>> ba4edfa72f828c7c56b5b47465ab778cc75fe6ae
                 if (DirectionFound==-1) {
                     // Robot is completely lost, move a bit a hope to find it.
                     // PLEASE NOTE: this movement in combination with the
@@ -292,19 +279,11 @@ void main(void){
 
                 if (RFID_Read) { // If the RFID interrupt has fired
                     stop(&mL, &mR);
-<<<<<<< HEAD
-                    if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){ 
-                        // If we have a valid ASCII signal
-                        if (VerifySignal(&ReceivedString)){
-                            // And if the checksum is correct
-                            // Put the RFID data into the Message variable.
-=======
                     //If we have a valid ASCII signal...
                     if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){
                         // ...and if the checksum is correct...
                         if (VerifySignal(&ReceivedString)){ 
                             //...put the RFID data into the Message variable
->>>>>>> ba4edfa72f828c7c56b5b47465ab778cc75fe6ae
                             for (i=0; i<10; i++){
                                 Message[i] = ReceivedString[i+1]; 
                             }
@@ -339,15 +318,11 @@ void main(void){
                
             case 3 :
             //Return Mode//
-                
-<<<<<<< HEAD
+
                 // Return to original position using MoveType and MoveTime
                 SetLine(1); // Set Line 1.
-                LCD_String(Message);
-=======
-                SetLine(1); //Set Line 1
-                LCD_String(Message); //Display the RFID card data
->>>>>>> ba4edfa72f828c7c56b5b47465ab778cc75fe6ae
+                LCD_String(Message); // Display the RFID card data
+
                 SetLine(2);
                 LCD_String("Going Home");
                 
@@ -377,8 +352,8 @@ void main(void){
                     } else if (MoveType[Move]==2) { // If 0.1s left/right
                         if (MoveTime[Move]>0) { // If left turn
                             turnRight(&mL,&mR,78); // USERVARIABLE POWER
-                            // power of 78% calibrated to account for differences
-                            // in left/right motors.
+                            // power of 78% calibrated to account for 
+                            // differences in left/right motors.
                             delay_tenth_s(MoveTime[Move]);
                         } else { // If right turn
                             turnLeft(&mL,&mR,100);

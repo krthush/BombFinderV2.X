@@ -21,8 +21,7 @@ void delay_tenth_s(char tenth_seconds);
 // This is all done while keeping previous motion action
 char ScanIR(struct DC_motor *mL, struct DC_motor *mR);
 
-// Scans a range for a number of loops, make sure the total time for this scan
-// is under 8 seconds or timer1 within ScanWithRange will fail.
+// Scans a range for a number of loops.
 // Once accurate direction is found, function will return DirectionFound=2, 
 // which switches the program to move mode.
 char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int milliseconds,
