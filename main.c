@@ -183,8 +183,13 @@ void main(void){
                 SensorResult[0]=grabLeftIR();
                 SensorResult[1]=grabRightIR();
 
+<<<<<<< HEAD
                 // Reset the timers to avoid same reading being picked up if 
                 // there is no signal.
+=======
+                // Reset the CAP buffers to avoid same reading being picked up 
+                // if there is no signal.
+>>>>>>> ba4edfa72f828c7c56b5b47465ab778cc75fe6ae
                 CAP1BUFH=0;
                 CAP1BUFL=0;
                 CAP2BUFH=0;
@@ -237,12 +242,20 @@ void main(void){
                 SetLine(1); //Set LCD Line 1
                 LCD_String("Searching");
                 
+<<<<<<< HEAD
                 // Does different things depending on the sensor readings - if 
                 // it hasn't got a strong reading it scans clockwise slowly.
                 // If the beacon is in front it moves forward, checking as it 
                 // goes.
                 // If it's totally lost it starts spiraling outward so it 
                 // eventually finds the beacon.
+=======
+                // Does different things depending on the sensor readings - 
+                // if it hasn't got a strong reading it scans clockwise slowly
+                // If the beacon is in front, it moves forward, checking as it goes
+                // If it's totally lost it starts spiralling outward so it eventually
+                // finds the beacon
+>>>>>>> ba4edfa72f828c7c56b5b47465ab778cc75fe6ae
                 if (DirectionFound==-1) {
                     // Robot is completely lost, move a bit a hope to find it.
                     // PLEASE NOTE: this movement in combination with the
@@ -264,7 +277,7 @@ void main(void){
                      // Keeps direction and just scans, robot thinks it's close
                     DirectionFound=ScanIR(&mL, &mR);
                 } else if (DirectionFound==2) {
-                     // Robot thinks its on track
+                     // Robot thinks it's on track
                      mode=2; //switch to move mode
                 }
                
@@ -279,11 +292,19 @@ void main(void){
 
                 if (RFID_Read) { // If the RFID interrupt has fired
                     stop(&mL, &mR);
+<<<<<<< HEAD
                     if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){ 
                         // If we have a valid ASCII signal
                         if (VerifySignal(&ReceivedString)){
                             // And if the checksum is correct
                             // Put the RFID data into the Message variable.
+=======
+                    //If we have a valid ASCII signal...
+                    if (ReceivedString[0]==0x02 & ReceivedString[15]==0x03){
+                        // ...and if the checksum is correct...
+                        if (VerifySignal(&ReceivedString)){ 
+                            //...put the RFID data into the Message variable
+>>>>>>> ba4edfa72f828c7c56b5b47465ab778cc75fe6ae
                             for (i=0; i<10; i++){
                                 Message[i] = ReceivedString[i+1]; 
                             }
@@ -308,6 +329,7 @@ void main(void){
                     // Bot needs to start heading for the bomb.
                     fullSpeed(&mL,&mR, 100);
                     delay_tenth_s(1);
+                    //Store the movement forward
                     MoveType[Move] = 0;
                     MoveTime[Move] = 5;
                     Move++;
@@ -318,9 +340,14 @@ void main(void){
             case 3 :
             //Return Mode//
                 
+<<<<<<< HEAD
                 // Return to original position using MoveType and MoveTime
                 SetLine(1); // Set Line 1.
                 LCD_String(Message);
+=======
+                SetLine(1); //Set Line 1
+                LCD_String(Message); //Display the RFID card data
+>>>>>>> ba4edfa72f828c7c56b5b47465ab778cc75fe6ae
                 SetLine(2);
                 LCD_String("Going Home");
                 
