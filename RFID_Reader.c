@@ -8,9 +8,11 @@ void initRFID(void){
     TRISC = TRISC | 0b11000000; //set data direction registers
                         //both need to be 1 even though RC6
                         //is an output, check the datasheet!
-        
-    SPBRG=205; //set baud rate to 9600
+
+    //set baud rate to 9600
+    SPBRG=205; 
     SPBRGH=0;
+    
     BAUDCONbits.BRG16=1; //set baud rate scaling to 16 bit mode
     TXSTAbits.BRGH=1; //high baud rate select bit
     RCSTAbits.CREN=1; //continous receive mode
