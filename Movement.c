@@ -6,24 +6,25 @@
 #include "LCD.h"
 
 void initTimer(void){
-    //timer setup
-    T0CONbits.TMR0ON=0; // turn off timer0
-    T0CONbits.T016BIT=1; // 8-bit mode
-    T0CONbits.T0CS=0; // use internal clock (Fosc/4)
-    T0CONbits.PSA=0; // enable prescaler
-    T0CONbits.T0PS=0b010; // 1:8 Prescale
-    // With 8 MHz clock this gives the clock incrementing 980 times every second
+    // Timer setup
+    T0CONbits.TMR0ON=0; // Turn off timer0.
+    T0CONbits.T016BIT=1; // 8-bit mode.
+    T0CONbits.T0CS=0; // Use internal clock (Fosc/4).
+    T0CONbits.PSA=0; // Enable prescaler.
+    T0CONbits.T0PS=0b010; // 1:8 Prescale.
+    // With 8 MHz clock this gives the clock incrementing 980 times every 
+    // second.
     
-    INTCONbits.TMR0IE=1; // Enable interrupt on overflow
+    INTCONbits.TMR0IE=1; // Enable interrupt on overflow.
 }
 
 // Function to delay in seconds
-//__delay_ms() is limited to a maximum delay of 89ms with an 8Mhz
-//clock so you need to write a function to make longer delays
+// __delay_ms() is limited to a maximum delay of 89ms with an 8Mhz
+// clock so you need to write a function to make longer delays.
 void delay_s(char seconds) {
     unsigned int i=0;
     for (i=1; i<=seconds*20; i++) {
-        // repeat 50ms delay 20 times to match no. of seconds
+        // Repeat 50ms delay 20 times to match no. of seconds
         __delay_ms(50);
     }
 }
@@ -32,7 +33,7 @@ void delay_s(char seconds) {
 void delay_tenth_s(char tenth_seconds) {
     unsigned int i=0;
     for (i=1; i<=tenth_seconds*2; i++) {
-        // repeat 50ms delay 20 times to match no. of tenth seconds
+        // Repeat 50ms delay 20 times to match no. of tenth seconds
         __delay_ms(50);
     }
 }
@@ -43,9 +44,9 @@ void delay_tenth_s(char tenth_seconds) {
 // it switches to ScanWithRange through the main loop.
 char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
     
-    // Initialise variable that is used to judge the strength of signals
+    // Initialize variable that is used to judge the strength of signals
     unsigned int SensorResult[2]={0,0};
-    char buf[40]; // Buffer for characters for LCD
+    char buf[40]; // Buffer for characters for LCD.
     // USERVARIABLE TOLERANCES
     const unsigned int DirectionMoveThreshold=500; // Minimum signal strength 
     // required for both sensors to be considered directly aimed at beacon
@@ -63,29 +64,28 @@ char ScanIR(struct DC_motor *mL, struct DC_motor *mR){
     CAP2BUFL=0;       
 
     // Output signal strength to LCD
-    SendLCD(0b00000001,0); //Clear Display
-    __delay_us(50); //Delay to let display clearing finish
-    SendLCD(0b00000010,0); // move cursor to home
+    SendLCD(0b00000001,0); // Clear Display.
+    __delay_us(50); // Delay to let display clearing finish.
+    SendLCD(0b00000010,0); // Move cursor to home.
     __delay_ms(2);
-    SetLine(1); //Set Line 1
+    SetLine(1); // Set Line 1.
     LCD_String("     ScanIR");
-    SetLine(2); //Set Line 2, for signal strength readings
+    SetLine(2); // Set Line 2, for signal strength readings.
     sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
     LCD_String(buf);
     
     // If there is significant signal from both sensors keep going
-    // Average of signals - tolerance vs. threshold
+    // Average of signals - tolerance vs. threshold.
     if ((SensorResult[0]>DirectionMoveThreshold)&&(SensorResult[1]>
             DirectionMoveThreshold)) {
-        return 2; // Direction of bomb is roughly directly ahead
+        return 2; // Direction of bomb is roughly directly ahead.
     } else {
         stop(mL,mR);
-        return 0; // No clear signal found
+        return 0; // No clear signal found.
     }
 }
 
-// Scans a range turning RIGHT for a number of loops, make sure the total time
-// for this scan is UNDER 8 seconds or timer1 within ScanWithRange will fail.
+// Scans a range turning RIGHT for a number of loops.
 // Begins by flicking to the left so that it is more likely to pick up the
 // beacon if it has just passed it.
 // It compares the IR readings from both sensors: if both pick up signal it
@@ -99,18 +99,18 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
         int *MoveTime, char *Move, char *MoveType, char *RFID_Read, 
         unsigned int *millis) {
     
-    // Initialise variable that is used to judge the strength of signals
-    unsigned int SensorResult[2]={0,0}; //Left and right sensor values
-    unsigned int LeftFlag=0; //millis value when left sensor first reads
-    unsigned int RightFlag=0; //millis value when right sensor first reads
-    char buf[40]; // Buffer for characters for LCD
-    unsigned int i=0; //Counter
+    // Initialize variables that is used to judge the strength of signals
+    unsigned int SensorResult[2]={0,0}; // Left and right sensor values.
+    unsigned int LeftFlag=0; // Millis value when left sensor first reads.
+    unsigned int RightFlag=0; // Millis value when right sensor first reads.
+    char buf[40]; // Buffer for characters for LCD.
+    unsigned int i=0; // Counter.
     unsigned int TimeAboveThreshold=0;
     // USERVARIABLE TOLERANCES
-    const unsigned int DirectionFoundThreshold=500; // Minimum signal strength 
+    const unsigned int DirectionFoundThreshold=500; // Minimum signal strength .
     // required for sensor to be considered directly aimed at beacon.
-    const unsigned char MotorPower=40; // Adjusts the speed of the turning, currently
-    // seems to lose clarity past 43ish.
+    const unsigned char MotorPower=40; // Adjusts the speed of the turning,
+    // currently seems to lose clarity past 43ish.
     const signed char LeftFlick=2; // The flick before scanning is started.
     // Value should ideally be as low as possible for speed, but low values
     // are less robust as the robot can miss the beacon if it's overshot to
@@ -131,11 +131,11 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     // Turn right slowly for scanning
     turnRight(mL,mR, MotorPower);
     
-    // Initialise Timer0 vales to 0
+    // Initialize Timer0 vales to 0
     TMR0L = 0;
     TMR0H = 0;
     *millis = 0;
-    T0CONbits.TMR0ON=1; // turn on timer0
+    T0CONbits.TMR0ON=1; // Turn on timer0.
     // This loop is turning Right, while scanning
     for (i=1; i<=loops; i++) {
         
@@ -150,33 +150,27 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
         CAP2BUFH=0;
         CAP2BUFL=0;
         
-        // MIGHT BE LOSS EFFICIENCY
-        // Output signal strength to LCD
-        SendLCD(0b00000001,0); //Clear Display
-        __delay_us(50); //Delay to let display clearing finish
-        SendLCD(0b00000010,0); // move cursor to home
+        // Output signal strength to LCD - this can be left out for increase in
+        // efficiency but at lack of clarity when testing.
+        SendLCD(0b00000001,0); // Clear Display.
+        __delay_us(50); // Delay to let display clearing finish.
+        SendLCD(0b00000010,0); // Move cursor to home.
         __delay_ms(2);
-        SetLine(1); //Set Line 1
+        SetLine(1); // Set Line 1.
         LCD_String("     ScanIR");
-        SetLine(2); //Set Line 2, for signal strength readings
+        SetLine(2); // Set Line 2, for signal strength readings.
         sprintf(buf,"     %04d, %04d",SensorResult[0],SensorResult[1]);
         LCD_String(buf);
         
-        // TODO: Timer1 does not seem to be recorded correctly here, it activates
-        // at the start
+        // Obtain millis values when right/left IR sensors have seen beacon
         if (SensorResult[1]>DirectionFoundThreshold) {
             RightFlag=*millis;
         }
-        
         if (SensorResult[0]>DirectionFoundThreshold) {
             LeftFlag=*millis;
         }
         
-        // Increment counter if any of the IR sensors has seen the beacon
-//        if ((LeftFlag>0)||(RightFlag>0)) {
-//            TimeAboveThreshold++;
-//        }
-        
+        // If left sensor has seen beacon
         if (LeftFlag>0) {  
             // Both Sensors have seen the beacon, travel back to
             // half the length of the FlagCounter and go!
@@ -187,8 +181,8 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 *millis = 0;
                 stop(mL,mR);
                 while (*millis<(TimeAboveThreshold>>1)) {
-                    // Keep turning left until it's gone for half the time between
-                    //the two readings
+                    // Keep turning left until it's gone for half the time 
+                    // between the two readings
                     turnLeft(mL,mR, MotorPower);
                 }
                 T0CONbits.TMR0ON=0; // Stop the timer
@@ -199,6 +193,7 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 *Move = *Move+1;
                 
                 return 2; // Direction of bomb is directly ahead
+            // Only one sensor has seen the beacon, guess direction with that    
             } else {
                 T0CONbits.TMR0ON=0; // Stop the timer
                 
@@ -209,7 +204,8 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 *Move = *Move+1;  
                 stop(mL,mR);
                 
-                // Small flick to adjust rough movement slightly + recording of it
+                // Small flick to adjust rough movement slightly + recording of
+                // it.
                 turnLeft(mL,mR,100);
                 delay_tenth_s(MiniLeftFlick);
                 stop(mL,mR);
@@ -217,13 +213,14 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
                 (MoveTime[*Move]) = MiniLeftFlick;
                 *Move = *Move+1; 
 
-                // just go in that direction roughly
-                return 2; // Direction of bomb is roughly ahead
+                // Just go in that direction roughly
+                return 2; // Direction of bomb is roughly ahead, so switch to
+                // move forward mode.
             }     
         } 
         // Break out of loop if RFID read or button pressed (Global variables!)
-        if (*RFID_Read==1) { //If we've got something on the RFID
-            return 2; //2 sends it into mode 2
+        if (*RFID_Read==1) { // If we've got something on the RFID.
+            return 2; // This sends it into mode 2 (Move Forward Mode).
         }
     }
     
@@ -236,5 +233,5 @@ char ScanWithRange(struct DC_motor *mL, struct DC_motor *mR, int loops,
     turnRight(mL,mR, 100);
     delay_tenth_s(LeftFlick);
     stop(mL,mR);
-    return -1; // No clear signal found
+    return -1; // No clear signal found. Go to lost mode!
 }
