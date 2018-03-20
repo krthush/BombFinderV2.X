@@ -5,18 +5,27 @@
 #include "IR_Reading.h"
 #include "LCD.h"
 
-#pragma config MCLRE=OFF, LVP=OFF, OSC = IRCIO, WDTEN = OFF //internal oscillator, WDT off
+#pragma config MCLRE=OFF, LVP=OFF, OSC = IRCIO, WDTEN = OFF // Internal 
+// oscillator, WDT off.
 
-#define PWMcycle 1 //need to calculate this
+#define PWMcycle 1 // This has been calculated.
 
-volatile unsigned char ReceivedString[16]; //Global variable to read from RFID
-volatile unsigned char i=0; //for loop iterator
-volatile unsigned char RFID_Read=0;
-volatile signed char mode=0; // Robot mode - see switch case tree in main loop
-volatile unsigned int millis=0; //Approximate milisecond timer
+//----------------------------------------------------------------------------//
+//Initialize Global Variables//
+//----------------------------------------------------------------------------//
+volatile unsigned char ReceivedString[16]; // Global variable to read from RFID.
+volatile unsigned char i=0; // For loop iterator.
+volatile unsigned char RFID_Read=0; // To know if RFID has been read.
+volatile signed char mode=0; // Robot mode - see switch case tree in main loop.
+volatile unsigned int millis=0; // Approximate millisecond timer,
+// see use of time0 in initTimer in Movement source file.
 
+//----------------------------------------------------------------------------//
+//Interrupt Routines//
+//----------------------------------------------------------------------------//
 
-// High priority interrupt routine
+// Low priority interrupt routine for RFID reader.
+// Confirms when RFID is read and stores the given serial string.
 void interrupt low_priority InterruptHandlerLow ()
 {
     if (PIR1bits.RCIF) { //If the serial receive interrupt is active
@@ -31,8 +40,8 @@ void interrupt low_priority InterruptHandlerLow ()
     }
 }
 
-// Low priority interrupt routine for button and timer overflow
-// Switches between inert mode vs. other modes and increments a timer counter
+// High priority interrupt routine for button and timer overflow.
+// Switches between inert mode vs. other modes and increments a timer counter.
 void interrupt InterruptHandlerHigh () {
     if (INTCONbits.INT0IF) { //If button pressed
         if (mode==-1) { // If in inert mode
@@ -55,9 +64,16 @@ void interrupt InterruptHandlerHigh () {
     }
 }
 
+//----------------------------------------------------------------------------//
+//Main Program Loop//
+//----------------------------------------------------------------------------//
+
 void main(void){
     
-    //Initialise Variables
+    //------------------------------------------------------------------------//
+    //Initialize Main Loop Variables//
+    //------------------------------------------------------------------------//
+
     unsigned char Message[10]; // Code on RFID Card
     unsigned char i=0; // Counter variable
     signed char DirectionFound=0; // Flag for if the robot has decided it knows where the bomb is
@@ -82,7 +98,10 @@ void main(void){
     const unsigned char MotorPower=40; // Adjusts the speed of the turning, currently
     // seems to lose clarity past 43ish.
     
-    // Enable general interrupt stuff
+    //------------------------------------------------------------------------//
+    //Initialize Interrupts//
+    //------------------------------------------------------------------------//
+    
     INTCONbits.GIEH=1; // Global Interrupt Enable bit
     INTCONbits.GIEL=1; // Peripheral/Low priority Interrupt Enable bit
     INTCONbits.PEIE=1; // Enable Peripheral  interrupts
@@ -100,7 +119,10 @@ void main(void){
     PIR1bits.RC1IF=0;// clear EUSART interrupt flag
     INTCONbits.INT0IF=0;// clear flag on the button interrupt
     
-    // Initialise Motor Structures
+    //------------------------------------------------------------------------//
+    //Initialize Motor Structures//
+    //------------------------------------------------------------------------//
+    
     struct DC_motor mL, mR; //declare 2 motor structures
     mL.power=0; //zero power to start
     mL.direction=1; //set default motor direction
@@ -118,6 +140,10 @@ void main(void){
 
     OSCCON = 0b1110010; //8MHz clock
     while(!OSCCONbits.IOFS); //wait until stable
+    
+    //------------------------------------------------------------------------//
+    //Post Start Up Loop//
+    //------------------------------------------------------------------------//
     
     while(1){ //loop forever
        
